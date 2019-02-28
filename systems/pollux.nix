@@ -24,7 +24,7 @@
   environment.systemPackages = with pkgs; [
   ];
 
-  services.xserver {
+  services.xserver = {
     # Enable touchpad support.
     libinput.enable = true;
   };
