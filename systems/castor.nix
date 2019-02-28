@@ -18,7 +18,6 @@
   environment.systemPackages = with pkgs; [
     # Drives.
     gparted
-    hdparm
     hd-idle
     # Big applications.
     teamviewer

@@ -60,6 +60,7 @@
     # Drives.
     ntfs3g
     sshfs
+    hdparm
     smartmontools
     # X.
     xclip
