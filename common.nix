@@ -191,6 +191,8 @@
       # Use non-free Nvidia drivers.
       layout = "us,ru";
       xkbOptions = "compose:ralt,grp:menu_toggle,grp_led:caps,caps:backspace";
+      autoRepeatDelay = 250;
+      autoRepeatInterval = 1000 / 40;
 
       windowManager.xmonad = {
         enable = true;
