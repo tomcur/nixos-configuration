@@ -189,8 +189,8 @@
       enable = true;
 
       # Use non-free Nvidia drivers.
-      layout = "us(colemak),us,ru";
-      xkbOptions = "compose:ralt,grp:menu_toggle,grp_led:caps";
+      layout = "us,ru";
+      xkbOptions = "compose:ralt,grp:menu_toggle,grp_led:caps,caps:backspace";
 
       windowManager.xmonad = {
         enable = true;
