@@ -242,6 +242,6 @@
   users.users.thomas = {
     isNormalUser = true;
     home = "/home/thomas";
-    extraGroups = [ "wheel" "networkmanager" "audio" ];
+    extraGroups = [ "wheel" "networkmanager" ];
   };
 }
