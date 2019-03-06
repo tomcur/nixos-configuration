@@ -214,14 +214,6 @@
       enable = true;
     };
 
-    redshift = {
-      enable = false; # Or install in user env, and use a desktop widget to control.
-      latitude = "52.090835";
-      longitude = "6.114537";
-      temperature.day = 6500;
-      temperature.night = 3300;
-    };
-
     mysql = {
       package = pkgs.mariadb;
       enable = true;
