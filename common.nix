@@ -69,6 +69,8 @@
     xmonad-log
     polybar
     rofi
+    # Authentication management.
+    polkit_gnome # GUI authentication.
     # Themes.
     gtk2
     gtk3
