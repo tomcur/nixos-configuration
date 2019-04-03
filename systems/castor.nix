@@ -36,7 +36,8 @@
     xrandrHeads = [ "DP-4" "DVI-D-0" ];
 
     screenSection = ''
-      Option "metamodes" "DP-4: nvidia-auto-select +0+0 { ForceCompositionPipeline = On }, DVI-D-0: nvidia-auto-select +1920+150 { ForceCompositionPipeline = On }"
+      Option "MetaModes" "DP-4: nvidia-auto-select +0+0 { ForceCompositionPipeline = On }, DVI-D-0: nvidia-auto-select +1920+150 { ForceCompositionPipeline = On }"
+      Option "FlatPanelProperties" "Dithering = Disabled"
     '';
   };
 
