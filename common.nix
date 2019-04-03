@@ -219,6 +219,12 @@
       enable = true;
     };
 
+    # Nixops DNS.
+    nixops-dns = {
+      enable = true;
+      user = "thomas";
+    };
+
     # Enable CUPS to print documents.
     printing.enable = true;
     printing.drivers = [ pkgs.gutenprint pkgs.gutenprintBin ];
