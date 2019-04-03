@@ -32,7 +32,7 @@
   # Set monitor position and force compositor pipeline to prevent screen tearing (nvidia).
   services.xserver = {
     # Use non-free Nvidia drivers.
-    videoDrivers = [ "nvidiaBeta" ];
+    videoDrivers = [ "nvidia" ];
     xrandrHeads = [ "DP-4" "DVI-D-0" ];
 
     screenSection = ''
