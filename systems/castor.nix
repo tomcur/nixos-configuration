@@ -13,6 +13,12 @@
 
   networking = {
     hostName = "castor";
+    firewall = {
+      allowedTCPPorts = [
+        80
+      ];
+      allowedUDPPorts = [];
+    };
   };
 
   environment.systemPackages = with pkgs; [
