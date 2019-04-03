@@ -31,6 +31,11 @@
     teamviewer
   ];
 
+  # Virtualisation.
+  virtualisation.virtualbox.host = {
+    enable = true;
+  };
+
   # Set monitor position and force compositor pipeline to prevent screen tearing (nvidia).
   services.xserver = {
     # Use non-free Nvidia drivers.
