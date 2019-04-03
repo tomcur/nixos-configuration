@@ -8,8 +8,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # Use explicit kernel version.
+  boot.kernelPackages = pkgs.linuxPackages_4_19;
 
   # Kernel params.
   boot.kernelParams = [];
