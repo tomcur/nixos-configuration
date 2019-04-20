@@ -9,7 +9,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Use explicit kernel version.
-  boot.kernelPackages = pkgs.linuxPackages_4_19;
+  # boot.kernelPackages = pkgs.linuxPackages_4_19;
 
   # Kernel params.
   boot.kernelParams = [];
