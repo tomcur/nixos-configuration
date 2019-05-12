@@ -110,17 +110,28 @@
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
+    # Unicode coverage.
+    unifont
+    # Monospace fonts.
+    source-code-pro
+    hack-font
     fira-code
     fira-code-symbols
+    iosevka
     inconsolata
     kawkab-mono-font
-    source-code-pro
-    unifont
-    # Icons
+    # Icons.
     twemoji-color-font
     siji
     font-awesome_5
+    emacs-all-the-icons-fonts
   ];
+
+  fonts.fontconfig.defaultFonts = {
+    monospace = ["DejaVu Sans Mono"];
+    sansSerif = ["DejaVu Sans"];
+    serif = ["DejaVu Serif"];
+  };
 
   # Virtualisation.
   virtualisation.virtualbox.host = {
