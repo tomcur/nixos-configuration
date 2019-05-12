@@ -112,12 +112,14 @@
     noto-fonts-emoji
     # Unicode coverage.
     unifont
-    # Monospace fonts.
+    # Monospace fonts. (There are never enough.)
     source-code-pro
+    anonymousPro
+    terminus_font
     hack-font
     fira-code
     fira-code-symbols
-    iosevka
+    iosevka-bin
     inconsolata
     kawkab-mono-font
     # Icons.
@@ -127,10 +129,10 @@
     emacs-all-the-icons-fonts
   ];
 
-  fonts.fontconfig =
+  fonts.fontconfig = {
     enable = true;
     defaultFonts = {
-      monospace = ["DejaVu Sans Mono"];
+      monospace = ["Hack"];
       sansSerif = ["DejaVu Sans"];
       serif = ["DejaVu Serif"];
     };
