@@ -139,7 +139,7 @@
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
-      monospace = ["Hack"];
+      monospace = ["Source Code Pro"];
       sansSerif = ["DejaVu Sans"];
       serif = ["DejaVu Serif"];
     };
