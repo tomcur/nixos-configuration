@@ -270,6 +270,13 @@
   hardware.pulseaudio.enable = true;
   hardware.pulseaudio.support32Bit = true;
 
+  # Set default systemd services timeout.
+  # Note services can extend their stop time by signalling
+  # 'EXTEND_TIMEOUT_USEC'.
+  systemd.extraConfig = ''
+    DefaultTimeoutStopSec=30s
+  '';
+
   users.defaultUserShell = pkgs.zsh;
   users.users.thomas = {
     isNormalUser = true;
