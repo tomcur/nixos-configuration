@@ -119,7 +119,14 @@
     hack-font
     fira-code
     fira-code-symbols
-    iosevka-bin
+    (iosevka.override {
+      set = "code";
+      design = [
+        "v-l-tailed" "v-i-hooky"
+	"v-zero-dotted" "v-at-long" "v-numbersign-upright"
+      ];
+      weights = ["book" "bold"];
+    })
     inconsolata
     kawkab-mono-font
     # Icons.
