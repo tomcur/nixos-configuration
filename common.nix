@@ -127,10 +127,13 @@
     emacs-all-the-icons-fonts
   ];
 
-  fonts.fontconfig.defaultFonts = {
-    monospace = ["DejaVu Sans Mono"];
-    sansSerif = ["DejaVu Sans"];
-    serif = ["DejaVu Serif"];
+  fonts.fontconfig =
+    enable = true;
+    defaultFonts = {
+      monospace = ["DejaVu Sans Mono"];
+      sansSerif = ["DejaVu Sans"];
+      serif = ["DejaVu Serif"];
+    };
   };
 
   # Virtualisation.
