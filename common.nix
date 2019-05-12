@@ -94,7 +94,9 @@
     ];
   };
 
-  environment.variables = {	
+  environment.variables = {
+    EDITOR = "${pkgs.neovim}/bin/nvim";
+    VISUAL = "${pkgs.neovim}/bin/nvim";
     GIO_EXTRA_MODULES = [
     	"${pkgs.gvfs}/lib/gio/modules"
     ];
@@ -139,6 +141,8 @@
   programs.zsh.promptInit = ''
     if [ "$TERM" != dumb ]; then
       autoload -Uz add-zsh-hook
+
+      alias vi="nvim"
 
       setprompt() {
         setopt noxtrace localoptions
