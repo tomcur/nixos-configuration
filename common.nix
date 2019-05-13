@@ -42,6 +42,7 @@
     wget
     neovim # (vim_configurable.override {})
     git
+    git-crypt
     tmux
     file
     usbutils
