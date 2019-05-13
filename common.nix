@@ -47,6 +47,8 @@
     usbutils
     killall
     rename # regex bulk file rename
+    # Cryptography.
+    gnupg
     # Archives.
     cabextract
     zip
