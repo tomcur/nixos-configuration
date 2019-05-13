@@ -1,14 +1,14 @@
 # NixOS configuration
 My NixOS system configurations.
 
-Activate a specific system configuration by updating your `configuration.nix`, e.g.:
+Activate a specific system configuration by updating your `configuration.nix`, e.g. assuming this repository is in `./config` relative to the main configuration file:
 
 ```nix
 { config, pkgs, ... }:
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
       ./config/systems/castor.nix
     ];
