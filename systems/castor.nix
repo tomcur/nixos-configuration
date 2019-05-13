@@ -3,6 +3,7 @@
 {
   imports = [
     ../common.nix
+    ./castor-secret.nix
   ];
 
   # NTFS drive.
