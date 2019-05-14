@@ -45,6 +45,7 @@
     git-crypt
     tmux
     file
+    tree
     usbutils
     killall
     rename # regex bulk file rename
