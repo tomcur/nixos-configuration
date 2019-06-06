@@ -91,13 +91,17 @@
     xfce.exo
   ];
 
+  # Global shell variables.
   environment.sessionVariables = {
     # Enable GTK to find themes.
     GTK_DATA_PREFIX = [
       "${config.system.path}"
     ];
+    # Allow Java programs to work with non-reparenting Window Managers (XMonad).
+    _JAVA_AWT_WM_NONREPARENTING = "1";
   };
 
+  # Global shell variables.
   environment.variables = {
     EDITOR = "${pkgs.neovim}/bin/nvim";
     VISUAL = "${pkgs.neovim}/bin/nvim";
@@ -155,7 +159,7 @@
   };
 
   # Configurable QT themes without a desktop manager.
-  programs.qt5ct.enable = true; 
+  programs.qt5ct.enable = true;
 
   # Gnome GSettings backend.
   programs.dconf.enable = true;
