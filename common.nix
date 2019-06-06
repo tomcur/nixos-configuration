@@ -225,12 +225,10 @@
     # Enable the OpenSSH daemon.
     openssh.enable = true;
 
-    # Use (non-free) Nvidia drivers.
     xserver = {
       # Enable the X11 windowing system.
       enable = true;
 
-      # Use non-free Nvidia drivers.
       layout = "us,ru";
       xkbOptions = "compose:ralt,grp:menu_toggle,grp_led:caps,caps:backspace";
       autoRepeatDelay = 250;
