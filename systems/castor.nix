@@ -17,6 +17,7 @@
     firewall = {
       allowedTCPPorts = [
         80
+        61167
       ];
       allowedUDPPorts = [];
     };
