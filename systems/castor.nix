@@ -45,6 +45,11 @@
     '';
   };
 
+  services.mysql = {
+    package = pkgs.mariadb;
+    enable = true;
+  };
+
   # services.teamviewer.enable = true;
 
   # Idle hdd automatically after timeout.
