@@ -27,6 +27,10 @@
   services.xserver = {
     # Enable touchpad support.
     libinput.enable = true;
+    videoDrivers = [ "intel" ];
+    deviceSection = ''
+      Option "TearFree" "true"
+    '';
   };
 
   hardware.brightnessctl.enable = true;
