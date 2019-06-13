@@ -45,6 +45,19 @@
     '';
   };
 
+  services.nginx = {
+    enable = true;
+    user = "thomas";
+    virtualHosts = {
+      "84.85.215.83" = {
+        root = "/home/thomas/web";
+	extraConfig = ''
+	  autoindex on;
+	'';
+      };
+    };
+  };
+
   # services.teamviewer.enable = true;
 
   # Idle hdd automatically after timeout.
