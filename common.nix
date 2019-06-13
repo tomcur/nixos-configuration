@@ -252,11 +252,6 @@
       enable = true;
     };
 
-    mysql = {
-      package = pkgs.mariadb;
-      enable = true;
-    };
-
     # Nixops DNS.
     nixops-dns = {
       enable = true;

@@ -34,31 +34,39 @@
   ];
 
   # Set monitor position and force compositor pipeline to prevent screen tearing (nvidia).
-  services.xserver = {
-    # Use non-free Nvidia drivers.
-    videoDrivers = [ "nvidia" ];
-    xrandrHeads = [ "DP-4" "DVI-D-0" ];
+  services = {
+    xserver = {
+      # Use non-free Nvidia drivers.
+      videoDrivers = [ "nvidia" ];
+      xrandrHeads = [ "DP-4" "DVI-D-0" ];
 
-    screenSection = ''
-      Option "MetaModes" "DP-4: nvidia-auto-select +0+0 { ForceCompositionPipeline = On }, DVI-D-0: nvidia-auto-select +1920+150 { ForceCompositionPipeline = On }"
-      Option "FlatPanelProperties" "Dithering = Disabled"
-    '';
-  };
+      screenSection = ''
+        Option "MetaModes" "DP-4: nvidia-auto-select +0+0 { ForceCompositionPipeline = On }, DVI-D-0: nvidia-auto-select +1920+150 { ForceCompositionPipeline = On }"
+        Option "FlatPanelProperties" "Dithering = Disabled"
+      '';
+    };
 
-  services.nginx = {
-    enable = true;
-    user = "thomas";
-    virtualHosts = {
-      "84.85.215.83" = {
-        root = "/home/thomas/web";
-	extraConfig = ''
-	  autoindex on;
-	'';
+    nginx = {
+      enable = true;
+      user = "thomas";
+      virtualHosts = {
+        "84.85.215.83" = {
+          root = "/home/thomas/web";
+          extraConfig = ''
+            autoindex on;
+          '';
+        };
       };
     };
+
+    mysql = {
+      package = pkgs.mariadb;
+      enable = true;
+    };
+
+    # teamviewer.enable = true;
   };
 
-  # services.teamviewer.enable = true;
 
   # Idle hdd automatically after timeout.
   systemd.services.hd-idle = {
