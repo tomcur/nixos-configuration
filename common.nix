@@ -87,8 +87,10 @@
     # GUI stuff.
     xfce.thunar
     xfce.thunar-volman
-    gvfs
     xfce.exo
+    # GIO.
+    gvfs
+    glib-networking
   ];
 
   # Global shell variables.
@@ -107,6 +109,7 @@
     VISUAL = "${pkgs.neovim}/bin/nvim";
     GIO_EXTRA_MODULES = [
     	"${pkgs.gvfs}/lib/gio/modules"
+	"${pkgs.glib-networking}/lib/gio/modules"
     ];
   };
 
