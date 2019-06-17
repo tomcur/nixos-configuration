@@ -253,6 +253,18 @@
     # Compositing.
     compton = {
       enable = true;
+      fade = true;
+      fadeDelta = 3;
+      shadow = true;
+      shadowExclude = [
+        "window_type *= 'menu'"
+        "name ~= 'Firefox$'"
+      ];
+      extraOptions = ''
+        no-dock-shadow = true;
+        clear-shadow = true;
+        xinerama-shadow-crop = true;
+      '';
     };
 
     # Nixops DNS.
