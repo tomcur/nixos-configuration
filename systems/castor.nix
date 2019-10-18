@@ -27,8 +27,6 @@
     # Drives.
     gparted
     hd-idle
-    # Windows translation.
-    wineWowPackages.staging
     # Big applications.
     teamviewer
   ];

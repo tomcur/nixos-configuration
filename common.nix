@@ -12,7 +12,8 @@
   # boot.kernelPackages = pkgs.linuxPackages_4_19;
 
   # Kernel params.
-  boot.kernelParams = [];
+  # boot.kernelParams = [];
+  # boot.crashDump.enable = true;
 
   networking = {
     networkmanager.enable = true; # Enables network manager.
@@ -260,11 +261,11 @@
         "window_type *= 'menu'"
         "name ~= 'Firefox$'"
       ];
-      extraOptions = ''
+      settings = {
         no-dock-shadow = true;
         clear-shadow = true;
         xinerama-shadow-crop = true;
-      '';
+      };
     };
 
     # Nixops DNS.
