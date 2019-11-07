@@ -32,7 +32,15 @@
       Option "TearFree" "true"
     '';
   };
-
+  services.acpid = {
+    enable = true;
+    handlers.headphone-hiss = {
+      action = ''
+        ${pkgs.alsaUtils}/bin/amixer -c0 sset 'Headphone Mic Boost' 10dB
+      '';
+      event = "jack/headphone HEADPHONE plug";
+    };
+  };
   hardware.brightnessctl.enable = true;
 
   # This value determines the NixOS release with which your system is to be
