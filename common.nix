@@ -23,7 +23,7 @@
   i18n = {
     consoleFont = "Lat2-Terminus16";
     consoleKeyMap = "us";
-    defaultLocale = "en_US.UTF-8";
+    defaultLocale = "en_GB.UTF-8";
   };
 
   # Set time zone.
