@@ -276,7 +276,7 @@
 
     # Enable CUPS to print documents.
     printing.enable = true;
-    printing.drivers = [ pkgs.gutenprint pkgs.gutenprintBin ];
+    printing.drivers = [ pkgs.gutenprint pkgs.gutenprintBin pkgs.epson-escpr ];
   };
 
   # Support 3D acceleration for 32-bit programs.
