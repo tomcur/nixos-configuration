@@ -15,6 +15,10 @@
   # boot.kernelParams = [];
   # boot.crashDump.enable = true;
 
+  boot.kernel.sysctl = {
+    "kernel.sysrq" = 1;
+  };
+
   networking = {
     networkmanager.enable = true; # Enables network manager.
   };
