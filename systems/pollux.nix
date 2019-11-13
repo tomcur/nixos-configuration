@@ -21,6 +21,8 @@
     }
   ];
 
+  swapDevices = [ { device = "/dev/disk/by-label/swap"; } ];
+
   environment.systemPackages = with pkgs; [
   ];
 
