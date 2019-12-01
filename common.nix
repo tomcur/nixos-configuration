@@ -78,6 +78,7 @@
     xmonad-log
     polybar
     rofi
+    feh
     # Authentication management.
     polkit_gnome # GUI authentication.
     # Themes.
@@ -242,14 +243,17 @@
       autoRepeatDelay = 250;
       autoRepeatInterval = 1000 / 40;
 
-      windowManager.xmonad = {
+      #windowManager.xmonad = {
+      #  enable = true;
+      #  enableContribAndExtras = true;
+      #  extraPackages = haskellPackages: [
+      #    haskellPackages.dbus
+      #  ];
+      #};
+      windowManager.bspwm = {
         enable = true;
-        enableContribAndExtras = true;
-        extraPackages = haskellPackages: [
-          haskellPackages.dbus
-        ];
       };
-      windowManager.default = "xmonad";
+      windowManager.default = "bspwm";
 
       # Enable SVG icons.
       gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
