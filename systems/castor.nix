@@ -18,8 +18,11 @@
       allowedTCPPorts = [
         80
         61167
+        22000 # Syncthing listening
       ];
-      allowedUDPPorts = [];
+      allowedUDPPorts = [
+        21027 # Syncthing ipv4 discovery and ipv6 multicasts
+      ];
     };
   };
 
