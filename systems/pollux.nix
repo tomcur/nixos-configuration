@@ -7,6 +7,14 @@
 
   networking = {
     hostName = "pollux";
+    firewall = {
+      allowedTCPPorts = [
+        22000 # Syncthing listening
+      ];
+      allowedUDPPorts = [
+        21027 # Syncthing ipv4 discovery and ipv6 multicasts
+      ];
+    };
   };
 
   # Better for SSD.
