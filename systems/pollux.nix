@@ -3,6 +3,7 @@
 {
   imports = [
     ../common.nix
+    ../audio-pulse.nix
   ];
 
   networking = {

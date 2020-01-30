@@ -1,8 +1,8 @@
 { config, pkgs, ...}:
-
 {
   imports = [
     ../common.nix
+    ../audio-jack.nix
     ./castor-secret.nix
   ];
 

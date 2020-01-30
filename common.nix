@@ -291,11 +291,6 @@
   # Support 3D acceleration for 32-bit programs.
   hardware.opengl.driSupport32Bit = true;
 
-  # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-  hardware.pulseaudio.support32Bit = true;
-
   # Set default systemd services timeout.
   # Note services can extend their stop time by signalling
   # 'EXTEND_TIMEOUT_USEC'.
