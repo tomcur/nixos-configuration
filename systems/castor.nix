@@ -6,6 +6,8 @@
     ./castor-secret.nix
   ];
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   # NTFS drive.
   fileSystems."/mnt/q" = {
     device = "/dev/disk/by-uuid/0E3CC6AE3CC6905F";
