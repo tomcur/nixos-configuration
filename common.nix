@@ -303,5 +303,8 @@
     isNormalUser = true;
     home = "/home/thomas";
     extraGroups = [ "wheel" "networkmanager" "video" ];
+    openssh.authorizedKeys.keyFiles = [
+      ./keys/thomas.pub
+    ];
   };
 }
