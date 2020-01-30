@@ -233,6 +233,7 @@
   services = {
     # Enable the OpenSSH daemon.
     openssh.enable = true;
+    openssh.forwardX11 = true;
 
     xserver = {
       # Enable the X11 windowing system.
