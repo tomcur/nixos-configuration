@@ -82,6 +82,7 @@
 
   # Virtualisation.
   virtualisation.virtualbox.host = { enable = true; };
+  virtualisation.docker.enable = true;
 
   # Disable onboard audio.
   boot.extraModprobeConfig = ''
