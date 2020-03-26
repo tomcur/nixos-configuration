@@ -70,7 +70,6 @@
     # teamviewer.enable = true;
   };
 
-
   # Idle hdd automatically after timeout.
   systemd.services.hd-idle = {
     description = "HD spin-down";
@@ -80,6 +79,9 @@
       ExecStart = "${pkgs.hd-idle}/bin/hd-idle -i 0 -a sdb -i 450";
     };
   };
+
+  # Virtualisation.
+  virtualisation.virtualbox.host = { enable = true; };
 
   # Disable onboard audio.
   boot.extraModprobeConfig = ''

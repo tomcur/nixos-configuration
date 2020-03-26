@@ -162,9 +162,6 @@
     };
   };
 
-  # Virtualisation.
-  virtualisation.virtualbox.host = { enable = true; };
-
   # Configurable QT themes without a desktop manager.
   programs.qt5ct.enable = true;
 
