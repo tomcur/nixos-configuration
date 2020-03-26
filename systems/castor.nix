@@ -84,6 +84,8 @@
   virtualisation.virtualbox.host = { enable = true; };
   virtualisation.docker.enable = true;
 
+  boot.loader.systemd-boot.memtest86.enable = true;
+
   # Disable onboard audio.
   boot.extraModprobeConfig = ''
     options snd slots=snd-hda-intel
