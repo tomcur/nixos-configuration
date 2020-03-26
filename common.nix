@@ -41,6 +41,7 @@
     zsh
     # Terminal emulator.
     rxvt_unicode
+    alacritty
     # Tools
     wget
     neovim # (vim_configurable.override {})
