@@ -15,9 +15,7 @@
   # boot.kernelParams = [];
   # boot.crashDump.enable = true;
 
-  boot.kernel.sysctl = {
-    "kernel.sysrq" = 1;
-  };
+  boot.kernel.sysctl = { "kernel.sysrq" = 1; };
 
   networking = {
     networkmanager.enable = true; # Enables network manager.
@@ -102,9 +100,7 @@
   # Global shell variables.
   environment.sessionVariables = {
     # Enable GTK to find themes.
-    GTK_DATA_PREFIX = [
-      "${config.system.path}"
-    ];
+    GTK_DATA_PREFIX = [ "${config.system.path}" ];
     # Allow Java programs to work with non-reparenting Window Managers (XMonad).
     _JAVA_AWT_WM_NONREPARENTING = "1";
   };
@@ -114,8 +110,8 @@
     EDITOR = "${pkgs.neovim}/bin/nvim";
     VISUAL = "${pkgs.neovim}/bin/nvim";
     GIO_EXTRA_MODULES = [
-    	"${pkgs.gvfs}/lib/gio/modules"
-	"${pkgs.glib-networking}/lib/gio/modules"
+      "${pkgs.gvfs}/lib/gio/modules"
+      "${pkgs.glib-networking}/lib/gio/modules"
     ];
   };
 
@@ -139,10 +135,13 @@
     (iosevka.override {
       set = "code";
       design = [
-        "v-l-tailed" "v-i-hooky"
-	"v-zero-dotted" "v-at-long" "v-numbersign-upright"
+        "v-l-tailed"
+        "v-i-hooky"
+        "v-zero-dotted"
+        "v-at-long"
+        "v-numbersign-upright"
       ];
-      weights = ["book" "bold"];
+      weights = [ "book" "bold" ];
     })
     inconsolata
     kawkab-mono-font
@@ -156,16 +155,14 @@
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
-      monospace = ["Source Code Pro"];
-      sansSerif = ["DejaVu Sans"];
-      serif = ["DejaVu Serif"];
+      monospace = [ "Source Code Pro" ];
+      sansSerif = [ "DejaVu Sans" ];
+      serif = [ "DejaVu Serif" ];
     };
   };
 
   # Virtualisation.
-  virtualisation.virtualbox.host = {
-    enable = true;
-  };
+  virtualisation.virtualbox.host = { enable = true; };
 
   # Configurable QT themes without a desktop manager.
   programs.qt5ct.enable = true;
@@ -251,9 +248,7 @@
       #    haskellPackages.dbus
       #  ];
       #};
-      windowManager.bspwm = {
-        enable = true;
-      };
+      windowManager.bspwm = { enable = true; };
       windowManager.default = "bspwm";
 
       # Enable SVG icons.
@@ -266,10 +261,7 @@
       fade = true;
       fadeDelta = 3;
       shadow = true;
-      shadowExclude = [
-        "window_type *= 'menu'"
-        "name ~= 'Firefox$'"
-      ];
+      shadowExclude = [ "window_type *= 'menu'" "name ~= 'Firefox$'" ];
       settings = {
         no-dock-shadow = true;
         clear-shadow = true;
@@ -298,13 +290,18 @@
     DefaultTimeoutStopSec=30s
   '';
 
+  security.pam.loginLimits = [{
+    domain = "thomas";
+    type = "hard";
+    item = "nofile";
+    value = "524288";
+  }];
+
   users.defaultUserShell = pkgs.zsh;
   users.users.thomas = {
     isNormalUser = true;
     home = "/home/thomas";
-    extraGroups = [ "wheel" "networkmanager" "video" ];
-    openssh.authorizedKeys.keyFiles = [
-      ./keys/thomas.pub
-    ];
+    extraGroups = [ "wheel" "networkmanager" "video" "docker" ];
+    openssh.authorizedKeys.keyFiles = [ ./keys/thomas.pub ];
   };
 }
