@@ -22,10 +22,12 @@
   };
 
   # Select internationalisation properties.
-  i18n = {
-    consoleFont = "Lat2-Terminus16";
-    consoleKeyMap = "us";
-    defaultLocale = "en_GB.UTF-8";
+  i18n.defaultLocale = "en_GB.UTF-8";
+
+  # Virtual console settings.
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "us";
   };
 
   # Set time zone.
@@ -135,14 +137,12 @@
     fira-code-symbols
     (iosevka.override {
       set = "code";
-      design = [
-        "v-l-tailed"
-        "v-i-hooky"
-        "v-zero-dotted"
-        "v-at-long"
-        "v-numbersign-upright"
-      ];
-      weights = [ "book" "bold" ];
+      privateBuildPlan = {
+        family = "Iosevka";
+        design = [
+          "v-l-tailed" "v-i-hooky" "v-zero-dotted" "v-at-long" "v-numbersign-upright"
+        ];
+      };
     })
     inconsolata
     kawkab-mono-font
@@ -247,7 +247,7 @@
       #  ];
       #};
       windowManager.bspwm = { enable = true; };
-      windowManager.default = "bspwm";
+      displayManager.defaultSession = "none+bspwm";
 
       # Enable SVG icons.
       gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
