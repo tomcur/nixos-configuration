@@ -83,6 +83,7 @@
   # Virtualisation.
   virtualisation.virtualbox.host = { enable = true; };
   virtualisation.docker.enable = true;
+  virtualisation.docker.enableNvidia = true;
 
   boot.loader.systemd-boot.memtest86.enable = true;
 
