@@ -21,16 +21,13 @@
   # Better for SSD.
   fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
 
-  boot.initrd.luks.devices = [
-    {
-      name = "root";
-      device = "/dev/disk/by-uuid/8e7809f3-1c3e-4c8f-b4c1-0ba974202c76";
-      preLVM = true;
-      allowDiscards = true;
-    }
-  ];
+  boot.initrd.luks.devices.root = {
+    device = "/dev/disk/by-uuid/8e7809f3-1c3e-4c8f-b4c1-0ba974202c76";
+    preLVM = true;
+    allowDiscards = true;
+  };
 
-  swapDevices = [ { device = "/dev/disk/by-label/swap"; } ];
+  swapDevices = [{ device = "/dev/disk/by-label/swap"; }];
 
   environment.systemPackages = with pkgs; [
   ];
@@ -52,11 +49,10 @@
       event = "jack/headphone HEADPHONE plug";
     };
   };
-  hardware.brightnessctl.enable = true;
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
   # servers. You should change this only after NixOS release notes say you
   # should.
-  system.stateVersion = "18.09"; # Did you read the comment?
+  system.stateVersion = "20.03"; # Did you read the comment?
 }
