@@ -140,7 +140,11 @@
       privateBuildPlan = {
         family = "Iosevka";
         design = [
-          "v-l-tailed" "v-i-hooky" "v-zero-dotted" "v-at-long" "v-numbersign-upright"
+          "v-l-tailed"
+          "v-i-hooky"
+          "v-zero-dotted"
+          "v-at-long"
+          "v-numbersign-upright"
         ];
       };
     })
@@ -246,7 +250,8 @@
       #    haskellPackages.dbus
       #  ];
       #};
-      windowManager.bspwm = { enable = true; };
+      desktopManager.xterm.enable = true;
+      windowManager.bspwm.enable = true;
       displayManager.defaultSession = "none+bspwm";
 
       # Enable SVG icons.
