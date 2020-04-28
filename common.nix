@@ -50,7 +50,6 @@
     neovim # (vim_configurable.override {})
     git
     git-crypt
-    tmux
     file
     tree
     usbutils
@@ -175,6 +174,21 @@
 
   # Start the SSH agent on login.
   programs.ssh.startAgent = true;
+
+  # Configure tmux.
+  programs.tmux = {
+    enable = true;
+    terminal = "tmux-256color";
+    clock24 = true;
+    escapeTime = 10;
+    historyLimit = 5000;
+    keyMode = "vi";
+    extraConfig = ''
+      set -ga terminal-overrides ",alacritty:Tc,*-256col*:Tc"
+      set -g status-style "fg=colour8 bg=colour3 dim"
+      set -g message-style "fg=colour3 bg=colour8"
+    '';
+  };
 
   # Configure zshell.
   programs.zsh.enable = true;
