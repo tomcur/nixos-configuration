@@ -39,6 +39,7 @@
     # Nix.
     nix-index
     patchelf
+    niv
     # Terminal.
     zsh
     # Terminal emulator.
