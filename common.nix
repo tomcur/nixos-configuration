@@ -55,8 +55,6 @@
     usbutils
     killall
     rename # regex bulk file rename
-    # Cryptography.
-    gnupg
     # Archives.
     cabextract
     zip
@@ -174,6 +172,8 @@
 
   # Start the SSH agent on login.
   programs.ssh.startAgent = true;
+
+  programs.gnupg.agent.enable = true;
 
   # Configure tmux.
   programs.tmux = {
