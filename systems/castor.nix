@@ -1,7 +1,16 @@
 { config, pkgs, ... }: {
   imports = [ ../common.nix ../audio-jack.nix ./castor-secret.nix ];
 
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  # Enable gvt-g
+  boot.kernelParams = [ "intel_iommu=on" "kvm.ignore_msrs=1" ];
+  boot.kernelModules = [ "vfio" "vfio_pci" ];
+
+  # Disable onboard audio and set vfio pci.
+  boot.extraModprobeConfig = ''
+    options snd slots=snd-hda-intel
+    options snd_hda_intel enable=0,0
+    options vfio-pci ids=8086:1912
+  '';
 
   # NTFS drive.
   fileSystems."/mnt/q" = {
@@ -79,14 +88,15 @@
   virtualisation.virtualbox.host = { enable = true; };
   virtualisation.docker.enable = true;
   virtualisation.docker.enableNvidia = true;
+  virtualisation.libvirtd = {
+    enable = true;
+    qemuVerbatimConfig = ''
+      seccomp_sandbox = 0
+    '';
+  };
 
   boot.loader.systemd-boot.memtest86.enable = true;
 
-  # Disable onboard audio.
-  boot.extraModprobeConfig = ''
-    options snd slots=snd-hda-intel
-    options snd_hda_intel enable=0,0
-  '';
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
