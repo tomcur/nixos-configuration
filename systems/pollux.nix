@@ -59,6 +59,9 @@
       event = "jack/headphone HEADPHONE plug";
     };
   };
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
   virtualisation.docker.enable = true;
 
   # This value determines the NixOS release with which your system is to be
