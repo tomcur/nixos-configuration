@@ -269,6 +269,13 @@
       #    haskellPackages.dbus
       #  ];
       #};
+      displayManager.lightdm = {
+        enable = true;
+        greeters.enso = {
+          enable = true;
+          blur = true;
+        };
+      };
       desktopManager.xterm.enable = true;
       windowManager.bspwm.enable = true;
       displayManager.defaultSession = "none+bspwm";
