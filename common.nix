@@ -333,4 +333,5 @@
     extraGroups = [ "wheel" "networkmanager" "video" "docker" ];
     openssh.authorizedKeys.keyFiles = [ ./keys/thomas.pub ];
   };
+  nix.trustedUsers = [ "root" "thomas" ];
 }

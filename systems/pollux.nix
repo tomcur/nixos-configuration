@@ -1,6 +1,21 @@
 { config, pkgs, ... }: {
   imports = [ ../common.nix ../audio-pulse.nix ];
 
+  nix.maxJobs = 4;
+  nix.buildMachines = [{
+    hostName = "castor-builder";
+    sshKey = "/root/.ssh/castor-remote-builder";
+    system = "x86_64-linux";
+    maxJobs = 8;
+    speedFactor = 2;
+    supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+    mandatoryFeatures = [ ];
+  }];
+  nix.distributedBuilds = true;
+  nix.extraOptions = ''
+    builders-use-substitutes = true
+  '';
+
   networking = {
     hostName = "pollux";
     firewall = {
