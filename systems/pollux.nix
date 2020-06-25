@@ -45,6 +45,7 @@
     # Enable touchpad support.
     libinput.enable = true;
     videoDrivers = [ "intel" ];
+    xrandrHeads = [ "eDP1" "DP1" ];
     deviceSection = ''
       Option "TearFree" "true"
     '';
