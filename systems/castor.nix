@@ -92,6 +92,7 @@
     };
 
     # teamviewer.enable = true;
+    ratbagd.enable = true;
   };
 
   # Idle hdd automatically after timeout.
