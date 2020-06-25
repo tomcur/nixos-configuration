@@ -173,7 +173,11 @@
   # Start the SSH agent on login.
   programs.ssh.startAgent = true;
 
-  programs.gnupg.agent.enable = true;
+  programs.gnupg = {
+    agent.enable = true;
+    agent.pinentryFlavor = "gtk2";
+  };
+
 
   # Configure tmux.
   programs.tmux = {
