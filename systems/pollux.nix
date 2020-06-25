@@ -1,10 +1,5 @@
-{ config, pkgs, ...}:
-
-{
-  imports = [
-    ../common.nix
-    ../audio-pulse.nix
-  ];
+{ config, pkgs, ... }: {
+  imports = [ ../common.nix ../audio-pulse.nix ];
 
   networking = {
     hostName = "pollux";
@@ -29,8 +24,7 @@
 
   swapDevices = [{ device = "/dev/disk/by-label/swap"; }];
 
-  environment.systemPackages = with pkgs; [
-  ];
+  environment.systemPackages = with pkgs; [ ];
 
   services.xserver = {
     # Enable touchpad support.

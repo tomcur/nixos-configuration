@@ -1,10 +1,5 @@
-{ config, pkgs, ...}:
-{
-  imports = [
-    ../common.nix
-    ../audio-jack.nix
-    ./castor-secret.nix
-  ];
+{ config, pkgs, ... }: {
+  imports = [ ../common.nix ../audio-jack.nix ./castor-secret.nix ];
 
   # boot.kernelPackages = pkgs.linuxPackages_latest;
 

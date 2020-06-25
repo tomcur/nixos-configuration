@@ -1,11 +1,8 @@
-{ pkgs, ... }:
-{
-  imports = [
-    ./musnix
-  ];
+{ pkgs, ... }: {
+  imports = [ ./musnix ];
   musnix.enable = true;
   sound.enable = true;
-  
+
   services.jack = {
     jackd = {
       enable = true;
@@ -15,7 +12,7 @@
       #  "hw:AMP"
       #];
     };
-    
+
     # support ALSA only programs via ALSA JACK PCM plugin
     alsa.enable = true;
     alsa.support32Bit = true;
