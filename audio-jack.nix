@@ -23,6 +23,8 @@
     enable = true;
     package = pkgs.pulseaudioFull;
     support32Bit = true;
+    tcp.enable = true;
+    tcp.anonymousClients.allowedIpRanges = [ "127.0.0.1" ];
   };
 
   users.extraUsers.thomas.extraGroups = [ "audio" "jackaudio" ];
