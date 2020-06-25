@@ -58,6 +58,7 @@
       event = "jack/headphone HEADPHONE plug";
     };
   };
+  virtualisation.docker.enable = true;
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
