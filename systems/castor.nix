@@ -20,7 +20,27 @@
 
   networking = {
     hostName = "castor";
+    interfaces.tap0 = {
+      virtual = true;
+      ipv4.addresses = [{
+        address = "192.168.240.100";
+        prefixLength = 24;
+      }];
+    };
     firewall = {
+      extraCommands = ''
+        iptables -A INPUT -i tap0 -j ACCEPT
+        iptables -A FORWARD -i tap0 -o wlp3s0 -j ACCEPT
+        iptables -A FORWARD -i wlp3s0 -o tap0 -j ACCEPT
+        iptables -t nat -A POSTROUTING -s 192.168.240.100/24 -o wlp3s0 -j MASQUERADE
+        iptables -t nat -A PREROUTING -i wlp3s0 -p tcp --dport 6667  -j DNAT --to-destination 192.168.240.5:6667
+        iptables -t nat -A PREROUTING -i wlp3s0 -p tcp --dport 28910 -j DNAT --to-destination 192.168.240.5:28910
+        iptables -t nat -A PREROUTING -i wlp3s0 -p tcp --dport 29900 -j DNAT --to-destination 192.168.240.5:29900
+        iptables -t nat -A PREROUTING -i wlp3s0 -p tcp --dport 29920 -j DNAT --to-destination 192.168.240.5:29920
+        iptables -t nat -A PREROUTING -i wlp3s0 -p udp --dport 4321  -j DNAT --to-destination 192.168.240.5:4321
+        iptables -t nat -A PREROUTING -i wlp3s0 -p udp --dport 16000 -j DNAT --to-destination 192.168.240.5:16000
+        iptables -t nat -A PREROUTING -i wlp3s0 -p udp --dport 27900 -j DNAT --to-destination 192.168.240.5:27900
+      '';
       allowedTCPPorts = [
         80
         61167
