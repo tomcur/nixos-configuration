@@ -120,6 +120,13 @@
 
   boot.loader.systemd-boot.memtest86.enable = true;
 
+  # Remote-build user.
+  users.users.remote-builder = {
+    isNormalUser = false;
+    useDefaultShell = true;
+    openssh.authorizedKeys.keyFiles = [ ../keys/castor-remote-builder.pub ];
+  };
+  nix.trustedUsers = [ "remote-builder" ];
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
