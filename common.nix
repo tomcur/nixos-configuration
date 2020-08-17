@@ -30,9 +30,6 @@
     keyMap = "us";
   };
 
-  # Set time zone.
-  time.timeZone = "Europe/Amsterdam";
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
