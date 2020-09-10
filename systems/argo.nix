@@ -33,8 +33,9 @@
   services.xserver = {
     # Enable touchpad support.
     libinput.enable = true;
-    videoDrivers = [ "nvidia" ];
+    videoDrivers = [ "nvidia" "displaylink" ];
   };
+  services.autorandr.enable = true;
   services.acpid = {
     enable = true;
     handlers.headphone-hiss = {
