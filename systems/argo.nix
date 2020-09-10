@@ -46,6 +46,9 @@
     };
   };
 
+  virtualisation.docker.enable = true;
+  virtualisation.docker.enableNvidia = true;
+
   hardware.nvidia.modesetting.enable = true;
   hardware.nvidia.optimus_prime = {
     enable = true;
