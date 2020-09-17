@@ -198,6 +198,7 @@
       autoload -Uz add-zsh-hook
 
       alias vi="nvim"
+      alias ns="nix-shell --command zsh"
 
       setprompt() {
         setopt noxtrace localoptions
@@ -215,6 +216,12 @@
           p_host='%F{yellow}%M%f'
         fi
 
+        if [[ -n "$IN_NIX_SHELL" ]]; then
+          p_nix_shell=' (nix)'
+        else
+          p_nix_shell='''
+        fi
+
         # Base prompt without colors.
         base_prompt_count=$(print -P "%n@%M")
         # Base prompt with path without colors.
@@ -223,7 +230,7 @@
         # Length of expanded base prompt with path.
         prompt_length=''${#base_prompt_path_count}
 
-        base_prompt="''${p_user}%F{yellow}@%f''${p_host}"
+        base_prompt="''${p_user}%F{yellow}@%f''${p_host}''${p_nix_shell}"
         cont_prompt=""
         if [[ $prompt_length -lt 40 ]]; then
           path_prompt="%B%~%b"
