@@ -75,6 +75,8 @@
     sshfs
     hdparm
     smartmontools
+    # XRandR.
+    arandr
     # X.
     xclip
     # Desktop things.
