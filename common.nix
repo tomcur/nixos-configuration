@@ -59,6 +59,7 @@
     usbutils
     killall
     rename # regex bulk file rename
+    ripgrep
     # Archives.
     cabextract
     zip
