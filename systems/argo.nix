@@ -50,8 +50,9 @@
   virtualisation.docker.enableNvidia = true;
 
   hardware.nvidia.modesetting.enable = true;
-  hardware.nvidia.optimus_prime = {
-    enable = true;
+  hardware.nvidia.prime = {
+    offload.enable = false;
+    sync.enable = true;
     nvidiaBusId = "PCI:1:0:0";
     intelBusId = "PCI:0:2:0";
   };
