@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ../common.nix ../audio-pulse.nix ../eduroam.nix ];
+  imports = [ ../common.nix ../audio-jack.nix ../eduroam.nix ];
 
   networking = {
     hostName = "argo";
