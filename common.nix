@@ -261,6 +261,12 @@
       add-zsh-hook precmd setprompt
     fi
   '';
+  programs.zsh.histSize = 40000;
+  programs.zsh.syntaxHighlighting.enable = true;
+  programs.zsh.autosuggestions.enable = true;
+  programs.zsh.autosuggestions.extraConfig = {
+    ZSH_AUTOSUGGEST_USE_ASYNC = "1";
+  };
 
   services = {
     # Enable the OpenSSH daemon.
