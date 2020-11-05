@@ -268,7 +268,13 @@
     ZSH_AUTOSUGGEST_USE_ASYNC = "1";
   };
 
+  programs.wireshark.enable = true;
+  programs.wireshark.package = pkgs.wireshark; # The default is wireshark-cli.
+
   services = {
+    # Useful for Wireshark.
+    geoip-updater.enable = true;
+
     # Enable the OpenSSH daemon.
     openssh.enable = true;
     openssh.forwardX11 = true;
@@ -350,7 +356,7 @@
   users.users.thomas = {
     isNormalUser = true;
     home = "/home/thomas";
-    extraGroups = [ "wheel" "networkmanager" "video" "docker" ];
+    extraGroups = [ "wheel" "networkmanager" "video" "docker" "wireshark" ];
     openssh.authorizedKeys.keyFiles = [ ./keys/thomas.pub ];
   };
   nix.trustedUsers = [ "root" "thomas" ];
