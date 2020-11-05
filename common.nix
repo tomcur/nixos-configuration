@@ -185,7 +185,6 @@
     agent.pinentryFlavor = "gtk2";
   };
 
-
   # Configure tmux.
   programs.tmux = {
     enable = true;
@@ -206,9 +205,6 @@
   programs.zsh.promptInit = ''
     if [ "$TERM" != dumb ]; then
       autoload -Uz add-zsh-hook
-
-      alias vi="nvim"
-      alias ns="nix-shell --command zsh"
 
       setprompt() {
         setopt noxtrace localoptions
@@ -261,6 +257,10 @@
       add-zsh-hook precmd setprompt
     fi
   '';
+  programs.zsh.shellAliases = {
+    vi = "nvim";
+    ns = "nix-shell --command zsh";
+  };
   programs.zsh.histSize = 40000;
   programs.zsh.syntaxHighlighting.enable = true;
   programs.zsh.autosuggestions.enable = true;
