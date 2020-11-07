@@ -68,7 +68,7 @@
   virtualisation.libvirtd.enable = true;
   virtualisation.kvmgt = {
     enable = true;
-    vgpus."i915-GVTg_V5_4".uuid = "61ad383e-37e9-484d-aa30-740a66f2d950";
+    vgpus."i915-GVTg_V5_4".uuid = [ "61ad383e-37e9-484d-aa30-740a66f2d950" ];
   };
 
   # This value determines the NixOS release with which your system is to be
