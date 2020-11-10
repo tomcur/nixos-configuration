@@ -100,10 +100,7 @@
     xfce.thunar
     xfce.thunar-volman
     xfce.exo
-    # GIO.
-    gvfs
-    glib-networking
-  ];
+  ]);
 
   # Global shell variables.
   environment.sessionVariables = {
@@ -117,10 +114,6 @@
   environment.variables = {
     EDITOR = "${pkgs.neovim}/bin/nvim";
     VISUAL = "${pkgs.neovim}/bin/nvim";
-    GIO_EXTRA_MODULES = [
-      "${pkgs.gvfs}/lib/gio/modules"
-      "${pkgs.glib-networking}/lib/gio/modules"
-    ];
   };
 
   # Place mime.types data in /etc.
@@ -329,6 +322,8 @@
       enable = true;
       user = "thomas";
     };
+
+    gvfs.enable = true;
 
     # Enable CUPS to print documents.
     printing.enable = true;
