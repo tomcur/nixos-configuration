@@ -100,6 +100,19 @@
     xfce.thunar
     xfce.thunar-volman
     xfce.exo
+  ] ++ (with pkgs.kdeApplications; [
+    pkgs.kde-cli-tools
+    dolphin
+    dolphin-plugins
+    kio-extras
+    ffmpegthumbs
+    kdegraphics-thumbnailers
+  ]) ++ (with pkgs.kdeFrameworks; [
+    kinit
+    breeze-icons
+    kio
+  ]) ++ (with pkgs.plasma5; [
+    breeze-qt5
   ]);
 
   # Global shell variables.
