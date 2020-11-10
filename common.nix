@@ -138,6 +138,8 @@
       privateBuildPlan = {
         family = "Iosevka";
         design = [
+          "no-ligation"
+          "sp-force-monospace"
           "v-l-tailed"
           "v-i-hooky"
           "v-zero-dotted"
