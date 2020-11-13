@@ -195,6 +195,7 @@
       monospace = [ "Source Code Pro" ];
       sansSerif = [ "DejaVu Sans" ];
       serif = [ "DejaVu Serif" ];
+      emoji = [ "Noto Color Emoji" ];
     };
   };
 
