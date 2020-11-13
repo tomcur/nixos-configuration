@@ -192,9 +192,9 @@
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
-      monospace = [ "Source Code Pro" ];
-      sansSerif = [ "DejaVu Sans" ];
-      serif = [ "DejaVu Serif" ];
+      monospace = [ "Source Code Pro" "Noto Color Emoji" ];
+      sansSerif = [ "DejaVu Sans" "Noto Color Emoji" ];
+      serif = [ "DejaVu Serif" "Noto Color Emoji" ];
       emoji = [ "Noto Color Emoji" ];
     };
   };
