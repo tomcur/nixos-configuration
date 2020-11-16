@@ -83,7 +83,6 @@
     playerctl # Control media players.
     xmonad-log
     polybar
-    rofi
     feh
     # Authentication management.
     polkit_gnome # GUI authentication.
