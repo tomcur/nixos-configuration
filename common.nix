@@ -374,12 +374,20 @@
     DefaultTimeoutStopSec=30s
   '';
 
-  security.pam.loginLimits = [{
-    domain = "thomas";
-    type = "hard";
-    item = "nofile";
-    value = "524288";
-  }];
+  security.pam.loginLimits = [
+    {
+      domain = "thomas";
+      type = "hard";
+      item = "nofile";
+      value = "1048576";
+    }
+    {
+      domain = "thomas";
+      type = "soft";
+      item = "nofile";
+      value = "1048576";
+    }
+  ];
 
   users.defaultUserShell = pkgs.zsh;
   users.users.thomas = {
