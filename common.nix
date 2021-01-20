@@ -57,9 +57,11 @@
     file
     tree
     usbutils
-    killall
     rename # regex bulk file rename
     ripgrep
+    # Process management.
+    killall
+    htop
     # Archives.
     cabextract
     zip
