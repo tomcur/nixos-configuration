@@ -317,23 +317,7 @@
       autoRepeatDelay = 250;
       autoRepeatInterval = 1000 / 40;
 
-      #windowManager.xmonad = {
-      #  enable = true;
-      #  enableContribAndExtras = true;
-      #  extraPackages = haskellPackages: [
-      #    haskellPackages.dbus
-      #  ];
-      #};
-      displayManager.lightdm = {
-        enable = true;
-        greeters.enso = {
-          enable = true;
-          blur = true;
-        };
-      };
       desktopManager.xterm.enable = true;
-      windowManager.bspwm.enable = true;
-      displayManager.defaultSession = "none+bspwm";
 
       # Enable SVG icons.
       gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
