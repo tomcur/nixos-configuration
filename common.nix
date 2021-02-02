@@ -325,7 +325,7 @@
 
     # Compositing.
     compton = {
-      enable = true;
+      enable = false;
       fade = true;
       fadeDelta = 3;
       shadow = true;
