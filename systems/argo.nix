@@ -3,6 +3,8 @@
 {
   imports = [ ../common.nix ../audio-jack.nix ../eduroam.nix ];
 
+  # boot.kernelPackages = pkgs.linuxPackages_5_9;
+
   networking = {
     hostName = "argo";
     firewall = {
@@ -34,6 +36,12 @@
     # Enable touchpad support.
     libinput.enable = true;
     videoDrivers = [ "nvidia" "displaylink" ];
+
+    extraConfig = ''
+      Section "Extensions"
+        Option "XTEST" "Enable"
+      EndSection
+    '';
   };
   services.autorandr.enable = true;
   services.acpid = {

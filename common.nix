@@ -59,6 +59,7 @@
     usbutils
     rename # regex bulk file rename
     ripgrep
+    fd
     # Process management.
     killall
     htop
@@ -111,10 +112,18 @@
   ]) ++ (with pkgs.kdeFrameworks; [
     kinit
     breeze-icons
+    # frameworkintegration
+    # kactivities
+    # kcoreaddons
     kio
+    # krunner
+    # kservice
   ]) ++ (with pkgs.plasma5; [
     breeze-qt5
   ]);
+
+  # xdg.portal.enable = true;
+  # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-kde ];
 
   # Global shell variables.
   environment.sessionVariables = {
@@ -321,6 +330,7 @@
 
       # Enable SVG icons.
       gdk-pixbuf.modulePackages = [ pkgs.librsvg ];
+
     };
 
     # Compositing.
@@ -344,6 +354,7 @@
     };
 
     gvfs.enable = true;
+    bamf.enable = true;
 
     # Enable CUPS to print documents.
     printing.enable = true;
