@@ -51,6 +51,7 @@
         61167
         1883 # MQTT
         22000 # Syncthing listening
+        8800 # Calibre server
       ];
       allowedUDPPorts = [
         34197 # Factorio
