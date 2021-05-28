@@ -68,6 +68,9 @@
     hd-idle
     # Big applications.
     teamviewer
+    # Virtalisation.
+    # virt-viewer
+    # virt-manager
   ];
 
   # Set monitor position and force compositor pipeline to prevent screen tearing (nvidia).
@@ -116,7 +119,7 @@
   };
 
   # Virtualisation.
-  virtualisation.virtualbox.host = { enable = true; };
+  # virtualisation.virtualbox.host = { enable = true; };
   virtualisation.docker.enable = true;
   virtualisation.docker.enableNvidia = true;
   virtualisation.libvirtd = {
