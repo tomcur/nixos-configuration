@@ -305,6 +305,9 @@
   programs.zsh.autosuggestions.extraConfig = {
     ZSH_AUTOSUGGEST_USE_ASYNC = "1";
   };
+  programs.zsh.setOptions = [
+    "HIST_IGNORE_SPACE"
+  ];
 
   programs.wireshark.enable = true;
   programs.wireshark.package = pkgs.wireshark; # The default is wireshark-cli.
