@@ -363,7 +363,11 @@
     # Enable CUPS to print documents.
     printing.enable = true;
     printing.drivers = [ pkgs.gutenprint pkgs.gutenprintBin pkgs.epson-escpr ];
+
+    flatpak.enable = true;
   };
+
+  xdg.portal.enable = true;
 
   # Support 3D acceleration for 32-bit programs.
   hardware.opengl.driSupport32Bit = true;
