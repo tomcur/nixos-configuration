@@ -1,6 +1,7 @@
-{ pkgs, ... }: {
-  imports = [ ./musnix ];
+{ inputs, pkgs, ... }: {
+  imports = [ (toString inputs.musnix) ];
   musnix.enable = true;
+
   sound.enable = true;
 
   services.jack = {

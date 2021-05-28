@@ -1,0 +1,61 @@
+{
+  "nodes": {
+    "musnix": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1615589659,
+        "narHash": "sha256-hCfmP+aPD5XD6DkCsSrP9lpE/9uLZmGQZU9A79ow+xE=",
+        "owner": "musnix",
+        "repo": "musnix",
+        "rev": "f5053e85b0a578a335a78fa45517a8843154f46b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "musnix",
+        "repo": "musnix",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "musnix": "musnix",
+        "stable": "stable",
+        "unstable": "unstable"
+      }
+    },
+    "stable": {
+      "locked": {
+        "lastModified": 1622056361,
+        "narHash": "sha256-W4BhdhJVDBn2b3JMn6eoWzb6gbRUP8F34LtRVJTqqH8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "05f3800b80f159ee5ef0eccd8e31a645e6723feb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-20.09",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "unstable": {
+      "locked": {
+        "lastModified": 1622103435,
+        "narHash": "sha256-5i5mGg402AANnSRQmWVo7lqiyw3taoMwX26oslOD9c4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "5658fadedb748cb0bdbcb569a53bd6065a5704a9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
   # Allow unfree software.
@@ -9,6 +9,11 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
+    registry = {
+      nixpkgs.flake = inputs.stable;
+      stable.flake = inputs.stable;
+      unstable.flake = inputs.unstable;
+    };
   };
 
   # Use the systemd-boot EFI boot loader.

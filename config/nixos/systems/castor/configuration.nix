@@ -1,5 +1,43 @@
-{ config, pkgs, ... }: {
-  imports = [ ../common.nix ../audio-jack.nix ./castor-secret.nix ];
+{ config, pkgs, ... }:
+let unstable = import <unstable> { config.allowUnfree = true; };
+in
+{
+  imports = [ ../../common.nix ../../audio-jack.nix ./secret.nix ];
+
+  # boot.kernelPackages = unstable.pkgs.linuxPackages-rt_5_11;
+  # boot.kernelPackages = pkgs.linuxPackages_5_11;
+  # boot.kernelPackages = pkgs.linuxPackages_5_10.extend (self: super: {
+  #   nvidia_x11 = unstable.pkgs.linuxPackages_5_10.nvidia_x11;
+  #   broadcom_sta = unstable.pkgs.linuxPackages_5_10.broadcom_sta;
+  # });
+  # boot.kernelPackages = pkgs.linuxPackages_5_10.extend (self: super: {
+  #   # nvidia_x11 = unstable.pkgs.linuxPackages_5_10.nvidia_x11;
+  #   # # See:
+  #   # # https://github.com/NixOS/nixpkgs/issues/101040
+  #   # broadcom_sta = super.broadcom_sta.overrideAttrs (oA: {
+  #   #   meta.broken = false;
+  #   #   # patches = oA.patches ++ [ ../patches/broadcom-sta-5.9.patch ] ++ oA.patches;
+  #   #   patches = [
+  #   #     ../patches/broadcom-sta/i686-build-failure.patch
+  #   #     ../patches/broadcom-sta/license.patch
+  #   #     ../patches/broadcom-sta/linux-4.7.patch
+  #   #     # source: https://git.archlinux.org/svntogit/community.git/tree/trunk/004-linux48.patch?h=packages/broadcom-wl-dkms
+  #   #     ../patches/broadcom-sta/linux-4.8.patch
+  #   #     # source: https://aur.archlinux.org/cgit/aur.git/tree/linux411.patch?h=broadcom-wl
+  #   #     ../patches/broadcom-sta/linux-4.11.patch
+  #   #     # source: https://aur.archlinux.org/cgit/aur.git/tree/linux412.patch?h=broadcom-wl
+  #   #     ../patches/broadcom-sta/linux-4.12.patch
+  #   #     ../patches/broadcom-sta/linux-4.15.patch
+  #   #     ../patches/broadcom-sta/linux-5.1.patch
+  #   #     # source: https://salsa.debian.org/Herrie82-guest/broadcom-sta/-/commit/247307926e5540ad574a17c062c8da76990d056f
+  #   #     ../patches/broadcom-sta/linux-5.6.patch
+  #   #     # source: https://gist.github.com/joanbm/5c640ac074d27fd1d82c74a5b67a1290
+  #   #     ../patches/broadcom-sta/linux-5.9.patch
+  #   #     ../patches/broadcom-sta/null-pointer-fix.patch
+  #   #     ../patches/broadcom-sta/gcc.patch
+  #   #   ];
+  #   # });
+  # });
 
   # Enable gvt-g
   # boot.kernelParams = [ "intel_iommu=on" "kvm.ignore_msrs=1" ];
@@ -78,12 +116,74 @@
     xserver = {
       # Use non-free Nvidia drivers.
       videoDrivers = [ "nvidia" ];
-      xrandrHeads = [ "DP-4" "DVI-D-0" ];
+      xrandrHeads = [ "DP-2" "DP-4" ];
 
+      # Option "MetaModes" "DP-2: nvidia-auto-select +0+240 { }, DP-4: nvidia-auto-select +2560+0 { Rotation = Left }"
       screenSection = ''
-        Option "MetaModes" "DP-4: nvidia-auto-select +0+0 { ForceCompositionPipeline = On }, DVI-D-0: nvidia-auto-select +1920+150 { ForceCompositionPipeline = On }"
+        Option "MetaModes" "DP-4: nvidia-auto-select +0+0 { }"
         Option "FlatPanelProperties" "Dithering = Disabled"
       '';
+
+      # extraConfig = ''
+      #   Section "Extensions"
+      #     Option "MIT-SHM" "Disable"
+      #   EndSection
+      # '';
+
+      # config = ''
+      #   Section "Device"
+      #     Identifier "nvidia0"
+      #     Driver "nvidia"
+      #     BusID "PCI:1:0:0"
+      #     Screen 0
+      #   EndSection
+
+      #   Section "Device"
+      #     Identifier "nvidia1"
+      #     Driver "nvidia"
+      #     BusID "PCI:1:0:0"
+      #     Screen 1
+      #   EndSection
+
+      #   Section "Screen"
+      #     Identifier "Screen0"
+      #     Device "nvidia0"
+      #     Monitor "Monitor0"
+      #     DefaultDepth 24
+      #     Subsection "Display"
+      #       Depth 24
+      #       Modes "2560x1440" "1920x1080"
+      #     EndSubsection
+      #   EndSection
+
+      #   Section "Screen"
+      #     Identifier "Screen1"
+      #     Device "nvidia1"
+      #     Monitor "Monitor1"
+      #     DefaultDepth 24
+      #     Subsection "Display"
+      #       Depth 24
+      #       Modes "1920x1080"
+      #     EndSubsection
+      #   EndSection
+
+      #   Section "Monitor"
+      #     Identifier "multihead1"
+      #     Option "Primary" "true"
+      #   EndSection
+
+      #   Section "Monitor"
+      #     Identifier "multihead2"
+      #     Option "RightOf" "multihead1"
+      #   EndSection
+
+      #   Section "ServerLayout"
+      #     Identifier "Layout[all]"
+
+      #     Screen         0 "Screen0" 
+      #     Screen         1 "Screen1" rightOf "Screen0"
+      #   EndSection
+      # '';
     };
 
     nginx = {
@@ -135,7 +235,7 @@
   users.users.remote-builder = {
     isNormalUser = false;
     useDefaultShell = true;
-    openssh.authorizedKeys.keyFiles = [ ../keys/castor-remote-builder.pub ];
+    openssh.authorizedKeys.keyFiles = [ ../../keys/castor-remote-builder.pub ];
   };
   nix.trustedUsers = [ "remote-builder" ];
 

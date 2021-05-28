@@ -1,21 +1,13 @@
 # NixOS configuration
-My NixOS system configurations.
+My NixOS systems configurations.
 
-Activate a specific system configuration by updating your `configuration.nix`, e.g. assuming this repository is in `./config` relative to the main configuration file:
+Activate a specific system configuration by cloning this into `/etc/nixos` (such that `/etc/nixos/flake.nix` exists), perhaps changing `config/nixos/systems/*/hardware-configuration.nix`, and running e.g.:
 
-```nix
-{ config, pkgs, ... }:
-
-{
-  imports =
-    [
-      ./hardware-configuration.nix
-      ./config/systems/castor.nix
-    ];
-}
+```sh
+nixos-rebuild switch --flake '/etc/nixos#castor'
 ```
 
-Also see my [Nix user home configuration](https://github.com/beskhue/nix-home).
+Also see my [Nix user home configuration](https://github.com/tomcur/nix-home).
 
 ## Secrets
 Some secrets in this repository are managed by git-crypt.
