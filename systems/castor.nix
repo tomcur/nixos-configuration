@@ -2,15 +2,15 @@
   imports = [ ../common.nix ../audio-jack.nix ./castor-secret.nix ];
 
   # Enable gvt-g
-  boot.kernelParams = [ "intel_iommu=on" "kvm.ignore_msrs=1" ];
-  boot.kernelModules = [ "vfio" "vfio_pci" ];
+  # boot.kernelParams = [ "intel_iommu=on" "kvm.ignore_msrs=1" ];
+  # boot.kernelModules = [ "vfio" "vfio_pci" ];
 
   # Disable onboard audio and set vfio pci.
   boot.extraModprobeConfig = ''
     options snd slots=snd-hda-intel
     options snd_hda_intel enable=0,0
-    options vfio-pci ids=8086:1912
   '';
+  # options vfio-pci ids=8086:1912
 
   fileSystems = {
     "/mnt/d" = {
