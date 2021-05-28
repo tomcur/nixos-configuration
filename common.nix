@@ -150,6 +150,7 @@
     # Unicode coverage.
     unifont
     # Monospace fonts. (There are never enough.)
+    fantasque-sans-mono
     source-code-pro
     anonymousPro
     terminus_font
