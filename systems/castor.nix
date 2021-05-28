@@ -12,10 +12,15 @@
     options vfio-pci ids=8086:1912
   '';
 
-  # NTFS drive.
-  fileSystems."/mnt/q" = {
-    device = "/dev/disk/by-uuid/0E3CC6AE3CC6905F";
-    fsType = "ntfs-3g";
+  fileSystems = {
+    "/mnt/d" = {
+      device = "/dev/disk/by-uuid/a11521e0-ebda-44a5-8a62-fb452081c11a";
+    };
+    # NTFS drive.
+    "/mnt/q" = {
+      device = "/dev/disk/by-uuid/0E3CC6AE3CC6905F";
+      fsType = "ntfs-3g";
+    };
   };
 
   networking = {
