@@ -107,24 +107,23 @@
     xfce.thunar
     xfce.thunar-volman
     xfce.exo
-  ] ++ (with pkgs.kdeApplications; [
+  ] ++ (with pkgs.libsForQt5; [
     pkgs.kde-cli-tools
-    dolphin
+    pkgs.dolphin
     dolphin-plugins
     kio-extras
     ffmpegthumbs
     kdegraphics-thumbnailers
-  ]) ++ (with pkgs.kdeFrameworks; [
+
     kinit
     breeze-icons
+    breeze-qt5
     # frameworkintegration
     # kactivities
     # kcoreaddons
     kio
     # krunner
     # kservice
-  ]) ++ (with pkgs.plasma5; [
-    breeze-qt5
   ]);
 
   # xdg.portal.enable = true;

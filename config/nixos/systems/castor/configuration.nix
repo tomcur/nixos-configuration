@@ -233,7 +233,7 @@ in
 
   # Remote-build user.
   users.users.remote-builder = {
-    isNormalUser = false;
+    isSystemUser = true;
     useDefaultShell = true;
     openssh.authorizedKeys.keyFiles = [ ../../keys/castor-remote-builder.pub ];
   };

@@ -2,7 +2,7 @@
   description = "Tom's systems configurations";
 
   inputs = {
-    stable.url = "github:NixOS/nixpkgs/nixos-20.09";
+    stable.url = "github:NixOS/nixpkgs/release-21.05";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     musnix.url = "github:musnix/musnix";
     musnix.flake = false;
