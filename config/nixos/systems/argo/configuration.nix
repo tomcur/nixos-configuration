@@ -35,7 +35,7 @@
   services.xserver = {
     # Enable touchpad support.
     libinput.enable = true;
-    videoDrivers = [ "nvidia" "displaylink" ];
+    videoDrivers = [ "nvidia" ];
 
     extraConfig = ''
       Section "Extensions"
