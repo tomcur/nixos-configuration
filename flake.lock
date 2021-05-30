@@ -197,7 +197,7 @@
         "nvimVimLoclistFollow": "nvimVimLoclistFollow"
       },
       "locked": {
-        "narHash": "sha256-LpZZzyhYp5IAjzr2uPGn7dd6rvcdxfhqS4gB1qKei9s=",
+        "narHash": "sha256-RibLanjtFNYdm71icUDBSWiaboTikXIAwyDfA8S7EQU=",
         "path": "./flakes/neovim",
         "type": "path"
       },
@@ -488,7 +488,7 @@
         ]
       },
       "locked": {
-        "narHash": "sha256-COFOmhYwOCzlZp90FkD5OGqvkLa5AVIxpORU1BBYTfM=",
+        "narHash": "sha256-vS/1FI1M0GWrQCmCtMKko95Axo6njBen7fjl+mUjNKQ=",
         "path": "./flakes/phone-camera-upload",
         "type": "path"
       },
@@ -542,11 +542,11 @@
     },
     "stable": {
       "locked": {
-        "lastModified": 1622321825,
-        "narHash": "sha256-AfoFIo2fyjmq63IOv7nKmMQQxZ0V2FnrLavONnAUs4w=",
+        "lastModified": 1622392324,
+        "narHash": "sha256-wpsX8p8w5OALlx7nZMXPmYHRgIgfxWGKxCffo/SOrwo=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "fb64e7de78617c637d3235923d401462bec5c0fa",
+        "rev": "0e2b7ebddee97505939c5adb4fed232ec42f9fe5",
         "type": "github"
       },
       "original": {
@@ -564,7 +564,7 @@
         ]
       },
       "locked": {
-        "narHash": "sha256-aEfUH2FhxZlIneJMO5C9NuHEdw6RSl1NdvKgVXL9b+Y=",
+        "narHash": "sha256-NlvUZeR5p8DZqtXIpSKRPpPcQdpAmE99cmkbgvjZh/k=",
         "path": "./flakes/thingshare",
         "type": "path"
       },
@@ -575,11 +575,11 @@
     },
     "unstable": {
       "locked": {
-        "lastModified": 1622103435,
-        "narHash": "sha256-5i5mGg402AANnSRQmWVo7lqiyw3taoMwX26oslOD9c4=",
+        "lastModified": 1622194753,
+        "narHash": "sha256-76qtvFp/vFEz46lz5iZMJ0mnsWQYmuGYlb0fHgKqqMg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "5658fadedb748cb0bdbcb569a53bd6065a5704a9",
+        "rev": "540dccb2aeaffa9dc69bfdc41c55abd7ccc6baa3",
         "type": "github"
       },
       "original": {
