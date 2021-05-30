@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   height="30"
+   width="30"
+   sodipodi:docname="window-close.svg"
+   id="svg5"
+   version="1.1"
+   viewBox="0 0 30 30">
+  <metadata
+     id="metadata11">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs9" />
+  <sodipodi:namedview
+     fit-margin-bottom="4"
+     fit-margin-right="4"
+     fit-margin-left="4"
+     fit-margin-top="4"
+     id="namedview7"
+     inkscape:window-height="480"
+     inkscape:window-width="640"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <style
+     id="current-color-scheme"
+     type="text/css">
+        .ColorScheme-NegativeText {
+            color:#545454;
+        }
+    </style>
+  <path
+     id="path3"
+     fill="currentColor"
+     class="ColorScheme-NegativeText"
+     d="m 15,7 a 8,8 0 0 0 -8,8 8,8 0 0 0 8,8 8,8 0 0 0 8,-8 8,8 0 0 0 -8,-8 M 11.707,11 15,14.294 18.293,11.001 19,11.708 15.707,15.001 19,18.294 18.293,19.001 15,15.708 11.707,19.001 11,18.294 14.293,15.001 11,11.708 11.707,11.001" />
+</svg>

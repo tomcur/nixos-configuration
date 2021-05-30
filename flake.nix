@@ -4,28 +4,76 @@
   inputs = {
     stable.url = "github:NixOS/nixpkgs/release-21.05";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    musnix.url = "github:musnix/musnix";
-    musnix.flake = false;
+    patched.url = "path:./nixpkgs";
+    home-manager = {
+      url = "github:rycee/home-manager/release-21.05";
+      inputs.nixpkgs.follows = "stable";
+    };
+    neovim = {
+      url = "path:./flakes/neovim";
+      inputs.nixpkgs.follows = "stable";
+    };
+    awesome = {
+      url = "path:./flakes/awesome";
+      inputs.nixpkgs.follows = "stable";
+    };
+    thingshare = {
+      url = "path:./flakes/thingshare";
+      inputs.nixpkgs.follows = "stable";
+    };
+    phone-camera-upload = {
+      url = "path:./flakes/phone-camera-upload";
+      inputs.nixpkgs.follows = "stable";
+    };
+    musnix = {
+      url = "github:musnix/musnix";
+      flake = false;
+    };
+    renoise = {
+      url = "/home/thomas/music-production/renoise";
+      flake = false;
+    };
+    harrisonAva = {
+      url = "/home/thomas/music-production/plugins/harrison-ava";
+      flake = false;
+    };
   };
 
-  outputs = inputs:
+  outputs = inputs @ { unstable, patched, neovim, awesome, ... }:
     let lib = inputs.stable.lib;
     in
     {
       nixosConfigurations = {
-        castor = lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            {
-              nixpkgs.overlays = [ ];
-            }
-            (import ./config/nixos/systems/castor)
-            # (import ./config/home/systems/castor.nix)
-            # inputs.home-manager.nixosModules.home-manager
-            inputs.stable.nixosModules.notDetected
-          ];
-          specialArgs = { inherit inputs; };
-        };
+        castor =
+          let
+            system = "x86_64-linux";
+            specialArgs = {
+              inherit inputs system;
+              unstablePkgs = import unstable { inherit system; config = { allowUnfree = true; }; };
+              patchedPkgs = import patched { inherit system; config = { allowUnfree = true; }; };
+              neovimPkg = neovim.defaultPackage.${system};
+              neovimPlugins = neovim.plugins.${system};
+              awesomePlugins = awesome.plugins.${system};
+            };
+            modules = [
+              {
+                nixpkgs.overlays = [ ];
+                nixpkgs.config.allowUnfree = true;
+              }
+              (import ./config/nixos/systems/castor)
+              inputs.home-manager.nixosModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.extraSpecialArgs = specialArgs;
+                home-manager.users.thomas = import ./config/home/systems/castor/default.nix;
+              }
+              inputs.stable.nixosModules.notDetected
+            ];
+          in
+          lib.nixosSystem {
+            inherit system specialArgs modules;
+          };
       };
     };
 }

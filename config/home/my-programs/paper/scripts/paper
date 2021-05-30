@@ -1,0 +1,38 @@
+#!/usr/bin/env python3
+
+import os
+import subprocess
+import random
+from pathlib import Path
+from itertools import chain
+
+WALLPAPER_DIR = Path.home() / "Backgrounds"
+WALLPAPER_HORIZONTAL_DIRS = [
+    WALLPAPER_DIR / "16-9",
+    WALLPAPER_DIR / "16-10",
+    WALLPAPER_DIR / "big-horizontal",
+]
+WALLPAPER_VERTICAL_DIRS = [
+    WALLPAPER_DIR / "9-16",
+]
+
+if __name__ == "__main__":
+    p = subprocess.Popen(
+        'xrandr | grep " connected " | grep -oh "[0-9]\\+x[0-9]\\+"',
+        stdout=subprocess.PIPE,
+        shell=True,
+    )
+    connected = [line.decode("utf-8").strip() for line in p.stdout.readlines()]
+    resolutions = [[int(n) for n in line.split("x")] for line in connected]
+
+    wallpapers = []
+    for [x, y] in resolutions:
+        if x > y:
+            dirs = WALLPAPER_HORIZONTAL_DIRS
+        else:
+            dirs = WALLPAPER_VERTICAL_DIRS
+        possible = list(chain(*[dir.glob("*") for dir in dirs]))
+        wallpapers.append(random.choice(possible))
+
+    wallpapers_string = " ".join([str(path) for path in wallpapers])
+    os.system(f"feh --no-fehbg --bg-fill {wallpapers_string}")

@@ -1,0 +1,1 @@
+accounts.nix filter=git-crypt diff=git-crypt

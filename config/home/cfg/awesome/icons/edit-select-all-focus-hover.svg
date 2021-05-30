@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   height="30"
+   width="30"
+   sodipodi:docname="edit-select-all.svg"
+   id="svg6"
+   version="1.1"
+   viewBox="0 0 30 30">
+  <metadata
+     id="metadata10">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     fit-margin-bottom="4"
+     fit-margin-right="4"
+     fit-margin-left="4"
+     fit-margin-top="4"
+     id="namedview8"
+     inkscape:window-height="480"
+     inkscape:window-width="640"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <defs
+     id="defs3051">
+    <style
+       id="current-color-scheme"
+       type="text/css">
+      .ColorScheme-Text {
+        color:#565656;
+      }
+      </style>
+  </defs>
+  <path
+     id="path4"
+     class="ColorScheme-Text"
+     d="m 7,7 v 1 3 H 8 V 8 h 3 V 7 H 8 7 m 12,0 v 1 h 3 v 3 h 1 V 7 Z M 9,9 v 5 h 5 V 9 H 9 m 7,0 v 5 h 5 V 9 h -5 m -6,1 h 3 v 3 h -3 v -3 m 7,0 h 3 v 3 h -3 z m -8,6 v 5 h 5 V 16 H 9 m 7,0 v 5 h 5 v -5 h -5 m -6,1 h 3 v 3 h -3 v -3 m 7,0 h 3 v 3 H 17 V 17 M 7,19 v 4 h 1 3 V 22 H 8 V 19 H 7 m 15,0 v 3 h -3 v 1 h 4 v -1 -3 h -1"
+     style="fill:currentColor;fill-opacity:1;stroke:none" />
+</svg>

@@ -13,6 +13,7 @@
       nixpkgs.flake = inputs.stable;
       stable.flake = inputs.stable;
       unstable.flake = inputs.unstable;
+      patched.flake = inputs.patched;
     };
   };
 

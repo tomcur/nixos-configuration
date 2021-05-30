@@ -1,3 +1,9 @@
-[submodule "musnix"]
-	path = musnix
-	url = https://github.com/musnix/musnix.git
+[submodule "thingshare"]
+	path = flakes/thingshare
+	url = git@github.com:tomcur/thingshare.git
+[submodule "phone-camera-upload"]
+	path = flakes/phone-camera-upload
+	url = git@github.com:tomcur/phone-camera-upload.git
+[submodule "nixpkgs"]
+	path = nixpkgs
+	url = git@github.com:tomcur/nixpkgs.git
