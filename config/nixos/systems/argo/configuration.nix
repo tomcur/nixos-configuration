@@ -53,6 +53,7 @@
       event = "jack/headphone HEADPHONE plug";
     };
   };
+  services.unifi.enable = true;
 
   virtualisation.docker.enable = true;
   virtualisation.docker.enableNvidia = true;
