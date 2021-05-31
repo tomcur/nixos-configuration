@@ -229,6 +229,22 @@
         "type": "github"
       }
     },
+    "nixos-hardware": {
+      "locked": {
+        "lastModified": 1622314052,
+        "narHash": "sha256-DwrLZ6NXPzKpQx3RTjdwdmlGDr6kHVx2gaeHCWCb09Q=",
+        "owner": "NixOS",
+        "repo": "nixos-hardware",
+        "rev": "684ae160a6e76590eafa3fca8061b6ad57bcc9ad",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "master",
+        "repo": "nixos-hardware",
+        "type": "github"
+      }
+    },
     "nvimColorbuddyNvim": {
       "flake": false,
       "locked": {
@@ -516,6 +532,7 @@
         "home-manager": "home-manager",
         "musnix": "musnix",
         "neovim": "neovim",
+        "nixos-hardware": "nixos-hardware",
         "patched": "patched",
         "phone-camera-upload": "phone-camera-upload",
         "renoise": "renoise",

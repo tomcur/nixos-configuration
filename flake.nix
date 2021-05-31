@@ -9,6 +9,7 @@
       url = "github:rycee/home-manager/release-21.05";
       inputs.nixpkgs.follows = "stable";
     };
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     neovim = {
       url = "path:./flakes/neovim";
       inputs.nixpkgs.follows = "stable";
@@ -39,7 +40,7 @@
     };
   };
 
-  outputs = inputs @ { unstable, patched, neovim, awesome, ... }:
+  outputs = inputs @ { unstable, patched, nixos-hardware, neovim, awesome, ... }:
     let lib = inputs.stable.lib;
     in
     {
@@ -98,6 +99,7 @@
                 home-manager.extraSpecialArgs = specialArgs;
                 home-manager.users.thomas = import ./config/home/systems/argo/default.nix;
               }
+              nixos-hardware.nixosModules.dell-xps-15-7590
               inputs.stable.nixosModules.notDetected
             ];
           in
