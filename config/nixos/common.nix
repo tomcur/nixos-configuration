@@ -15,6 +15,11 @@
       unstable.flake = inputs.unstable;
       patched.flake = inputs.patched;
     };
+    nixPath = [
+      "nixpkgs=${inputs.stable}"
+      "unstable=${inputs.unstable}"
+      "patched=${inputs.patched}"
+    ];
   };
 
   # Use the systemd-boot EFI boot loader.
