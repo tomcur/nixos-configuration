@@ -25,6 +25,8 @@
     okular
     zathura
     libreoffice
+    # Reference management.
+    zotero
     # Cloud.
     seafile-client
     # Compiling.
@@ -62,6 +64,9 @@
     direnv
     nox
     ripgrep
+    # Structured data tools.
+    nushell
+    xsv
     # Password manager.
     keepassxc
     # File formatting.
