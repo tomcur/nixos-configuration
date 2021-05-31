@@ -156,8 +156,13 @@
   };
 
   systemd.user.sessionVariables = config.home.sessionVariables;
+  home.file.".profile".text = ''
+    # Home manager.
+    source "/etc/profiles/per-user/thomas/etc/profile.d/hm-session-vars.sh"
+  '';
 
   imports = [
+    ./cfg/zsh
     ./cfg/picom
     ./cfg/alacritty
     ./cfg/nvim
