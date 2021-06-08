@@ -96,6 +96,11 @@ in
     ];
   };
 
+  home.sessionVariables = {
+    VISUAL = "nvim";
+    EDITOR = "nvim";
+  };
+
   home.file =
     let
       jsCommon = ''
