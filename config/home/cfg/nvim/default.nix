@@ -13,12 +13,7 @@ in
     enable = true;
     package = neovimPkg;
     extraConfig = builtins.readFile ./rc.vim;
-    extraPackages = with unstablePkgs; [
-      # rustfmt
-      # rls
-      rust-analyzer
-      nixpkgs-fmt
-      # rnix-lsp
+    extraPackages = (with pkgs; [
       python37Packages.black
       python37Packages.python-language-server
       # nodePackages.javascript-typescript-langserver
@@ -26,11 +21,18 @@ in
       nodePackages.prettier
       nodePackages.bash-language-server
       shfmt
+    ]) ++ (with unstablePkgs; [
+      # rustfmt
+      # rls
+      rust-analyzer
+      nixpkgs-fmt
+      # rnix-lsp
+      # (rWrapper.override { packages = with rPackages; [ readr styler ]; })
       # Preview for nvim telescope
       bat
       # Necessary for minimap.vim
       code-minimap
-    ];
+    ]);
     plugins = with patchedPkgs.vimPlugins; [
       # Impure manager.
       # vim-plug
