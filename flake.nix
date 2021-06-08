@@ -19,11 +19,11 @@
       inputs.nixpkgs.follows = "stable";
     };
     thingshare = {
-      url = "path:./flakes/thingshare";
+      url = "git+file:///etc/nixos/flakes/thingshare";
       inputs.nixpkgs.follows = "stable";
     };
     phone-camera-upload = {
-      url = "path:./flakes/phone-camera-upload";
+      url = "git+file:///etc/nixos/flakes/phone-camera-upload";
       inputs.nixpkgs.follows = "stable";
     };
     musnix = {
