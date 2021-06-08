@@ -60,6 +60,35 @@ set expandtab smarttab
 let mapleader="\<Space>"
 
 " File and buffer opening
+lua << EOF
+-- Truncate / skip previewing big files
+local previewers = require('telescope.previewers')
+local previewers_utils = require('telescope.previewers.utils')
+local max_size = 150 * 1024
+local new_maker = function(filepath, bufnr, opts)
+  opts = opts or {}
+
+  filepath = vim.fn.expand(filepath)
+  vim.loop.fs_stat(filepath, function(_, stat)
+    if not stat then return end
+    if stat.size > max_size then
+      -- Skip:
+      -- return
+      -- Truncate:
+      local cmd = {"head", "-c", max_size, filepath}
+      previewers_utils.job_maker(cmd, bufnr, opts)
+    else
+      previewers.buffer_previewer_maker(filepath, bufnr, opts)
+    end
+  end)
+end
+
+require('telescope').setup {
+  defaults = {
+    buffer_previewer_maker = new_maker,
+  }
+}
+EOF
 nmap <leader>b <cmd>lua require('telescope.builtin').buffers({sort_lastused = true})<cr>
 nmap <leader>fo <cmd>lua require('telescope.builtin').find_files()<cr>
 nmap <leader>fd :Explore<cr>
