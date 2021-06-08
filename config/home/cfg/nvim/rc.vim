@@ -1,6 +1,6 @@
 filetype plugin on
 set mouse=a
-syntax on
+syntax enable
 set number
 set signcolumn=yes
 set foldcolumn=auto
@@ -8,6 +8,8 @@ set cmdheight=2
 highlight LineNr ctermfg=white
 set hidden
 set statusline=%f%=%r%m%y\ %P\ %l,%c
+set nojoinspaces
+set spelllang=en_us,nl
 
 function! s:ui_enter()
   set guicursor=n-v-c:block-Cursor
@@ -264,3 +266,6 @@ let g:minimap_left = 0
 let g:minimap_width = 8
 let g:minimap_highlight = "Minimap"
 let g:minimap_base_highlight = "MinimapBase"
+
+" Default .tex to LaTeX
+let g:tex_flavor = "latex"

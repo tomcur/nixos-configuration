@@ -131,6 +131,24 @@ in
       ".config/nvim/ftplugin/typescript.vim".text = ''
         ${jsCommon}
       '';
+      ".config/nvim/ftplugin/r.vim".text = ''
+        nmap <buffer><leader>mf :Neoformat styler<cr>
+      '';
+      ".config/nvim/ftplugin/tex.vim".text = ''
+        let g:neoformat_tex_mylatexindent = {
+          \ 'exe': 'latexindent',
+          \ 'args': ['-l'],
+          \ 'stdin': 1,
+          \ }
+        let g:neoformat_enabled_tex = ['mylatexindent']
+        nmap <buffer><leader>mf :Neoformat<cr>
+        setlocal textwidth=79
+        setlocal spell
+      '';
+      ".config/nvim/ftplugin/mail.vim".text = ''
+        setlocal textwidth=79
+        setlocal spell
+      '';
       ".config/nvim/ftplugin/css.vim".text = ''
         nmap <buffer><leader>mf :Neoformat<cr>
       '';
