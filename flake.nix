@@ -5,6 +5,8 @@
     stable.url = "github:NixOS/nixpkgs/nixos-21.05";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     patched.url = "path:./nixpkgs";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    flake-utils.url = "github:numtide/flake-utils";
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "stable";
@@ -13,22 +15,25 @@
       url = "github:rycee/home-manager/release-21.05";
       inputs.nixpkgs.follows = "stable";
     };
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     neovim = {
       url = "path:./flakes/neovim";
       inputs.nixpkgs.follows = "stable";
+      inputs.flake-utils.follows = "flake-utils";
     };
     awesome = {
       url = "path:./flakes/awesome";
       inputs.nixpkgs.follows = "stable";
+      inputs.flake-utils.follows = "flake-utils";
     };
     thingshare = {
       url = "git+file:///etc/nixos/flakes/thingshare";
       inputs.nixpkgs.follows = "stable";
+      inputs.flake-utils.follows = "flake-utils";
     };
     phone-camera-upload = {
       url = "git+file:///etc/nixos/flakes/phone-camera-upload";
       inputs.nixpkgs.follows = "stable";
+      inputs.flake-utils.follows = "flake-utils";
     };
     musnix = {
       url = "github:musnix/musnix";
