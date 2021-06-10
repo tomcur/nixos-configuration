@@ -73,6 +73,7 @@
     nixpkgs-fmt
     (python3.withPackages (python-packages: with python-packages; [ numpy ]))
     # Chat.
+    element-desktop
     discord
     # Music.
     spotify
