@@ -1,5 +1,5 @@
 { pkgs, lib, ... }: {
-  imports = [ ./accounts.nix ];
+  imports = [ ./accounts.nix ./contacts.nix ];
 
   programs.mbsync.enable = true;
   programs.msmtp.enable = true;
