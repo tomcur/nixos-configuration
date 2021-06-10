@@ -235,7 +235,10 @@ in
   users.users.remote-builder = {
     isSystemUser = true;
     useDefaultShell = true;
-    openssh.authorizedKeys.keyFiles = [ ../../keys/castor-remote-builder.pub ];
+    openssh.authorizedKeys.keyFiles = [
+      ../../keys/castor-remote-builder.pub
+      ../../keys/root_argo_ed25519_key.pub
+    ];
   };
   nix.trustedUsers = [ "remote-builder" ];
 
