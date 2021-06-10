@@ -208,6 +208,8 @@
     siji
     font-awesome_5
     emacs-all-the-icons-fonts
+    # TeX
+    lmodern
   ];
 
   fonts.fontconfig = {
