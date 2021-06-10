@@ -77,6 +77,8 @@
     discord
     # Music.
     spotify
+    # Mapping.
+    josm
     # Databases.
     dbeaver
   ]) ++ (with patchedPkgs; [
