@@ -5,6 +5,22 @@
 
   # boot.kernelPackages = pkgs.linuxPackages_5_9;
 
+  nix.maxJobs = 4;
+  nix.buildMachines = [{
+    hostName = "castor";
+    sshUser = "ssh://remote-builder"; # This is a workaround, should be `remote-builder`
+    sshKey = "/root/.ssh/id_ed25519";
+    system = "x86_64-linux";
+    maxJobs = 8;
+    speedFactor = 2;
+    supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+    mandatoryFeatures = [ ];
+  }];
+  nix.distributedBuilds = true;
+  nix.extraOptions = ''
+    builders-use-substitutes = true
+  '';
+
   networking = {
     hostName = "argo";
     firewall = {
