@@ -77,21 +77,21 @@ in
       # LSP.
       {
         plugin = nvim-lspconfig;
-	# optional = true;
+        optional = true;
       }
       # Aid completion
       {
         plugin = plugins.completion-nvim;
-	# optional = true;
+        optional = true;
       }
       # Treesitter.
       {
         plugin = plugins.nvim-treesitter;
-	# optional = true;
+        optional = true;
       }
       {
         plugin = plugins.nvim-treesitter-textobjects;
-	# optional = true;
+        optional = true;
       }
     ];
   };
