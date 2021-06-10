@@ -5,6 +5,10 @@
     stable.url = "github:NixOS/nixpkgs/nixos-21.05";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     patched.url = "path:./nixpkgs";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "stable";
+    };
     home-manager = {
       url = "github:rycee/home-manager/release-21.05";
       inputs.nixpkgs.follows = "stable";
@@ -40,7 +44,7 @@
     };
   };
 
-  outputs = inputs @ { unstable, patched, nixos-hardware, neovim, awesome, ... }:
+  outputs = inputs @ { unstable, patched, nixos-hardware, agenix, neovim, awesome, ... }:
     let lib = inputs.stable.lib;
     in
     {
@@ -62,6 +66,7 @@
                 nixpkgs.config.allowUnfree = true;
               }
               (import ./config/nixos/systems/castor)
+              agenix.nixosModules.age
               inputs.home-manager.nixosModules.home-manager
               {
                 home-manager.useGlobalPkgs = true;

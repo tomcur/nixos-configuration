@@ -231,6 +231,15 @@ in
 
   boot.loader.systemd-boot.memtest86.enable = true;
 
+  age.secrets.email-thomas-churchman-nl = {
+    file = ../../../../secrets/email-thomas-churchman-nl.age;
+    owner = "thomas";
+  };
+  age.secrets.email-thomas-kepow-org = {
+    file = ../../../../secrets/email-thomas-churchman-nl.age;
+    owner = "thomas";
+  };
+
   # Remote-build user.
   users.users.remote-builder = {
     isSystemUser = true;
