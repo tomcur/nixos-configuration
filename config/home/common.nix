@@ -52,7 +52,7 @@
     biber # For LaTeX.
   ]) ++ (with unstablePkgs; [
     # Fuzzy finder.
-    # fzf
+    fzf
     # Dotfiles manager.
     yadm
     # Editor.
@@ -76,12 +76,10 @@
     discord
     # Music.
     spotify
-  ]) ++ (with patchedPkgs; [
-    # Temporarily use master version of fuzzy finder, until 0.24 is in nixos-unstable
-    fzf
     # Databases.
     dbeaver
-  ]);
+  ]) ++ (with patchedPkgs; [
+  ]) ++ [ inputs.agenix.defaultPackage.x86_64-linux ];
 
   xdg.mimeApps = {
     enable = true;
