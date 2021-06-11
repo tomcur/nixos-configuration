@@ -4,6 +4,8 @@
     # Direnv
     eval "$(direnv hook zsh)"
 
+    alias nm='neomutt -f "  new"'
+
     # Make a nix shell environment.
     nixify() {
       if [ ! -e ./.envrc ]; then
