@@ -21,8 +21,8 @@ notify() {
         --dest org.freedesktop.Notifications \
         --object-path /org/freedesktop/Notifications \
         --method org.freedesktop.Notifications.Notify -- \
-        "brightness_control" 28593163 "${icon}" "Brightness" \
-        "${message}" [] "{\"urgency\": <byte 0>}" -1
+        "Brightness" 28593163 "${icon}" "${message}" \
+        "" [] "{\"urgency\": <byte 0>}" -1
 }
 
 floatToInt() {
