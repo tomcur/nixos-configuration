@@ -166,6 +166,7 @@
     ./cfg/zsh
     ./cfg/picom
     ./cfg/alacritty
+    ./cfg/kitty
     ./cfg/nvim
     ./cfg/vscode
     ./cfg/gtk.nix
