@@ -181,11 +181,11 @@
       },
       "locked": {
         "dir": "contrib",
-        "lastModified": 1623084223,
-        "narHash": "sha256-lhKgG4L5UAt9zb5KH8YvpR/y7E4Dh9Ekb4BkEPHAY+Y=",
+        "lastModified": 1623545284,
+        "narHash": "sha256-zzNCqWIVIgG6QNtDB7z2XAyDSr1I699pHSKECDAmyH4=",
         "owner": "neovim",
         "repo": "neovim",
-        "rev": "93f15db5d61800a2029aa20684be31c96ebcca5b",
+        "rev": "141647cfbb1f137e3eefe6ba8e658b475e902cac",
         "type": "github"
       },
       "original": {
@@ -374,11 +374,11 @@
     "nvimTelescope": {
       "flake": false,
       "locked": {
-        "lastModified": 1623261516,
-        "narHash": "sha256-31NjqU1+G+yLa0wVLg8YcXlvGEUdLVDWDkijB2OLBXY=",
+        "lastModified": 1623514743,
+        "narHash": "sha256-mn2oT7CIaWno07mAFql3JfJm0g2ve3jEBoC/o05PfKY=",
         "owner": "nvim-telescope",
         "repo": "telescope.nvim",
-        "rev": "495f84fd35e7b5bb0bb670e232725924b3b85b88",
+        "rev": "398a0d391aa2afcda1521a8e86b820ffb599b60b",
         "type": "github"
       },
       "original": {
@@ -390,11 +390,11 @@
     "nvimTreesitter": {
       "flake": false,
       "locked": {
-        "lastModified": 1623019164,
-        "narHash": "sha256-KWDwl88D5MNOUN49put5ZMeTQu9/SBw4hRrjC+aVtZo=",
+        "lastModified": 1623525276,
+        "narHash": "sha256-TZxG4Xf7w5wBTTBCJTPRlSTpgjiv3Nlb87K5iSzMpxE=",
         "owner": "nvim-treesitter",
         "repo": "nvim-treesitter",
-        "rev": "37ed50f28f8350de8dc70b56d8ac198aac9b1178",
+        "rev": "5634b175c42a3765405060e7407330d354c69369",
         "type": "github"
       },
       "original": {
@@ -406,11 +406,11 @@
     "nvimTreesitterTextobjects": {
       "flake": false,
       "locked": {
-        "lastModified": 1622620339,
-        "narHash": "sha256-iJ+c2NfKnnyGLVoiZp91jibmOs7dUHM5Dj3gkEdIwQU=",
+        "lastModified": 1623271500,
+        "narHash": "sha256-pEeqzh05lqhG42n4sShY2vCkjMDin8tmqYY2sj41cZk=",
         "owner": "nvim-treesitter",
         "repo": "nvim-treesitter-textobjects",
-        "rev": "cadb8110817884fff506043497c0f2b92026aacb",
+        "rev": "6cea13039db901afb75c8efa587274ebd94c875a",
         "type": "github"
       },
       "original": {
