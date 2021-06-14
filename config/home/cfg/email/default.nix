@@ -3,7 +3,7 @@ let
   accounts = config.accounts.email.accounts;
 in
 {
-  imports = [ ./accounts.nix ./contacts.nix ];
+  imports = [ ./accounts-bak.nix ./contacts.nix ];
 
   programs.mbsync.enable = true;
   services.imapnotify.enable = true;
