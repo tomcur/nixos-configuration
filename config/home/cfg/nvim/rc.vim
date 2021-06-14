@@ -85,6 +85,15 @@ require'nvim-treesitter.configs'.setup {
   },
   textobjects = {
     enable = true,
+    swap = {
+      enable = true,
+      swap_previous = {
+        ["<A-h>"] = "@parameter.inner",
+      },
+      swap_next = {
+        ["<A-l>"] = "@parameter.inner",
+      },
+    },
     select = {
       enable = true,
       keymaps = {
