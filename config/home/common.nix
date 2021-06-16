@@ -91,7 +91,7 @@
       "text/plain" = [ "nvim-qt.desktop" ];
       "text/html" = [ "firefox.desktop" ];
       "application/octet-stream" = [ "firefox.desktop" ];
-      "application/pdf" = [ "zathura.desktop" ];
+      "application/pdf" = [ "org.pwmt.zathura.desktop" ];
       "image/svg+xml" = [ "org.nomacs.ImageLounge.desktop" ];
       "image/png" = [ "org.nomacs.ImageLounge.desktop" ];
       "image/tiff" = [ "org.nomacs.ImageLounge.desktop" ];
@@ -101,6 +101,7 @@
       "video/mp4" = [ "mpv.desktop" ];
       "video/mpeg" = [ "mpv.desktop" ];
       "video/mkv" = [ "mpv.desktop" ];
+      "video/x-matroska" = [ "mpv.desktop" ];
       "video/flv" = [ "mpv.desktop" ];
       "audio/aac" = [ "mpv.desktop" ];
       "audio/ac3" = [ "mpv.desktop" ];
@@ -122,6 +123,11 @@
       "image/svg+xml" = [ "nvim-qt.desktop" ];
     };
   };
+  xdg.dataFile."dbus-1/services/org.freedesktop.FileManager1.service".text = ''
+    [D-BUS Service]
+    Name=org.freedesktop.FileManager1
+    Exec=dolphin
+  '';
 
   services.unclutter.enable = true;
   services.unclutter.timeout = 3;
