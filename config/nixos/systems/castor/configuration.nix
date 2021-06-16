@@ -2,7 +2,7 @@
 let unstable = import <unstable> { config.allowUnfree = true; };
 in
 {
-  imports = [ ../../common.nix ../../audio-jack.nix ./secret.nix ];
+  imports = [ ../../common.nix ../../audio-pipewire.nix ./secret.nix ];
 
   # boot.kernelPackages = unstable.pkgs.linuxPackages-rt_5_11;
   # boot.kernelPackages = pkgs.linuxPackages_5_11;

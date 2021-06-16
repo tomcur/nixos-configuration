@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ../../common.nix ../../audio-jack.nix ../../eduroam.nix ];
+  imports = [ ../../common.nix ../../audio-pipewire.nix ../../eduroam.nix ];
 
   # boot.kernelPackages = pkgs.linuxPackages_5_9;
 
