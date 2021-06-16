@@ -1,6 +1,9 @@
 { ... }:
 {
   home.file.".zshrc".text = ''
+    # home manager
+    source "/etc/profiles/per-user/thomas/etc/profile.d/hm-session-vars.sh"
+
     # Direnv
     eval "$(direnv hook zsh)"
 
