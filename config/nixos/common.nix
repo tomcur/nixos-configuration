@@ -326,6 +326,10 @@
   programs.wireshark.package = pkgs.wireshark; # The default is wireshark-cli.
 
   services = {
+    dbus.packages = [
+      pkgs.dolphin
+    ];
+
     # Useful for Wireshark.
     geoip-updater.enable = true;
 
