@@ -1,6 +1,4 @@
 { config, pkgs, ... }:
-let unstable = import <unstable> { config.allowUnfree = true; };
-in
 {
   imports = [ ../../common.nix ../../audio-pipewire.nix ./secret.nix ];
 

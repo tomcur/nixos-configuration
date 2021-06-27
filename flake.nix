@@ -9,30 +9,31 @@
     flake-utils.url = "github:numtide/flake-utils";
     agenix = {
       url = "github:ryantm/agenix";
-      inputs.nixpkgs.follows = "stable";
+      inputs.nixpkgs.follows = "unstable";
     };
     home-manager = {
-      url = "github:rycee/home-manager/release-21.05";
-      inputs.nixpkgs.follows = "stable";
+      # url = "github:rycee/home-manager/release-21.05";
+      url = "github:rycee/home-manager/master";
+      inputs.nixpkgs.follows = "unstable";
     };
     neovim = {
       url = "path:./flakes/neovim";
-      inputs.nixpkgs.follows = "stable";
+      inputs.nixpkgs.follows = "unstable";
       inputs.flake-utils.follows = "flake-utils";
     };
     awesome = {
       url = "path:./flakes/awesome";
-      inputs.nixpkgs.follows = "stable";
+      inputs.nixpkgs.follows = "unstable";
       inputs.flake-utils.follows = "flake-utils";
     };
     thingshare = {
       url = "git+file:///etc/nixos/flakes/thingshare";
-      inputs.nixpkgs.follows = "stable";
+      inputs.nixpkgs.follows = "unstable";
       inputs.flake-utils.follows = "flake-utils";
     };
     phone-camera-upload = {
       url = "git+file:///etc/nixos/flakes/phone-camera-upload";
-      inputs.nixpkgs.follows = "stable";
+      inputs.nixpkgs.follows = "unstable";
       inputs.flake-utils.follows = "flake-utils";
     };
     musnix = {
@@ -49,8 +50,8 @@
     };
   };
 
-  outputs = inputs @ { unstable, patched, nixos-hardware, agenix, neovim, awesome, ... }:
-    let lib = inputs.stable.lib;
+  outputs = inputs @ { stable, unstable, patched, nixos-hardware, agenix, neovim, awesome, ... }:
+    let lib = unstable.lib;
     in
     {
       nixosConfigurations = {
@@ -59,6 +60,7 @@
             system = "x86_64-linux";
             specialArgs = {
               inherit inputs system;
+              stablePkgs = import stable { inherit system; config = { allowUnfree = true; }; };
               unstablePkgs = import unstable { inherit system; config = { allowUnfree = true; }; };
               patchedPkgs = import patched { inherit system; config = { allowUnfree = true; }; };
               neovimPkg = neovim.defaultPackage.${system};
@@ -79,7 +81,7 @@
                 home-manager.extraSpecialArgs = specialArgs;
                 home-manager.users.thomas = import ./config/home/systems/castor/default.nix;
               }
-              inputs.stable.nixosModules.notDetected
+              unstable.nixosModules.notDetected
             ];
           in
           lib.nixosSystem {
@@ -90,6 +92,7 @@
             system = "x86_64-linux";
             specialArgs = {
               inherit inputs system;
+              stablePkgs = import stable { inherit system; config = { allowUnfree = true; }; };
               unstablePkgs = import unstable { inherit system; config = { allowUnfree = true; }; };
               patchedPkgs = import patched { inherit system; config = { allowUnfree = true; }; };
               neovimPkg = neovim.defaultPackage.${system};
@@ -110,7 +113,7 @@
                 home-manager.users.thomas = import ./config/home/systems/argo/default.nix;
               }
               nixos-hardware.nixosModules.dell-xps-15-7590
-              inputs.stable.nixosModules.notDetected
+              unstable.nixosModules.notDetected
             ];
           in
           lib.nixosSystem {
