@@ -4,6 +4,7 @@
   inputs = {
     stable.url = "github:NixOS/nixpkgs/nixos-21.05";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     patched.url = "path:./nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     flake-utils.url = "github:numtide/flake-utils";
@@ -15,6 +16,11 @@
       # url = "github:rycee/home-manager/release-21.05";
       url = "github:rycee/home-manager/master";
       inputs.nixpkgs.follows = "unstable";
+    };
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.utils.follows = "flake-utils";
     };
     neovim = {
       url = "path:./flakes/neovim";
@@ -66,6 +72,7 @@
               neovimPkg = neovim.defaultPackage.${system};
               neovimPlugins = neovim.plugins.${system};
               awesomePlugins = awesome.plugins.${system};
+              deployrsPkgs = inputs.deploy-rs.packages.${system};
             };
             modules = [
               {
@@ -98,6 +105,7 @@
               neovimPkg = neovim.defaultPackage.${system};
               neovimPlugins = neovim.plugins.${system};
               awesomePlugins = awesome.plugins.${system};
+              deployrsPkgs = inputs.deploy-rs.${system}.packages;
             };
             modules = [
               {
