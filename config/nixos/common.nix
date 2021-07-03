@@ -3,6 +3,11 @@
 {
   # Allow unfree software.
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [
+    (self: super: {
+      symbols-nerdfonts = super.pkgs.callPackage ./pkgs/fonts/nerd-fonts.nix { };
+    })
+  ];
 
   environment.etc."nix-channels/stable".source = inputs.stable;
   environment.etc."nix-channels/unstable".source = inputs.unstable;
@@ -158,6 +163,7 @@
   environment.etc."mime.types".source = "${pkgs.mime-types}/etc/mime.types";
 
   fonts.fonts = with pkgs; [
+    symbols-nerdfonts
     dejavu_fonts
     noto-fonts
     noto-fonts-cjk
@@ -209,10 +215,7 @@
     inconsolata
     kawkab-mono-font
     # Icons.
-    twemoji-color-font
     siji
-    font-awesome_5
-    emacs-all-the-icons-fonts
     # TeX
     lmodern
   ];
@@ -220,10 +223,10 @@
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
-      monospace = [ "Source Code Pro" "Noto Color Emoji" ];
-      sansSerif = [ "DejaVu Sans" "Noto Color Emoji" ];
-      serif = [ "DejaVu Serif" "Noto Color Emoji" ];
-      emoji = [ "Noto Color Emoji" ];
+      monospace = [ "Symbols Nerd Font" "Source Code Pro" "Noto Color Emoji" ];
+      sansSerif = [ "Symbols Nerd Font" "DejaVu Sans" "Noto Color Emoji" ];
+      serif = [ "Symbols Nerd Font" "DejaVu Serif" "Noto Color Emoji" ];
+      emoji = [ "Symbols Nerd Font" "Noto Color Emoji" ];
     };
   };
 
