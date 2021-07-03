@@ -38,18 +38,18 @@ end
 --
 -- Note that colorbuddy.lua sees "background" and "foreground" as special color names.
 -- As such, we cannot use those.
-local background_ =         p(86,  5.0, 94.0)
-local darkbackground =      p(86, 10.0, 90.0)
-local verydarkbackground =  p(86, 15.0, 86.0)
-local highlightbackground = p(86, 45.0, 82.0)
+local background_ =         p(57,  7.0, 93.0)
+local darkbackground =      p(57, 12.0, 89.0)
+local verydarkbackground =  p(57, 17.0, 85.0)
+local highlightbackground = p(57, 50.0, 82.0)
 
 local foreground_ =      p(281, 10.0, 10.0)
 local foreground_a =     a(foreground_)
 local foreground_aa =    a(a(foreground_))
 
-local grey =    p(77, 19.0, 33.0)
-local grey_d =  p(77, 19.0, 38.0)
-local grey_dd = p(77, 19.0, 43.0)
+local grey =    p(64, 19.0, 33.0)
+local grey_d =  p(64, 19.0, 44.0)
+local grey_dd = p(64, 19.0, 55.0)
 -- local grey_d =  p(77, 21.0, 35.0)
 -- local grey_dd = p(77, 23.0, 40.0)
 
