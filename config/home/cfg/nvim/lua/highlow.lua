@@ -53,6 +53,11 @@ local grey_dd = p(77, 19.0, 43.0)
 -- local grey_d =  p(77, 21.0, 35.0)
 -- local grey_dd = p(77, 23.0, 40.0)
 
+local structural_red =    p( 12, 98.0, 40.0)
+local structural_green =  p(124, 98.0, 40.0)
+local structural_blue =   p(258, 98.0, 40.0)
+local structural_purple = p(286, 98.0, 40.0)
+
 local red =    p( 12, 82.0, 33.0)
 local orange = p( 21, 82.0, 33.0)
 local blue =   p(231, 82.0, 33.0)
@@ -76,14 +81,11 @@ local green_a =   a(green)
 local green_aa =  a(a(green))
 
 local function hslToString(hsl)
-    -- local r, g, b = hslToRgb(h, s, l)
-    -- return rgbToString(r, g, b)
     return hsluv.hsluv_to_hex(hsl)
 end
 
 -- Inverts colors for light-on-dark mode.
 local function invertHslToString(hsl)
-    -- return hslToString(h, s * 0.68, (1.0 - l) * 0.92 + 0.04)
     local l = 100.0 - hsl[3]
     return hsluv.hsluv_to_hex({ hsl[1], hsl[2] * 0.5, l })
 end
@@ -101,6 +103,11 @@ function M.setup()
         Color.new('grey',          invertHslToString(grey))
         Color.new('grey_d',        invertHslToString(grey_d))
         Color.new('grey_dd',       invertHslToString(grey_dd))
+
+        Color.new('structural_red',    invertHslToString(structural_red))
+        Color.new('structural_green',  invertHslToString(structural_green))
+        Color.new('structural_blue',   invertHslToString(structural_blue))
+        Color.new('structural_purple', invertHslToString(structural_purple))
 
         Color.new('red',       invertHslToString(red))
         Color.new('red_a',     invertHslToString(red_a))
@@ -134,6 +141,11 @@ function M.setup()
         Color.new('grey',          hslToString(grey))
         Color.new('grey_d',        hslToString(grey_d))
         Color.new('grey_dd',       hslToString(grey_dd))
+
+        Color.new('structural_red',    hslToString(structural_red))
+        Color.new('structural_green',  hslToString(structural_green))
+        Color.new('structural_blue',   hslToString(structural_blue))
+        Color.new('structural_purple', hslToString(structural_purple))
 
         Color.new('red',       hslToString(red))
         Color.new('red_a',     hslToString(red_a))
