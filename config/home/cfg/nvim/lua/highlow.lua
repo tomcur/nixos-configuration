@@ -14,7 +14,7 @@ end
 
 -- Pale
 local function pa(hsl)
-    local l = hsl[3] + (95.0 - hsl[3]) * 0.6
+    local l = hsl[3] + (100.0 - hsl[3]) * 0.32
     return { hsl[1], hsl[2], l }
 end
 
