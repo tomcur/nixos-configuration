@@ -1,6 +1,7 @@
 -- A high foreground-background contrast, low between-keyword contrast colorscheme.
 
 local Color, colors, Group, groups, styles = require('colorbuddy').setup()
+local hsluv = require("hsluv")
 
 local M = {}
 
@@ -11,26 +12,23 @@ local function p(...)
     return {n = select("#", ...), ...}
 end
 
--- Unpack
-local function u(packed)
-    return unpack(packed)
-end
-
 -- Pale
-local function pa(h, s, l)
-    return h, s, l + (0.91 - l) * 0.6
+local function pa(hsl)
+    local l = hsl[3] + (91.0 - hsl[3]) * 0.6
+    return { hsl[1], hsl[2], l }
 end
 
 -- Accentuate
-local function a(h, s, l)
-    return h, s + (1 - s) * 0.4, l
+local function a(hsl)
+    local s = hsl[2] + (100.0 - hsl[2]) * 0.4
+    return { hsl[1], s, hsl[3] }
 end
 
 -- Dim
-local function d(h, s, l)
-    return h, s * 0.6, l
+local function d(hsl)
+    local s = hsl[2] * 0.6
+    return { hsl[1], s, hsl[3] }
 end
-
 
 -- Color system suffixes:
 -- `p`: pale (higher lightness)
@@ -39,192 +37,129 @@ end
 --
 -- Note that colorbuddy.lua sees "background" and "foreground" as special color names.
 -- As such, we cannot use those.
-local background_ =         p(51 / 360, 0.10, 0.88)
-local darkbackground =      p(51 / 360, 0.13, 0.82)
-local verydarkbackground =  p(51 / 360, 0.16, 0.76)
-local highlightbackground = p(37 / 360, 0.35, 0.74)
+local background_ =         p(86,  4.7, 90.1)
+local darkbackground =      p(86,  9.8, 85.7)
+local verydarkbackground =  p(86, 17.0, 81.6)
+local highlightbackground = p(86, 37.1, 83.9)
 
-local foreground_ =      p(265 / 360, 0.07, 0.200)
-local foreground_a =     p(a(u(foreground_)))
-local foreground_aa =    p(a(a(u(foreground_))))
+local foreground_ =      p(281, 8.8, 20.0)
+local foreground_a =     a(foreground_)
+local foreground_aa =    a(a(foreground_))
 
-local grey =    p(51 / 360, 0.08, 0.310)
-local grey_d =  p(51 / 360, 0.10, 0.360)
-local grey_dd = p(51 / 360, 0.12, 0.410)
+local grey =    p(77, 19.8, 35.2)
+local grey_d =  p(77, 21.0, 38.0)
+local grey_dd = p(77, 23.0, 43.0)
 
-local red =    p(0, 0.6, 0.354)
-local red_a =  p(a(u(red)))
-local red_aa = p(a(a(u(red))))
+local red =    p(12, 73.5, 32.3)
+local red_a =  a(red)
+local red_aa = a(a(red))
+local red_aaa = a(a(a(red)))
 
-local orange = p(14 / 360, 0.6, 0.313)
+local orange = p(21, 77.7, 32.2)
+local orange_a = a(orange)
+local orange_aa = a(a(orange))
 
-local blue =     p(198 / 360, 0.6, 0.267)
-local blue_a =   p(a(u(blue)))
-local blue_aa =  p(a(a(u(blue))))
-local blue_d =   p(d(u(blue)))
-local blue_pdd = p(pa(d(d(u(blue)))))
--- local blue_pa = p(198 / 360, 0.2, 0.50)
--- local blue_a =  p(198 / 360, 0.9, 0.25)
--- local blue_aa = p(198 / 360, 1.0, 0.35)
--- local blue_d =  p(198 / 360, 0.8, 0.05)
--- local blue_pa = p(198 / 360, 0.2, 0.50)
+local blue =     p(231, 86.8, 32.5)
+local blue_a =   a(blue)
+local blue_aa =  a(a(blue))
+local blue_d =   d(blue)
+local blue_pdd = pa(d(d(blue)))
 
-local pink =    p(322 / 360, 0.6, 0.342)
-local pink_d =  p(d(u(pink)))
+local pink =    p(335, 80.7, 33.2)
+local pink_d =  d(pink)
 
-local purple =   p(278 / 370, 0.6, 0.372)
-local purple_a = p(a(u(purple))) -- p(278 / 370, 0.9, 0.25)
+local purple =   p(286, 81.9, 31.5)
+local purple_a = a(purple) -- p(278 / 370, 0.9, 0.25)
 
-local yellow = p(53 / 360, 0.6, 0.217)
+local yellow = p(77, 88.8, 34.5)
 
-local green =   p(114 / 360, 0.6, 0.227)
-local green_a = p(a(u(green))) -- p(114 / 360, 0.9, 0.25)
+local green =   p(126, 87.6, 33.2)
+local green_a = a(green)
+local green_aa = a(a(green))
 
-local function rgbFromString(str)
-    local r = tonumber(string.sub(str, 2, 3), 16) / 255
-    local g = tonumber(string.sub(str, 4, 5), 16) / 255
-    local b = tonumber(string.sub(str, 6, 7), 16) / 255
-    return r, g, b
-end
-
-local function rgbToString(r, g, b)
-    return string.format(
-        "#%02X%02X%02X",
-        math.floor(r * 255 + 0.5),
-        math.floor(g * 255 + 0.5),
-        math.floor(b * 255 + 0.5)
-    )
-end
-
--- Adapted from https://github.com/EmmanuelOga/columns/blob/master/utils/color.lua
-function rgbToHsl(r, g, b)
-  local max, min = math.max(r, g, b), math.min(r, g, b)
-  local h, s, l
-
-  l = (max + min) / 2
-
-  if max == min then
-    h, s = 0, 0 -- achromatic
-  else
-    local d = max - min
-    if l > 0.5 then s = d / (2 - max - min) else s = d / (max + min) end
-    if max == r then
-      h = (g - b) / d
-      if g < b then h = h + 6 end
-    elseif max == g then h = (b - r) / d + 2
-    elseif max == b then h = (r - g) / d + 4
-    end
-    h = h / 6
-  end
-
-  return h, s, l
-end
-
--- Adapted from https://github.com/EmmanuelOga/columns/blob/master/utils/color.lua
-function hslToRgb(h, s, l)
-  local r, g, b
-
-  if s == 0 then
-    r, g, b = l, l, l -- achromatic
-  else
-    function hue2rgb(p, q, t)
-      if t < 0   then t = t + 1 end
-      if t > 1   then t = t - 1 end
-      if t < 1/6 then return p + (q - p) * 6 * t end
-      if t < 1/2 then return q end
-      if t < 2/3 then return p + (q - p) * (2/3 - t) * 6 end
-      return p
-    end
-
-    local q
-    if l < 0.5 then q = l * (1 + s) else q = l + s - l * s end
-    local p = 2 * l - q
-
-    r = hue2rgb(p, q, h + 1/3)
-    g = hue2rgb(p, q, h)
-    b = hue2rgb(p, q, h - 1/3)
-  end
-
-  return r, g, b
-end
-
-local function invert(str)
-    local r, g, b = rgbFromString(str)
-    local h, s, l = rgbToHsl(r, g, b)
-    r, g, b = hslToRgb(h, s, (1.0 - l) * 0.8 + 0.1)
-    return rgbToString(r, g, b)
-end
-
-local function hslToString(h, s, l)
-    local r, g, b = hslToRgb(h, s, l)
-    return rgbToString(r, g, b)
+local function hslToString(hsl)
+    -- local r, g, b = hslToRgb(h, s, l)
+    -- return rgbToString(r, g, b)
+    return hsluv.hsluv_to_hex(hsl)
 end
 
 -- Inverts colors for light-on-dark mode.
 -- Also somewhat reduces the global contrast.
-local function invertHslToString(h, s, l)
-    return hslToString(h, s * 0.68, (1.0 - l) * 0.92 + 0.04)
+local function invertHslToString(hsl)
+    -- return hslToString(h, s * 0.68, (1.0 - l) * 0.92 + 0.04)
+    local h = hsl[1]
+    local s = hsl[2] * 0.68
+    local l = (100.0 - hsl[3]) * 0.92 + 4.0
+    return hsluv.hsluv_to_hex({ h, s, l })
 end
 
 function M.setup()
     if vim.o.background == "dark" then
-        Color.new('background_',         invertHslToString(u(background_)))
-        Color.new('darkbackground',      invertHslToString(u(darkbackground)))
-        Color.new('verydarkbackground',  invertHslToString(u(verydarkbackground)))
-        Color.new('highlightbackground', invertHslToString(u(highlightbackground)))
+        Color.new('background_',         invertHslToString(background_))
+        Color.new('darkbackground',      invertHslToString(darkbackground))
+        Color.new('verydarkbackground',  invertHslToString(verydarkbackground))
+        Color.new('highlightbackground', invertHslToString(highlightbackground))
 
-        Color.new('foreground_',   invertHslToString(u(foreground_)))
-        Color.new('foreground_a',  invertHslToString(u(foreground_a)))
-        Color.new('foreground_aa', invertHslToString(u(foreground_aa)))
-        Color.new('grey',          invertHslToString(u(grey)))
-        Color.new('grey_d',        invertHslToString(u(grey_d)))
-        Color.new('grey_dd',       invertHslToString(u(grey_dd)))
+        Color.new('foreground_',   invertHslToString(foreground_))
+        Color.new('foreground_a',  invertHslToString(foreground_a))
+        Color.new('foreground_aa', invertHslToString(foreground_aa))
+        Color.new('grey',          invertHslToString(grey))
+        Color.new('grey_d',        invertHslToString(grey_d))
+        Color.new('grey_dd',       invertHslToString(grey_dd))
 
-        Color.new('red',       invertHslToString(u(red)))
-        Color.new('red_a',     invertHslToString(u(red_a)))
-        Color.new('red_aa',    invertHslToString(u(red_aa)))
-        Color.new('orange',    invertHslToString(u(orange)))
-        Color.new('blue',      invertHslToString(u(blue_a)))
-        Color.new('blue_a',    invertHslToString(u(blue_a)))
-        Color.new('blue_aa',   invertHslToString(u(blue_aa)))
-        Color.new('blue_d',    invertHslToString(u(blue_d)))
-        Color.new('blue_pdd',  invertHslToString(u(blue_pdd)))
-        Color.new('pink',      invertHslToString(u(pink)))
-        Color.new('pink_d',    invertHslToString(u(pink_d)))
-        Color.new('purple',    invertHslToString(u(purple)))
-        Color.new('purple_a',  invertHslToString(u(purple_a)))
-        Color.new('yellow',    invertHslToString(u(yellow)))
-        Color.new('green',     invertHslToString(u(green)))
-        Color.new('green_a',   invertHslToString(u(green_a)))
+        Color.new('red',       invertHslToString(red))
+        Color.new('red_a',     invertHslToString(red_a))
+        Color.new('red_aa',    invertHslToString(red_aa))
+        Color.new('red_aaa',   invertHslToString(red_aaa))
+        Color.new('orange',    invertHslToString(orange))
+        Color.new('orange_a',  invertHslToString(orange_a))
+        Color.new('orange_aa', invertHslToString(orange_aa))
+        Color.new('blue',      invertHslToString(blue_a))
+        Color.new('blue_a',    invertHslToString(blue_a))
+        Color.new('blue_aa',   invertHslToString(blue_aa))
+        Color.new('blue_d',    invertHslToString(blue_d))
+        Color.new('blue_pdd',  invertHslToString(blue_pdd))
+        Color.new('pink',      invertHslToString(pink))
+        Color.new('pink_d',    invertHslToString(pink_d))
+        Color.new('purple',    invertHslToString(purple))
+        Color.new('purple_a',  invertHslToString(purple_a))
+        Color.new('yellow',    invertHslToString(yellow))
+        Color.new('green',     invertHslToString(green))
+        Color.new('green_a',   invertHslToString(green_a))
+        Color.new('green_aa',  invertHslToString(green_aa))
     else
-        Color.new('background_',         hslToString(u(background_)))
-        Color.new('darkbackground',      hslToString(u(darkbackground)))
-        Color.new('verydarkbackground',  hslToString(u(verydarkbackground)))
-        Color.new('highlightbackground', hslToString(u(highlightbackground)))
+        Color.new('background_',         hslToString(background_))
+        Color.new('darkbackground',      hslToString(darkbackground))
+        Color.new('verydarkbackground',  hslToString(verydarkbackground))
+        Color.new('highlightbackground', hslToString(highlightbackground))
 
-        Color.new('foreground_',   hslToString(u(foreground_)))
-        Color.new('foreground_a',  hslToString(u(foreground_a)))
-        Color.new('foreground_aa', hslToString(u(foreground_aa)))
-        Color.new('grey',          hslToString(u(grey)))
-        Color.new('grey_d',        hslToString(u(grey_d)))
-        Color.new('grey_dd',       hslToString(u(grey_dd)))
+        Color.new('foreground_',   hslToString(foreground_))
+        Color.new('foreground_a',  hslToString(foreground_a))
+        Color.new('foreground_aa', hslToString(foreground_aa))
+        Color.new('grey',          hslToString(grey))
+        Color.new('grey_d',        hslToString(grey_d))
+        Color.new('grey_dd',       hslToString(grey_dd))
 
-        Color.new('red',       hslToString(u(red)))
-        Color.new('red_a',     hslToString(u(red_a)))
-        Color.new('red_aa',    hslToString(u(red_aa)))
-        Color.new('orange',    hslToString(u(orange)))
-        Color.new('blue',      hslToString(u(blue)))
-        Color.new('blue_a',    hslToString(u(blue_a)))
-        Color.new('blue_aa',   hslToString(u(blue_aa)))
-        Color.new('blue_d',    hslToString(u(blue_d)))
-        Color.new('blue_pdd',  hslToString(u(blue_pdd)))
-        Color.new('pink',      hslToString(u(pink)))
-        Color.new('pink_d',    hslToString(u(pink_d)))
-        Color.new('purple',    hslToString(u(purple)))
-        Color.new('purple_a',  hslToString(u(purple_a)))
-        Color.new('yellow',    hslToString(u(yellow)))
-        Color.new('green',     hslToString(u(green)))
-        Color.new('green_a',   hslToString(u(green_a)))
+        Color.new('red',       hslToString(red))
+        Color.new('red_a',     hslToString(red_a))
+        Color.new('red_aa',    hslToString(red_aa))
+        Color.new('red_aaa',   hslToString(red_aaa))
+        Color.new('orange',    hslToString(orange))
+        Color.new('orange_a',  hslToString(orange_a))
+        Color.new('orange_aa', hslToString(orange_aa))
+        Color.new('blue',      hslToString(blue))
+        Color.new('blue_a',    hslToString(blue_a))
+        Color.new('blue_aa',   hslToString(blue_aa))
+        Color.new('blue_d',    hslToString(blue_d))
+        Color.new('blue_pdd',  hslToString(blue_pdd))
+        Color.new('pink',      hslToString(pink))
+        Color.new('pink_d',    hslToString(pink_d))
+        Color.new('purple',    hslToString(purple))
+        Color.new('purple_a',  hslToString(purple_a))
+        Color.new('yellow',    hslToString(yellow))
+        Color.new('green',     hslToString(green))
+        Color.new('green_a',   hslToString(green_a))
+        Color.new('green_aa',  hslToString(green_aa))
     end
 
     Group.new('Normal',      colors.foreground_, colors.background_)
