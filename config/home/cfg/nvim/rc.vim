@@ -60,8 +60,8 @@ function! ToggleQflist()
     wincmd p
 endfunction
 
-nnoremap <silent> <F5>  <cmd>call ToggleQflist()<CR>
-inoremap <silent> <F5>  <cmd>call ToggleQflist()<CR>
+nnoremap <silent> <F5>  <cmd>TroubleToggle<CR>
+inoremap <silent> <F5>  <cmd>TroubleToggle<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> gy    <cmd>lua vim.lsp.buf.type_definition()<CR>

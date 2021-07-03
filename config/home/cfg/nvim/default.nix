@@ -72,6 +72,8 @@ in
       plugins.vim-monochrome
       plugins.vim-colors-pencil
       plugins.vim-photon
+      # Fonts
+      nvim-web-devicons
       # Highlight yank.
       vim-highlightedyank
       # RGB string colorizer.
@@ -235,6 +237,16 @@ in
 
           autocmd! User LspDiagnosticsChanged lua update_diagnostics_qflist()
           autocmd! BufEnter * lua update_diagnostics_qflist()
+        '';
+      }
+      {
+        plugin = plugins.trouble-nvim;
+        optional = true;
+        config = ''
+          packadd trouble.nvim
+          lua << EOF
+            require("trouble").setup {}
+          EOF
         '';
       }
       # Treesitter.

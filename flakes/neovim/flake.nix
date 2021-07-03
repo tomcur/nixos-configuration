@@ -64,6 +64,10 @@
       url = "github:tversteeg/registers.nvim";
       flake = false;
     };
+    nvimTroubleNvim = {
+      url = "github:folke/trouble.nvim";
+      flake = false;
+    };
   };
 
   outputs = input @ { flake-utils, nixpkgs, neovim, ... }:
@@ -76,7 +80,7 @@
         plugins = with input; {
           inherit nvimPlenary nvimPopup nvimLspExtensions nvimTelescope nvimTreesitter nvimTreesitterTextobjects
             nvimMonochrome nvimVimColorsPencil nvimPhoton nvimColorbuddyNvim nvimColorizerLua nvimMinimapVim nvimRegistersNvim
-            nvimCompletionNvim nvimVimLoclistFollow;
+            nvimCompletionNvim nvimVimLoclistFollow nvimTroubleNvim;
         };
       }
     );

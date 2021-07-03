@@ -90,4 +90,10 @@
     src = neovimPlugins.nvimRegistersNvim;
     meta.homepage = "https://github.com/tversteeg/registers.nvim";
   };
+  trouble-nvim = buildVimPluginFrom2Nix rec {
+    pname = "trouble.nvim";
+    version = neovimPlugins.nvimTroubleNvim.lastModifiedDate;
+    src = neovimPlugins.nvimTroubleNvim;
+    meta.homepage = "https://github.com/folke/trouble.nvim";
+  };
 }
