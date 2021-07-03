@@ -14,49 +14,52 @@ end
 
 -- Pale
 local function pa(hsl)
-    local l = hsl[3] + (91.0 - hsl[3]) * 0.6
+    local l = hsl[3] + (95.0 - hsl[3]) * 0.6
     return { hsl[1], hsl[2], l }
 end
 
 -- Accentuate
 local function a(hsl)
-    local s = hsl[2] + (100.0 - hsl[2]) * 0.4
+    local s = hsl[2] + 5.0 -- (100.0 - hsl[2]) * 0.4
+    local l = hsl[3] + 4.0
     return { hsl[1], s, hsl[3] }
 end
 
 -- Dim
 local function d(hsl)
-    local s = hsl[2] * 0.6
+    local s = hsl[2] * 0.5
     return { hsl[1], s, hsl[3] }
 end
 
 -- Color system suffixes:
 -- `p`: pale (higher lightness)
--- `a`: accentuated (more color saturation)
--- `d`: dimmed (less color saturation)
+-- `a`: accentuated
+-- `d`: dimmed
 --
 -- Note that colorbuddy.lua sees "background" and "foreground" as special color names.
 -- As such, we cannot use those.
-local background_ =         p(86,  4.7, 90.1)
-local darkbackground =      p(86,  9.8, 85.7)
-local verydarkbackground =  p(86, 17.0, 81.6)
-local highlightbackground = p(86, 37.1, 83.9)
+local background_ =         p(86,  6.0, 95.0)
+local darkbackground =      p(86, 12.0, 90.0)
+local verydarkbackground =  p(86, 18.0, 85.0)
+local highlightbackground = p(86, 45.0, 85.0)
 
-local grey =    p(77, 19.8, 35.2)
-local grey_d =  p(77, 21.0, 38.0)
-local grey_dd = p(77, 23.0, 43.0)
-
-local red =    p( 12, 50.0, 33.0)
-local orange = p( 21, 50.0, 33.0)
-local blue =   p(231, 50.0, 33.0)
-local pink =   p(335, 50.0, 33.0)
-local purple = p(286, 50.0, 33.0)
-local yellow = p( 77, 50.0, 33.0)
-local green =  p(126, 50.0, 33.0)
-
-local foreground_ =      p(281, 8.8, 20.0)
+local foreground_ =      p(281, 10.0, 10.0)
 local foreground_a =     a(foreground_)
 local foreground_aa =    a(a(foreground_))
+
+local grey =    p(77, 19.0, 33.0)
+local grey_d =  p(77, 19.0, 38.0)
+local grey_dd = p(77, 19.0, 43.0)
+-- local grey_d =  p(77, 21.0, 35.0)
+-- local grey_dd = p(77, 23.0, 40.0)
+
+local red =    p( 12, 82.0, 33.0)
+local orange = p( 21, 82.0, 33.0)
+local blue =   p(231, 82.0, 33.0)
+local pink =   p(335, 82.0, 33.0)
+local purple = p(286, 82.0, 33.0)
+local yellow = p( 77, 82.0, 33.0)
+local green =  p(126, 82.0, 33.0)
 
 local red_a =     a(red)
 local red_aa =    a(a(red))
@@ -79,13 +82,10 @@ local function hslToString(hsl)
 end
 
 -- Inverts colors for light-on-dark mode.
--- Also somewhat reduces the global contrast.
 local function invertHslToString(hsl)
     -- return hslToString(h, s * 0.68, (1.0 - l) * 0.92 + 0.04)
-    local h = hsl[1]
-    local s = hsl[2] * 0.68
-    local l = (100.0 - hsl[3]) * 0.92 + 4.0
-    return hsluv.hsluv_to_hex({ h, s, l })
+    local l = 100.0 - hsl[3]
+    return hsluv.hsluv_to_hex({ hsl[1], hsl[2] * 0.5, l })
 end
 
 function M.setup()
