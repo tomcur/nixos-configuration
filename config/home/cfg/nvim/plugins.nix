@@ -96,4 +96,10 @@
     src = neovimPlugins.nvimTroubleNvim;
     meta.homepage = "https://github.com/folke/trouble.nvim";
   };
+  gitsigns-nvim = buildVimPluginFrom2Nix rec {
+    pname = "gitsigns.nvim";
+    version = neovimPlugins.nvimGitsignsNvim.lastModifiedDate;
+    src = neovimPlugins.nvimGitsignsNvim;
+    meta.homepage = "https://github.com/lewis6991/gitsigns.nvim";
+  };
 }

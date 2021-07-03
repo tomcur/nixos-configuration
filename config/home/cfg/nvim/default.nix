@@ -249,6 +249,23 @@ in
           EOF
         '';
       }
+      {
+        plugin = plugins.gitsigns-nvim;
+        optional = true;
+        config = ''
+          packadd gitsigns.nvim
+          lua << EOF
+          require("gitsigns").setup {
+            signs = {
+              add =       {hl = 'GitSignsAdd'   , text = '┃' },
+              change =    {hl = 'GitSignsChange', text = '┇' },
+              delete =    {hl = 'GitSignsDelete', text = '_' },
+              topdelete = {hl = 'GitSignsDelete', text = '‾' },
+            }
+          }
+          EOF
+        '';
+      }
       # Treesitter.
       {
         plugin = plugins.nvim-treesitter;
