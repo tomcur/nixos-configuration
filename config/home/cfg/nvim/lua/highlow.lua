@@ -262,6 +262,10 @@ function M.setup()
     Group.new("Minimap", colors.foreground_)
 
     Group.new("HighlightedyankRegion", nil, colors.highlightbackground)
+
+    Group.new("GitSignsAdd",    colors.structural_green, colors.darkbackground)
+    Group.new("GitSignsDelete", colors.structural_red,   colors.darkbackground)
+    Group.new("GitSignsChange", colors.structural_blue,  colors.darkbackground)
 end
 
     -- Group.new('Tag',            colors.nord_4,       colors.none,    styles.NONE)
