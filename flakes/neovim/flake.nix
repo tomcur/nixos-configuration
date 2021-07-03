@@ -72,6 +72,10 @@
       url = "github:lewis6991/gitsigns.nvim";
       flake = false;
     };
+    nvimHopNvim = {
+      url = "github:phaazon/hop.nvim";
+      flake = false;
+    };
   };
 
   outputs = input @ { flake-utils, nixpkgs, neovim, ... }:
@@ -84,7 +88,7 @@
         plugins = with input; {
           inherit nvimPlenary nvimPopup nvimLspExtensions nvimTelescope nvimTreesitter nvimTreesitterTextobjects
             nvimMonochrome nvimVimColorsPencil nvimPhoton nvimColorbuddyNvim nvimColorizerLua nvimMinimapVim nvimRegistersNvim
-            nvimCompletionNvim nvimVimLoclistFollow nvimTroubleNvim nvimGitsignsNvim;
+            nvimCompletionNvim nvimVimLoclistFollow nvimTroubleNvim nvimGitsignsNvim nvimHopNvim;
         };
       }
     );

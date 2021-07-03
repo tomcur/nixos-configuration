@@ -31,6 +31,12 @@ let mapleader="\<Space>"
 " Also clear search highlight on escape
 " nnoremap <esc> :noh<return><esc>
 
+" Movement
+map /         <cmd>HopPattern<cr>
+map <leader>d <cmd>HopChar1<cr>
+map <leader>w <cmd>HopWord<cr>
+map <leader>l <cmd>HopLine<cr>
+
 """ Moving lines
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==

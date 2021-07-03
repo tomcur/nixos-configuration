@@ -40,20 +40,11 @@ in
       fzf-vim
       # Movement.
       {
-        plugin = vim-easymotion;
+        plugin = plugins.hop-nvim;
         config = ''
-          let g:EasyMotion_do_mapping = 0
-          let g:EasyMotion_smartcase = 1
-          map  / <Plug>(easymotion-sn)
-          omap / <Plug>(easymotion-tn)
-          map  n <Plug>(easymotion-next)
-          map  N <Plug>(easymotion-prev)
-          map  <leader>d <Plug>(easymotion-bd-f)
-          nmap <leader>d <Plug>(easymotion-overwin-f)
-          map  <leader>w <Plug>(easymotion-bd-w)
-          nmap <leader>w <Plug>(easymotion-overwin-w)
-          map  <leader>j <Plug>(easymotion-j)
-          map  <leader>k <Plug>(easymotion-k)
+          lua << EOF
+            require'hop'.setup()
+          EOF
         '';
       }
       # Languages.
