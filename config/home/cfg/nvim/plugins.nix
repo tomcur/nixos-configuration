@@ -66,12 +66,6 @@
     src = neovimPlugins.nvimVimLoclistFollow;
     meta.homepage = "https://github.com/elbeardmorez/vim-loclist-follow";
   };
-  colorbuddy = buildVimPluginFrom2Nix rec {
-    pname = "colorbuddy.nvim";
-    version = neovimPlugins.nvimColorbuddyNvim.lastModifiedDate;
-    src = neovimPlugins.nvimColorbuddyNvim;
-    meta.homepage = "https://github.com/tjdevries/colorbuddy.nvim";
-  };
   nvim-colorizer-lua = buildVimPluginFrom2Nix rec {
     pname = "colorizer.lua";
     version = neovimPlugins.nvimColorizerLua.lastModifiedDate;

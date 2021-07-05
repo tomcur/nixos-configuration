@@ -126,9 +126,6 @@ in
           nnoremap <silent> ]q     <cmd>cnext<CR>
         '';
       }
-      # Colorscheme framework.
-      plugins.colorbuddy
-
       {
         plugin = plugins.minimap-vim;
         config = ''

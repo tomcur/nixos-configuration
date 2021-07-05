@@ -48,10 +48,6 @@
       url = "github:elbeardmorez/vim-loclist-follow";
       flake = false;
     };
-    nvimColorbuddyNvim = {
-      url = "github:tjdevries/colorbuddy.nvim";
-      flake = false;
-    };
     nvimColorizerLua = {
       url = "github:norcalli/nvim-colorizer.lua";
       flake = false;
@@ -87,7 +83,7 @@
         defaultPackage = packages.neovim;
         plugins = with input; {
           inherit nvimPlenary nvimPopup nvimLspExtensions nvimTelescope nvimTreesitter nvimTreesitterTextobjects
-            nvimMonochrome nvimVimColorsPencil nvimPhoton nvimColorbuddyNvim nvimColorizerLua nvimMinimapVim nvimRegistersNvim
+            nvimMonochrome nvimVimColorsPencil nvimPhoton nvimColorizerLua nvimMinimapVim nvimRegistersNvim
             nvimCompletionNvim nvimVimLoclistFollow nvimTroubleNvim nvimGitsignsNvim nvimHopNvim;
         };
       }
