@@ -177,3 +177,8 @@ function! SynStack()
 endfunc
 
 nmap <leader>s <cmd>call SynStack()<cr>
+
+augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({ higroup = "IncSearch", timeout = 1000 })
+augroup END

@@ -65,8 +65,6 @@ in
       plugins.vim-photon
       # Fonts
       nvim-web-devicons
-      # Highlight yank.
-      vim-highlightedyank
       # RGB string colorizer.
       plugins.nvim-colorizer-lua
       # Popup finder.
