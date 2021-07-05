@@ -80,7 +80,7 @@ colors.bg =         { 57,  7.0, 93.0 }
 colors.darkbg =     darken(colors.bg, 0.05)
 colors.verydarkbg = darken(colors.bg, 0.10)
 
-colors.highlightbackground = { colors.bg[1], 50.0, 82.0 }
+colors.highlightbg = { colors.bg[1], 50.0, 82.0 }
 
 colors.fg = { 281, 10.0, 7.0 }
 colors.fg_a =  saturate(brighten(colors.fg, 0.1), 0.33)
