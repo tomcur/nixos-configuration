@@ -168,3 +168,12 @@ function! s:ui_enter()
 endfunction
 
 au UIEnter * call s:ui_enter()
+
+function! SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
+
+nmap <leader>s <cmd>call SynStack()<cr>
