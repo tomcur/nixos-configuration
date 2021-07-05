@@ -104,6 +104,9 @@ function M.setupWithColors(colors)
     highlight(groups, "LSPDiagnosticsDefaultWarning",     groups.Warning) -- { link = "Warning" })
     highlight(groups, "LSPDiagnosticsDefaultError",       groups.Error) -- { link = "Error" })
 
+    highlight(groups, "TelescopeSelection", groups.Visual)
+    highlight(groups, "TelescopeMatching", { fg = colors.red_a, style = "bold" })
+
     highlight(groups, "HopNextKey",   { fg = colors.red_a, style = "bold" })
     highlight(groups, "HopNextKey1",  { fg = colors.red_a, style = "bold" })
     highlight(groups, "HopNextKey2",  { fg = colors.red_p, style = "bold" })
