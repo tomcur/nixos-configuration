@@ -32,7 +32,7 @@ let mapleader="\<Space>"
 " nnoremap <esc> :noh<return><esc>
 
 " Movement
-map /         <cmd>HopPattern<cr>
+" map /         <cmd>HopPattern<cr> " only searches currently visible part
 map <leader>d <cmd>HopChar1<cr>
 map <leader>w <cmd>HopWord<cr>
 map <leader>l <cmd>HopLine<cr>
