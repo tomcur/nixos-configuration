@@ -1,122 +1,122 @@
 local M = {}
 
-local function highlight(group, hi)
+local function highlight(groups, group, hi)
+    groups[group] = hi
     if hi.link then
-        vim.cmd("highlight! link " .. group .. " " .. hi.link)
+        vim.cmd("highlight link " .. group .. " " .. hi.link)
     else
         local fg = "guifg=" .. (hi.fg or "NONE")
         local bg = "guibg=" .. (hi.bg or "NONE")
         local sp = "guisp=" .. (hi.sp or "NONE")
         local style = "gui=" .. (hi.style or "NONE")
 
-        vim.cmd("highlight! " .. group .. " " .. fg .. " " .. bg .. " " .. sp .. " " .. style)
+        vim.cmd("highlight " .. group .. " " .. fg .. " " .. bg .. " " .. sp .. " " .. style)
     end
 end
 
 function M.setupWithColors(colors)
     local groups = {}
 
-    groups.Normal =       { fg = colors.fg, bg = colors.bg }
-    groups.Comment =      { fg = colors.grey_d, style = "italic"} 
-    groups.Operator =     { fg = colors.grey }
-    groups.Delimiter =    { fg = colors.grey }
-    groups.MatchParen =   { bg = colors.highlightbg }
-    groups.Keyword =      { fg = colors.purple_a }
-    groups.Conditional =  { fg = colors.purple, style = "bold" }
-    groups.Repeat =       { link = "Conditional" }
-    groups.Statement =    { link = "Conditional" }
-    groups.Variable =     { link = "Normal" }
-    groups.Function =     { fg = colors.blue_a }
-    groups.Type =         { fg = colors.pink, style = "bold" }
-    groups.Define =       { link = "Type" }
-    groups.Include =      { fg = colors.pink_d }
-    groups.Identifier =   { fg = colors.blue_d }
-    groups.Label =        { link = "Identifier" }
-    groups.Constant =     { fg = colors.blue }
-    groups.Number =       { fg = colors.orange }
-    groups.Float =        { link = "Number" }
-    groups.String =       { link = "Constant" }
-    groups.Character =    { link = "Constant" }
-    groups.Boolean =      { link = "Conditional" }
-    groups.Exception =    { fg = colors.red, style = "bold" }
+    -- For some reason, using `highlight link` sometimes fails.
+    -- For now just "link" the tables in lua.
 
-    groups.Special = { fg = colors.yellow }
-    groups.PreProc = { fg = colors.yellow }
+    highlight(groups, "Normal",        { fg = colors.fg, bg = colors.bg })
+    highlight(groups, "Comment",       { fg = colors.grey_d, style = "italic"})
+    highlight(groups, "Operator",      { fg = colors.grey })
+    highlight(groups, "Delimiter",     { fg = colors.grey })
+    highlight(groups, "MatchParen",    { bg = colors.highlightbg })
+    highlight(groups, "Keyword",       { fg = colors.purple_a })
+    highlight(groups, "Conditional",   { fg = colors.purple, style = "bold" })
+    highlight(groups, "Repeat",        groups.Conditional) -- { link = "Conditional" })
+    highlight(groups, "Statement",     groups.Conditional) -- { link = "Conditional" })
+    highlight(groups, "Variable",      groups.Normal) -- { link = "Normal" })
+    highlight(groups, "Function",      { fg = colors.blue_a })
+    highlight(groups, "Type",          { fg = colors.pink, style = "bold" })
+    highlight(groups, "Define",        groups.Type) -- { link = "Type" })
+    highlight(groups, "Include",       { fg = colors.pink_d })
+    highlight(groups, "Identifier",    { fg = colors.blue_d })
+    highlight(groups, "Label",         groups.Identifier) -- { link = "Identifier" })
+    highlight(groups, "Constant",      { fg = colors.blue })
+    highlight(groups, "Number",        { fg = colors.orange })
+    highlight(groups, "Float",         groups.Number) -- { link = "Number" })
+    highlight(groups, "String",        groups.Constant) -- { link = "Constant" })
+    highlight(groups, "Character",     groups.Constant) -- { link = "Constant" })
+    highlight(groups, "Boolean",       groups.Conditional) -- { link = "Conditional" })
+    highlight(groups, "Exception",     { fg = colors.red, style = "bold" })
 
-    groups.Error =      { fg = colors.red_aa, style = "bold" }
-    groups.ErrorMsg =   { link = "Error" }
-    groups.Warning =    { fg = colors.orange, style = "bold" }
-    groups.WarningMsg = { link = "Warning" }
+    highlight(groups, "Special", { fg = colors.yellow })
+    highlight(groups, "PreProc", { fg = colors.yellow })
+
+    highlight(groups, "Error",      { fg = colors.red_aa, style = "bold" })
+    highlight(groups, "ErrorMsg",   groups.Error) -- { link = "Error" })
+    highlight(groups, "Warning",    { fg = colors.orange, style = "bold" })
+    highlight(groups, "WarningMsg", groups.Warning) -- { link = "Warning" })
 
     -- Vim coloring:
-    groups.Cursor =  { fg = colors.bg, bg = colors.blue_d }
-    groups.iCursor = { link = "Cursor" }
-    groups.vCursor = { link = "Cursor" }
-    groups.cCursor = { link = "Cursor" }
-    groups.iCursor = { link = "Cursor" }
-    groups.TermCursor = { link = "Cursor" }
-    groups.VitalOverCommandLineCursor = { link = "Cursor" }
+    highlight(groups, "Cursor",  { fg = colors.bg, bg = colors.blue_d })
+    highlight(groups, "iCursor", groups.Cursor) -- { link = "Cursor" })
+    highlight(groups, "vCursor", groups.Cursor) -- { link = "Cursor" })
+    highlight(groups, "cCursor", groups.Cursor) -- { link = "Cursor" })
+    highlight(groups, "iCursor", groups.Cursor) -- { link = "Cursor" })
+    highlight(groups, "TermCursor", groups.Cursor) -- { link = "Cursor" })
+    highlight(groups, "VitalOverCommandLineCursor", groups.Cursor) -- { link = "Cursor" })
 
-    groups.Visual = { fg = colors.bg, bg = colors.blue_d }
+    highlight(groups, "Visual", { fg = colors.bg, bg = colors.blue_d })
 
-    groups.SpecialKey = { fg = colors.blue_a, style = "italic" }
+    highlight(groups, "SpecialKey", { fg = colors.blue_a, style = "italic" })
 
-    groups.CursorColumn = { bg = colors.highlightbg }
-    groups.CursorLine =   { link = "CursorColumn" }
-    groups.Warnings =     { fg = colors.orange, style = "bold "}
+    highlight(groups, "CursorColumn", { bg = colors.highlightbg })
+    highlight(groups, "CursorLine",   groups.CursorColumn) -- { link = "CursorColumn" })
+    highlight(groups, "Warnings",     { fg = colors.orange, style = "bold "})
 
-    groups.SignColumn =   { fg = colors.grey_d, bg = colors.darkbg }
-    groups.LineNr =       { link = "SignColumn" }
-    groups.CursorLineNr = { fg = colors.blue, bg = colors.bg, style = "bold" }
+    highlight(groups, "SignColumn",   { fg = colors.grey_d, bg = colors.darkbg })
+    highlight(groups, "LineNr",       groups.SignColumn) -- { link = "SignColumn" })
+    highlight(groups, "CursorLineNr", { fg = colors.blue, bg = colors.bg, style = "bold" })
 
-    groups.FoldColumn = { fg = colors.fg, bg = groups.SignColumn.bg }
+    highlight(groups, "FoldColumn", { fg = colors.fg, bg = groups.SignColumn.bg })
 
-    groups.Folded = { fg = colors.fg, bg = colors.verydarkbg }
+    highlight(groups, "Folded", { fg = colors.fg, bg = colors.verydarkbg })
 
-    groups.StatusLine =   { fg = colors.bg, bg = colors.blue_d }
-    groups.StatusLineNC = { fg = colors.fg, bg = colors.blue_pp }
+    highlight(groups, "StatusLine",   { fg = colors.bg, bg = colors.blue_d })
+    highlight(groups, "StatusLineNC", { fg = colors.fg, bg = colors.blue_pp })
 
-    groups.VertSplit = { fg = colors.highlightbg, bg = colors.bg }
+    highlight(groups, "VertSplit", { fg = colors.highlightbg, bg = colors.bg })
 
-    groups.Search =     { fg = colors.fg, bg = colors.highlightbg, style = "bold" }
-    groups.IncSearch =  { fg = colors.highlightbg, bg = colors.fg }
-    groups.Substitute = { fg = colors.highlightbg, bg = colors.fg }
+    highlight(groups, "Search",     { fg = colors.fg, bg = colors.highlightbg, style = "bold" })
+    highlight(groups, "IncSearch",  { fg = colors.highlightbg, bg = colors.fg })
+    highlight(groups, "Substitute", { fg = colors.highlightbg, bg = colors.fg })
 
-    groups.Directory = { link = "Include" }
+    highlight(groups, "Directory", groups.Include) -- { link = "Include" })
 
-    groups.Title =    { fg = colors.purple }
-    groups.Question = { fg = colors.green }
-    groups.MoreMsg =  { link = "Question" }
-    groups.NonText =  { fg = colors.red_aa }
+    highlight(groups, "Title",    { fg = colors.purple })
+    highlight(groups, "Question", { fg = colors.green })
+    highlight(groups, "MoreMsg",  groups.Question) -- { link = "Question" })
+    highlight(groups, "NonText",  { fg = colors.red_aa })
 
-    groups.Pmenu =       { fg = colors.fg, bg = colors.verydarkbg }
-    groups.NormalFloat = { fg = colors.fg, bg = colors.verydarkbg }
+    highlight(groups, "Pmenu",       { fg = colors.fg, bg = colors.verydarkbg })
+    highlight(groups, "NormalFloat", { fg = colors.fg, bg = colors.verydarkbg })
 
     -- Some plugin coloring:
-    groups.TSVariableBuiltin = { link = "Constant" }
+    highlight(groups, "TSVariableBuiltin", groups.Constant) -- { link = "Constant" })
 
-    groups.LSPDiagnosticsDefaultHint =        { link = "Comment" }
-    groups.LSPDiagnosticsDefaultInformation = { link = "Normal" }
-    groups.LSPDiagnosticsDefaultWarning =     { link = "Warning" }
-    groups.LSPDiagnosticsDefaultError =       { link = "Error" }
+    highlight(groups, "LSPDiagnosticsDefaultHint",        groups.Comment) -- { link = "Comment" })
+    highlight(groups, "LSPDiagnosticsDefaultInformation", groups.Normal) -- { link = "Normal" })
+    highlight(groups, "LSPDiagnosticsDefaultWarning",     groups.Warning) -- { link = "Warning" })
+    highlight(groups, "LSPDiagnosticsDefaultError",       groups.Error) -- { link = "Error" })
 
-    groups.HopNextKey =   { fg = colors.red_a, style = "bold" }
-    groups.HopNextKey1 =  { fg = colors.red_a, style = "bold" }
-    groups.HopNextKey2 =  { fg = colors.red_p, style = "bold" }
-    groups.HopUnmatched = { fg = colors.grey_dd }
+    highlight(groups, "HopNextKey",   { fg = colors.red_a, style = "bold" })
+    highlight(groups, "HopNextKey1",  { fg = colors.red_a, style = "bold" })
+    highlight(groups, "HopNextKey2",  { fg = colors.red_p, style = "bold" })
+    highlight(groups, "HopUnmatched", { fg = colors.grey_dd })
 
-    groups.MinimapBase = { fg = colors.grey_dd }
-    groups.Minimap =     { fg = colors.fg }
+    highlight(groups, "MinimapBase", { fg = colors.grey_dd })
+    highlight(groups, "Minimap",     { fg = colors.fg })
 
-    groups.HighlightedyankRegion = { bg = colors.highlightbg }
+    highlight(groups, "HighlightedyankRegion", { bg = colors.highlightbg })
 
-    groups.GitSignsAdd =    { fg = colors.structural_green, bg = colors.darkbg }
-    groups.GitSignsDelete = { fg = colors.structural_red,   bg = colors.darkbg }
-    groups.GitSignsChange = { fg = colors.structural_blue,  bg = colors.darkbg }
-
-    for group, hi in pairs(groups) do
-        highlight(group, hi)
-    end
+    highlight(groups, "GitSignsAdd",    { fg = colors.structural_green, bg = colors.darkbg })
+    highlight(groups, "GitSignsDelete", { fg = colors.structural_red,   bg = colors.darkbg })
+    highlight(groups, "GitSignsChange", { fg = colors.structural_blue,  bg = colors.darkbg })
 end
 
 return M
