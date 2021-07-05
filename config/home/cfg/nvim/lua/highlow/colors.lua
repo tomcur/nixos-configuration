@@ -79,6 +79,7 @@ local colors = {}
 colors.bg =         { 57,  7.0, 93.0 }
 colors.darkbg =     darken(colors.bg, 0.05)
 colors.verydarkbg = darken(colors.bg, 0.10)
+colors.visualbg =   { 48, 42.0, 87.0 }
 
 colors.highlightbg = { colors.bg[1], 50.0, 82.0 }
 

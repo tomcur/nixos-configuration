@@ -61,7 +61,7 @@ function M.setupWithColors(colors)
     highlight(groups, "TermCursor", groups.Cursor) -- { link = "Cursor" })
     highlight(groups, "VitalOverCommandLineCursor", groups.Cursor) -- { link = "Cursor" })
 
-    highlight(groups, "Visual", { fg = colors.bg, bg = colors.blue_d })
+    highlight(groups, "Visual", { bg = colors.visualbg })
 
     highlight(groups, "SpecialKey", { fg = colors.blue_a, style = "italic" })
 
