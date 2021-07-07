@@ -11,6 +11,10 @@ set statusline=%f%=%r%m%y\ %P\ %l,%c
 set nojoinspaces
 set spelllang=en_us,nl
 
+" Searching
+set ignorecase
+set smartcase
+
 " Some LSP servers have issues with backup files, see #649
 set nobackup
 set nowritebackup
