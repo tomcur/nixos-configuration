@@ -7,16 +7,13 @@
       multiplier: 3
     font:
       normal:
-        family: iosevka
+        family: Iosevka
         style: book
       bold:
-        family: iosevka
         style: bold
       italic:
-        family: iosevka
         style: book italic
       bold_italic:
-        family: iosevka
         style: bold italic
       size: 10.5
     custom_cursor_colors: true
