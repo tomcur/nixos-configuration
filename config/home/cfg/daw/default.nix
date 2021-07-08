@@ -12,9 +12,12 @@ let
     # # python3 = pkgs.python3;
     # # python3Packages = pkgs.python3Packages;
   };
+  bitwigOverlay = self: super: {
+    bitwig-studio4 = super.pkgs.callPackage ./bitwig-studio4.nix {};
+  };
   unstable = import inputs.unstable {
     system = pkgs.stdenv.hostPlatform.system;
-    overlays = [ systemLibOverlay ];
+    overlays = [ systemLibOverlay bitwigOverlay ];
     inherit (pkgs) config;
   };
   master = import inputs.patched {
@@ -53,6 +56,7 @@ in
   ]) ++ (with unstable; [
     # vcv-rack
     # Plugin host
+    bitwig-studio4
     (carla.override {
       # python3Packages = pkgs.python3Packages;
       # qtbase = pkgs.qt5.qtbase;
@@ -61,7 +65,7 @@ in
       # gtk3 = pkgs.gtk3;
     })
   ]) ++ (with master; [
-    bitwig-studio
+    # bitwig-studio4
     # Wine VST bridge
     # # (master.airwave.override {
     # #   qt5 = pkgs.qt5;
