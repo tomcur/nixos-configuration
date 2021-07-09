@@ -68,6 +68,23 @@ local function blend(hsl1, hsl2, hue_blend, saturation_blend, lightness_blend)
     }
 end
 
+local function modularDistance(a, b, m)
+    return math.min((a - b) % m, (b - a) % m)
+end
+
+--- Calculate color distance of two hues and saturations
+--- (distance is between -1.0 and 1.0).
+-- @param hs1 table of { hue, saturation }
+-- @param hs2 table of { hue, saturation }
+local function colorDistance(hs1, hs2)
+    local h1, s1 = unpack(hs1)
+    local h2, s2 = unpack(hs2)
+
+    local hueDist = modularDistance(h1, h2, 360) / 180 * 2.0 - 1.0
+    local saturationDist = math.abs(s1 - s2) / 100.0
+    return hueDist * saturationDist
+end
+
 -- Color system suffixes:
 -- `p`: paled
 -- `a`: accentuated
@@ -108,12 +125,22 @@ local hues = {
 }
 
 for color, hue in pairs(hues) do
-    hsl = { hue, 37.0, 38.0 }
+    local saturation = 37.0
+    local bgDistance = colorDistance(
+        { colors.bg[1], colors.bg[2] },
+        { hue, saturation }
+    )
+
+    hsl = {
+        hue,
+        saturation,
+        37.0 - (bgDistance > 0.0 and 0.0 or 4.0),
+    }
     colors[color] = hsl
 
-    colors[color .. "_a"] =   saturate(brighten(hsl, 0.03), 0.3)
-    colors[color .. "_aa"] =  saturate(brighten(hsl, 0.06), 0.6)
-    colors[color .. "_aaa"] = saturate(brighten(hsl, 0.1), 1.0)
+    colors[color .. "_a"] =   saturate(brighten(hsl, 0.00), 0.40)
+    colors[color .. "_aa"] =  saturate(brighten(hsl, 0.04), 0.50)
+    colors[color .. "_aaa"] = saturate(brighten(hsl, 0.06), 1.00)
 
     colors[color .. "_d"] = desaturate(hsl, 0.5)
 
@@ -130,7 +157,7 @@ end
 -- Inverts colors for light-on-dark mode.
 function M.invertHslToString(hsl)
     local l = 100.0 - hsl[3]
-    return hsluv.hsluv_to_hex({ hsl[1], hsl[2] * 0.5, l })
+    return hsluv.hsluv_to_hex({ hsl[1], hsl[2], l })
 end
 
 return M
