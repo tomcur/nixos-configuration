@@ -98,17 +98,17 @@ colors.structural_blue =   { 258, 98.0, 40.0 }
 colors.structural_purple = { 286, 98.0, 40.0 }
 
 local hues = {
-    red = 12,
-    orange = 21,
-    blue = 231,
+    red = 15,
+    orange = 31,
+    blue = 257,
     pink = 335,
-    purple = 286,
+    purple = 287,
     yellow = 77,
-    green = 126,
+    green = 101,
 }
 
 for color, hue in pairs(hues) do
-    hsl = { hue, 86.0, 29.0 }
+    hsl = { hue, 68.0, 27.0 }
     colors[color] = hsl
 
     colors[color .. "_a"] =   saturate(brighten(hsl, 0.05), 0.3)
