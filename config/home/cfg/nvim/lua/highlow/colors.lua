@@ -76,16 +76,16 @@ end
 -- Colors are tuples of { hue, saturation, value } in the HSLuv color space.
 local colors = {}
 
-colors.bg =         { 57,  7.0, 93.0 }
-colors.darkbg =     darken(colors.bg, 0.05)
-colors.verydarkbg = darken(colors.bg, 0.10)
-colors.visualbg =   { 48, 42.0, 87.0 }
+colors.bg =         { 62,  39.0, 94.5 }
+colors.darkbg =     saturate(darken(colors.bg, 0.03), 0.1)
+colors.verydarkbg = saturate(darken(colors.bg, 0.06), 0.2)
+colors.visualbg =   { 54, 67.0, 87.5 }
 
-colors.highlightbg = { colors.bg[1], 50.0, 82.0 }
+colors.highlightbg = saturate(darken(colors.bg, 0.1), 0.2)
 
-colors.fg = { 281, 10.0, 7.0 }
-colors.fg_a =  saturate(brighten(colors.fg, 0.1), 0.33)
-colors.fg_aa = saturate(brighten(colors.fg, 0.2), 0.66)
+colors.fg = { 210, 22.0, 24.0 }
+colors.fg_a =  saturate(brighten(colors.fg, 0.033), 0.33)
+colors.fg_aa = saturate(brighten(colors.fg, 0.066), 0.66)
 
 colors.grey =    blend(colors.fg, colors.bg, 0.5, 0.2, 0.2)
 colors.grey_d =  blend(colors.fg, colors.bg, 0.6, 0.3, 0.4)
@@ -100,20 +100,20 @@ colors.structural_purple = { 286, 98.0, 40.0 }
 local hues = {
     red = 15,
     orange = 31,
-    blue = 257,
-    pink = 335,
-    purple = 287,
     yellow = 77,
     green = 101,
+    blue = 257,
+    purple = 287,
+    pink = 335,
 }
 
 for color, hue in pairs(hues) do
-    hsl = { hue, 68.0, 27.0 }
+    hsl = { hue, 37.0, 38.0 }
     colors[color] = hsl
 
-    colors[color .. "_a"] =   saturate(brighten(hsl, 0.05), 0.3)
-    colors[color .. "_aa"] =  saturate(brighten(hsl, 0.1), 0.6)
-    colors[color .. "_aaa"] = saturate(brighten(hsl, 0.2), 1.0)
+    colors[color .. "_a"] =   saturate(brighten(hsl, 0.03), 0.3)
+    colors[color .. "_aa"] =  saturate(brighten(hsl, 0.06), 0.6)
+    colors[color .. "_aaa"] = saturate(brighten(hsl, 0.1), 1.0)
 
     colors[color .. "_d"] = desaturate(hsl, 0.5)
 
