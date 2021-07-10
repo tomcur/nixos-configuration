@@ -9,12 +9,13 @@ step_size=5
 
 notify() {
     # Bar code from https://gist.github.com/sebastiencs/5d7227f388d93374cebdf72e783fbd6a
+    bar_size=20
     if [ "$1" == "mute" ]; then
         icon="audio-volume-muted"
-        message=""
+        bar_str="$(seq -s "─" 0 $bar_size | sed 's/[0-9]//g')"
+        message="|${bar_str}"
     else
         icon="audio-volume-high"
-	bar_size=20
 	pre_bar=$(($1 * $bar_size / 100))
 	post_bar=$(($bar_size - $pre_bar))
         pre_bar_str="$(seq -s "─" 0 $pre_bar | sed 's/[0-9]//g')"
