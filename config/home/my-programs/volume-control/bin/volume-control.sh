@@ -33,37 +33,21 @@ notify() {
 
 case $1 in
     up)
-        # Calculate new volume.
-        vol=$(amixer sget Master | grep -oP "\[\d*%\]" | head -n 1 | tr -d "[]%")
-        new_vol=$((vol+step_size))
-	new_vol=$((new_vol < 100 ? new_vol : 100))
-
-        # Ensure we're unmuted.
-        amixer set Master on > /dev/null
-
-        amixer sset Master ${new_vol}% > /dev/null
-
-        notify ${new_vol}
+        volume=$(pamixer --increase ${step_size} --unmute --get-volume)
+        notify $volume
         ;;
     down)
-        vol=$(amixer sget Master | grep -oP "\[\d*%\]" | head -n 1 | tr -d "[]%")
-        new_vol=$((vol-step_size))
-	new_vol=$((new_vol > 0 ? new_vol : 0))
-
-        amixer sset Master ${new_vol}% > /dev/null
-
-        notify ${new_vol}
+        volume=$(pamixer --decrease ${step_size} --get-volume)
+        notify $volume
         ;;
     toggle-mute)
-        state=$(amixer sget Master)
-        muted=$(echo -e $state | grep -oP "\[(on|off)\]" | head -n 1 | tr -d "[]")
+        state=($(pamixer --toggle-mute --get-mute --get-volume))
+        mute=${state[0]}
+        volume=${state[1]}
 
-        if [ "${muted}" == "on" ]; then
-            amixer sset Master off
+        if [ "$mute" = "true" ]; then
             notify mute
         else
-            amixer sset Master on
-            vol=$(echo -e $state | grep -oP "\[\d*%\]" | head -n 1 | tr -d "[]%")
-            notify ${vol}
+            notify $volume
         fi
 esac

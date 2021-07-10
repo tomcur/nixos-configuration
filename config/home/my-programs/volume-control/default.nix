@@ -11,7 +11,7 @@ pkgs.stdenv.mkDerivation rec {
     cp ${src}/bin/volume-control.sh $out/bin/volume-control
     chmod +x $out/bin/*
     wrapProgram $out/bin/volume-control --prefix PATH : ${
-      lib.makeBinPath [ pkgs.alsaUtils.out pkgs.glib.bin ]
+      lib.makeBinPath [ pkgs.pamixer.out pkgs.glib.bin ]
     }
   '';
 }
