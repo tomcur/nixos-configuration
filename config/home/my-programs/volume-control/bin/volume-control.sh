@@ -16,8 +16,8 @@ notify() {
         message="|${bar_str}"
     else
         icon="audio-volume-high"
-	pre_bar=$(($1 * $bar_size / 100))
-	post_bar=$(($bar_size - $pre_bar))
+        pre_bar=$(($1 * $bar_size / 100))
+        post_bar=$(($bar_size - $pre_bar))
         pre_bar_str="$(seq -s "─" 0 $pre_bar | sed 's/[0-9]//g')"
         post_bar_str="$(seq -s "─" 0 $post_bar | sed 's/[0-9]//g')"
         message="${pre_bar_str}|${post_bar_str}"
@@ -41,6 +41,7 @@ case $1 in
         ;;
     toggle-mute)
         state=($(pamixer --toggle-mute --get-mute --get-volume))
+        ;;
 esac
 
 mute=${state[0]}
