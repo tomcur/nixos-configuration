@@ -34,21 +34,20 @@ notify() {
 
 case $1 in
     up)
-        volume=$(pamixer --increase ${step_size} --unmute --get-volume)
-        notify $volume
+        state=($(pamixer --increase ${step_size} --unmute --get-mute --get-volume))
         ;;
     down)
-        volume=$(pamixer --decrease ${step_size} --get-volume)
-        notify $volume
+        state=($(pamixer --decrease ${step_size} --get-mute --get-volume))
         ;;
     toggle-mute)
         state=($(pamixer --toggle-mute --get-mute --get-volume))
-        mute=${state[0]}
-        volume=${state[1]}
-
-        if [ "$mute" = "true" ]; then
-            notify mute
-        else
-            notify $volume
-        fi
 esac
+
+mute=${state[0]}
+volume=${state[1]}
+
+if [ "$mute" = "true" ]; then
+    notify mute
+else
+    notify $volume
+fi
