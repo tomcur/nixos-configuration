@@ -1,6 +1,20 @@
-{ inputs, pkgs, ... }: {
+{ inputs, lib, pkgs, ... }: {
   environment.systemPackages = [ pkgs.qjackctl pkgs.pavucontrol ];
   security.rtkit.enable = true;
+
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_5_12;
+  boot.kernelParams = [ "threadirqs" ];
+  boot.kernel.sysctl = { "vm.swappiness" = 10; };
+  # boot.kernelPatches = [{
+  #   name = "preempt-config";
+  #   patch = null;
+  #   extraConfig = ''
+  #     PREEMPT y
+  #     PREEMPT_VOLUNTARY n
+  #   '';
+  # }];
+  powerManagement.cpuFreqGovernor = lib.mkForce "performance";
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
