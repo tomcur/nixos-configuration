@@ -1,6 +1,8 @@
 { inputs, pkgs, ... }:
 let
   systemLibOverlay = self: super: {
+    # alsa-lib = pkgs.alsa-lib;
+    pulseaudio = pkgs.pulseaudio;
     libjack2 = pkgs.libjack2;
     jack2 = pkgs.jack2;
     # gtk2 = pkgs.gtk2;
