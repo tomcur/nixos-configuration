@@ -29,6 +29,18 @@ let
   };
 in
 {
+  home.sessionVariables =
+    let genPath = dir: "$HOME/.${dir}:$HOME/.nix-profile/lib/${dir}:/etc/profiles/per-user/$USERNAME/lib/${dir}:/run/current-system/sw/lib/${dir}";
+    in
+    {
+      DSSI_PATH = genPath "dssi";
+      LADSPA_PATH = genPath "ladspa";
+      LV2_PATH = genPath "lv2";
+      LXVST_PATH = genPath "lxvst";
+      VST_PATH = genPath "vst";
+      VST3_PATH = genPath "vst3";
+
+    };
   home.packages = (with pkgs; [
     # Generic LV2
     jalv
