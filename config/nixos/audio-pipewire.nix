@@ -24,9 +24,9 @@
     config.pipewire = {
       "context.properties" = {
         "default.clock.rate" = 44100;
-        "default.clock.quantum" = 1024;
-        "default.clock.min-quantum" = 64;
-        "default.clock.max-quantum" = 2048;
+        "default.clock.quantum" = 2048;
+        "default.clock.min-quantum" = 512;
+        "default.clock.max-quantum" = 8192;
       };
     };
     config.jack = {
@@ -35,23 +35,23 @@
       };
     };
     config.pipewire-pulse = {
-      "context.modules" = [
-        {
-          name = "libpipewire-module-protocol-pulse";
-          args = {
-            "pulse.min.req" = "32/44100";
-            "pulse.default.req" = "32/44100";
-            "pulse.max.req" = "32/44100";
-            "pulse.min.quantum" = "32/44100";
-            "pulse.max.quantum" = "32/44100";
-            "server.address" = [ "unix:native" ];
-          };
-        }
-      ];
-      "stream.properties" = {
-        "node.latency" = "32/44100";
-        "resample.quality" = 1;
-      };
+      # "context.modules" = [
+      #   {
+      #     name = "libpipewire-module-protocol-pulse";
+      #     args = {
+      #       "pulse.min.req" = "32/44100";
+      #       "pulse.default.req" = "32/44100";
+      #       "pulse.max.req" = "32/44100";
+      #       "pulse.min.quantum" = "32/44100";
+      #       "pulse.max.quantum" = "32/44100";
+      #       "server.address" = [ "unix:native" ];
+      #     };
+      #   }
+      # ];
+      # "stream.properties" = {
+      #   "node.latency" = "32/44100";
+      #   "resample.quality" = 1;
+      # };
     };
   };
 }
