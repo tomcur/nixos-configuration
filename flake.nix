@@ -5,7 +5,7 @@
     stable.url = "github:NixOS/nixpkgs/nixos-21.05";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    patched.url = "path:./nixpkgs";
+    patched.url = "git+file:///etc/nixos/nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     flake-utils.url = "github:numtide/flake-utils";
     agenix = {
