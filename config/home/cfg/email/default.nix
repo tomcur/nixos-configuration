@@ -13,8 +13,59 @@ in
   programs.astroid = {
     enable = true;
     externalEditor =
-      "urxvt -e nvim -c 'set ft=mail' '+set fileencoding=utf-8' '+set ff=unix' '+set enc=utf-8' '+set fo+=w' %1";
+      "alacritty -e nvim -c 'set ft=mail' '+set fileencoding=utf-8' '+set ff=unix' '+set enc=utf-8' '+set fo+=w' %1";
+    extraConfig = {
+      editor.markdown_processor = "${pkgs.cmark}/bin/cmark";
+      accounts."${accounts.thomas-churchman-nl.name}" = with (accounts.thomas-churchman-nl);
+        {
+          save_drafts_to = "${maildir.absPath}/${folders.drafts}/cur/";
+          save_sent_to = "${maildir.absPath}/${folders.sent}/cur/";
+        };
+      accounts."${accounts.thomas-kepow-org.name}" = with (accounts.thomas-kepow-org);
+        {
+          save_drafts_to = "${maildir.absPath}/${folders.drafts}/cur/";
+          save_sent_to = "${maildir.absPath}/${folders.sent}/cur/";
+        };
+      startup = {
+        queries = {
+          "inbox" = "tag:inbox";
+          "z-todo" = "tag:todo";
+          "z-flagged" = "tag:flagged";
+        };
+      };
+    };
   };
+
+  xdg.configFile."astroid/keybindings".text = ''
+    thread_index.run(echo %1, echo undo %1)=w
+    thread_index.run(hooks::thread-tag-toggle flagged %1, hooks::thread-tag-toggle flagged %1)=s
+    thread_index.run(hooks::thread-tag-toggle todo %1, hooks::thread-tag-toggle todo %1)=M-t
+    thread_index.run(hooks::thread-tag-toggle trash %1, hooks::thread-tag-toggle trash %1)=d
+    thread_view.run(hooks::message-tag-toggle flagged %2, hooks::message-tag-toggle flagged %2)=s
+    thread_view.run(hooks::message-tag-toggle todo %2, hooks::message-tag-toggle todo %2)=M-t
+    thread_view.run(hooks::message-tag-toggle trash %2, hooks::message-tag-toggle trash %2)=d
+  '';
+  xdg.configFile."astroid/hooks/thread-tag-toggle".source =
+    let
+      notmuch = "${pkgs.notmuch}/bin/notmuch";
+    in
+    pkgs.substituteAll {
+      src = ./astroid/thread-tag-toggle;
+      isExecutable = true;
+      inherit notmuch;
+      inherit (pkgs) bash;
+    };
+  xdg.configFile."astroid/hooks/message-tag-toggle".source =
+    let
+      notmuch = "${pkgs.notmuch}/bin/notmuch";
+    in
+    pkgs.substituteAll {
+      src = ./astroid/message-tag-toggle;
+      isExecutable = true;
+      inherit notmuch;
+      inherit (pkgs) bash;
+    };
+
   programs.neomutt.enable = true;
   programs.neomutt.editor = "nvim";
   programs.neomutt.sort = "threads";
@@ -159,6 +210,7 @@ in
       bind index,pager          \J  sidebar-next
       bind index,pager          \K  sidebar-prev
       bind index,pager          \O  sidebar-open
+      bind index,pager          b   sidebar-toggle-visible
 
       ## Tagging
       macro index,pager a  "<modify-labels>!inbox\n"      "Toggle the 'inbox' tag"

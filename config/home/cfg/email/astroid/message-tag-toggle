@@ -1,0 +1,7 @@
+#!@bash@/bin/sh
+
+if [[ $(@notmuch@ search id:$2 and tag:$1) ]]; then
+    @notmuch@ tag -$1 id:$2
+else
+    notmuch tag +$1 id:$2
+fi
