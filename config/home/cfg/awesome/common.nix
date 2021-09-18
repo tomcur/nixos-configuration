@@ -1,4 +1,4 @@
-{ lib, pkgs, awesomePlugins, ... }:
+{ lib, pkgs, awesomePkg, awesomePlugins, ... }:
 let
   lain = pkgs.luaPackages.toLuaModule (pkgs.stdenv.mkDerivation rec {
     pname = "lain";
@@ -28,10 +28,7 @@ in
   # xsession.windowManager.command = "";
   xsession.windowManager.awesome = {
     enable = true;
-    package = pkgs.callPackage ./awesome.nix {
-      cairo = pkgs.cairo.override { xcbSupport = true; };
-      inherit (pkgs.texFunctions) fontsConf;
-    };
+    package = awesomePkg;
     luaModules = [ lain freedesktop ];
   };
 

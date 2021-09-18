@@ -71,6 +71,7 @@
               patchedPkgs = import patched { inherit system; config = { allowUnfree = true; }; };
               neovimPkg = neovim.defaultPackage.${system};
               neovimPlugins = neovim.plugins.${system};
+              awesomePkg = awesome.defaultPackage.${system};
               awesomePlugins = awesome.plugins.${system};
               deployrsPkgs = inputs.deploy-rs.packages.${system};
             };
@@ -104,6 +105,7 @@
               patchedPkgs = import patched { inherit system; config = { allowUnfree = true; }; };
               neovimPkg = neovim.defaultPackage.${system};
               neovimPlugins = neovim.plugins.${system};
+              awesomePkg = awesome.defaultPackage.${system};
               awesomePlugins = awesome.plugins.${system};
               deployrsPkgs = inputs.deploy-rs.${system}.packages;
             };

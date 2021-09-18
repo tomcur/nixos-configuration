@@ -6,6 +6,7 @@
 , libxkbcommon, xcbutilxrm, hicolor-icon-theme
 , asciidoctor
 , fontsConf
+, awesomeSrc
 , gtk3Support ? false, gtk3 ? null
 }:
 
@@ -16,9 +17,18 @@ stdenv.mkDerivation rec {
   lgi = luaPackages.lgi;
   lua = luaPackages.lua;
   ldoc = luaPackages.ldoc;
+  # pname = "awesome";
+  # version = "4319b161103a81403ba3516924e86e13ff33c036";
   pname = "awesome";
   version = awesomeSrc.lastModifiedDate;
-  src = awesomeSrc;
+  src = "${awesomeSrc}";
+
+  # src = fetchFromGitHub {
+  #   owner = "awesomewm";
+  #   repo = "awesome";
+  #   rev = "${version}";
+  #   sha256 = "sha256-AL2gfw8QIG6FzoGUFWKw3EL3Z06nsOeQmD4C3yob7Nw=";
+  # };
 
   nativeBuildInputs = [
     cmake
@@ -80,7 +90,7 @@ stdenv.mkDerivation rec {
     description = "Highly configurable, dynamic window manager for X";
     homepage    = "https://awesomewm.org/";
     license     = licenses.gpl2Plus;
-    maintainers = with maintainers; [ lovek323 rasendubi ];
+    maintainers = with maintainers; [];
     platforms   = platforms.linux;
   };
 }
