@@ -96,7 +96,7 @@
     };
   };
 
-  time.timeZone = "Europe/London";
+  time.timeZone = "Europe/Amsterdam";
 
   environment.systemPackages = with pkgs; [
     # Drives.
