@@ -206,10 +206,6 @@
           menu = 700;
           css = 700;
         };
-        slants = {
-          upright = "normal";
-          italic = "italic";
-        };
       };
     })
     inconsolata
