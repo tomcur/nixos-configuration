@@ -2,11 +2,10 @@
 let
   plugins = pkgs.callPackage ./plugins.nix {
     inherit neovimPlugins;
-    buildVimPluginFrom2Nix = (patchedPkgs.vimUtils.override {
+    buildVimPluginFrom2Nix = (pkgs.vimUtils.override {
       inherit (neovimPkg);
     }).buildVimPluginFrom2Nix;
   };
-  neovim = neovimPkg;
 in
 {
   programs.neovim = {
@@ -14,8 +13,9 @@ in
     package = neovimPkg;
     extraConfig = builtins.readFile ./rc.vim;
     extraPackages = (with pkgs; [
-      python37Packages.black
-      python37Packages.python-language-server
+      python3Packages.black
+      python3Packages.isort
+      python3Packages.python-lsp-server
       # nodePackages.javascript-typescript-langserver
       nodePackages.typescript-language-server # tsserver
       nodePackages.prettier
@@ -164,32 +164,6 @@ in
           " is in nixpkgs repo.
           packadd nvim-lspconfig
           lua << EOF
-          vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-            vim.lsp.diagnostic.on_publish_diagnostics, {
-              underline = true,
-              virtual_text = false,
-              signs = true,
-              update_in_insert = false,
-            }
-          )
-
-          require'lspconfig'.pyls.setup{
-            root_dir = function(fname)
-              return vim.fn.getcwd()
-            end;
-            on_attach=require'completion'.on_attach
-          }
-          require'lspconfig'.rust_analyzer.setup{
-            on_attach=require'completion'.on_attach
-          }
-          require'lspconfig'.tsserver.setup{
-            on_attach=require'completion'.on_attach
-          }
-          require'lspconfig'.bashls.setup{
-            on_attach=require'completion'.on_attach
-          }
-          -- require'lspconfig'.rnix.setup{}
-
           update_diagnostics_qflist = function()
             local buf = vim.api.nvim_get_current_buf()
             local diagnostics = vim.lsp.diagnostic.get(buf)
@@ -219,11 +193,25 @@ in
               vim.lsp.util.set_qflist(items)
             end
           end
+
+          require'lspconfig'.pylsp.setup{
+            on_attach=require'completion'.on_attach
+          }
+          require'lspconfig'.rust_analyzer.setup{
+            on_attach=require'completion'.on_attach
+          }
+          require'lspconfig'.tsserver.setup{
+            on_attach=require'completion'.on_attach
+          }
+          require'lspconfig'.bashls.setup{
+            on_attach=require'completion'.on_attach
+          }
           EOF
 
           autocmd! User LspDiagnosticsChanged lua update_diagnostics_qflist()
           autocmd! BufEnter * lua update_diagnostics_qflist()
         '';
+        # -- require'lspconfig'.rnix.setup{}
       }
       {
         plugin = plugins.trouble-nvim;

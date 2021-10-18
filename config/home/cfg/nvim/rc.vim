@@ -165,7 +165,9 @@ function! s:ui_enter()
 
   " I'm not sure why this is necessary, but otherwise LSP diagnostics are not
   " highlighted:
-  lua require('vim.lsp.diagnostic')._define_default_signs_and_highlights()
+  " lua require('vim.diagnostic')._define_default_signs_and_highlights()
+  " Some things changed: https://github.com/neovim/neovim/pull/15585
+  " https://github.com/neovim/neovim/commit/a5bbb932f9094098bd656d3f6be3c58344576709
 
   " Color string colorizer
   lua require'colorizer'.setup()
