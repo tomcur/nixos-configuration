@@ -36,8 +36,7 @@
         format = "<b>%a</b>\\n%s\\n%b";
         padding = 24;
         horizontal_padding = 24;
-        # not yet in released version:
-        # text_icon_padding = 16;
+        text_icon_padding = 16;
       };
       shortcuts = {
         close = "ctrl+space";
