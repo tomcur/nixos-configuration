@@ -138,8 +138,15 @@ function! s:ui_enter()
   if get(v:event, "chan") == 0
       set termguicolors
   else
-      set guifont=iosevka:h12.0
+      set guifont=iosevka:h14.0
   endif
+  if exists("g:neovide")
+      let g:neovide_cursor_animate_command_line=v:false
+      let g:neovide_cursor_animate_in_insert_mode=v:false
+      let g:neovide_cursor_animation_length=0.06
+      let g:neovide_window_floating_blur=v:false
+      let g:neovide_window_floating_opacity=1.0
+  end
   " let g:neosolarized_vertSplitBgTrans = 1
   " let g:neosolarized_bold = 1
   " let g:neosolarized_underline = 1

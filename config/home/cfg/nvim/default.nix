@@ -8,6 +8,10 @@ let
   };
 in
 {
+  home.packages = [
+    patchedPkgs.neovide
+  ];
+
   programs.neovim = {
     enable = true;
     package = neovimPkg;
@@ -255,6 +259,7 @@ in
   home.sessionVariables = {
     VISUAL = "nvim";
     EDITOR = "nvim";
+    NeovideMultiGrid = "1";
   };
 
   home.file =
