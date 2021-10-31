@@ -93,14 +93,15 @@ end
 -- Colors are tuples of { hue, saturation, value } in the HSLuv color space.
 local colors = {}
 
-colors.bg =         { 62,  39.0, 94.5 }
-colors.darkbg =     saturate(darken(colors.bg, 0.03), 0.1)
-colors.verydarkbg = saturate(darken(colors.bg, 0.06), 0.2)
-colors.visualbg =   { 54, 67.0, 87.5 }
+colors.bg =         { 62,  41.0, 95.0 }
+colors.darkbg =     saturate(darken(colors.bg, 0.04), 0.13)
+colors.verydarkbg = saturate(darken(colors.bg, 0.08), 0.26)
+colors.visualbg =   { 54, 68.0, 80.0 }
 
-colors.highlightbg = saturate(darken(colors.bg, 0.1), 0.2)
+colors.highlightbg = saturate(darken(colors.bg, 0.2), 0.4)
 
-colors.fg = { 210, 22.0, 24.0 }
+-- colors.fg = { 240, 13.0, 22.0 }
+colors.fg = { (colors.bg[1] + 180) % 360, 22.0, 22.0 }
 colors.fg_a =  saturate(brighten(colors.fg, 0.033), 0.33)
 colors.fg_aa = saturate(brighten(colors.fg, 0.066), 0.66)
 
