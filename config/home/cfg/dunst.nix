@@ -15,7 +15,11 @@
         vertical_alignment = "center";
         word_wrap = true;
         ignore_newline = false;
-        geometry = "680x5-24+49";
+        width = 600;
+        height = 150;
+        origin = "top-right";
+        notification_limit = 5;
+        offset = "24x49";
         shrink = false;
         show_indicators = true;
         line_height = 1;

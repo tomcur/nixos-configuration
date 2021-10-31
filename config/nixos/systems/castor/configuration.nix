@@ -216,13 +216,30 @@
     };
   };
 
+  systemd.services.dynamic-dns = {
+    description = "Update Dynamic DNS entry";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network-online.target" ];
+    startLimitIntervalSec = 300;
+    startLimitBurst = 3;
+    script = ''
+      ${pkgs.curl}/bin/curl -6 "https://castor.he.uint.one:RaMgXhIWYQ2mCp3h8rRa@dyn.dns.he.net/nic/update?hostname=castor.he.uint.one"
+    '';
+  };
+
+  systemd.timers.dynamic-dns = {
+    wantedBy = [ "timers.target" ];
+    partOf = [ "dynamic-dns.service" ];
+    timerConfig.OnCalendar = "hourly";
+  };
+
   # Virtualisation.
   # virtualisation.virtualbox.host = { enable = true; };
   virtualisation.docker.enable = true;
   virtualisation.docker.enableNvidia = true;
   virtualisation.libvirtd = {
     enable = true;
-    qemuVerbatimConfig = ''
+    qemu.verbatimConfig = ''
       seccomp_sandbox = 0
     '';
   };
