@@ -176,5 +176,6 @@
     ./cfg/dunst.nix
     ./cfg/redshift
     ./cfg/rofi
+    ./cfg/aspell
   ];
 }
