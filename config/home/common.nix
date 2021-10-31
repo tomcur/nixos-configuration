@@ -36,7 +36,7 @@
     ltrace
     gdb
     lldb
-    gdbgui
+    # gdbgui
     # TeX.
     (texlive.combine {
       inherit (texlive)
@@ -170,7 +170,7 @@
     ./cfg/alacritty
     ./cfg/kitty
     ./cfg/nvim
-    ./cfg/vscode
+    # ./cfg/vscode
     ./cfg/gtk.nix
     ./cfg/xresources
     ./cfg/dunst.nix
