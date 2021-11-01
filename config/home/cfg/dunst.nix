@@ -16,7 +16,6 @@
         word_wrap = true;
         ignore_newline = false;
         width = 600;
-        height = 150;
         origin = "top-right";
         notification_limit = 5;
         offset = "24x49";
