@@ -84,6 +84,8 @@
   ]) ++ (with patchedPkgs; [
   ]) ++ [ inputs.agenix.defaultPackage.x86_64-linux ];
 
+  home.keyboard = null; # Managed by NixOS.
+
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
