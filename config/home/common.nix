@@ -27,8 +27,6 @@
     libreoffice
     # Reference management.
     zotero
-    # Cloud.
-    seafile-client
     # Compiling.
     gcc
     gnumake

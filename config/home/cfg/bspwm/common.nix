@@ -45,7 +45,6 @@
       (castor)
         (bspc rule -a \* -o desktop=0 && thunderbird) &
         (bspc rule -a \* -o desktop=0 && keepassxc) &
-        (bspc rule -a \* -o desktop=0 && seafile-applet) &
         sleep 2
         (bspc rule -a \* -o desktop=m && alacritty -e ncmpcpp) &
         sleep 1
@@ -58,7 +57,6 @@
       (pollux)
         (bspc rule -a Daily -o desktop=0 && thunderbird) &
         (bspc rule -a keepassxc -o desktop=0 && keepassxc) &
-        (bspc rule -a seafile-applet -o desktop=0 && seafile-applet) &
       ;;
         (*)   echo "unknown host"
       ;;
