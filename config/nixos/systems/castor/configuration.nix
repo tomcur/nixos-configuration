@@ -243,8 +243,12 @@
     startLimitIntervalSec = 300;
     startLimitBurst = 3;
     script = ''
-      ${pkgs.curl}/bin/curl -6 "https://castor.he.uint.one:RaMgXhIWYQ2mCp3h8rRa@dyn.dns.he.net/nic/update?hostname=castor.he.uint.one"
+      ${pkgs.curl}/bin/curl -6 "https://castor.dyn.uint.one:$DYNDNS_PASS@dyn.dns.he.net/nic/update?hostname=castor.dyn.uint.one"
+      ${pkgs.curl}/bin/curl -4 "https://castor.dyn.uint.one:$DYNDNS_PASS@dyn.dns.he.net/nic/update?hostname=castor.dyn.uint.one"
     '';
+    serviceConfig = {
+      EnvironmentFile = "/run/agenix/dyndns-castor";
+    };
   };
 
   systemd.timers.dynamic-dns = {
@@ -273,6 +277,10 @@
   age.secrets.email-thomas-kepow-org = {
     file = ../../../../secrets/email-thomas-churchman-nl.age;
     owner = "thomas";
+  };
+  age.secrets.dyndns-castor = {
+    file = ../../../../secrets/dyndns-castor.age;
+    owner = "root";
   };
 
   # Remote-build user.

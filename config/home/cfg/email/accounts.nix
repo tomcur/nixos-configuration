@@ -41,11 +41,11 @@ in
     primary = true;
     address = deobfuscate "thomas^churchman$nl";
     userName = deobfuscate "thomas^churchman$nl";
-    passwordCommand = passwordCommandGen "/run/secrets/email-thomas-churchman-nl";
+    passwordCommand = passwordCommandGen "/run/agenix/email-thomas-churchman-nl";
   } // sharedSettings;
   accounts.email.accounts.thomas-kepow-org = {
     address = deobfuscate "thomas^kepow$org";
     userName = deobfuscate "thomas^kepow$org";
-    passwordCommand = passwordCommandGen "/run/secrets/email-thomas-kepow-org";
+    passwordCommand = passwordCommandGen "/run/agenix/email-thomas-kepow-org";
   } // sharedSettings;
 }
