@@ -19,12 +19,17 @@
     ark
     calc
     leafpad
+    scrot
     transmission-gtk
+    tokei
+    nix-du
+    nix-prefetch-github
     # Documents.
     nomacs
     okular
     zathura
     libreoffice
+    gimp
     # Reference management.
     zotero
     # Compiling.
@@ -48,6 +53,8 @@
         hyperref capt-of;
     })
     biber # For LaTeX.
+    # Environments.
+    steam-run
   ]) ++ (with unstablePkgs; [
     # Fuzzy finder.
     fzf
