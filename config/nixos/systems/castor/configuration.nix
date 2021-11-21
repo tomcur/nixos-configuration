@@ -84,6 +84,7 @@
       '';
       allowedTCPPorts = [
         80
+        443
         61167
         1883 # MQTT
         22000 # Syncthing listening
@@ -188,8 +189,10 @@
       enable = true;
       user = "thomas";
       virtualHosts = {
-        "84.85.215.83" = {
-          root = "/home/thomas/web";
+        "castor.uint.one" = {
+          addSSL = true;
+          enableACME = true;
+          root = "/var/lib/www";
           extraConfig = ''
             autoindex on;
           '';
@@ -202,8 +205,25 @@
       enable = true;
     };
 
+    postgresql = {
+      enable = true;
+      ensureUsers = [
+        {
+          name = "thomas";
+          ensurePermissions = {
+            "ALL TABLES IN SCHEMA public" = "ALL PRIVILEGES";
+          };
+        }
+      ];
+    };
+
     # teamviewer.enable = true;
     ratbagd.enable = true;
+  };
+
+  security.acme.acceptTerms = true;
+  security.acme.certs = {
+    "castor.uint.one".email = "thomas@kepow.org";
   };
 
   # Idle hdd automatically after timeout.
