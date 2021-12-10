@@ -167,36 +167,6 @@ in
           " https://github.com/neovim/nvim-lsp/commit/1e20c0b29e67e6cd87252cf8fd697906622bfdd3#diff-1cc82f5816863b83f053f5daf2341daf
           " is in nixpkgs repo.
           lua << EOF
-          update_diagnostics_qflist = function()
-            local buf = vim.api.nvim_get_current_buf()
-            local diagnostics = vim.lsp.diagnostic.get(buf)
-            local items = {}
-            if diagnostics then
-              for _, d in ipairs(diagnostics) do
-                table.insert(items, {
-                  bufnr = buf,
-                  lnum = d.range.start.line + 1,
-                  col = d.range.start.character + 1,
-                  text = d.message,
-                })
-              end
-
-              table.sort(items, function(i1, i2)
-                if i1.bufnr == i2.bufnr then
-                  if i1.lnum == i2.lnum then
-                    return i1.col < i2.col
-                  else
-                    return i1.lnum < i2.lnum
-                  end
-                else
-                  return i1.bufnr < i2.bufnr
-                end
-              end)
-
-              vim.lsp.util.set_qflist(items)
-            end
-          end
-
           require'lspconfig'.pylsp.setup{
             on_attach=require'completion'.on_attach
           }
@@ -210,9 +180,6 @@ in
             on_attach=require'completion'.on_attach
           }
           EOF
-
-          autocmd! User LspDiagnosticsChanged lua update_diagnostics_qflist()
-          autocmd! BufEnter * lua update_diagnostics_qflist()
         '';
         # -- require'lspconfig'.rnix.setup{}
       }

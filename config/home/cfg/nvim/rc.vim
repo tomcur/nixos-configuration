@@ -58,18 +58,6 @@ nmap <leader>fg <cmd>lua require('telescope.builtin').git_files()<cr>
 nmap <leader>fr <cmd>lua require('telescope.builtin').live_grep()<cr>
 
 "" Diagnostics
-function! ToggleQflist()
-    for winnr in range(1, winnr('$'))
-        if getwinvar(winnr, '&syntax') == 'qf'
-            cclose
-            return
-        endif
-    endfor
-
-    copen
-    wincmd p
-endfunction
-
 nnoremap <silent> <F5>  <cmd>TroubleToggle<CR>
 inoremap <silent> <F5>  <cmd>TroubleToggle<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
