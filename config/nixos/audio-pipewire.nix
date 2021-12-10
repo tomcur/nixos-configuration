@@ -2,7 +2,7 @@
   environment.systemPackages = [ pkgs.qjackctl pkgs.pavucontrol ];
   security.rtkit.enable = true;
 
-  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_5_14;
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_5_15;
   boot.kernelParams = [ "threadirqs" ];
   boot.kernel.sysctl = { "vm.swappiness" = 10; };
   # boot.kernelPatches = [{
