@@ -129,6 +129,40 @@
           lib.nixosSystem {
             inherit system specialArgs modules;
           };
+        pollux =
+          let
+            system = "x86_64-linux";
+            specialArgs = {
+              inherit inputs system;
+              stablePkgs = import stable { inherit system; config = { allowUnfree = true; }; };
+              unstablePkgs = import unstable { inherit system; config = { allowUnfree = true; }; };
+              patchedPkgs = import patched { inherit system; config = { allowUnfree = true; }; };
+              neovimPkg = neovim.defaultPackage.${system};
+              neovimPlugins = neovim.plugins.${system};
+              awesomePkg = awesome.defaultPackage.${system};
+              awesomePlugins = awesome.plugins.${system};
+              deployrsPkgs = inputs.deploy-rs.${system}.packages;
+            };
+            modules = [
+              {
+                nixpkgs.overlays = [ ];
+                nixpkgs.config.allowUnfree = true;
+              }
+              (import ./config/nixos/systems/pollux)
+              inputs.home-manager.nixosModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.extraSpecialArgs = specialArgs;
+                home-manager.users.thomas = import ./config/home/systems/pollux/default.nix;
+              }
+              nixos-hardware.nixosModules.dell-xps-13-9360
+              unstable.nixosModules.notDetected
+            ];
+          in
+          lib.nixosSystem {
+            inherit system specialArgs modules;
+          };
       };
     };
 }
