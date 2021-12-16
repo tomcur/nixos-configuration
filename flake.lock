@@ -35,11 +35,11 @@
       },
       "locked": {
         "narHash": "sha256-w4Ib9iZTw50tETEpW7t92HT2TSF0wH82qua7LoiZgS8=",
-        "path": "./flakes/awesome",
+        "path": "/etc/nixos/flakes/awesome",
         "type": "path"
       },
       "original": {
-        "path": "./flakes/awesome",
+        "path": "/etc/nixos/flakes/awesome",
         "type": "path"
       }
     },
@@ -239,11 +239,11 @@
       },
       "locked": {
         "narHash": "sha256-Ps483Q7+ojtGjzVobpgeCpHrR9fpjrP9VjNNchJ3RgU=",
-        "path": "./flakes/neovim",
+        "path": "/etc/nixos/flakes/neovim",
         "type": "path"
       },
       "original": {
-        "path": "./flakes/neovim",
+        "path": "/etc/nixos/flakes/neovim",
         "type": "path"
       }
     },
