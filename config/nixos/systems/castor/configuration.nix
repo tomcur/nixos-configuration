@@ -226,13 +226,22 @@
     "castor.uint.one".email = "thomas@kepow.org";
   };
 
-  # Idle hdd automatically after timeout.
+  # Idle hdd automatically.
+    systemd.services.hd-idle-boot = {
+    description = "HD spin-down on boot";
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.hd-idle}/bin/hd-idle -t /dev/disk/by-id/wwn-0x50014ee0aebd0c5f";
+    };
+  };
   systemd.services.hd-idle = {
     description = "HD spin-down";
     wantedBy = [ "multi-user.target" ];
+    after = [ "hd-idle-boot" ];
     serviceConfig = {
-      Type = "forking";
-      ExecStart = "${pkgs.hd-idle}/bin/hd-idle -i 0 -a sdb -i 450";
+      Type = "simple";
+      ExecStart = "${pkgs.hd-idle}/bin/hd-idle -i 0 -a /dev/disk/by-id/wwn-0x50014ee0aebd0c5f -i 450";
     };
   };
 
