@@ -1085,7 +1085,8 @@ awful.spawn("thunderbird", { tag = tags[10] })
 awful.spawn("seafile-applet", { tag = tags[10] })
 awful.spawn("Discord", { tag = tags[6] })
 
-awful.spawn("cool-retro-term -e vis", { tag = tags[12], below = true })
-awful.spawn("alacritty -e ncmpcpp", { tag = tags[12], above = true })
+-- awful.spawn("alacritty -e vis", { tag = tags[12], below = true })
+-- awful.spawn("alacritty -e ncmpcpp", { tag = tags[12], above = true })
+awful.spawn("alacritty -e ncmpcpp", { tag = tags[12] })
 
 awful.spawn("paper")

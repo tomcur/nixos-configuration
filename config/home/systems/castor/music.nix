@@ -55,8 +55,6 @@
   home.packages = (with pkgs; [
     # MPD controller.
     ncmpcpp
-    # Fancy terminal emulator for fun.
-    cool-retro-term
     # Audio visualizer.
     cli-visualizer
   ]);
