@@ -79,7 +79,11 @@
             };
             modules = [
               {
-                nixpkgs.overlays = [ (self: super: { notmuch = patched.legacyPackages."x86_64-linux".notmuch; }) ];
+                nixpkgs.overlays = [
+                  (self: super: {
+                    notmuch = patched.legacyPackages."x86_64-linux".notmuch;
+                  })
+                ];
                 nixpkgs.config.allowUnfree = true;
               }
               (import ./config/nixos/systems/castor)
