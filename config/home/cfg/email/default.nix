@@ -9,7 +9,7 @@ in
   services.imapnotify.enable = true;
   programs.msmtp.enable = true;
   programs.notmuch.enable = true;
-  programs.alot.enable = true;
+  # programs.alot.enable = true;
   programs.astroid = {
     enable = true;
     externalEditor =
