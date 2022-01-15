@@ -177,6 +177,7 @@
     ./cfg/alacritty
     ./cfg/kitty
     ./cfg/nvim
+    ./cfg/emacs
     ./cfg/vscode
     ./cfg/gtk.nix
     ./cfg/xresources
