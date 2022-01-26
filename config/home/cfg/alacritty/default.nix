@@ -42,7 +42,8 @@
           cyan:    '0xA1EFE4'
           white:   '0xF9F8F5'
     colors: *monokai_dark
-    background_opacity: 0.9
+    window:
+      opacity: 0.9
     key_bindings:
       - { key: V,        mods: Control|Alt, action: Paste            }
       - { key: C,        mods: Control|Alt, action: Copy             }
