@@ -16,7 +16,6 @@
       bold_italic:
         style: bold italic
       size: 10.5
-    custom_cursor_colors: true
     schemes:
       monokai_dark: &monokai_dark
         cursor:
