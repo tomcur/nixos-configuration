@@ -147,15 +147,50 @@ in
       plugins.registers-nvim
 
       # Aid completion
+      luasnip
       {
-        plugin = plugins.completion-nvim;
+        plugin = cmp-nvim-lsp;
         optional = true;
         config = ''
-          packadd completion-nvim
-          inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-          inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-          set completeopt=menuone,noinsert,noselect
-          set shortmess+=c
+          packadd cmp-nvim-lsp
+        '';
+      }
+      {
+        plugin = cmp-path;
+        optional = true;
+        config = ''
+          packadd cmp-path
+        '';
+      }
+      {
+        plugin = nvim-cmp;
+        optional = true;
+        config = ''
+          packadd nvim-cmp
+          set completeopt=menu,menuone,noselect
+          lua <<EOF
+            local cmp = require'cmp'
+            cmp.setup({
+              snippet = {
+                -- REQUIRED - you must specify a snippet engine
+                expand = function(args)
+                  -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+                  require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+                end,
+              },
+              sources = cmp.config.sources({
+                { name = 'nvim_lsp' },
+                { name = 'path' },
+                { name = 'luasnip' },
+              }),
+              mapping = {
+                ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+              },
+              experimental = {
+                ghost_text = true,
+              }
+            })
+          EOF
         '';
       }
 
@@ -167,18 +202,19 @@ in
           " https://github.com/neovim/nvim-lsp/commit/1e20c0b29e67e6cd87252cf8fd697906622bfdd3#diff-1cc82f5816863b83f053f5daf2341daf
           " is in nixpkgs repo.
           lua << EOF
-          require'lspconfig'.pylsp.setup{
-            on_attach=require'completion'.on_attach
-          }
-          require'lspconfig'.rust_analyzer.setup{
-            on_attach=require'completion'.on_attach
-          }
-          require'lspconfig'.tsserver.setup{
-            on_attach=require'completion'.on_attach
-          }
-          require'lspconfig'.bashls.setup{
-            on_attach=require'completion'.on_attach
-          }
+            local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+            require'lspconfig'.pylsp.setup{
+              capabilities = capabilities
+            }
+            require'lspconfig'.rust_analyzer.setup{
+              capabilities = capabilities
+            }
+            require'lspconfig'.tsserver.setup{
+              capabilities = capabilities
+            }
+            require'lspconfig'.bashls.setup{
+              capabilities = capabilities
+            }
           EOF
         '';
         # -- require'lspconfig'.rnix.setup{}
