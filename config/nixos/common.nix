@@ -387,6 +387,7 @@
   };
 
   xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-kde ];
 
   # Support 3D acceleration for 32-bit programs.
   hardware.opengl.driSupport32Bit = true;
@@ -420,5 +421,5 @@
     extraGroups = [ "wheel" "networkmanager" "video" "docker" "wireshark" ];
     openssh.authorizedKeys.keyFiles = [ ./keys/thomas.pub ];
   };
-  nix.trustedUsers = [ "root" "thomas" ];
+  nix.settings.trusted-users = [ "root" "thomas" ];
 }

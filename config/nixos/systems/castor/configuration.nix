@@ -301,7 +301,7 @@
       ../../keys/root_argo_ed25519_key.pub
     ];
   };
-  nix.trustedUsers = [ "remote-builder" ];
+  nix.settings.trusted-users = [ "remote-builder" ];
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
