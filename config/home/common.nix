@@ -147,6 +147,7 @@
   programs.mpv = {
     enable = true;
     config = {
+      keep-open = "yes";
       # OSD.
       "--osd-on-seek" = "msg-bar";
       # Fuzzy sub name matching for autoload.
