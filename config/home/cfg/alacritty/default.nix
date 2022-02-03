@@ -15,7 +15,7 @@ in
       multiplier: 3
     font:
       normal:
-        family: Iosevka
+        family: Iosevka Extended
         style: book
       bold:
         style: bold
@@ -28,6 +28,10 @@ in
       monokai_dark: &monokai_dark
         cursor:
           cursor: '0xF8F8F2'
+          foreground: CellBackground
+        vi_mode_cursor:
+          cursor: '0xF8F8F2'
+          foreground: CellBackground
         primary:
           background: '0x272822'
           foreground: '0xF8F8F2'
