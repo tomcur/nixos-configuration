@@ -68,8 +68,7 @@
     # Terminal.
     zsh
     # Terminal emulator.
-    rxvt_unicode
-    alacritty
+    xterm # system-wide fallback
     # Tools
     wget
     neovim # (vim_configurable.override {})
