@@ -1,6 +1,14 @@
 { unstablePkgs, ... }:
+let alacritty = unstablePkgs.alacritty.overrideAttrs (prev: {
+  postPatch = ''
+    ${prev.postPatch}
+    sed -i 's/pub const MIN_CURSOR_CONTRAST: f64 = .*;/pub const MIN_CURSOR_CONTRAST: f64 = 0.0;/g' \
+      alacritty/src/display/content.rs
+  '';
+});
+in
 {
-  home.packages = [ unstablePkgs.alacritty ];
+  home.packages = [ alacritty ];
   xdg.configFile."alacritty/alacritty.yml".text = ''
     scrolling:
       history: 50000
