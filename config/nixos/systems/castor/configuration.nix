@@ -238,7 +238,7 @@
   systemd.services.hd-idle = {
     description = "HD spin-down";
     wantedBy = [ "multi-user.target" ];
-    after = [ "hd-idle-boot" ];
+    after = [ "hd-idle-boot.service" ];
     serviceConfig = {
       Type = "simple";
       ExecStart = "${pkgs.hd-idle}/bin/hd-idle -i 0 -a /dev/disk/by-id/wwn-0x50014ee0aebd0c5f -i 450";
