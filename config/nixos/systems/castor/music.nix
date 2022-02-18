@@ -5,6 +5,7 @@
       pkgs.mopidy-mpd
       pkgs.mopidy-local
       pkgs.mopidy-iris
+      pkgs.mopidy-spotify
     ];
     configuration = ''
       [audio]
@@ -23,6 +24,8 @@
         /home/srv/music/artists
       scan_follow_symlinks = true
     '';
-    # ${config.users.home.homeDirectory}/music
+    extraConfigFiles = [
+      "/run/agenix/mopidy-secret-config"
+    ];
   };
 }
