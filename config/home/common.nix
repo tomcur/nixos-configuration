@@ -79,7 +79,7 @@
     (python3.withPackages (python-packages: with python-packages; [ numpy ]))
     # Chat.
     element-desktop
-    discord
+    # discord
     # Music.
     spotify
     # Mapping.
@@ -176,7 +176,7 @@
     ./cfg/zsh
     ./cfg/picom
     ./cfg/alacritty
-    ./cfg/kitty
+    # ./cfg/kitty
     ./cfg/nvim
     ./cfg/emacs
     ./cfg/vscode
