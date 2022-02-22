@@ -15,6 +15,12 @@
       enabled = true
       hostname = ::
 
+      [iris]
+      enabled = true
+      country = NL
+      locale = en_EN
+      snapcast_enabled = false
+
       [file]
       enabled = false
 
