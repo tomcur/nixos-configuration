@@ -291,6 +291,10 @@
     file = ../../../../secrets/dyndns-castor.age;
     owner = "root";
   };
+  age.secrets.mopidy-secret-config = {
+    file = ../../../../secrets/mopidy-secret-config.age;
+    owner = "mopidy";
+  };
 
   # Remote-build user.
   users.users.remote-builder = {
