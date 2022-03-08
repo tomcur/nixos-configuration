@@ -185,6 +185,7 @@
                 nixpkgs.config.allowUnfree = true;
               }
               (import ./config/nixos/systems/router)
+              agenix.nixosModules.age
               # nixos-hardware.nixosModules.dell-xps-13-9360
               unstable.nixosModules.notDetected
             ];

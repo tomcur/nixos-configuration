@@ -21,6 +21,14 @@ in
     "net.ipv6.conf.all.use_tempaddr" = 2;
     "net.ipv6.conf.all.accept_ra" = 1;
   };
+  # boot.extraModulePackages = [ config.boot.kernelPackages.wireguard ];
+
+  age.secrets.wireguard-router-private = {
+    file = ../../../../secrets/wireguard-router-private.age;
+    owner = "root";
+    group = "systemd-network";
+    mode = "0440";
+  };
 
   networking.hostName = "router";
   networking.domain = "home.arpa";
@@ -63,6 +71,33 @@ in
           Description = "Secure network";
         };
         vlanConfig.Id = 200;
+      };
+      "24-wg0" = {
+        netdevConfig = {
+          Kind = "wireguard";
+          MTUBytes = "1300";
+          Name = "wg0";
+        };
+        extraConfig = ''
+          [WireGuard]
+          PrivateKeyFile=/run/agenix/wireguard-router-private
+          ListenPort=51820
+
+          [WireGuardPeer]
+          # castor
+          PublicKey=FIfmo6T2wwr9D1bP6lksDHEY5tRGzMm4Yj3Bq6F15ls=
+          AllowedIPs=10.4.1.1
+
+          [WireGuardPeer]
+          # pollux
+          PublicKey=/0gO1Thob6JSd9ryTtHpXCDiFgFYT6QiQ7FCgpk120U=
+          AllowedIPs=10.4.1.2
+
+          [WireGuardPeer]
+          # op3
+          PublicKey=TxkX5E9dGaocs501n6nEfLjOY0gHZCYNacjEusF2mVg=
+          AllowedIPs=10.4.1.3
+        '';
       };
     };
     networks = {
@@ -129,6 +164,17 @@ in
         #   RequiredForOnline = "routable";
         # };
       };
+      "33-wg0" = {
+        matchConfig.Name = "wg0";
+        address = [
+          "10.4.0.1/16"
+        ];
+        networkConfig = {
+          IPForward = "yes";
+        };
+        extraConfig = ''
+        '';
+      };
     };
   };
 
@@ -172,7 +218,7 @@ in
       "8.8.8.8"
     ];
     extraConfig = ''
-      interface=${if_lan},${if_laniptv}
+      interface=${if_lan},${if_laniptv},wg0
 
       domain=dyn.home.arpa
 
@@ -186,6 +232,10 @@ in
       dhcp-option=${if_laniptv},28,10.2.255.255
       dhcp-option=${if_laniptv},60,IPTV_RG
       dhcp-option=${if_laniptv},121,10.2.0.1/16,10.2.0.1
+
+      dhcp-option=wg0,3,10.4.0.1
+      dhcp-option=wg0,6,10.4.0.1
+      dhcp-option=wg0,121,10.4.0.0/16,10.4.0.1
 
       dhcp-range=interface:${if_lan},10.0.2.1,10.0.255.254,5m
       dhcp-range=interface:${if_laniptv},10.2.2.1,10.2.255.254,5m
@@ -276,6 +326,9 @@ in
               # Allow DHCPv6 packets
               iif ppp0 udp dport dhcpv6-client accept
 
+              # Allow Wireguard connections
+              udp dport 51820 accept
+
               # ICMP
               ip protocol icmp icmp type echo-request limit rate 10/second accept
               icmpv6 type echo-request limit rate 10/second accept
@@ -283,7 +336,7 @@ in
 
               # Allow trusted networks to access the router
               iif {
-                ${if_lan}, ${if_laniptv}
+                ${if_lan}, ${if_laniptv}, wg0
               } counter accept
 
               # Allow iptv to access the router
@@ -297,10 +350,11 @@ in
             chain forward_new {
               # Allow LANs WAN access
               iif {
-                ${if_lan}, ${if_laniptv}
+                ${if_lan}, ${if_laniptv}, wg0
               } oif ppp0 counter accept comment "Allow trusted LAN to WAN"
 
               iif ${if_lan} accept
+              iif wg0 accept
 
               # Connect IPTV interfaces
               iif waniptv oif ${if_laniptv} accept
@@ -447,6 +501,7 @@ in
     igmpproxy
     dhcpcd
     radvd
+    wireguard-tools
   ];
 
   # Configure network proxy if necessary
