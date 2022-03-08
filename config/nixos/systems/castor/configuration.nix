@@ -1,6 +1,11 @@
 { config, pkgs, ... }:
 {
-  imports = [ ../../common.nix ../../audio-pipewire.nix ./secret.nix ];
+  imports = [
+    ../../common.nix
+    ../../audio-pipewire.nix
+    ./music.nix
+    ./secret.nix
+  ];
 
   # boot.kernelPackages = unstable.pkgs.linuxPackages-rt_5_11;
   # boot.kernelPackages = pkgs.linuxPackages_5_11;

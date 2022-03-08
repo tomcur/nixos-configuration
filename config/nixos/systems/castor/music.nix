@@ -1,4 +1,6 @@
-{ config, pkgs, ... }: {
+{ config, patchedPkgs, pkgs, ... }: {
+  imports = [ ./mop.nix ];
+  disabledModules = [ "services/audio/mopidy.nix" ];
   services.mopidy = {
     enable = true;
     extensionPackages = [
