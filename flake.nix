@@ -58,7 +58,7 @@
     };
   };
 
-  outputs = inputs @ { stable, unstable, patched, nixos-hardware, agenix, neovim, awesome, ... }:
+  outputs = inputs @ { self, stable, unstable, patched, nixos-hardware, agenix, neovim, awesome, ... }:
     let lib = unstable.lib;
     in
     {
@@ -169,6 +169,42 @@
           lib.nixosSystem {
             inherit system specialArgs modules;
           };
+        router =
+          let
+            system = "x86_64-linux";
+            specialArgs = {
+              inherit inputs system;
+              stablePkgs = import stable { inherit system; config = { allowUnfree = true; }; };
+              unstablePkgs = import unstable { inherit system; config = { allowUnfree = true; }; };
+              patchedPkgs = import patched { inherit system; config = { allowUnfree = true; }; };
+              deployrsPkgs = inputs.deploy-rs.${system}.packages;
+            };
+            modules = [
+              {
+                nixpkgs.overlays = [ ];
+                nixpkgs.config.allowUnfree = true;
+              }
+              (import ./config/nixos/systems/router)
+              # nixos-hardware.nixosModules.dell-xps-13-9360
+              unstable.nixosModules.notDetected
+            ];
+          in
+          lib.nixosSystem {
+            inherit system specialArgs modules;
+          };
       };
+      checks = builtins.mapAttrs (system: deployLib: deployLib.deployChecks self.deploy) inputs.deploy-rs.lib;
+      deploy.nodes = let deploy-rs = inputs.deploy-rs; in
+        {
+          router = {
+            hostname = "10.0.0.1";
+            profilesOrder = [ "system" ];
+            profiles.system = {
+              user = "root";
+              sshUser = "root";
+              path = deploy-rs.lib.x86_64-linux.activate.nixos self.nixosConfigurations.router;
+            };
+          };
+        };
     };
 }
