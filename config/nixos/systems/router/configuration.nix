@@ -367,8 +367,8 @@ in
               ip protocol { tcp, udp } flow add @f
               ip6 nexthdr { tcp, udp } flow add @f
 
-              # tcp flags syn tcp option maxseg size set rt mtu
-              ip protocol tcp tcp flags syn tcp option maxseg size set ${builtins.toString(1500 - 20 - 20)}
+              tcp flags syn tcp option maxseg size set rt mtu
+              # ip protocol tcp tcp flags syn tcp option maxseg size set ${builtins.toString(1500 - 20 - 20)}
 
               # tcp flags syn tcp option maxseg size set ${builtins.toString(1500 - 20 - 20 - 8 - 40)}
               ct state vmap { established : jump forward_established, related : jump forward_established, new : jump forward_new }
