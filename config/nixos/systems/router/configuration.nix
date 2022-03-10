@@ -230,8 +230,8 @@ in
       dhcp-option=${if_laniptv},3,10.2.0.1
       dhcp-option=${if_laniptv},6,10.2.0.1
       dhcp-option=${if_laniptv},28,10.2.255.255
-      dhcp-option=${if_laniptv},60,IPTV_RG
-      dhcp-option=${if_laniptv},121,10.2.0.1/16,10.2.0.1
+      dhcp-option=${if_laniptv},60,"IPTV_RG"
+      dhcp-option=${if_laniptv},121,10.2.0.0/16,10.2.0.1
 
       dhcp-option=wg0,3,10.4.0.1
       dhcp-option=wg0,6,10.4.0.1
