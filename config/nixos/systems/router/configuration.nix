@@ -423,6 +423,7 @@ in
           phyint languest disabled
           phyint ${if_lan} disabled
           phyint ${if_wan} disabled
+          phyint wg0 disabled
           phyint ppp0 disabled
 
           # Downstream
