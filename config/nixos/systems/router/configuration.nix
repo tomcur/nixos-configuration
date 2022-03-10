@@ -237,8 +237,8 @@ in
       dhcp-option=wg0,6,10.4.0.1
       dhcp-option=wg0,121,10.4.0.0/16,10.4.0.1
 
-      dhcp-range=interface:${if_lan},10.0.2.1,10.0.255.254,5m
-      dhcp-range=interface:${if_laniptv},10.2.2.1,10.2.255.254,5m
+      dhcp-range=interface:${if_lan},10.0.2.1,10.0.255.254,12h
+      dhcp-range=interface:${if_laniptv},10.2.2.1,10.2.255.254,12h
       dhcp-host=1c:87:2c:b6:e5:14,10.0.1.1
       dhcp-host=9c:b6:d0:da:5c:61,10.0.1.2
       host-record=router,router.home.arpa,10.0.0.1
