@@ -220,6 +220,7 @@ in
     extraConfig = ''
       interface=${if_lan},${if_laniptv},wg0
 
+      no-hosts
       domain=dyn.home.arpa
 
       # Default gateway
