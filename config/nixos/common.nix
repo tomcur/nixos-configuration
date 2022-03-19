@@ -375,6 +375,11 @@
       user = "thomas";
     };
 
+    avahi = {
+      enable = true;
+      nssmdns = true;
+    };
+
     gvfs.enable = true;
     bamf.enable = true;
 
