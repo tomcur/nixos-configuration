@@ -112,7 +112,7 @@
     # Themes.
     gtk2
     gtk3
-    gnome-themes-standard # Required by Vertex.
+    gnome-themes-extra
     gtk-engine-murrine # Required by Vertex.
     theme-vertex
     paper-icon-theme
