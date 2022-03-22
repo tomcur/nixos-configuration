@@ -1,0 +1,22 @@
+From 2572917b05ac7897cf599a9e3ac050c60ec8dc77 Mon Sep 17 00:00:00 2001
+From: pyonk <yukiyoshiokap@gmail.com>
+Date: Sat, 19 Mar 2022 10:22:55 +0900
+Subject: [PATCH] fix 'hint_anywhere' help tag
+
+---
+ doc/hop.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/doc/hop.txt b/doc/hop.txt
+index d9d00eb..2160584 100644
+--- a/doc/hop.txt
++++ b/doc/hop.txt
+@@ -310,7 +310,7 @@ Most of the functions and values you need to know about are in `hop`.
+     Arguments:~
+         {opts}  Hop options.
+ 
+-`hop.hint_anywhere(`{opts}`)`                                          *hop.hint_words*
++`hop.hint_anywhere(`{opts}`)`                                          *hop.hint_anywhere*
+     Annotate anywhere in the current window with key sequences.
+ 
+     Arguments:~

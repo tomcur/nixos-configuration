@@ -44,7 +44,9 @@ in
       fzf-vim
       # Movement.
       {
-        plugin = plugins.hop-nvim;
+        plugin = plugins.hop-nvim.overrideAttrs (oldAttrs: rec {
+          patches = [ ./hop.patch ];
+        });
         config = ''
           lua << EOF
             require'hop'.setup()
