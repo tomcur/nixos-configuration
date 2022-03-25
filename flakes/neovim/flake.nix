@@ -44,10 +44,6 @@
       url = "github:nvim-lua/completion-nvim";
       flake = false;
     };
-    nvimVimLoclistFollow = {
-      url = "github:elbeardmorez/vim-loclist-follow";
-      flake = false;
-    };
     nvimColorizerLua = {
       url = "github:norcalli/nvim-colorizer.lua";
       flake = false;
@@ -75,7 +71,7 @@
   };
 
   outputs = input @ { flake-utils, nixpkgs, neovim, ... }:
-    flake-utils.lib.eachDefaultSystem (system: 
+    flake-utils.lib.eachDefaultSystem (system:
       rec {
         packages = {
           neovim = neovim.defaultPackage.${system};
@@ -84,7 +80,7 @@
         plugins = with input; {
           inherit nvimPlenary nvimPopup nvimLspExtensions nvimTelescope nvimTreesitter nvimTreesitterTextobjects
             nvimMonochrome nvimVimColorsPencil nvimPhoton nvimColorizerLua nvimMinimapVim nvimRegistersNvim
-            nvimCompletionNvim nvimVimLoclistFollow nvimTroubleNvim nvimGitsignsNvim nvimHopNvim;
+            nvimCompletionNvim nvimTroubleNvim nvimGitsignsNvim nvimHopNvim;
         };
       }
     );

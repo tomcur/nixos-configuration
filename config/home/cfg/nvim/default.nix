@@ -125,21 +125,6 @@ in
           EOF
         '';
       }
-      # Update location list position.
-      {
-        plugin = plugins.vim-loclist-follow;
-        config = ''
-          " packadd vim-loclist-follow
-          let g:loclist_follow = 1
-          let g:loclist_follow_modes = 'ni'
-          let g:loclist_follow_target = 'nearest'
-
-          nnoremap <silent> [l     <cmd>lprevious<CR>
-          nnoremap <silent> ]l     <cmd>lnext<CR>
-          nnoremap <silent> [q     <cmd>cprevious<CR>
-          nnoremap <silent> ]q     <cmd>cnext<CR>
-        '';
-      }
       {
         plugin = plugins.minimap-vim;
         config = ''
