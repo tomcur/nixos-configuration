@@ -82,6 +82,15 @@ in
       nvim-web-devicons
       # RGB string colorizer.
       plugins.nvim-colorizer-lua
+      # Identation guide.
+      {
+        plugin = indent-blankline-nvim;
+        config = ''
+          lua << EOF
+            require'indent_blankline'.setup()
+          EOF
+        '';
+      }
       # Popup finder.
       plugins.popup
       plugins.plenary

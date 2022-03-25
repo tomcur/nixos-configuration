@@ -88,10 +88,11 @@ function M.setupWithColors(colors)
 
     highlight(groups, "Directory", groups.Include) -- { link = "Include" })
 
-    highlight(groups, "Title",    { fg = colors.purple })
-    highlight(groups, "Question", { fg = colors.green })
-    highlight(groups, "MoreMsg",  groups.Question) -- { link = "Question" })
-    highlight(groups, "NonText",  { fg = colors.red_aa })
+    highlight(groups, "Title",      { fg = colors.purple })
+    highlight(groups, "Question",   { fg = colors.green })
+    highlight(groups, "MoreMsg",    groups.Question) -- { link = "Question" })
+    highlight(groups, "NonText",    { fg = colors.red_aa })
+    highlight(groups, "Whitespace", { fg = colors.verydarkbg })
 
     highlight(groups, "Pmenu",       { fg = colors.fg, bg = colors.verydarkbg })
     highlight(groups, "NormalFloat", { fg = colors.fg, bg = colors.verydarkbg })
@@ -120,6 +121,8 @@ function M.setupWithColors(colors)
     highlight(groups, "GitSignsAdd",    { fg = colors.structural_green, bg = colors.darkbg })
     highlight(groups, "GitSignsDelete", { fg = colors.structural_red,   bg = colors.darkbg })
     highlight(groups, "GitSignsChange", { fg = colors.structural_blue,  bg = colors.darkbg })
+
+    highlight(groups, "IndentBlanklineChar", groups.Whitespace) -- { link = "Whitespace" })
 end
 
 return M
