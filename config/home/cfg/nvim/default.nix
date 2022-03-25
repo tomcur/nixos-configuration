@@ -189,7 +189,10 @@ in
                 { name = 'luasnip' },
               }),
               mapping = {
-                ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+                ['<Tab>'] = cmp.mapping.confirm({
+                  behavior = cmp.ConfirmBehavior.Replace,
+                  select = true,
+                }),
               },
               experimental = {
                 ghost_text = true,
