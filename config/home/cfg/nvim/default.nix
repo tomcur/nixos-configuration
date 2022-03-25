@@ -59,6 +59,15 @@ in
       # vim-jsx-typescript
       vim-tsx
       typescript-vim
+      # Comment regions.
+      {
+        plugin = comment-nvim;
+        config = ''
+          lua << EOF
+            require'Comment'.setup()
+          EOF
+        '';
+      }
       # Buffer formatting.
       neoformat
       NeoSolarized
