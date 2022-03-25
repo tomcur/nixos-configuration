@@ -36,6 +36,12 @@ let mapleader="\<Space>"
 " nnoremap <esc> :noh<return><esc>
 
 " Movement
+lua << EOF
+  -- Deal with word wrap
+  vim.api.nvim_set_keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
+  vim.api.nvim_set_keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
+EOF
+
 " map /         <cmd>HopPattern<cr> " only searches currently visible part
 map <leader>d <cmd>HopChar1<cr>
 map <leader>w <cmd>HopWord<cr>
