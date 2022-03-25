@@ -72,8 +72,8 @@ in
       }
       # Buffer formatting.
       neoformat
-      NeoSolarized
       # Themes.
+      NeoSolarized
       awesome-vim-colorschemes
       plugins.vim-monochrome
       plugins.vim-colors-pencil
