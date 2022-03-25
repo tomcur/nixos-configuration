@@ -51,6 +51,8 @@ in
           EOF
         '';
       }
+      # Additional file commands.
+      vim-eunuch
       # Languages.
       vim-nix
       vim-javascript
