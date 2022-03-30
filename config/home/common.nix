@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, unstablePkgs, patchedPkgs, ... }:
+{ inputs, config, pkgs, stablePkgs, unstablePkgs, patchedPkgs, ... }:
 {
   # Common packages.
   home.packages = [
@@ -85,7 +85,7 @@
     # Mapping.
     josm
     # Databases.
-    dbeaver
+    stablePkgs.dbeaver # Temporarily broken on unstable, take from stable
   ]) ++ (with patchedPkgs; [
   ]) ++ [ inputs.agenix.defaultPackage.x86_64-linux ];
 
