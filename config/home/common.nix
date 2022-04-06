@@ -85,7 +85,7 @@
     # Mapping.
     josm
     # Databases.
-    stablePkgs.dbeaver # Temporarily broken on unstable, take from stable
+    dbeaver
   ]) ++ (with patchedPkgs; [
   ]) ++ [ inputs.agenix.defaultPackage.x86_64-linux ];
 
