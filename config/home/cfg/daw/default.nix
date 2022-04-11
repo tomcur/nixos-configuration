@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, stablePkgs, config, ... }:
 let
   # systemLibOverlay = self: super: {
   #   pulseaudio = pkgs.pulseaudio;
@@ -49,7 +49,7 @@ in
     jalv
     lilv
     # Synths
-    surge
+    stablePkgs.surge
     helm
     qsynth
     (zynaddsubfx.override {

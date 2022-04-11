@@ -1,4 +1,4 @@
-{ inputs, lib, pkgs, unstablePkgs, patchedPkgs, ... }:
+{ inputs, lib, pkgs, stablePkgs, unstablePkgs, patchedPkgs, ... }:
 {
   imports = [
     ../../common.nix
@@ -18,21 +18,9 @@
     ghidra-bin
     radare2-cutter
     # E-book management.
-    # calibre
-  ]) ++ (with unstablePkgs; [
-    # E-book management.
-    calibre
-
+    stablePkgs.calibre # Temporary build failure
+    anki
     wineWowPackages.staging
     winetricks
-
-    # Repositories are often offline. Install through nix-env as to not
-    # break this entire configuration's build.
-    # steam
-    # steam-run
-  ]) ++ (with patchedPkgs;
-    [
-      # Games.
-      # lutris
-    ]);
+  ]);
 }
