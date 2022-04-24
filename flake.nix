@@ -23,14 +23,14 @@
       inputs.utils.follows = "flake-utils";
     };
     neovim = {
-      # url = "path:./flakes/neovim";
-      url = "path:/etc/nixos/flakes/neovim";
+      url = "path:./flakes/neovim";
+      # url = "path:/etc/nixos/flakes/neovim";
       inputs.nixpkgs.follows = "unstable";
       inputs.flake-utils.follows = "flake-utils";
     };
     awesome = {
-      # url = "path:./flakes/awesome";
-      url = "path:/etc/nixos/flakes/awesome";
+      url = "path:./flakes/awesome";
+      # url = "path:/etc/nixos/flakes/awesome";
       inputs.nixpkgs.follows = "unstable";
       inputs.flake-utils.follows = "flake-utils";
     };
