@@ -220,6 +220,9 @@ in
             require'lspconfig'.tsserver.setup{
               capabilities = capabilities
             }
+            require'lspconfig'.terraformls.setup{
+              capabilities = capabilities
+            }
             require'lspconfig'.bashls.setup{
               capabilities = capabilities
             }
@@ -327,6 +330,9 @@ in
         nmap <buffer><leader>mf :Neoformat<cr>
       '';
       ".config/nvim/ftplugin/html.vim".text = ''
+        nmap <buffer><leader>mf :Neoformat<cr>
+      '';
+      ".config/nvim/ftplugin/terraform.vim".text = ''
         nmap <buffer><leader>mf :Neoformat<cr>
       '';
       ".config/nvim/ftdetect/html.vim".text = ''

@@ -84,7 +84,19 @@ packadd nvim-treesitter
 packadd nvim-treesitter-textobjects
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "nix", "rust", "python", "bash", "toml", "lua", "julia", "typescript", "javascript", "php" },
+  ensure_installed = {
+    "nix",
+    "rust",
+    "python",
+    "bash",
+    "toml",
+    "lua",
+    "julia",
+    "typescript",
+    "javascript",
+    "php",
+    "hcl", -- Terraform
+  },
   highlight = {
     enable = true,
     disable = { },
