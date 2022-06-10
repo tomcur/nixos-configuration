@@ -320,6 +320,9 @@ in
         setlocal textwidth=79
         setlocal spell
       '';
+      ".config/nvim/ftplugin/scss.vim".text = ''
+        nmap <buffer><leader>mf :Neoformat<cr>
+      '';
       ".config/nvim/ftplugin/css.vim".text = ''
         nmap <buffer><leader>mf :Neoformat<cr>
       '';
