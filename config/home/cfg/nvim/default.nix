@@ -179,7 +179,6 @@ in
               snippet = {
                 -- REQUIRED - you must specify a snippet engine
                 expand = function(args)
-                  -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
                   require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
                 end,
               },
@@ -188,11 +187,34 @@ in
                 { name = 'path' },
                 { name = 'luasnip' },
               }),
+              -- Preselect does not work nicely with the tab-mapping defined below.
+              -- With cmp.select_next_item, hitting tab would skip the preselected item.
+              preselect = cmp.PreselectMode.None,
               mapping = {
-                ['<Tab>'] = cmp.mapping.confirm({
-                  behavior = cmp.ConfirmBehavior.Replace,
-                  select = true,
-                }),
+                ["<CR>"] = cmp.mapping(function(fallback)
+                  if cmp.visible() then
+                    cmp.confirm({
+                      behavior = cmp.ConfirmBehavior.Insert,
+                      select = true,
+                    })
+                  else
+                    fallback()
+                  end
+                end, { "i", "s" }),
+                ["<Tab>"] = cmp.mapping(function(fallback)
+                  if cmp.visible() then
+                    cmp.select_next_item()
+                  else
+                    fallback()
+                  end
+                end, { "i", "s" }),
+                ["<S-Tab>"] = cmp.mapping(function(fallback)
+                  if cmp.visible() then
+                    cmp.select_prev_item()
+                  else
+                    fallback()
+                  end
+                end, { "i", "s" }),
               },
               experimental = {
                 ghost_text = true,
