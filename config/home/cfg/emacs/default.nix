@@ -2,7 +2,12 @@
 {
   programs.emacs = {
     enable = true;
-    extraPackages = epkgs: [ epkgs.evil epkgs.evil-org ];
+    extraPackages = epkgs: [
+      epkgs.evil
+      epkgs.evil-org
+      epkgs.calfw
+      epkgs.calfw-org
+    ];
     extraConfig = ''
     '';
   };
