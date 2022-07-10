@@ -23,4 +23,6 @@
     wineWowPackages.staging
     winetricks
   ]);
+
+  home.stateVersion = "18.09";
 }

@@ -9,4 +9,6 @@
 
   # Set some dpi scaling.
   xresources.properties = { "Xft.dpi" = 120; };
+
+  home.stateVersion = "18.09";
 }

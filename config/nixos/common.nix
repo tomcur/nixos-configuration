@@ -225,7 +225,8 @@
   };
 
   # Configurable QT themes without a desktop manager.
-  programs.qt5ct.enable = true;
+  qt5.enable = true;
+  qt5.platformTheme = "qt5ct";
 
   # Gnome GSettings backend.
   programs.dconf.enable = true;
