@@ -44,10 +44,10 @@ in
       fzf-vim
       # Movement.
       {
-        plugin = plugins.hop-nvim;
+        plugin = plugins.leap-nvim;
         config = ''
           lua << EOF
-            require'hop'.setup()
+            require'leap'.set_default_keymaps()
           EOF
         '';
       }

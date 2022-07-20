@@ -90,10 +90,10 @@
     src = neovimPlugins.nvimGitsignsNvim;
     meta.homepage = "https://github.com/lewis6991/gitsigns.nvim";
   };
-  hop-nvim = buildVimPluginFrom2Nix rec {
-    pname = "hop.nvim";
-    version = neovimPlugins.nvimHopNvim.lastModifiedDate;
-    src = neovimPlugins.nvimHopNvim;
-    meta.homepage = "https://github.com/phaazon/hop.nvim";
+  leap-nvim = buildVimPluginFrom2Nix rec {
+    pname = "leap.nvim";
+    version = neovimPlugins.nvimLeapNvim.lastModifiedDate;
+    src = neovimPlugins.nvimLeapNvim;
+    meta.homepage = "https://github.com/ggandor/leap.nvim";
   };
 }

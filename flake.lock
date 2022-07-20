@@ -225,7 +225,7 @@
         "nvimColorizerLua": "nvimColorizerLua",
         "nvimCompletionNvim": "nvimCompletionNvim",
         "nvimGitsignsNvim": "nvimGitsignsNvim",
-        "nvimHopNvim": "nvimHopNvim",
+        "nvimLeapNvim": "nvimLeapNvim",
         "nvimLspExtensions": "nvimLspExtensions",
         "nvimMinimapVim": "nvimMinimapVim",
         "nvimMonochrome": "nvimMonochrome",
@@ -241,7 +241,7 @@
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-IbI1v+rXIvacrIjh+BcNKTFfOro/ytGTPdQ19RU7NSM=",
+        "narHash": "sha256-9yxQqHi1UQfTEltFMdapuU8Q5MgvV2YXNkCos1G2f2k=",
         "path": "./flakes/neovim",
         "type": "path"
       },
@@ -367,19 +367,19 @@
         "type": "github"
       }
     },
-    "nvimHopNvim": {
+    "nvimLeapNvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1658152829,
-        "narHash": "sha256-py+FQ9wmqKyNiSZ3GXiEcKMjpEf1fs8vIEs7S1TTJt8=",
-        "owner": "phaazon",
-        "repo": "hop.nvim",
-        "rev": "a7ad781962831c14d53cb9788cc67b8be45a9024",
+        "lastModified": 1658217002,
+        "narHash": "sha256-qunHQzsHZxIL4y5tOlUfjIEB6Yyv6+57y+Xy+NZruOM=",
+        "owner": "ggandor",
+        "repo": "leap.nvim",
+        "rev": "c0ff5d85d11d7f68d23816b99a0121a43c0338bb",
         "type": "github"
       },
       "original": {
-        "owner": "phaazon",
-        "repo": "hop.nvim",
+        "owner": "ggandor",
+        "repo": "leap.nvim",
         "type": "github"
       }
     },
