@@ -69,6 +69,8 @@
     zsh
     # Terminal emulator.
     xterm # system-wide fallback
+    # Multiplexer
+    zellij
     # Tools
     wget
     neovim # (vim_configurable.override {})
