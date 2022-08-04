@@ -97,6 +97,21 @@ in
 
     XF86AudioNext
         playerctl next
+
+    F8
+      playerctl prev
+
+    F9
+      playerctl play-pause
+
+    F10
+      playerctl next
+
+    F11
+        volume-control down
+
+    F12
+        volume-control up
   '';
 
   # popup = buildVimPluginFrom2Nix rec {
