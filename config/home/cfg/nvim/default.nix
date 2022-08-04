@@ -19,7 +19,7 @@ in
     extraPackages = (with pkgs; [
       python3Packages.black
       python3Packages.isort
-      python3Packages.python-lsp-server
+      patchedPkgs.python3Packages.python-lsp-server
       # nodePackages.javascript-typescript-langserver
       nodePackages.typescript-language-server # tsserver
       nodePackages.prettier

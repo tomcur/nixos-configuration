@@ -87,7 +87,7 @@ in
       fcc-hook "~f ${accounts.thomas-kepow-org.address}" ${accounts.thomas-kepow-org.maildir.absPath}/Sent
 
       # Address book
-      set query_command = "goobook query %s"
+      # set query_command = "goobook query %s"
 
       # Display
       set sort_aux = "last-date-received"

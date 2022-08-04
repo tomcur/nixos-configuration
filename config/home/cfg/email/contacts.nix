@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
   home.packages = [
-    pkgs.python3Packages.goobook
+    # pkgs.python3Packages.goobook
   ];
 }
