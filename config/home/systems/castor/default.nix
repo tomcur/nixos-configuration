@@ -19,7 +19,7 @@
     radare2-cutter
     # E-book management.
     stablePkgs.calibre # Temporary build failure
-    anki
+    anki-bin
     wineWowPackages.staging
     winetricks
   ]);
