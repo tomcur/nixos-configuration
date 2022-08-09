@@ -178,7 +178,7 @@
     hack-font
     fira-code
     fira-code-symbols
-    (iosevka.override {
+    (stablePkgs.iosevka.override {
       set = "code";
       privateBuildPlan = {
         family = "Iosevka";
