@@ -25,9 +25,12 @@
   '(progn
     (define-key cfw:calendar-mode-map "C" 'org-capture)))
 
+(setq evil-want-integration t)
+(setq evil-want-keybinding nil)
 (setq evil-undo-system 'undo-redo)
 (require 'evil)
 (evil-mode 1)
+(evil-collection-init '(notmuch))
 
 (require 'evil-org)
 (add-hook 'org-mode-hook 'evil-org-mode)
@@ -37,5 +40,7 @@
 
 (require 'calfw-org)
 (setq cfw:render-line-breaker 'cfw:render-line-breaker-wordwrap)
+
+(require 'notmuch)
 
 (load-theme 'leuven)
