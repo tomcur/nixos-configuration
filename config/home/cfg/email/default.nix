@@ -248,7 +248,7 @@ in
     '';
 
   home.file.".mailcap".text = ''
-    text/html; ${pkgs.qutebrowser}/bin/qutebrowser --target window %s &; test = test - n "$DISPLAY"; needsterminal; nametemplate = %s.html
+    text/html; ${pkgs.qutebrowser}/bin/qutebrowser --target window %s &; test=test -n "$DISPLAY"; nametemplate = %s.html
     text/html; ${pkgs.w3m}/bin/w3m -I %{charset} -T text/html; copiousoutput
     image/*; ${pkgs.imv}/bin/imv %s
   '';
