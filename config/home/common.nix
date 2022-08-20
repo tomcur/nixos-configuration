@@ -27,7 +27,7 @@
     # Documents.
     nomacs
     okular
-    zathura
+    stablePkgs.zathura
     libreoffice
     gimp
     # Reference management.
