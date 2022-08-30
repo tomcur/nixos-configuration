@@ -84,6 +84,7 @@ packadd nvim-treesitter
 packadd nvim-treesitter-textobjects
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
+  parser_install_dir = "~/.local/share/nvim-treesitter/parsers",
   ensure_installed = {
     "nix",
     "rust",
