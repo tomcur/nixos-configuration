@@ -31,6 +31,8 @@ set inccommand=nosplit
 " Key mappings
 let mapleader="\<Space>"
 
+lua require("config")
+
 "" Editing
 " Also clear search highlight on escape
 " nnoremap <esc> :noh<return><esc>
@@ -147,5 +149,3 @@ augroup highlight_yank
     autocmd!
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({ higroup = "IncSearch", timeout = 1000 })
 augroup END
-
-lua require("config")
