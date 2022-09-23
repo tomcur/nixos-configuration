@@ -42,7 +42,7 @@ in
       # Fuzzy finding.
       fzf-vim
       # Movement.
-      plugins.leap-nvim;
+      plugins.leap-nvim
       # Additional file commands.
       vim-eunuch
       # Languages.
@@ -54,7 +54,7 @@ in
       vim-tsx
       typescript-vim
       # Comment regions.
-      comment-nvim;
+      comment-nvim
       # Buffer formatting.
       neoformat
       # Themes.
@@ -68,31 +68,37 @@ in
       # RGB string colorizer.
       plugins.nvim-colorizer-lua
       # Identation guide.
-      indent-blankline-nvim;
+      indent-blankline-nvim
       # Popup finder.
       plugins.popup
       plugins.plenary
       plugins.lsp-extensions
-      plugins.telescope;
+      plugins.telescope
 
       # Register preview.
       plugins.registers-nvim
 
       # Aid completion
       luasnip
-      cmp-nvim-lsp;
-      cmp-path;
-      nvim-cmp;
+      cmp-nvim-lsp
+      cmp-path
+      nvim-cmp
 
       # LSP.
-      nvim-lspconfig;
+      nvim-lspconfig
 
-      plugins.trouble-nvim;
-      plugins.gitsigns-nvim;
+      plugins.trouble-nvim
+      plugins.gitsigns-nvim
 
       # Treesitter.
-      plugins.nvim-treesitter;
-      plugins.nvim-treesitter-textobjects;
+      {
+        plugin = plugins.nvim-treesitter;
+        optional = true;
+      }
+      {
+        plugin = plugins.nvim-treesitter-textobjects;
+        optional = true;
+      }
     ];
   };
 
