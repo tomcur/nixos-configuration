@@ -3,8 +3,11 @@ require'Comment'.setup()
 require'indent_blankline'.setup()
 
 -- Treesitter
+local parser_install_dir = vim.fn.stdpath("cache") .. "/treesitter-parsers"
+vim.fn.mkdir(parser_install_dir, "p")
+vim.cmd("packadd nvim-treesitter")
 require'nvim-treesitter.configs'.setup {
-  parser_install_dir = "~/.local/share/nvim-treesitter/parsers",
+  parser_install_dir = parser_install_dir,
   ensure_installed = {
     "nix",
     "rust",
@@ -19,6 +22,7 @@ require'nvim-treesitter.configs'.setup {
     "hcl", -- Terraform
     "beancount",
   },
+  auto_install = false,
   highlight = {
     enable = true,
     disable = { },
