@@ -15,7 +15,6 @@ in
   programs.neovim = {
     enable = true;
     package = neovimPkg;
-    extraConfig = builtins.readFile ./rc.vim;
     extraPackages = (with pkgs; [
       python3Packages.black
       python3Packages.isort
@@ -43,14 +42,7 @@ in
       # Fuzzy finding.
       fzf-vim
       # Movement.
-      {
-        plugin = plugins.leap-nvim;
-        config = ''
-          lua << EOF
-            require'leap'.set_default_keymaps()
-          EOF
-        '';
-      }
+      plugins.leap-nvim;
       # Additional file commands.
       vim-eunuch
       # Languages.
@@ -62,14 +54,7 @@ in
       vim-tsx
       typescript-vim
       # Comment regions.
-      {
-        plugin = comment-nvim;
-        config = ''
-          lua << EOF
-            require'Comment'.setup()
-          EOF
-        '';
-      }
+      comment-nvim;
       # Buffer formatting.
       neoformat
       # Themes.
@@ -83,211 +68,31 @@ in
       # RGB string colorizer.
       plugins.nvim-colorizer-lua
       # Identation guide.
-      {
-        plugin = indent-blankline-nvim;
-        config = ''
-          lua << EOF
-            require'indent_blankline'.setup()
-          EOF
-        '';
-      }
+      indent-blankline-nvim;
       # Popup finder.
       plugins.popup
       plugins.plenary
       plugins.lsp-extensions
-      {
-        plugin = plugins.telescope;
-        config = ''
-          " File and buffer opening
-          lua << EOF
-          -- Truncate / skip previewing big files
-          local previewers = require('telescope.previewers')
-          local previewers_utils = require('telescope.previewers.utils')
-          local max_size = 150 * 1024
-          local new_maker = function(filepath, bufnr, opts)
-            opts = opts or {}
-
-            filepath = vim.fn.expand(filepath)
-            vim.loop.fs_stat(filepath, function(_, stat)
-              if not stat then return end
-              if stat.size > max_size then
-                -- Skip:
-                -- return
-                -- Truncate:
-                local cmd = {"head", "-c", max_size, filepath}
-                previewers_utils.job_maker(cmd, bufnr, opts)
-              else
-                previewers.buffer_previewer_maker(filepath, bufnr, opts)
-              end
-            end)
-          end
-
-          require('telescope').setup {
-            defaults = {
-              buffer_previewer_maker = new_maker,
-              file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
-              grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
-              qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
-              file_sorter = require'telescope.sorters'.get_fuzzy_file,
-            }
-          }
-          EOF
-        '';
-      }
-      {
-        plugin = plugins.minimap-vim;
-        config = ''
-          highlight Minimap gui=None
-          highlight MinimapBase gui=None
-          " let g:minimap_auto_start = 1
-          " let g:minimap_auto_start_win_enter = 1
-          let g:minimap_left = 0
-          let g:minimap_width = 8
-          let g:minimap_highlight = "Minimap"
-          let g:minimap_base_highlight = "MinimapBase"
-        '';
-      }
+      plugins.telescope;
 
       # Register preview.
       plugins.registers-nvim
 
       # Aid completion
       luasnip
-      {
-        plugin = cmp-nvim-lsp;
-        optional = true;
-        config = ''
-          packadd cmp-nvim-lsp
-        '';
-      }
-      {
-        plugin = cmp-path;
-        optional = true;
-        config = ''
-          packadd cmp-path
-        '';
-      }
-      {
-        plugin = nvim-cmp;
-        optional = true;
-        config = ''
-          packadd nvim-cmp
-          set completeopt=menu,menuone,noselect
-          lua <<EOF
-            local cmp = require'cmp'
-            cmp.setup({
-              snippet = {
-                -- REQUIRED - you must specify a snippet engine
-                expand = function(args)
-                  require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-                end,
-              },
-              sources = cmp.config.sources({
-                { name = 'nvim_lsp' },
-                { name = 'path' },
-                { name = 'luasnip' },
-              }),
-              -- Preselect does not work nicely with the tab-mapping defined below.
-              -- With cmp.select_next_item, hitting tab would skip the preselected item.
-              preselect = cmp.PreselectMode.None,
-              mapping = {
-                ["<CR>"] = cmp.mapping(function(fallback)
-                  if cmp.visible() then
-                    cmp.confirm({
-                      behavior = cmp.ConfirmBehavior.Insert,
-                      select = true,
-                    })
-                  else
-                    fallback()
-                  end
-                end, { "i", "s" }),
-                ["<Tab>"] = cmp.mapping(function(fallback)
-                  if cmp.visible() then
-                    cmp.select_next_item()
-                  else
-                    fallback()
-                  end
-                end, { "i", "s" }),
-                ["<S-Tab>"] = cmp.mapping(function(fallback)
-                  if cmp.visible() then
-                    cmp.select_prev_item()
-                  else
-                    fallback()
-                  end
-                end, { "i", "s" }),
-              },
-              experimental = {
-                ghost_text = true,
-              }
-            })
-          EOF
-        '';
-      }
+      cmp-nvim-lsp;
+      cmp-path;
+      nvim-cmp;
 
       # LSP.
-      {
-        plugin = nvim-lspconfig;
-        config = ''
-          " Setting `root_dir` required until
-          " https://github.com/neovim/nvim-lsp/commit/1e20c0b29e67e6cd87252cf8fd697906622bfdd3#diff-1cc82f5816863b83f053f5daf2341daf
-          " is in nixpkgs repo.
-          lua << EOF
-            local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-            require'lspconfig'.pylsp.setup{
-              capabilities = capabilities
-            }
-            require'lspconfig'.rust_analyzer.setup{
-              capabilities = capabilities
-            }
-            require'lspconfig'.tsserver.setup{
-              capabilities = capabilities
-            }
-            require'lspconfig'.terraformls.setup{
-              capabilities = capabilities
-            }
-            require'lspconfig'.bashls.setup{
-              capabilities = capabilities
-            }
-          EOF
-        '';
-        # -- require'lspconfig'.rnix.setup{}
-      }
-      {
-        plugin = plugins.trouble-nvim;
-        optional = true;
-        config = ''
-          packadd trouble.nvim
-          lua << EOF
-            require("trouble").setup {}
-          EOF
-        '';
-      }
-      {
-        plugin = plugins.gitsigns-nvim;
-        optional = true;
-        config = ''
-          packadd gitsigns.nvim
-          lua << EOF
-          require("gitsigns").setup {
-            signs = {
-              add =       {hl = 'GitSignsAdd'   , text = '┃' },
-              change =    {hl = 'GitSignsChange', text = '┇' },
-              delete =    {hl = 'GitSignsDelete', text = '_' },
-              topdelete = {hl = 'GitSignsDelete', text = '‾' },
-            }
-          }
-          EOF
-        '';
-      }
+      nvim-lspconfig;
+
+      plugins.trouble-nvim;
+      plugins.gitsigns-nvim;
+
       # Treesitter.
-      {
-        plugin = plugins.nvim-treesitter;
-        optional = true;
-      }
-      {
-        plugin = plugins.nvim-treesitter-textobjects;
-        optional = true;
-      }
+      plugins.nvim-treesitter;
+      plugins.nvim-treesitter-textobjects;
     ];
   };
 
@@ -305,6 +110,7 @@ in
       '';
     in
     {
+      ".config/nvim/init.vim".source = ./rc.vim;
       ".config/nvim/lua".source = ./lua;
       ".config/nvim/colors".source = ./colors;
       ".config/nvim/ftplugin/nix.vim".text = ''

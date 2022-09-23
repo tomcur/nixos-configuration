@@ -79,63 +79,6 @@ inoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> <Leader>T <cmd>:lua require'lsp_extensions'.inlay_hints({prefix="⁖ ", enabled={"TypeHint", "ChainingHint"}})<CR>
 nnoremap <silent> <Leader>t <cmd>:lua require'lsp_extensions'.inlay_hints({prefix="⁖ ", enabled={"TypeHint", "ChainingHint"}, only_current_line=true})<CR>
 
-" Treesitter
-packadd nvim-treesitter
-packadd nvim-treesitter-textobjects
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  parser_install_dir = "~/.local/share/nvim-treesitter/parsers",
-  ensure_installed = {
-    "nix",
-    "rust",
-    "python",
-    "bash",
-    "toml",
-    "lua",
-    "julia",
-    "typescript",
-    "javascript",
-    "php",
-    "hcl", -- Terraform
-  },
-  highlight = {
-    enable = true,
-    disable = { },
-  },
-  textobjects = {
-    enable = true,
-    swap = {
-      enable = true,
-      swap_previous = {
-        ["<A-h>"] = "@parameter.inner",
-      },
-      swap_next = {
-        ["<A-l>"] = "@parameter.inner",
-      },
-    },
-    select = {
-      enable = true,
-      keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
-      },
-    },
-  },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "gnn",
-      node_incremental = "grn",
-      scope_incremental = "grc",
-      node_decremental = "grm",
-    },
-  },
-}
-EOF
-
 " Default .tex to LaTeX
 let g:tex_flavor = "latex"
 
@@ -204,3 +147,5 @@ augroup highlight_yank
     autocmd!
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({ higroup = "IncSearch", timeout = 1000 })
 augroup END
+
+lua require("config")
