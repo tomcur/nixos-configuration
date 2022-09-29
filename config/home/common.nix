@@ -11,9 +11,9 @@
     })
   ] ++ (with pkgs; [
     # Font tools.
-    gnome3.gucharmap
+    gnome.gucharmap
     # Tools.
-    gnome3.gnome-system-monitor
+    gnome.gnome-system-monitor
     libnotify
     filelight
     ark

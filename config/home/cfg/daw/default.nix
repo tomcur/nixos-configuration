@@ -56,7 +56,7 @@ in
       guiModule = "zest";
     })
     # LV2
-    avldrums-lv2
+    x42-avldrums
     drumkv1
     fmsynth
     # LADSPA

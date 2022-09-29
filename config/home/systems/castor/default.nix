@@ -16,7 +16,7 @@
     lutris
     # Disassembly.
     ghidra-bin
-    radare2-cutter
+    cutter
     # E-book management.
     stablePkgs.calibre # Temporary build failure
     anki-bin
