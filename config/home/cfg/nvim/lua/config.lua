@@ -146,7 +146,7 @@ cmp.setup({
 -- Setting `root_dir` required until
 -- https://github.com/neovim/nvim-lsp/commit/1e20c0b29e67e6cd87252cf8fd697906622bfdd3#diff-1cc82f5816863b83f053f5daf2341daf
 -- is in nixpkgs repo.
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 require'lspconfig'.pylsp.setup{
   capabilities = capabilities
 }
