@@ -1,5 +1,5 @@
 { config, pkgs, ... }: {
-  imports = [ ../../common.nix ../../audio-pulse.nix ../../eduroam.nix ];
+  imports = [ ../../common.nix ../../audio-pipewire.nix ../../eduroam.nix ];
 
   nix.settings.max-jobs = 4;
   nix.buildMachines = [{
