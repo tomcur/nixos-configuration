@@ -24,5 +24,5 @@
     winetricks
   ]);
 
-  home.stateVersion = "18.09";
+  home.stateVersion = "22.05";
 }

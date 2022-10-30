@@ -4,7 +4,7 @@ in {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  home.stateVersion = "18.09";
+  home.stateVersion = "22.05";
 
   imports = [ (./systems + "/${system_name}") ];
 }
