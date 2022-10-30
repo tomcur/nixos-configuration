@@ -7,6 +7,10 @@
     ../../cfg/email
   ];
 
+  home.packages = with pkgs; [
+    anki
+  ];
+
   # Set some dpi scaling.
   xresources.properties = { "Xft.dpi" = 120; };
 
