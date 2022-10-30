@@ -1,7 +1,7 @@
 { config, pkgs, ... }: {
   imports = [ ../../common.nix ../../audio-pulse.nix ../../eduroam.nix ];
 
-  nix.maxJobs = 4;
+  nix.settings.max-jobs = 4;
   nix.buildMachines = [{
     hostName = "castor-builder";
     sshKey = "/root/.ssh/castor-remote-builder";
