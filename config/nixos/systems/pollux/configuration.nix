@@ -28,7 +28,7 @@
     };
   };
 
-  time.timeZone = "Europe/Tallinn";
+  time.timeZone = "Europe/Amsterdam";
 
   # Better for SSD.
   fileSystems."/".options = [ "noatime" "nodiratime" "discard" ];
