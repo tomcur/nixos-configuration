@@ -5,7 +5,7 @@
     (pkgs.callPackage ./my-programs/brightness-control { })
     (pkgs.callPackage ./my-programs/volume-control { })
     inputs.thingshare.defaultPackage.${pkgs.stdenv.hostPlatform.system}
-    (pkgs.callPackage ./my-programs/extract { })
+    (stablePkgs.callPackage ./my-programs/extract { })
     (pkgs.callPackage ./my-programs/paper {
       buildPythonPackage = pkgs.python3Packages.buildPythonPackage;
     })
