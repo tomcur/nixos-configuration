@@ -3,7 +3,8 @@ require'Comment'.setup()
 require'indent_blankline'.setup()
 
 -- Treesitter
-local parser_install_dir = vim.fn.stdpath("cache") .. "/treesitter-parsers"
+local parser_install_dir = vim.fn.stdpath("data") .. "/treesitter-parsers"
+vim.opt.runtimepath:append(parser_install_dir)
 vim.fn.mkdir(parser_install_dir, "p")
 vim.cmd("packadd nvim-treesitter")
 require'nvim-treesitter.configs'.setup {
