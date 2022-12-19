@@ -14,11 +14,7 @@ in
 
   programs.neovim = {
     enable = true;
-    package = neovimPkg.overrideAttrs (finalAttrs: previousAttrs: {
-      patches = previousAttrs.patches ++ [
-        ./21407.patch
-      ];
-    });
+    package = neovimPkg;
     extraPackages = (with pkgs; [
       python3Packages.black
       python3Packages.isort
