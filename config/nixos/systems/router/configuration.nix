@@ -511,6 +511,8 @@ in
   };
 
   environment.systemPackages = with pkgs; [
+    git
+    git-crypt
     neovim
     wget
     htop
@@ -540,6 +542,10 @@ in
 
   # Set your time zone.
   time.timeZone = "Europe/Amsterdam";
+
+  programs.gnupg = {
+    agent.enable = true;
+  };
 
   # Configure tmux.
   programs.tmux = {
