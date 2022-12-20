@@ -366,6 +366,8 @@ in
               # Connect IPTV interfaces
               iif waniptv oif ${if_laniptv} accept
               iif ${if_laniptv} oif waniptv accept
+
+              ct status dnat accept
             }
 
             chain forward {
@@ -378,18 +380,27 @@ in
               # ip protocol tcp tcp flags syn tcp option maxseg size set ${builtins.toString(1500 - 20 - 20)}
 
               # tcp flags syn tcp option maxseg size set ${builtins.toString(1500 - 20 - 20 - 8 - 40)}
-              ct state vmap { established : jump forward_established, related : jump forward_established, new : jump forward_new }
+              ct status dnat accept
+
+              ct state vmap {
+                established : jump forward_established,
+                related : jump forward_established,
+                new : jump forward_new
+              }
             }
           }
 
           table ip nat {
             chain prerouting {
               type nat hook prerouting priority -100; policy accept;
+
+              iif ${ if_lan } ip daddr != 10.0.0.1 tcp dport { http, https, 2222 } fib daddr type local dnat to 10.0.1.1
             }
 
             chain postrouting {
               type nat hook postrouting priority 100; policy accept;
 
+              iif ${ if_lan } oif ${ if_lan } masquerade
               oif ppp0 masquerade
               oif waniptv masquerade
             }
