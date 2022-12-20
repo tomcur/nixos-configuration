@@ -4,6 +4,7 @@ let
   if_wan = "enp1s0f3";
   if_lan = "enp1s0f2";
   if_laniptv = "enp1s0f1";
+  secret = import ./secret.nix;
 in
 {
   imports =
@@ -476,7 +477,8 @@ in
 
           interface ppp0
             iaid 1
-            ia_pd 1 ${if_lan}/0/48
+            ia_pd 1 ${if_lan}/0/64
+            ia_pd 1 ${if_lan}/1/64
         '';
       in
       {
@@ -496,7 +498,7 @@ in
             AdvSendAdvert on;
             MinRtrAdvInterval 3;
             MaxRtrAdvInterval 10;
-            prefix ::/64 {
+            prefix ${secret.ip6_prefix}:0::/64 {
               AdvOnLink on;
               AdvAutonomous on;
               AdvRouterAddr on;
