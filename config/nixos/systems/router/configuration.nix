@@ -288,15 +288,15 @@ in
   };
 
   systemd.services.nftables-router = {
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = [
+      "multi-user.target"
+      "sys-devices-virtual-net-ppp0.device"
+    ];
     bindsTo = [
-      "pppd-isp.service"
-      "nftables.service"
+      "sys-devices-virtual-net-ppp0.device"
     ];
     after = [
-      # "sys-devices-virtual-net-ppp0.device"
-      "pppd-isp.service"
-      "nftables.service"
+      "sys-devices-virtual-net-ppp0.device"
     ];
     description = "nftables router firewall";
     reloadIfChanged = true;
@@ -461,8 +461,16 @@ in
   };
 
   systemd.services.dhcpcd = {
-    wantedBy = [ "multi-user.target" ];
-    after = [ "network-online.target" ];
+    wantedBy = [
+      "multi-user.target"
+      "sys-devices-virtual-net-ppp0.device"
+    ];
+    bindsTo = [
+      "sys-devices-virtual-net-ppp0.device"
+    ];
+    after = [
+      "sys-devices-virtual-net-ppp0.device"
+    ];
     description = "IPv6 DHCP";
     serviceConfig =
       let
