@@ -306,7 +306,7 @@ in
             # enable flow offloading for better throughput
             flowtable f {
               hook ingress priority filter;
-              devices = { ${if_lan}, ${if_laniptv}, ppp0 }
+              devices = { ${if_lan}, ${if_laniptv}, wg0, ppp0, waniptv }
               # flags offload
             }
 
