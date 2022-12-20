@@ -476,7 +476,7 @@ in
 
           interface ppp0
             iaid 1
-            ia_pd 1 ${if_lan}/0
+            ia_pd 1 ${if_lan}/0/48
         '';
       in
       {
