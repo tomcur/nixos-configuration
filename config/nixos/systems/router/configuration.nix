@@ -492,6 +492,7 @@ in
             ia_pd 1 ${if_lan}/0/64
             ia_pd 1 ${if_lan}/1/64
         '';
+        # ia_pd 1 ${if_lan}/0
       in
       {
         Type = "forking";
