@@ -394,6 +394,7 @@ in
             chain prerouting {
               type nat hook prerouting priority -100; policy accept;
 
+              iif ppp0 tcp dport { http, https, 2222 } dnat to 10.0.1.1
               iif ${ if_lan } ip daddr != 10.0.0.1 tcp dport { http, https, 2222 } fib daddr type local dnat to 10.0.1.1
             }
 
