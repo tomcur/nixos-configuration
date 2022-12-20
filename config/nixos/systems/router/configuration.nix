@@ -488,6 +488,7 @@ in
     serviceConfig =
       let
         conf = pkgs.writeText "dhcpcd.conf" ''
+          allowinterfaces ppp0
           clientid
           option rapid_commit
           option interface_mtu
