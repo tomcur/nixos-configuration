@@ -469,21 +469,18 @@ in
       };
   };
 
-  systemd.services.dhcpcd = {
-    wantedBy = [ "multi-user.target" ];
-    after = [ "network-online.target" ];
-    # If the following start config is used pppd-isp.service breaks.
-    # I'm not exactly sure why.
-    # wantedBy = [
-    #   "multi-user.target"
-    #   "sys-devices-virtual-net-ppp0.device"
-    # ];
-    # bindsTo = [
-    #   "sys-devices-virtual-net-ppp0.device"
-    # ];
-    # after = [
-    #   "sys-devices-virtual-net-ppp0.device"
-    # ];
+  systemd.services.dhcpcd-ip6 = {
+    wantedBy = [
+      "multi-user.target"
+      "sys-devices-virtual-net-ppp0.device"
+    ];
+    bindsTo = [
+      "sys-devices-virtual-net-ppp0.device"
+    ];
+    after = [
+      "sys-devices-virtual-net-ppp0.device"
+      "network-online.target"
+    ];
     description = "IPv6 DHCP";
     serviceConfig =
       let
