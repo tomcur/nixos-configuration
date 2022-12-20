@@ -226,7 +226,7 @@ in
       # Default gateway
       dhcp-option=${if_lan},3,10.0.0.1
       dhcp-option=${if_lan},6,10.0.0.1
-      dhcp-option=${if_lan},121,10.0.0.0/16,10.0.0.1
+      # dhcp-option=${if_lan},121,0.0.0.0/0,10.0.0.1
       
       dhcp-option=${if_laniptv},3,10.2.0.1
       dhcp-option=${if_laniptv},6,10.2.0.1
@@ -236,7 +236,7 @@ in
 
       dhcp-option=wg0,3,10.4.0.1
       dhcp-option=wg0,6,10.4.0.1
-      dhcp-option=wg0,121,10.4.0.0/16,10.4.0.1
+      # dhcp-option=wg0,121,0.0.0.0/0,10.4.0.1
 
       dhcp-range=interface:${if_lan},10.0.2.1,10.0.255.254,12h
       dhcp-range=interface:${if_laniptv},10.2.2.1,10.2.255.254,12h
