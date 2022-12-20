@@ -330,10 +330,16 @@ in
               # Allow Wireguard connections
               udp dport 51820 accept
 
+              # Allow SSH connections
+              tcp dport 22 accept
+
               # ICMP
               ip protocol icmp icmp type echo-request limit rate 10/second accept
               icmpv6 type echo-request limit rate 10/second accept
               icmpv6 type { nd-neighbor-advert, nd-neighbor-solicit, nd-router-advert } ip6 hoplimit 255 limit rate 5/second accept
+
+              # Reject (don't drop) inbound traceroute packets
+              udp dport { 33434-33474 } reject
 
               # Allow trusted networks to access the router
               iif {
