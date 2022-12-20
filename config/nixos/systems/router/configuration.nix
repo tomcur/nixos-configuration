@@ -35,6 +35,7 @@ in
   networking.domain = "home.arpa";
   networking.nameservers = [ "1.1.1.1" ];
   networking.useDHCP = false;
+  networking.dhcpcd.enable = false;
 
   services.resolved.enable = false;
   systemd.network = {
@@ -102,6 +103,13 @@ in
       };
     };
     networks = {
+      "20-wan" = {
+        matchConfig.Name = "wan";
+        networkConfig = {
+          DHCP = "no";
+          LinkLocalAddressing = "no";
+        };
+      };
       "30-lan" = {
         matchConfig.Name = if_lan;
         address = [
