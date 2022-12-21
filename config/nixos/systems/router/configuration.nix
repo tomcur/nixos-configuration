@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 let
   # Physical interface mappings
-  if_wan = "enp1s0f3";
+  if_isp = "enp1s0f3";
   if_lan = "enp1s0f2";
   if_laniptv = "enp1s0f1";
   secret = import ./secret.nix;
@@ -124,8 +124,8 @@ in
         };
         vlan = [ "languest" "lansecure" ];
       };
-      "30-wan" = {
-        matchConfig.Name = if_wan;
+      "30-isp" = {
+        matchConfig.Name = if_isp;
         linkConfig = {
           RequiredForOnline = "carrier";
           MTUBytes = "1512"; # allow for baby jumbo frames + vlan overhead
@@ -451,7 +451,7 @@ in
           phyint lansecure disabled
           phyint languest disabled
           phyint ${if_lan} disabled
-          phyint ${if_wan} disabled
+          phyint ${if_isp} disabled
           phyint wg0 disabled
           phyint ppp0 disabled
 
