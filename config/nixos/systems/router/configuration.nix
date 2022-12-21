@@ -433,10 +433,21 @@ in
   };
 
   systemd.services.igmpproxy = {
-    wantedBy = [ "multi-user.target" ];
-    # after = [ "network-online.target" ];
+    # wantedBy = [ "multi-user.target" ];
+    # # after = [ "network-online.target" ];
+    # after = [
+    #   "network-online.target"
+    #   "nftables-router.service"
+    # ];
+    wantedBy = [
+      "multi-user.target"
+      "sys-devices-virtual-net-ppp0.device"
+    ];
+    bindsTo = [
+      "sys-devices-virtual-net-ppp0.device"
+    ];
     after = [
-      "network-online.target"
+      "sys-devices-virtual-net-ppp0.device"
       "nftables-router.service"
     ];
     description = "IGMP proxying";
