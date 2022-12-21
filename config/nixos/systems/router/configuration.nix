@@ -433,8 +433,10 @@ in
   };
 
   systemd.services.igmpproxy = {
+    # It appears proxying sometimes breaks with the commented-out config
+    # (perhaps after a ppp restart?)
+    # The following restarts the proxy after a ppp restart.
     # wantedBy = [ "multi-user.target" ];
-    # # after = [ "network-online.target" ];
     # after = [
     #   "network-online.target"
     #   "nftables-router.service"
