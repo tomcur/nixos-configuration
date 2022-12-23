@@ -100,10 +100,14 @@ function M.setupWithColors(colors)
     -- Some plugin coloring:
     highlight(groups, "TSVariableBuiltin", groups.Constant) -- { link = "Constant" })
 
-    highlight(groups, "LSPDiagnosticsDefaultHint",        groups.Comment) -- { link = "Comment" })
-    highlight(groups, "LSPDiagnosticsDefaultInformation", groups.Normal) -- { link = "Normal" })
-    highlight(groups, "LSPDiagnosticsDefaultWarning",     groups.Warning) -- { link = "Warning" })
-    highlight(groups, "LSPDiagnosticsDefaultError",       groups.Error) -- { link = "Error" })
+    highlight(groups, "DiagnosticHint",           { fg = colors.gray_d })
+    highlight(groups, "DiagnosticInfo",           { fg = colors.blue_aa })
+    highlight(groups, "DiagnosticWarning",        { fg = colors.orange })
+    highlight(groups, "DiagnosticError",          { fg = colors.red_aa })
+    highlight(groups, "DiagnosticUnderlineHint",  { style = "undercurl", sp = colors.gray_d })
+    highlight(groups, "DiagnosticUnderlineInfo",  { style = "undercurl", sp = colors.blue_aa })
+    highlight(groups, "DiagnosticUnderlineWarn",  { style = "undercurl", sp = colors.orange })
+    highlight(groups, "DiagnosticUnderlineError", { style = "undercurl", sp = colors.red_aa })
 
     highlight(groups, "TelescopeSelection", groups.Visual)
     highlight(groups, "TelescopeMatching", { fg = colors.red_a, style = "bold" })
