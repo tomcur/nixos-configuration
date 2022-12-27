@@ -77,6 +77,8 @@ nnoremap <silent> gr    <cmd>lua require'telescope.builtin'.lsp_references{}<CR>
 nnoremap <silent> gs    <cmd>lua require'telescope.builtin'.treesitter{}<CR>
 nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 inoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> <space>ca <cmd>lua vim.lsp.buf.code_action()<CR>
+nnoremap <silent> <space>rn <cmd>lua vim.lsp.buf.rename()<CR>
 
 nnoremap <silent> <Leader>T <cmd>:lua require'lsp_extensions'.inlay_hints({prefix="⁖ ", enabled={"TypeHint", "ChainingHint"}})<CR>
 nnoremap <silent> <Leader>t <cmd>:lua require'lsp_extensions'.inlay_hints({prefix="⁖ ", enabled={"TypeHint", "ChainingHint"}, only_current_line=true})<CR>
