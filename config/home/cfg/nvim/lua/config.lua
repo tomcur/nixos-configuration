@@ -91,9 +91,14 @@ require('telescope').setup {
     grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
     qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
     file_sorter = require'telescope.sorters'.get_fuzzy_file,
+  },
+  extensions = {
+    ["ui-select"] = {
+      require("telescope.themes").get_dropdown {}
+    }
   }
 }
-
+require("telescope").load_extension("ui-select")
 
 -- nvim-cmp
 vim.o.completeopt="menu,menuone,noselect"

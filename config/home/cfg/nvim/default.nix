@@ -74,6 +74,7 @@ in
       plugins.plenary
       plugins.lsp-extensions
       plugins.telescope
+      telescope-ui-select-nvim
 
       # Register preview.
       plugins.registers-nvim
