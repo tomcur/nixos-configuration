@@ -68,8 +68,9 @@ nmap <leader>fg <cmd>lua require('telescope.builtin').git_files()<cr>
 nmap <leader>fr <cmd>lua require('telescope.builtin').live_grep()<cr>
 
 "" Diagnostics
-nnoremap <silent> <F5>       <cmd>TroubleToggle<CR>
-inoremap <silent> <F5>       <cmd>TroubleToggle<CR>
+nnoremap          <leader>xx <cmd>TroubleToggle<CR>
+nnoremap          <leader>xw <cmd>TroubleToggle workspace_diagnostics<CR>
+nnoremap          <leader>xd <cmd>TroubleToggle document_diagnostics<CR>
 nnoremap <silent> K          <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gd         <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> gy         <cmd>lua vim.lsp.buf.type_definition()<CR>

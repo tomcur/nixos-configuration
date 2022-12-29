@@ -161,7 +161,7 @@ require'lspconfig'.rust_analyzer.setup{
   settings = {
     ["rust-analyzer"] = {
       checkOnSave = {
-        enable = false
+        enable = true
       },
     },
   },
