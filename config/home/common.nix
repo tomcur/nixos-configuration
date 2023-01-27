@@ -9,7 +9,10 @@
     (pkgs.callPackage ./my-programs/paper {
       buildPythonPackage = pkgs.python3Packages.buildPythonPackage;
     })
-  ] ++ (with pkgs; [
+  ] ++ (with stablePkgs; [
+    zathura
+    libreoffice
+  ]) ++ (with pkgs; [
     # Font tools.
     gnome.gucharmap
     # Tools.
@@ -27,8 +30,6 @@
     # Documents.
     nomacs
     okular
-    stablePkgs.zathura
-    libreoffice
     gimp
     # Reference management.
     zotero
