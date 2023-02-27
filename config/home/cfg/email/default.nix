@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, stablePkgs, lib, config, ... }:
 let
   accounts = config.accounts.email.accounts;
 in
@@ -248,7 +248,7 @@ in
     '';
 
   home.file.".mailcap".text = ''
-    text/html; ${pkgs.qutebrowser}/bin/qutebrowser --target window %s &; test=test -n "$DISPLAY"; nametemplate = %s.html
+    text/html; ${stablePkgs.qutebrowser}/bin/qutebrowser --target window %s &; test=test -n "$DISPLAY"; nametemplate = %s.html
     text/html; ${pkgs.w3m}/bin/w3m -I %{charset} -T text/html; copiousoutput
     image/*; ${pkgs.imv}/bin/imv %s
   '';
