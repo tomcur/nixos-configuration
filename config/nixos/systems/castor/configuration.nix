@@ -118,16 +118,20 @@
   ];
 
   # Set monitor position and force compositor pipeline to prevent screen tearing (nvidia).
+  # hardware.nvidia.modesetting.enable = true;
   services = {
     xserver = {
       # Use non-free Nvidia drivers.
+      # videoDrivers = [ "nvidia" "intel" ];
       videoDrivers = [ "nvidia" ];
       xrandrHeads = [ "DP-2" "DP-4" ];
 
       # Option "MetaModes" "DP-2: nvidia-auto-select +0+240 { }, DP-4: nvidia-auto-select +2560+0 { Rotation = Left }"
       screenSection = ''
-        Option "MetaModes" "DP-4: nvidia-auto-select +0+0 { }"
+        Option "MetaModes" "DP-4: nvidia-auto-select +0+0 { ForceCompositionPipeline = On }"
         Option "FlatPanelProperties" "Dithering = Disabled"
+        Option "TripleBuffer" "On"
+        Option "Coolbits" "12"
       '';
 
       # extraConfig = ''
