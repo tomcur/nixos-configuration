@@ -92,6 +92,8 @@
         443
         61167
         1883 # MQTT
+        8000
+        8080 # Alternative HTML
         22000 # Syncthing listening
         8800 # Calibre server
       ];
