@@ -122,6 +122,8 @@
   services = {
     xserver = {
       # Use non-free Nvidia drivers.
+
+      # Specifying both nivida and intel as drivers suddenly started segfaulting xserver on startup
       # videoDrivers = [ "nvidia" "intel" ];
       videoDrivers = [ "nvidia" ];
       xrandrHeads = [ "DP-2" "DP-4" ];
