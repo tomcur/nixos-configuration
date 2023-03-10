@@ -198,11 +198,12 @@
 
     nginx = {
       enable = true;
-      user = "thomas";
+      # user = "thomas";
+      # group = "users";
       virtualHosts = {
         "castor.uint.one" = {
-          addSSL = true;
-          enableACME = true;
+          # addSSL = true;
+          # enableACME = true;
           root = "/var/lib/www";
           extraConfig = ''
             autoindex on;
@@ -232,10 +233,10 @@
     ratbagd.enable = true;
   };
 
-  security.acme.acceptTerms = true;
-  security.acme.certs = {
-    "castor.uint.one".email = "thomas@kepow.org";
-  };
+  # security.acme.acceptTerms = true;
+  # security.acme.certs = {
+  #   "castor.uint.one".email = "thomas@kepow.org";
+  # };
 
   # Idle hdd automatically.
     systemd.services.hd-idle-boot = {
