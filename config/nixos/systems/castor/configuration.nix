@@ -239,7 +239,7 @@
   # };
 
   # Idle hdd automatically.
-    systemd.services.hd-idle-boot = {
+  systemd.services.hd-idle-boot = {
     description = "HD spin-down on boot";
     wantedBy = [ "multi-user.target" ];
     serviceConfig = {
