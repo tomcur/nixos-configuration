@@ -83,6 +83,7 @@ theme.fg_minimize = "#BEBEBE"
 
 theme.bg_normal   = "#222222"
 theme.bg_systray  = "#3F3F3F"
+theme.bg_systray2  = "#4F4F4F"
 
 theme.useless_gap   = dpi(3)
 theme.border_width  = dpi(1)
@@ -545,24 +546,17 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets on big screens
             wibox.container.background(wibox.container.margin(nil, dpi(8)), theme.bg_normal),
             layout = wibox.layout.fixed.horizontal,
-            arrow(theme.bg_normal, theme.bg_systray),
+            -- arrow(theme.bg_normal, theme.bg_systray),
             wibox.container.background(wibox.container.margin(wibox.widget.systray(), dpi(4), dpi(4)), theme.bg_systray),
             -- wibox.container.background(wibox.container.margin(wibox.widget { mailicon, theme.mail and theme.mail.widget, layout = wibox.layout.align.horizontal }, dpi(4), dpi(7)), "#343434"),
-            -- arrow("#343434", theme.bg_normal),
             -- wibox.container.background(wibox.container.margin(wibox.widget { mpdicon, theme.mpd.widget, layout = wibox.layout.align.horizontal }, dpi(3), dpi(6)), theme.bg_focus),
-            arrow(theme.bg_systray, "#777E76"),
-            wibox.container.background(wibox.container.margin(wibox.widget { memicon, mem.widget, layout = wibox.layout.align.horizontal }, dpi(2), dpi(3)), "#777E76"),
-            arrow("#777E76", "#4B696D"),
-            wibox.container.background(wibox.container.margin(wibox.widget { cpuicon, cpu.widget, layout = wibox.layout.align.horizontal }, dpi(3), dpi(4)), "#4B696D"),
-            arrow("#4B696D", "#4B3B51"),
-            wibox.container.background(wibox.container.margin(wibox.widget { nil, neticon, net.widget, layout = wibox.layout.align.horizontal }, dpi(3), dpi(3)), "#4B3B51"),
-            arrow("#4B3B51", theme.bg_normal),
+            wibox.container.background(wibox.container.margin(wibox.widget { memicon, mem.widget, layout = wibox.layout.align.horizontal }, dpi(1), dpi(3)), theme.bg_systray),
+            wibox.container.background(wibox.container.margin(wibox.widget { cpuicon, cpu.widget, layout = wibox.layout.align.horizontal }, dpi(4), dpi(4)), theme.bg_systray2),
+            wibox.container.background(wibox.container.margin(wibox.widget { nil, neticon, net.widget, layout = wibox.layout.align.horizontal }, dpi(4), dpi(7)), theme.bg_systray),
             bat_hosts[awesome.hostname]
-                and wibox.container.background(wibox.container.margin(bat.widget, dpi(2), dpi(3)), theme.bg_normal)
-                or wibox.container.background(wibox.container.margin(task, dpi(3), dpi(7)), theme.bg_normal),
-            arrow(theme.bg_normal, "#777E76"),
-            wibox.container.background(wibox.container.margin(mytextclock, dpi(4), dpi(8)), "#777E76"),
-            arrow("#777E76", "alpha"),
+                and wibox.container.background(wibox.container.margin(bat.widget, dpi(2), dpi(3)), theme.bg_normal),
+                -- or wibox.container.background(wibox.container.margin(task, dpi(3), dpi(7)), theme.bg_normal),
+            wibox.container.background(wibox.container.margin(mytextclock, dpi(4), dpi(4)), theme.bg_systray2),
             {
                 s.mylayoutbox,
                 margins = 2,
