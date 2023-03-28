@@ -13,7 +13,7 @@
   #     PREEMPT_VOLUNTARY n
   #   '';
   # }];
-  powerManagement.cpuFreqGovernor = lib.mkForce "performance";
+  # powerManagement.cpuFreqGovernor = lib.mkForce "performance";
 
   services.pipewire = {
     enable = true;
