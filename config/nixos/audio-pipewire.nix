@@ -21,56 +21,60 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
-    media-session.enable = false;
     wireplumber.enable = true;
-    config.pipewire = {
-      "context.properties" = {
-        "default.clock.rate" = 44100;
-        "default.clock.quantum" = 2048;
-        "default.clock.min-quantum" = 512;
-        "default.clock.max-quantum" = 8192;
-      };
-    };
-    config.jack = {
-      "jack.properties" = {
-        "node.latency" = "512/44100";
-      };
-    };
-    config.pipewire-pulse = {
-      "context.properties" = {
-        "log.level" = 2;
-      };
-      "context.modules" = [
-        {
-          name = "libpipewire-module-rtkit";
-          args = {
-            "nice.level" = -15;
-            "rt.prio" = 88;
-            "rt.time.soft" = 200000;
-            "rt.time.hard" = 200000;
-          };
-          flags = [ "ifexists" "nofail" ];
+  };
+
+  environment.etc = {
+    "pipewire/pipewire.conf.d/21-clock.conf".text = ''
+      context.properties = {
+        default.clock.max-quantum = 8192
+        default.clock.min-quantum = 512
+        default.clock.quantum = 2048
+        default.clock.rate = 44100
+      }
+    '';
+    "pipewire/jack.conf.d/21-jack.conf".text = ''
+      jack.properties = {
+        node.latency = 512/44100
+      }
+    '';
+    "pipewire/pipewire-pulse.conf.d/21-pulse.conf".text = ''
+      context.properties = {
+        context.properties = {
+          log.level = 2
         }
-        { name = "libpipewire-module-protocol-native"; }
-        { name = "libpipewire-module-client-node"; }
-        { name = "libpipewire-module-adapter"; }
-        { name = "libpipewire-module-metadata"; }
-        {
-          name = "libpipewire-module-protocol-pulse";
-          args = {
-            "pulse.min.req" = "32/44100";
-            "pulse.default.req" = "32/44100";
-            "pulse.max.req" = "32/44100";
-            "pulse.min.quantum" = "32/44100";
-            "pulse.max.quantum" = "32/44100";
-            "server.address" = [ "unix:native" "tcp:4713" ];
-          };
+        context.modules = [
+          {
+            name = libpipewire-module-rtkit
+            args = {
+              nice.level = -15
+              rt.prio = 88
+              rt.time.soft = 200000
+              rt.time.hard = 200000
+            }
+            flags = [ ifexists nofail ]
+          }
+          { name = libpipewire-module-protocol-native }
+          { name = libpipewire-module-client-node }
+          { name = libpipewire-module-adapter }
+          { name = libpipewire-module-metadata }
+          {
+            name = libpipewire-module-protocol-pulse
+            args = {
+              pulse.min.req = 32/44100
+              pulse.default.req = 32/44100
+              pulse.max.req = 32/44100
+              pulse.min.quantum = 32/44100
+              pulse.max.quantum = 32/44100
+              server.address = [ unix:native tcp:4713 ]
+            }
+          }
+        ]
+        stream.properties = {
+          node.latency = 32/44100
+          resample.quality = 1
         }
-      ];
-      "stream.properties" = {
-        "node.latency" = "32/44100";
-        "resample.quality" = 1;
-      };
-    };
+      }
+    '';
   };
 }
