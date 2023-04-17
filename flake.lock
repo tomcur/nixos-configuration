@@ -189,15 +189,14 @@
       "inputs": {
         "nixpkgs": [
           "unstable"
-        ],
-        "utils": "utils"
+        ]
       },
       "locked": {
-        "lastModified": 1681162249,
-        "narHash": "sha256-jh5fLaTxR5XowXA0CN/1Gs2qbvVdmdPCSeO424XWZLI=",
+        "lastModified": 1681690464,
+        "narHash": "sha256-x8pw8KAb9TJsszbCHUBK2bWvgYPlCjwHMV1dF95eZPs=",
         "owner": "rycee",
         "repo": "home-manager",
-        "rev": "4e79c6a414ce59fd1a53ab77899c77ab87774e6b",
+        "rev": "53bd74f786934997e7f6a5ed9741b226e511e508",
         "type": "github"
       },
       "original": {
@@ -267,7 +266,7 @@
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-9yxQqHi1UQfTEltFMdapuU8Q5MgvV2YXNkCos1G2f2k=",
+        "narHash": "sha256-eLDH8G/m7ZBToWKfZ7Zwnz9LzCSnf+mvDqCbZRXJCJg=",
         "path": "./flakes/neovim",
         "type": "path"
       },
@@ -279,15 +278,18 @@
     "neovim_2": {
       "inputs": {
         "flake-utils": "flake-utils_2",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": [
+          "neovim",
+          "nixpkgs"
+        ]
       },
       "locked": {
         "dir": "contrib",
-        "lastModified": 1680603386,
-        "narHash": "sha256-rnczhr9Xhxfzp1xdjaunOQQkuCh4paPMBWitBjsXcC4=",
+        "lastModified": 1681719021,
+        "narHash": "sha256-edYPdId662VSpTngbFinHZDk7hbIO0T4DaIG75QdOoA=",
         "owner": "neovim",
         "repo": "neovim",
-        "rev": "b83f949fd973f071db1ff522cc3acda0423f4faf",
+        "rev": "53985a6d31cc60d4b2d7a7af91929922de9ecf4d",
         "type": "github"
       },
       "original": {
@@ -315,27 +317,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1671983799,
-        "narHash": "sha256-Z2Ro6hFPZHkBqkVXY5/aBUzxi5xizQGvuHQ9+T5B/ks=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "fad51abd42ca17a60fc1d4cb9382e2d79ae31836",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1681126633,
-        "narHash": "sha256-evQ3Ct/yJDSHej16Hiq+JfxRjgm9FXu/2LBxsyorGdE=",
+        "lastModified": 1681648924,
+        "narHash": "sha256-pzi3HISK8+7mpEtv08Yr80wswyHKsz+RP1CROG1Qf6s=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "db24d86dd8a4769c50d6b7295e81aa280cd93f35",
+        "rev": "f294325aed382b66c7a188482101b0f336d1d7db",
         "type": "github"
       },
       "original": {
@@ -428,11 +414,11 @@
     "nvimMinimapVim": {
       "flake": false,
       "locked": {
-        "lastModified": 1680280122,
-        "narHash": "sha256-xrKkVTVVna9wc38K/CGCnQmWrofUAYJ0f92NR/ycfZ4=",
+        "lastModified": 1681226039,
+        "narHash": "sha256-vOFbYUd+manGcJqgk7QuArsDuAukmIS77YCZFtsY98g=",
         "owner": "wfxr",
         "repo": "minimap.vim",
-        "rev": "15dce1b667d4df0eec715798ab94c0850316e8a3",
+        "rev": "868a809302f9f5d4c408ef8aef7eb9bd5893f801",
         "type": "github"
       },
       "original": {
@@ -540,11 +526,11 @@
     "nvimTreesitter": {
       "flake": false,
       "locked": {
-        "lastModified": 1681207793,
-        "narHash": "sha256-8T0ly4eQA5cOiLyo8KXpNEZgQwcW+6hqwf8rL6QdKUU=",
+        "lastModified": 1681717119,
+        "narHash": "sha256-cBk67ybMIxuDygub2v/xZAc9bYTzg1g3r8P6MJzRXZw=",
         "owner": "nvim-treesitter",
         "repo": "nvim-treesitter",
-        "rev": "ac4020c70722337c326bf65b645b162ee6e1796b",
+        "rev": "9d64a68e1c727b8b9b4ca7ee571f3f079ec847e8",
         "type": "github"
       },
       "original": {
@@ -603,11 +589,11 @@
     },
     "patched": {
       "locked": {
-        "lastModified": 1681213026,
-        "narHash": "sha256-JBm29TBACf0KxKLB6VKARbKrUBweyyRjzdJy0jvvJV4=",
+        "lastModified": 1681719045,
+        "narHash": "sha256-xiyTlYTp8wqr5njQOSTBo/olB5G44w4slMTThbkqm3w=",
         "ref": "refs/heads/patched",
-        "rev": "1041a7b162347c573e6b0ad12ab2ff35fa27eb8a",
-        "revCount": 472195,
+        "rev": "aeb6738ba29a78409f642f41d3f5aab8bddcc830",
+        "revCount": 474515,
         "type": "git",
         "url": "file:///etc/nixos/nixpkgs"
       },
@@ -663,7 +649,7 @@
         "musnix": "musnix",
         "neovim": "neovim",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "patched": "patched",
         "phone-camera-upload": "phone-camera-upload",
         "renoise": "renoise",
@@ -690,11 +676,11 @@
     },
     "stable": {
       "locked": {
-        "lastModified": 1681091990,
-        "narHash": "sha256-ifIzhksUBZKp5WgCuoVhDY32qaEplXp7khzrB6zkaFc=",
+        "lastModified": 1681667556,
+        "narHash": "sha256-Z5+b5oUN7pwI/hIn9hWFbMm00A+zerVit1WImvg8jBo=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ea96b4af6148114421fda90df33cf236ff5ecf1d",
+        "rev": "39fa012bf8104323f89e62a293de90aebd0a6672",
         "type": "github"
       },
       "original": {
@@ -744,32 +730,17 @@
     },
     "unstable": {
       "locked": {
-        "lastModified": 1681126633,
-        "narHash": "sha256-evQ3Ct/yJDSHej16Hiq+JfxRjgm9FXu/2LBxsyorGdE=",
+        "lastModified": 1681648924,
+        "narHash": "sha256-pzi3HISK8+7mpEtv08Yr80wswyHKsz+RP1CROG1Qf6s=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "db24d86dd8a4769c50d6b7295e81aa280cd93f35",
+        "rev": "f294325aed382b66c7a188482101b0f336d1d7db",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "utils": {
-      "locked": {
-        "lastModified": 1678901627,
-        "narHash": "sha256-U02riOqrKKzwjsxc/400XnElV+UtPUQWpANPlyazjH0=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "93a2b84fc4b70d9e089d029deacc3583435c2ed6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
         "type": "github"
       }
     }
