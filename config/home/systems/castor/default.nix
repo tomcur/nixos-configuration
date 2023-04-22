@@ -11,6 +11,7 @@
   home.packages = [
     inputs.phone-camera-upload.defaultPackage.${pkgs.stdenv.hostPlatform.system}
   ] ++ (with pkgs; [
+    inkscape
     deluge
     # Games.
     lutris
