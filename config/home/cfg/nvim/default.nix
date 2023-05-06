@@ -1,4 +1,4 @@
-{ pkgs, unstablePkgs, patchedPkgs, neovimPkg, neovimPlugins, ... }:
+{ pkgs, stablePkgs, unstablePkgs, patchedPkgs, neovimPkg, neovimPlugins, ... }:
 let
   plugins = pkgs.callPackage ./plugins.nix {
     inherit neovimPlugins;
@@ -14,7 +14,8 @@ in
 
   programs.neovim = {
     enable = true;
-    package = neovimPkg;
+    # package = neovimPkg;
+    package = pkgs.neovim-unwrapped;
     extraPackages = (with pkgs; [
       python3Packages.black
       python3Packages.isort
