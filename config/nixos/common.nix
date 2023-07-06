@@ -424,6 +424,19 @@
     }
   ];
 
+  system.activationScripts = {
+    diff = {
+      supportsDryActivation = true;
+      text = ''
+        if [[ -e /run/current-system ]]; then
+          echo -e "\nNixOS system diff:"
+          ${pkgs.nvd}/bin/nvd --nix-bin-dir=${pkgs.nix}/bin diff /run/current-system "$systemConfig"
+          echo ""
+        fi
+      '';
+    };
+  };
+
   users.defaultUserShell = pkgs.zsh;
   users.users.thomas = {
     isNormalUser = true;
