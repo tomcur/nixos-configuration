@@ -65,6 +65,8 @@
     nix-index
     patchelf
     niv
+    nix-output-monitor
+    nixpkgs-review
     # Terminal.
     zsh
     # Terminal emulator.
