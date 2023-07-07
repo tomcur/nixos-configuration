@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, ... }:
+{ inputs, stablePkgs, config, pkgs, ... }:
 
 {
   # Allow unfree software.
