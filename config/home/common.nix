@@ -27,6 +27,7 @@
     tokei
     nix-du
     nix-prefetch-github
+    gh
     # Documents.
     nomacs
     okular
