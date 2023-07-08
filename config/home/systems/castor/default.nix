@@ -3,6 +3,7 @@
   imports = [
     ../../common.nix
     ../../cfg/awesome/castor.nix
+    ../../cfg/helix
     ../../cfg/daw
     ../../cfg/email
     ./music.nix
