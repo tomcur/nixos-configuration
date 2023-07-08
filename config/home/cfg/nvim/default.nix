@@ -23,6 +23,7 @@ in
       # nodePackages.javascript-typescript-langserver
       nodePackages.typescript-language-server # tsserver
       nodePackages.prettier
+      nixd # nix language server
       nodePackages.bash-language-server
       shfmt
     ]) ++ (with unstablePkgs; [

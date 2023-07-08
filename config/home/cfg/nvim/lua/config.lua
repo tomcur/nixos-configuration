@@ -181,6 +181,9 @@ require'lspconfig'.beancount.setup{
 require'lspconfig'.bashls.setup{
   capabilities = capabilities
 }
+require'lspconfig'.nixd.setup{
+  capabilities = capabilities
+}
 
 require("trouble").setup {}
 
