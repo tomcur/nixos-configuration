@@ -117,7 +117,7 @@
               neovimPlugins = neovim.plugins.${system};
               awesomePkg = awesome.defaultPackage.${system};
               awesomePlugins = awesome.plugins.${system};
-              deployrsPkgs = inputs.deploy-rs.${system}.packages;
+              deployrsPkgs = inputs.deploy-rs.packages.${system};
             };
             modules = [
               {
@@ -147,7 +147,6 @@
               stablePkgs = import stable { inherit system; config = { allowUnfree = true; }; };
               unstablePkgs = import unstable { inherit system; config = { allowUnfree = true; }; };
               patchedPkgs = import patched { inherit system; config = { allowUnfree = true; }; };
-              deployrsPkgs = inputs.deploy-rs.${system}.packages;
             };
             modules = [
               {
