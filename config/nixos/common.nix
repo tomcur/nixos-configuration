@@ -51,6 +51,12 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_GB.UTF-8";
+  i18n.supportedLocales = [
+    "C.UTF-8/UTF-8"
+    "en_US.UTF-8/UTF-8"
+    "en_GB.UTF-8/UTF-8"
+    "nl_NL.UTF-8/UTF-8"
+  ];
 
   # Virtual console settings.
   console = {
