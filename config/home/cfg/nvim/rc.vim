@@ -72,8 +72,8 @@ nnoremap          <leader>xx <cmd>TroubleToggle<CR>
 nnoremap          <leader>xw <cmd>TroubleToggle workspace_diagnostics<CR>
 nnoremap          <leader>xd <cmd>TroubleToggle document_diagnostics<CR>
 nnoremap <silent> K          <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gd         <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> gy         <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent> gd         <cmd>lua require'telescope.builtin'.lsp_definitions{}<CR>
+nnoremap <silent> gy         <cmd>lua require'telescope.builtin'.lsp_type_definitions{}<CR>
 nnoremap <silent> gr         <cmd>lua require'telescope.builtin'.lsp_references{}<CR>
 nnoremap <silent> gs         <cmd>lua require'telescope.builtin'.treesitter{}<CR>
 nnoremap <silent> <c-k>      <cmd>lua vim.lsp.buf.signature_help()<CR>
