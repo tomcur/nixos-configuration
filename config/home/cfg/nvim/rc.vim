@@ -81,8 +81,7 @@ inoremap <silent> <c-k>      <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> <leader>a  <cmd>lua vim.lsp.buf.code_action()<CR>
 nnoremap <silent> <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
 
-nnoremap <silent> <Leader>T <cmd>:lua require'lsp_extensions'.inlay_hints({prefix="⁖ ", enabled={"TypeHint", "ChainingHint"}})<CR>
-nnoremap <silent> <Leader>t <cmd>:lua require'lsp_extensions'.inlay_hints({prefix="⁖ ", enabled={"TypeHint", "ChainingHint"}, only_current_line=true})<CR>
+nnoremap <silent> <leader>t <cmd>:lua vim.lsp.inlay_hint(0)<CR>
 
 " Default .tex to LaTeX
 let g:tex_flavor = "latex"

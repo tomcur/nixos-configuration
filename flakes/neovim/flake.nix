@@ -15,10 +15,6 @@
       url = "github:nvim-lua/popup.nvim";
       flake = false;
     };
-    nvimLspExtensions = {
-      url = "github:nvim-lua/lsp_extensions.nvim";
-      flake = false;
-    };
     nvimTelescope = {
       url = "github:nvim-telescope/telescope.nvim";
       flake = false;
@@ -81,7 +77,7 @@
         };
         defaultPackage = packages.neovim;
         plugins = with input; {
-          inherit nvimPlenary nvimPopup nvimLspExtensions nvimTelescope nvimTreesitter nvimTreesitterTextobjects
+          inherit nvimPlenary nvimPopup nvimTelescope nvimTreesitter nvimTreesitterTextobjects
             nvimMonochrome nvimVimColorsPencil nvimPhoton nvimColorizerLua nvimMinimapVim nvimRegistersNvim
             nvimCompletionNvim nvimTroubleNvim nvimGitsignsNvim nvimLeapNvim;
         };

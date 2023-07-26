@@ -12,12 +12,6 @@
     src = neovimPlugins.nvimPlenary;
     meta.homepage = "https://github.com/nvim-lua/plenary.nvim";
   };
-  lsp-extensions = buildVimPluginFrom2Nix rec {
-    pname = "lsp-extensions";
-    version = neovimPlugins.nvimLspExtensions.lastModifiedDate;
-    src = neovimPlugins.nvimLspExtensions;
-    meta.homepage = "https://github.com/nvim-lua/lsp_extensions.nvim";
-  };
   telescope = buildVimPluginFrom2Nix rec {
     pname = "telescope";
     version = neovimPlugins.nvimTelescope.lastModifiedDate;

@@ -14,8 +14,8 @@ in
 
   programs.neovim = {
     enable = true;
-    # package = neovimPkg;
-    package = pkgs.neovim-unwrapped;
+    package = neovimPkg;
+    # package = pkgs.neovim-unwrapped;
     extraPackages = (with pkgs; [
       python3Packages.black
       python3Packages.isort
@@ -74,7 +74,6 @@ in
       # Popup finder.
       plugins.popup
       plugins.plenary
-      plugins.lsp-extensions
       plugins.telescope
       telescope-ui-select-nvim
 
