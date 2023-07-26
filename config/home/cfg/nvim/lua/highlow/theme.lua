@@ -101,6 +101,7 @@ function M.setupWithColors(colors)
     highlight(groups, "TSVariableBuiltin", groups.Constant) -- { link = "Constant" })
 
     highlight(groups, "DiagnosticHint",           { fg = colors.gray_d })
+    highlight(groups, "LspInlayHint",             { fg = colors.grey_d, bg = colors.darkbg })
     highlight(groups, "DiagnosticInfo",           { fg = colors.blue_aa })
     highlight(groups, "DiagnosticWarning",        { fg = colors.orange })
     highlight(groups, "DiagnosticError",          { fg = colors.red_aa })
