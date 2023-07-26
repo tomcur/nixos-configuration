@@ -9,20 +9,6 @@ vim.fn.mkdir(parser_install_dir, "p")
 vim.cmd("packadd nvim-treesitter")
 require'nvim-treesitter.configs'.setup {
   parser_install_dir = parser_install_dir,
-  ensure_installed = {
-    "nix",
-    "rust",
-    "python",
-    "bash",
-    "toml",
-    "lua",
-    "julia",
-    "typescript",
-    "javascript",
-    "php",
-    "hcl", -- Terraform
-    "beancount",
-  },
   auto_install = false,
   highlight = {
     enable = true,

@@ -93,14 +93,20 @@ in
       plugins.gitsigns-nvim
 
       # Treesitter.
-      {
-        plugin = plugins.nvim-treesitter;
-        optional = true;
-      }
-      {
-        plugin = plugins.nvim-treesitter-textobjects;
-        optional = true;
-      }
+      nvim-treesitter
+      nvim-treesitter-textobjects
+
+      nvim-treesitter-parsers.nix
+      nvim-treesitter-parsers.rust
+      nvim-treesitter-parsers.python
+      nvim-treesitter-parsers.bash
+      nvim-treesitter-parsers.toml
+      nvim-treesitter-parsers.lua
+      nvim-treesitter-parsers.julia
+      nvim-treesitter-parsers.typescript
+      nvim-treesitter-parsers.javascript
+      nvim-treesitter-parsers.php
+      nvim-treesitter-parsers.hcl # Terraform
     ];
   };
 

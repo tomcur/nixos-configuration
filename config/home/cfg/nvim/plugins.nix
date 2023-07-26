@@ -18,18 +18,6 @@
     src = neovimPlugins.nvimTelescope;
     meta.homepage = "https://github.com/nvim-lua/telescope.nvim";
   };
-  nvim-treesitter = buildVimPluginFrom2Nix rec {
-    pname = "nvim-treesitter";
-    version = neovimPlugins.nvimTreesitter.lastModifiedDate;
-    src = neovimPlugins.nvimTreesitter;
-    meta.homepage = "https://github.com/nvim-treesitter/nvim-treesitter/";
-  };
-  nvim-treesitter-textobjects = buildVimPluginFrom2Nix rec {
-    pname = "nvim-treesitter-textobjects";
-    version = neovimPlugins.nvimTreesitterTextobjects.lastModifiedDate;
-    src = neovimPlugins.nvimTreesitterTextobjects;
-    meta.homepage = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects/";
-  };
   vim-monochrome = buildVimPluginFrom2Nix rec {
     pname = "vim-monochrome";
     version = neovimPlugins.nvimMonochrome.lastModifiedDate;
