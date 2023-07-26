@@ -190,6 +190,7 @@
       set = "code";
       privateBuildPlan = {
         family = "Iosevka";
+        spacing = "term";
         design = [
           "no-ligation"
           "sp-force-monospace"
