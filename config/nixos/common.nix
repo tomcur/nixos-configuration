@@ -101,7 +101,6 @@
     mime-types
     # Network.
     pciutils
-    dhcp
     whois
     # Drives.
     ntfs3g
