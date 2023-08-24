@@ -19,14 +19,6 @@
       url = "github:nvim-telescope/telescope.nvim";
       flake = false;
     };
-    nvimTreesitter = {
-      url = "github:nvim-treesitter/nvim-treesitter";
-      flake = false;
-    };
-    nvimTreesitterTextobjects = {
-      url = "github:nvim-treesitter/nvim-treesitter-textobjects";
-      flake = false;
-    };
     nvimMonochrome = {
       url = "github:fxn/vim-monochrome";
       flake = false;
@@ -77,7 +69,7 @@
         };
         defaultPackage = packages.neovim;
         plugins = with input; {
-          inherit nvimPlenary nvimPopup nvimTelescope nvimTreesitter nvimTreesitterTextobjects
+          inherit nvimPlenary nvimPopup nvimTelescope
             nvimMonochrome nvimVimColorsPencil nvimPhoton nvimColorizerLua nvimMinimapVim nvimRegistersNvim
             nvimCompletionNvim nvimTroubleNvim nvimGitsignsNvim nvimLeapNvim;
         };
