@@ -164,14 +164,20 @@
   environment.variables = {
     EDITOR = "${pkgs.neovim}/bin/nvim";
     VISUAL = "${pkgs.neovim}/bin/nvim";
+
+    # See: https://github.com/NixOS/nixpkgs/issues/32580
+    WEBKIT_DISABLE_COMPOSITING_MODE = "1";
   };
 
   # Place mime.types data in /etc.
   environment.etc."mime.types".source = "${pkgs.mime-types}/etc/mime.types";
 
   fonts.fonts = with pkgs; [
-    symbols-nerdfonts
     dejavu_fonts
+    symbols-nerdfonts
+    # inconsolata-nerdfont
+    # (nerdfonts.override { fonts = [ "NerdFontsSymbols" ]; })
+    # dejavu_fonts
     noto-fonts
     noto-fonts-cjk
     noto-fonts-emoji
@@ -214,22 +220,35 @@
           menu = 700;
           css = 700;
         };
+        # slants = {
+        #   upright = "normal";
+        #   italic = "italic";
+        # };
       };
     })
     inconsolata
     kawkab-mono-font
     # Icons.
     siji
+    # nerdfonts
+    # twemoji-color-font
+    # font-awesome_5
+    # emacs-all-the-icons-fonts
     # TeX
     lmodern
+    bakoma_ttf
   ];
 
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
-      monospace = [ "Symbols Nerd Font" "Source Code Pro" "Noto Color Emoji" ];
-      sansSerif = [ "Symbols Nerd Font" "DejaVu Sans" "Noto Color Emoji" ];
-      serif = [ "Symbols Nerd Font" "DejaVu Serif" "Noto Color Emoji" ];
+      # monospace = [ "Symbols Nerd Font" "Source Code Pro" "Noto Color Emoji" ];
+      # sansSerif = [ "Symbols Nerd Font" "DejaVu Sans" "Noto Color Emoji" ];
+      # serif = [ "Symbols Nerd Font" "DejaVu Serif" "Noto Color Emoji" ];
+      # emoji = [ "Symbols Nerd Font" "Noto Color Emoji" ];
+      monospace = [ "Source Code Pro" "Symbols Nerd Font" "Noto Color Emoji" ];
+      sansSerif = [ "DejaVu Sans" "Symbols Nerd Font" "Noto Color Emoji" ];
+      serif = [ "DejaVu Serif" "Symbols Nerd Font" "Noto Color Emoji" ];
       emoji = [ "Symbols Nerd Font" "Noto Color Emoji" ];
     };
   };
