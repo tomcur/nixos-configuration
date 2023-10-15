@@ -1,20 +1,20 @@
-{ lib, stdenv, fetchurl }:
+{ lib, stdenv, fetchzip }:
 
-stdenv.mkDerivation {
+stdenv.mkDerivation rec {
   pname = "symbols-nerdfonts";
-  version = "2021-07-03";
+  version = "3.0.2";
 
-  src = fetchurl {
-    url = "https://github.com/ryanoasis/nerd-fonts/raw/bc4416e176d4ac2092345efd7bcb4abef9d6411e/src/glyphs/Symbols-2048-em%20Nerd%20Font%20Complete.ttf";
-    name = "symbols.ttf";
-    hash = "sha256-32vlj3cHwOjJvDqiMPyY/o+njPuhytQzIeWSgeyklgA=";
+  src = fetchzip {
+    url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v${version}/NerdFontsSymbolsOnly.tar.xz";
+    hash = "sha256-clfxFE1MvBUKn3NR/3WxW08R/4HZy0qZZi+S4Pt6WvI=";
+    stripRoot = false;
   };
 
   phases = [ "installPhase" ];
 
   installPhase = ''
     mkdir -p $out/share/fonts/truetype
-    cp $src $out/share/fonts/truetype/symbols-nerdfont.ttf
+    cp $src/SymbolsNerdFontMono-Regular.ttf $out/share/fonts/truetype/symbols-nerdfont.ttf
   '';
 
 }

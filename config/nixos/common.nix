@@ -246,10 +246,10 @@
       # sansSerif = [ "Symbols Nerd Font" "DejaVu Sans" "Noto Color Emoji" ];
       # serif = [ "Symbols Nerd Font" "DejaVu Serif" "Noto Color Emoji" ];
       # emoji = [ "Symbols Nerd Font" "Noto Color Emoji" ];
-      monospace = [ "Source Code Pro" "Symbols Nerd Font" "Noto Color Emoji" ];
-      sansSerif = [ "DejaVu Sans" "Symbols Nerd Font" "Noto Color Emoji" ];
-      serif = [ "DejaVu Serif" "Symbols Nerd Font" "Noto Color Emoji" ];
-      emoji = [ "Symbols Nerd Font" "Noto Color Emoji" ];
+      monospace = [ "Source Code Pro" "Symbols Nerd Font Mono" "Noto Color Emoji" ];
+      sansSerif = [ "DejaVu Sans" "Symbols Nerd Font Mono" "Noto Color Emoji" ];
+      serif = [ "DejaVu Serif" "Symbols Nerd Font Mono" "Noto Color Emoji" ];
+      emoji = [ "Symbols Nerd Font Mono" "Noto Color Emoji" ];
     };
   };
 
