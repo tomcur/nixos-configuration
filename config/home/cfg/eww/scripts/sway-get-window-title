@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+swaymsg -t subscribe '["workspace","window"]' --monitor | {
+    while read -r event; do
+        echo $event | jq -j "if ".change" == \"focus\" and .container.name then .container.name + \"\n\" else empty end"
+        echo $event | jq -j "if ".change" == \"focus\" and .current.focused and .current.focus == [] then \"\n\" else empty end"
+    done
+}

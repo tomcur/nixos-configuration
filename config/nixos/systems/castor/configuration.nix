@@ -1,8 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   imports = [
     ../../common.nix
     ../../audio-pipewire.nix
+    ../../modules/sway.nix
+    ../../modules/hyprland.nix
     ./music.nix
     ./secret.nix
   ];
@@ -117,8 +119,17 @@
     # virt-manager
   ];
 
+  environment.variables = {
+    XKB_DEFAULT_OPTIONS = "compose:ralt,grp:menu_toggle";
+    XKB_DEFAULT_LAYOUT = "us,ru";
+  };
+
+  hardware.opengl.enable = true;
+
+  programs.my-hyprland-env.enable = true;
+
   # Set monitor position and force compositor pipeline to prevent screen tearing (nvidia).
-  # hardware.nvidia.modesetting.enable = true;
+  hardware.nvidia.modesetting.enable = true;
   services = {
     xserver = {
       # Use non-free Nvidia drivers.

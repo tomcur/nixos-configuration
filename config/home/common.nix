@@ -9,6 +9,7 @@
     (pkgs.callPackage ./my-programs/paper {
       buildPythonPackage = pkgs.python3Packages.buildPythonPackage;
     })
+    (pkgs.callPackage ./my-programs/wayland-random-bg { })
   ] ++ (with stablePkgs; [
     zathura
     libreoffice
@@ -186,7 +187,11 @@
     ./cfg/xresources
     ./cfg/dunst.nix
     ./cfg/redshift
-    ./cfg/rofi
     ./cfg/aspell
+    # launchers
+    ./cfg/rofi
+    ./cfg/fuzzel
+    # wayland
+    ./cfg/eww
   ];
 }
