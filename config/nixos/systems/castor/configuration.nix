@@ -245,6 +245,21 @@
     # teamviewer.enable = true;
     ratbagd.enable = true;
   };
+  systemd.user.services.gammastep =
+    {
+      partOf = [ "graphical-session.target" ];
+      wantedBy = [ "graphical-session.target" ];
+
+      description = "Control display color temperature";
+      serviceConfig = {
+        Restart = "on-failure";
+        RestartSec = 5;
+        ExecStart = ''
+          ${pkgs.gammastep}/bin/gammastep -l 54.5:4.0 -t 6500:3400
+        '';
+      };
+    };
+
 
   # security.acme.acceptTerms = true;
   # security.acme.certs = {
