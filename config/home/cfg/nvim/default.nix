@@ -31,6 +31,8 @@ in
       # rls
       rust-analyzer
       nixpkgs-fmt
+      # PostgreSQL formatter
+      pgformatter
       # rnix-lsp
       # (rWrapper.override { packages = with rPackages; [ readr styler ]; })
       # Preview for nvim telescope
@@ -193,6 +195,9 @@ in
         " From: https://github.com/cespare/vim-toml/blob/master/ftdetect/toml.vim
         " Go dep and Rust use several TOML config files that are not named with .toml.
         autocmd BufNewFile,BufRead *.toml,Gopkg.lock,Cargo.lock,*/.cargo/config,*/.cargo/credentials,Pipfile setf toml
+      '';
+      ".config/nvim/ftplugin/sql.vim".text = ''
+        nmap <buffer><leader>mf :Neoformat<cr>
       '';
       # ABI incompatibilities. Should use https://github.com/nvim-treesitter/nvim-treesitter/blob/master/lockfile.json
       # ".config/nvim/parser/bash.so".source = "${patchedPkgs.tree-sitter.builtGrammars.tree-sitter-bash}/parser";
