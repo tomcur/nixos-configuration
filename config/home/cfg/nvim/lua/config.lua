@@ -2,7 +2,23 @@ require'leap'.set_default_keymaps()
 require'Comment'.setup()
 require'indent_blankline'.setup()
 
+-- LSP window setup
+local border = "single"
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+  vim.lsp.handlers.hover, {
+    border = border
+  }
+)
+
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+  vim.lsp.handlers.hover, {
+    border = border
+  }
+)
+
 vim.diagnostic.config {
+  float = { border = border },
   virtual_text = true,
   severity_sort = true,
 }
