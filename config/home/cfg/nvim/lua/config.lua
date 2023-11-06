@@ -2,6 +2,11 @@ require'leap'.set_default_keymaps()
 require'Comment'.setup()
 require'indent_blankline'.setup()
 
+vim.diagnostic.config {
+  virtual_text = true,
+  severity_sort = true,
+}
+
 -- Treesitter
 local parser_install_dir = vim.fn.stdpath("data") .. "/treesitter-parsers"
 vim.opt.runtimepath:append(parser_install_dir)
