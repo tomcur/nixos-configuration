@@ -134,6 +134,21 @@ function! s:ui_enter()
 
   " Color string colorizer
   lua require'colorizer'.setup()
+
+  " indent-blankline
+  " Currently must be called after colorscheme has been setup. It appears not
+  " to update highlights on the fly.
+  lua << EOF
+    require'ibl'.setup({
+      indent = {
+        char = "▏",
+      },
+      scope = {
+        show_start = false,
+        show_end = false,
+      },
+    })
+EOF
 endfunction
 
 au UIEnter * call s:ui_enter()

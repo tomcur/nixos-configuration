@@ -1,6 +1,5 @@
 require'leap'.set_default_keymaps()
 require'Comment'.setup()
-require'indent_blankline'.setup()
 
 -- LSP window setup
 local border = "single"
