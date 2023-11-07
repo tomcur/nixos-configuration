@@ -20,7 +20,7 @@ in
       bold:
         style: bold
       italic:
-        style: book italic
+        style: italic
       bold_italic:
         style: bold italic
       size: 10.5
