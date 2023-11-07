@@ -55,9 +55,9 @@
   # Disable onboard audio and set vfio pci.
   # options snd slots=snd-hda-intel
   # options snd_hda_intel enable=0,0
+  # options vfio-pci ids=8086:1912
   boot.extraModprobeConfig = ''
   '';
-  # options vfio-pci ids=8086:1912
 
   fileSystems = {
     "/mnt/d" = {
