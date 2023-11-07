@@ -46,6 +46,14 @@
 
   hardware.enableRedistributableFirmware = true;
 
+  # Enable architecture emulation for native compilation of foreign binaries.
+  boot.binfmt.emulatedSystems = [ 
+    "aarch64-linux" 
+    # "armv6l-linux"
+    # "armv7l-linux"
+  ];
+  # boot.binfmt.registrations."armv6l-linux".fixBinary = true;
+
   # Enable gvt-g to allow sharing iGPU between host and VM.
   # boot.kernelParams = [ "intel_iommu=on" "kvm.ignore_msrs=1" ];
   # boot.kernelModules = [ "vfio" "vfio_pci" ];
