@@ -110,7 +110,10 @@ in
       nvim-treesitter-parsers.lua
       nvim-treesitter-parsers.julia
       nvim-treesitter-parsers.typescript
+      nvim-treesitter-parsers.tsx
       nvim-treesitter-parsers.javascript
+      nvim-treesitter-parsers.html
+      nvim-treesitter-parsers.css
       nvim-treesitter-parsers.php
       nvim-treesitter-parsers.hcl # Terraform
     ];
