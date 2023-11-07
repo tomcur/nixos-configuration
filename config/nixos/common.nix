@@ -257,6 +257,23 @@
   qt5.enable = true;
   qt5.platformTheme = "qt5ct";
 
+  programs.git = {
+    enable = true;
+    config = {
+      url = {
+        "git@github.com:" = {
+          insteadOf = [
+            "gh:"
+            "github:"
+          ];
+        };
+      };
+      merge = {
+        conflictstyle = "diff3";
+      };
+    };
+  };
+
   # Gnome GSettings backend.
   programs.dconf.enable = true;
 
