@@ -168,6 +168,7 @@
 
   # A systemd target to hook other units onto.
   # This is supposed to run when the window manager has started.
+  # Currently used on Castor to trigger graphical-session.target from Hyprland.
   systemd.user.targets.window-manager = {
     Unit = {
       PartOf = [ "graphical-session.target" ];
