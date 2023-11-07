@@ -93,6 +93,7 @@ in
       # LSP.
       nvim-lspconfig
 
+      # Diagnostics
       plugins.trouble-nvim
 
       # Git
