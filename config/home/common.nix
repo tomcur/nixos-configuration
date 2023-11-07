@@ -34,7 +34,7 @@
     okular
     gimp
     # Reference management.
-    zotero
+    # zotero # Currently broken due to cve
     # Compiling.
     gcc
     gnumake
