@@ -139,8 +139,10 @@
     Exec=dolphin
   '';
 
-  services.unclutter.enable = true;
-  services.unclutter.timeout = 3;
+  # Does this break on wayland? Cursor sometimes disappears randomly. Disable
+  # for now to see if this is the cause.
+  # services.unclutter.enable = true;
+  # services.unclutter.timeout = 3;
 
   services.syncthing = { enable = true; };
 
