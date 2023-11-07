@@ -46,11 +46,6 @@ lua << EOF
   vim.api.nvim_set_keymap('v', 'j', "v:count == 0 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
 EOF
 
-" map /         <cmd>HopPattern<cr> " only searches currently visible part
-map <leader>d <cmd>HopChar1<cr>
-map <leader>w <cmd>HopWord<cr>
-map <leader>l <cmd>HopLine<cr>
-
 """ Moving lines
 nnoremap <A-j> :m .+1<CR>==
 nnoremap <A-k> :m .-2<CR>==
@@ -82,6 +77,13 @@ nnoremap <silent> <leader>a  <cmd>lua vim.lsp.buf.code_action()<CR>
 nnoremap <silent> <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
 
 nnoremap <silent> <leader>t <cmd>:lua vim.lsp.inlay_hint(0)<CR>
+
+"" Git
+" I'm not sure about the exact differences between <cmd> and :, but when using
+" <cmd> trying to put a line using a visual selection still puts the entire
+" hunk.
+noremap <silent> <leader>dp :diffput<CR>
+noremap <silent> <leader>do :diffget<CR>
 
 " Default .tex to LaTeX
 let g:tex_flavor = "latex"

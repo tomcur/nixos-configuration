@@ -92,7 +92,10 @@ in
       nvim-lspconfig
 
       plugins.trouble-nvim
+
+      # Git
       plugins.gitsigns-nvim
+      fugitive
 
       # Treesitter.
       nvim-treesitter
