@@ -125,7 +125,7 @@
     gparted
     hd-idle
     # Big applications.
-    teamviewer
+    # teamviewer
     # Virtalisation.
     # virt-viewer
     # virt-manager
