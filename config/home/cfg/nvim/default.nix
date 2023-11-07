@@ -96,6 +96,7 @@ in
       # Git
       plugins.gitsigns-nvim
       fugitive
+      diffview-nvim
 
       # Treesitter.
       nvim-treesitter

@@ -201,3 +201,4 @@ require("gitsigns").setup {
     topdelete = {hl = 'GitSignsDelete', text = '‾' },
   }
 }
+require("diffview").setup {}
