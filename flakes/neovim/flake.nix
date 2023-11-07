@@ -4,9 +4,7 @@
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
     neovim = {
-      # Temporarily use b641fc
-      # See https://github.com/nvim-telescope/telescope.nvim/issues/2667
-      url = "github:neovim/neovim?dir=contrib&rev=b641fc38749a2a52e40fa7eca6c7c41b1d9b031c";
+      url = "github:neovim/neovim?dir=contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nvimPlenary = {
