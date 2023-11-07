@@ -25,6 +25,8 @@ in
       nodePackages.prettier
       nixd # nix language server
       nodePackages.bash-language-server
+      beancount
+      beancount-language-server
       shfmt
     ]) ++ (with unstablePkgs; [
       # rustfmt
@@ -39,7 +41,7 @@ in
       bat
       # Necessary for minimap.vim
       code-minimap
-    ]);
+    ]) ++ (with patchedPkgs; [ ]);
     plugins = with patchedPkgs.vimPlugins; [
       # Impure manager.
       # vim-plug
@@ -116,6 +118,7 @@ in
       nvim-treesitter-parsers.css
       nvim-treesitter-parsers.php
       nvim-treesitter-parsers.hcl # Terraform
+      nvim-treesitter-parsers.beancount
     ];
   };
 
