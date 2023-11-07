@@ -79,11 +79,9 @@ nnoremap <silent> <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <silent> <leader>t <cmd>:lua vim.lsp.inlay_hint(0)<CR>
 
 "" Git
-" I'm not sure about the exact differences between <cmd> and :, but when using
-" <cmd> trying to put a line using a visual selection still puts the entire
-" hunk.
-noremap <silent> <leader>dp :diffput<CR>
-noremap <silent> <leader>do :diffget<CR>
+noremap <expr> <leader>dp &diff ? ":diffput\<CR>" : ":Gitsigns stage_hunk\<CR>"
+noremap <expr> <leader>do &diff ? ":diffget\<CR>" : ":Gitsigns reset_hunk\<CR>"
+noremap <silent> <leader>du :Gitsigns undo_stage_hunk<CR>
 
 " Default .tex to LaTeX
 let g:tex_flavor = "latex"
