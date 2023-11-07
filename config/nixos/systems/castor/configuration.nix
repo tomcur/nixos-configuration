@@ -48,6 +48,9 @@
   # Enable gvt-g
   # boot.kernelParams = [ "intel_iommu=on" "kvm.ignore_msrs=1" ];
   # boot.kernelModules = [ "vfio" "vfio_pci" ];
+  # Allow sharing GPU between host and VM.
+  # Allow sharing iGPU between host and VM.
+  virtualisation.kvmgt.enable = true;
 
   # Disable onboard audio and set vfio pci.
   boot.extraModprobeConfig = ''
