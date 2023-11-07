@@ -28,6 +28,9 @@
       inputs.nixpkgs.follows = "unstable";
       inputs.flake-utils.follows = "flake-utils";
     };
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+    };
     awesome = {
       url = "path:./flakes/awesome";
       # url = "path:/etc/nixos/flakes/awesome";
@@ -58,7 +61,7 @@
     };
   };
 
-  outputs = inputs @ { self, stable, unstable, patched, nixos-hardware, agenix, neovim, awesome, ... }:
+  outputs = inputs @ { self, stable, unstable, patched, nixos-hardware, agenix, neovim, neovim-nightly-overlay, awesome, ... }:
     let lib = unstable.lib;
     in
     {
@@ -71,7 +74,7 @@
               stablePkgs = import stable { inherit system; config = { allowUnfree = true; }; };
               unstablePkgs = import unstable { inherit system; config = { allowUnfree = true; }; };
               patchedPkgs = import patched { inherit system; config = { allowUnfree = true; }; };
-              neovimPkg = neovim.defaultPackage.${system};
+              neovimPkg = neovim-nightly-overlay.defaultPackage.${system};
               neovimPlugins = neovim.plugins.${system};
               awesomePkg = awesome.defaultPackage.${system};
               awesomePlugins = awesome.plugins.${system};
