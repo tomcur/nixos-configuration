@@ -44,6 +44,7 @@
   #   # });
   # });
 
+  hardware.enableRedistributableFirmware = true;
   # Enable gvt-g
   # boot.kernelParams = [ "intel_iommu=on" "kvm.ignore_msrs=1" ];
   # boot.kernelModules = [ "vfio" "vfio_pci" ];
