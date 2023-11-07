@@ -272,6 +272,10 @@
       };
     };
 
+  location = {
+    latitude = 52.0;
+    longitude = 5.5;
+  };
 
   # security.acme.acceptTerms = true;
   # security.acme.certs = {
