@@ -138,17 +138,18 @@ function! s:ui_enter()
   " indent-blankline
   " Currently must be called after colorscheme has been setup. It appears not
   " to update highlights on the fly.
-  lua << EOF
-    require'ibl'.setup({
-      indent = {
-        char = "▏",
-      },
-      scope = {
-        show_start = false,
-        show_end = false,
-      },
-    })
-EOF
+  " " Seems to cause performance issues
+  "  lua << EOF
+  "    require'ibl'.setup({
+  "      indent = {
+  "        char = "▏",
+  "      },
+  "      scope = {
+  "        show_start = false,
+  "        show_end = false,
+  "      },
+  "    })
+  "EOF
 endfunction
 
 au UIEnter * call s:ui_enter()
