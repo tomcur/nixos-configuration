@@ -167,9 +167,8 @@ cmp.setup({
   },
   formatting = {
     format = function(entry, vim_item)
-      vim.print(vim_item)
-      vim_item.abbr = ellipsis(vim_item.abbr, 30) -- string.sub(vim_item.abbr, 1, 20)
-      vim_item.menu = ellipsis(vim_item.menu, 30) -- string.sub(vim_item.abbr, 1, 20)
+      vim_item.abbr = ellipsis(vim_item.abbr, 30)
+      vim_item.menu = ellipsis(vim_item.menu, 30)
       return vim_item
     end
   }
