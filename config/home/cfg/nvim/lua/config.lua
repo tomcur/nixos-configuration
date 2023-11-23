@@ -106,6 +106,14 @@ require('telescope').setup {
 }
 require("telescope").load_extension("ui-select")
 
+local ellipsis = function(str, maxChars)
+    if string.len(str) > maxChars - 1 then
+        return string.sub(str, 1, maxChars - 1) .. "…"
+    else
+        return str
+    end
+end
+
 -- nvim-cmp
 vim.o.completeopt="menu,menuone,noselect"
 local cmp = require'cmp'
@@ -156,6 +164,14 @@ cmp.setup({
   },
   experimental = {
     ghost_text = true,
+  },
+  formatting = {
+    format = function(entry, vim_item)
+      vim.print(vim_item)
+      vim_item.abbr = ellipsis(vim_item.abbr, 30) -- string.sub(vim_item.abbr, 1, 20)
+      vim_item.menu = ellipsis(vim_item.menu, 30) -- string.sub(vim_item.abbr, 1, 20)
+      return vim_item
+    end
   }
 })
 
