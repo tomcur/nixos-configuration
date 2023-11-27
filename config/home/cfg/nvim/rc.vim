@@ -76,7 +76,7 @@ inoremap <silent> <c-k>      <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> <leader>a  <cmd>lua vim.lsp.buf.code_action()<CR>
 nnoremap <silent> <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
 
-nnoremap <silent> <leader>t <cmd>:lua vim.lsp.inlay_hint(0)<CR>
+nnoremap <silent> <leader>t <cmd>lua vim.lsp.inlay_hint.enable(0)<CR>
 
 "" Git
 noremap <expr> <leader>dp &diff ? ":diffput\<CR>" : ":Gitsigns stage_hunk\<CR>"
