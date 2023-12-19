@@ -38,7 +38,6 @@ in
 
     programs.hyprland = {
       enable = true;
-      enableNvidiaPatches = true;
     };
     programs.xwayland.enable = true;
     xdg.portal.wlr.enable = true;
