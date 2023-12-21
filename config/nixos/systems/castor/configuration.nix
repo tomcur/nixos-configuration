@@ -8,8 +8,8 @@
     ./music.nix
     ./secret.nix
   ];
-
-  # boot.kernelPackages = unstable.pkgs.linuxPackages-rt_5_11;
+  boot.initrd.kernelModules = [ "amdgpu" ];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   # boot.kernelPackages = pkgs.linuxPackages_5_11;
   # boot.kernelPackages = pkgs.linuxPackages_5_10.extend (self: super: {
   #   nvidia_x11 = unstable.pkgs.linuxPackages_5_10.nvidia_x11;
@@ -137,6 +137,9 @@
   };
 
   hardware.opengl.enable = true;
+  hardware.opengl.extraPackages = [
+    pkgs.amdvlk
+  ];
 
   programs.my-hyprland-env.enable = true;
 
@@ -148,7 +151,7 @@
 
       # Specifying both nivida and intel as drivers suddenly started segfaulting xserver on startup
       # videoDrivers = [ "nvidia" "intel" ];
-      videoDrivers = [ "nvidia" ];
+      videoDrivers = [ "amdgpu" ];
       xrandrHeads = [ "DP-2" "DP-4" ];
 
       # Option "MetaModes" "DP-2: nvidia-auto-select +0+240 { }, DP-4: nvidia-auto-select +2560+0 { Rotation = Left }"
