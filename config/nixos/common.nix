@@ -282,7 +282,7 @@
 
   programs.gnupg = {
     agent.enable = true;
-    agent.pinentryFlavor = "gtk2";
+    agent.pinentryFlavor = "curses";
   };
 
   # Configure tmux.
