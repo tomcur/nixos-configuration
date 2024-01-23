@@ -308,6 +308,7 @@
     description = "Update Dynamic DNS entry";
     wantedBy = [ "multi-user.target" ];
     after = [ "network-online.target" ];
+    requires = [ "network-online.target" ];
     startLimitIntervalSec = 300;
     startLimitBurst = 3;
     script = ''
