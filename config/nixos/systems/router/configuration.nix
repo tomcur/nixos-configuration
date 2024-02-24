@@ -112,9 +112,6 @@ in
       };
       "30-lan" = {
         matchConfig.Name = if_lan;
-        linkConfig = {
-          MTUBytes = "9000";
-        };
         address = [
           "10.0.0.1/16"
         ];
