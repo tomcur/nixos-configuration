@@ -253,11 +253,13 @@ in
 
       dhcp-range=interface:${if_lan},10.0.2.1,10.0.255.254,12h
       dhcp-range=interface:${if_laniptv},10.2.2.1,10.2.255.254,12h
-      dhcp-host=1c:87:2c:b6:e5:14,10.0.1.1
+      dhcp-host=08:bf:b8:8c:a5:24,10.0.1.1
       dhcp-host=9c:b6:d0:da:5c:61,10.0.1.2
+      dhcp-host=2c:0d:a7:fd:67:8b,10.0.1.3
       host-record=router,router.home.arpa,10.0.0.1
-      host-record=castor,castor.home.arpa,10.0.1.1
+      host-record=peerless,peerless.home.arpa,10.0.1.1
       host-record=pollux,pollux.home.arpa,10.0.1.2
+      host-record=castor,castor.home.arpa,10.0.1.3
     '';
   };
 
