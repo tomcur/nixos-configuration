@@ -4,6 +4,7 @@ let
   if_isp = "enp1s0f3";
   if_lan = "enp1s0f2";
   if_laniptv = "enp1s0f1";
+  if_lan2 = "enp1s0f0";
   secret = import ./secret.nix;
 in
 {
@@ -124,6 +125,12 @@ in
         };
         vlan = [ "languest" "lansecure" ];
       };
+      #"30-lan2" = {
+      #  matchConfig.Name = if_lan;
+      #  linkConfig = {
+      #    RequiredForOnline = "no";
+      #  };
+      #};
       "30-isp" = {
         matchConfig.Name = if_isp;
         linkConfig = {
