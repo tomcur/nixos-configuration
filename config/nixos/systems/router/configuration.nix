@@ -110,6 +110,9 @@ in
           DHCP = "no";
           LinkLocalAddressing = "no";
         };
+        linkConfig = {
+          RequiredForOnline = "carrier";
+        };
       };
       "30-lan" = {
         matchConfig.Name = if_lan;
@@ -134,7 +137,7 @@ in
       "30-isp" = {
         matchConfig.Name = if_isp;
         linkConfig = {
-          RequiredForOnline = "carrier";
+          RequiredForOnline = "no";
           MTUBytes = "1512"; # allow for baby jumbo frames + vlan overhead
         };
         vlan = [ "wan" "waniptv" ];
@@ -147,7 +150,7 @@ in
           DefaultRouteOnDevice = "yes";
         };
         linkConfig = {
-          RequiredForOnline = "carrier";
+          RequiredForOnline = "routable";
         };
       };
       "31-waniptv" = {
@@ -176,9 +179,9 @@ in
           IPForward = "yes";
           LinkLocalAddressing = "no";
         };
-        # linkConfig = {
-        #   RequiredForOnline = "routable";
-        # };
+        linkConfig = {
+          RequiredForOnline = "no";
+        };
       };
       "33-wg0" = {
         matchConfig.Name = "wg0";
@@ -190,6 +193,9 @@ in
         };
         extraConfig = ''
         '';
+        linkConfig = {
+          RequiredForOnline = "no";
+        };
       };
     };
   };
@@ -460,6 +466,10 @@ in
     after = [
       "sys-devices-virtual-net-ppp0.device"
       "nftables-router.service"
+      "network-online.target"
+    ];
+    wants = [
+      "network-online.target"
     ];
     description = "IGMP proxying";
     serviceConfig =
@@ -501,7 +511,6 @@ in
     ];
     after = [
       "sys-devices-virtual-net-ppp0.device"
-      "network-online.target"
     ];
     description = "IPv6 DHCP";
     serviceConfig =
