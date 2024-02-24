@@ -197,7 +197,7 @@ in
         autostart = true;
         enable = true;
         config = ''
-          plugin rp-pppoe.so
+          plugin pppoe.so
           nic-wan
 
           name "88-D2-74-BF-DA-7E@internet"
