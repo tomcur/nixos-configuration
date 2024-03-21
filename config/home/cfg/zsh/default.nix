@@ -28,6 +28,8 @@
       fi
     }
 
+    eval "$(zoxide init zsh)"
+
     # >>> conda initialize >>>
     # !! Contents within this block are managed by 'conda init' !!
     __conda_setup="$('/home/thomas/.conda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"

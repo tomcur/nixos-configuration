@@ -59,7 +59,8 @@
     # Environments.
     steam-run
   ]) ++ (with unstablePkgs; [
-    # Fuzzy finder.
+    # Navigation.
+    zoxide
     fzf
     # Dotfiles manager.
     yadm
