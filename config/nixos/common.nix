@@ -1,6 +1,10 @@
 { inputs, stablePkgs, config, pkgs, ... }:
 
 {
+  imports = [
+    ./common-nix.nix
+  ];
+
   # Allow unfree software.
   nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
@@ -9,25 +13,13 @@
     })
   ];
 
-  environment.etc."nix-channels/stable".source = inputs.stable;
-  environment.etc."nix-channels/unstable".source = inputs.unstable;
   environment.etc."nix-channels/patched".source = inputs.patched;
 
   nix = {
-    package = pkgs.nixUnstable;
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
     registry = {
-      nixpkgs.flake = inputs.unstable;
-      stable.flake = inputs.stable;
-      unstable.flake = inputs.unstable;
       patched.flake = inputs.patched;
     };
     nixPath = [
-      "nixpkgs=/etc/nix-channels/unstable"
-      "stable=/etc/nix-channels/stable"
-      "unstable=/etc/nix-channels/unstable"
       "patched=/etc/nix-channels/patched"
     ];
   };
