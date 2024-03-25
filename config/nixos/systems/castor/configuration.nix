@@ -5,6 +5,7 @@
     ../../audio-pipewire.nix
     ../../modules/sway.nix
     ../../modules/hyprland.nix
+    ../../modules/probe-rs-udev
     ./music.nix
     ./secret.nix
   ];
@@ -45,6 +46,7 @@
   # });
 
   hardware.enableRedistributableFirmware = true;
+  hardware.probe-rs-udev.enable = true;
 
   # Enable architecture emulation for native compilation of foreign binaries.
   boot.binfmt.emulatedSystems = [ 
