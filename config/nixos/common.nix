@@ -475,7 +475,7 @@
   users.users.thomas = {
     isNormalUser = true;
     home = "/home/thomas";
-    extraGroups = [ "wheel" "networkmanager" "video" "docker" "wireshark" ];
+    extraGroups = [ "wheel" "networkmanager" "audio" "video" "docker" "wireshark" "cdrom" "plugdev" ];
     openssh.authorizedKeys.keyFiles = [ ./keys/thomas.pub ];
   };
   nix.settings.trusted-users = [ "root" "thomas" ];
