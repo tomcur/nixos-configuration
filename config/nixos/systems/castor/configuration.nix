@@ -250,18 +250,17 @@
     postgresql = {
       enable = true;
       ensureUsers = [
-        {
-          name = "thomas";
-          ensurePermissions = {
-            "ALL TABLES IN SCHEMA public" = "ALL PRIVILEGES";
-          };
-        }
+        { name = "thomas"; }
       ];
     };
 
     # teamviewer.enable = true;
     ratbagd.enable = true;
   };
+  systemd.services.postgresql.postStart = lib.mkAfter ''
+    $PSQL service1 -c 'GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO "thomas"'
+  '';
+
   systemd.user.services.gammastep =
     {
       partOf = [ "graphical-session.target" ];
