@@ -34,6 +34,8 @@ set cursorlineopt=number
 
 " Key mappings
 let mapleader="\<Space>"
+" Prevent space from moving cursor forward
+nnoremap <Space> <Nop>
 
 lua require("config")
 
