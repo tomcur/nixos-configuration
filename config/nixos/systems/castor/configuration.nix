@@ -5,6 +5,7 @@
     ../../audio-pipewire.nix
     ../../modules/sway.nix
     ../../modules/hyprland.nix
+    ../../modules/river.nix
     ../../modules/probe-rs-udev
     ./music.nix
     ./secret.nix
@@ -143,7 +144,7 @@
     pkgs.amdvlk
   ];
 
-  programs.my-hyprland-env.enable = true;
+  programs.my-river-env.enable = true;
 
   # Set monitor position and force compositor pipeline to prevent screen tearing (nvidia).
   hardware.nvidia.modesetting.enable = true;

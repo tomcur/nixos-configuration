@@ -37,6 +37,11 @@
       inputs.nixpkgs.follows = "unstable";
       inputs.flake-utils.follows = "flake-utils";
     };
+    tarn = {
+      url = "git+https://codeberg.org/tomcur/tarn.git";
+      inputs.nixpkgs.follows = "unstable";
+      inputs.flake-utils.follows = "flake-utils";
+    };
     thingshare = {
       url = "git+file:///etc/nixos/flakes/thingshare";
       inputs.nixpkgs.follows = "unstable";
@@ -61,7 +66,7 @@
     };
   };
 
-  outputs = inputs @ { self, stable, unstable, patched, nixos-hardware, agenix, neovim, neovim-nightly-overlay, awesome, ... }:
+  outputs = inputs @ { self, stable, unstable, patched, nixos-hardware, agenix, neovim, neovim-nightly-overlay, awesome, tarn, ... }:
     let lib = unstable.lib;
     in
     {
@@ -85,6 +90,7 @@
                 nixpkgs.overlays = [
                   (self: super: {
                     notmuch = patched.legacyPackages."x86_64-linux".notmuch;
+                    tarn = tarn.packages.${system}.default;
                   })
                 ];
                 nixpkgs.config.allowUnfree = true;
