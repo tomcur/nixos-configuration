@@ -187,6 +187,15 @@ cmp.setup({
   }
 })
 
+-- signature help
+require "lsp_signature".setup({
+  bind = true,
+  handler_opts = {
+    border = "rounded",
+  },
+  fix_pos = true, -- don't close the window until all parameters are entered
+})
+
 -- Setting `root_dir` required until
 -- https://github.com/neovim/nvim-lsp/commit/1e20c0b29e67e6cd87252cf8fd697906622bfdd3#diff-1cc82f5816863b83f053f5daf2341daf
 -- is in nixpkgs repo.
