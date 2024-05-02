@@ -113,6 +113,9 @@ require('telescope').setup {
 require("telescope").load_extension("ui-select")
 
 local ellipsis = function(str, maxChars)
+    if str == nil then
+        return nil
+    end
     if string.len(str) > maxChars - 1 then
         return string.sub(str, 1, maxChars - 1) .. "…"
     else
@@ -123,6 +126,7 @@ end
 -- nvim-cmp
 vim.o.completeopt="menu,menuone,noselect"
 local cmp = require'cmp'
+local lspkind = require('lspkind')
 cmp.setup({
   snippet = {
     -- REQUIRED - you must specify a snippet engine
@@ -135,32 +139,35 @@ cmp.setup({
     documentation = cmp.config.window.bordered(),
   },
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
     { name = 'path' },
     { name = 'luasnip' },
+    { name = 'nvim_lsp' },
+  }, {
+    { name = 'buffer' },
   }),
   -- Preselect does not work nicely with the tab-mapping defined below.
   -- With cmp.select_next_item, hitting tab would skip the preselected item.
-  preselect = cmp.PreselectMode.None,
+  -- preselect = cmp.PreselectMode.None,
   mapping = {
     ["<CR>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        cmp.confirm({
+        if cmp.confirm({
           behavior = cmp.ConfirmBehavior.Insert,
-          select = true,
-        })
-      else
-        fallback()
+          select = false,
+        }) then
+          return
+        end
       end
+      fallback()
     end, { "i", "s" }),
-    ["<Tab>"] = cmp.mapping(function(fallback)
+    ["<C-j>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       else
         fallback()
       end
     end, { "i", "s" }),
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
+    ["<C-k>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       else
@@ -169,7 +176,7 @@ cmp.setup({
     end, { "i", "s" }),
   },
   experimental = {
-    ghost_text = true,
+    -- ghost_text = true,
   },
   formatting = {
     format = function(entry, vim_item)
