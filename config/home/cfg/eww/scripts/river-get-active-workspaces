@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Output e.g. [2,3]
+ristate --tags | jq --unbuffered -c '.tags | add // [] | map(tonumber) | unique'

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# Output e.g. [1,2,3,6,7]
+# ristate --views-tag | jq --unbuffered -c '.viewstag | add // [] | unique'
+ristate --views-tag --tags | jq --unbuffered -c '(.viewstag | add // [] | map({(.|tostring): {"id": (.|tonumber), "active": false}}) | add) * (.tags | add // [] | map({(.|tostring): {"id": (.|tonumber), "active": true}}) | add) | to_entries | map(.value) | sort_by(.id)'

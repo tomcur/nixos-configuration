@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+ristate --title | jq --unbuffered -r '.title'

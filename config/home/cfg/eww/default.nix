@@ -1,18 +1,18 @@
 { pkgs, ... }:
 let
   resholvConf = {
-    inputs = with pkgs; [
+    inputs = (with pkgs; [
       jq
       socat
-      hyprland
       coreutils
       gawk
-      # sway
+    ]) ++ [
+      (pkgs.callPackage ../../../nixos/modules/ristate { })
     ];
     interpreter = "${pkgs.bash}/bin/bash";
     execer = [
       "cannot:${pkgs.socat}/bin/socat"
-      "cannot:${pkgs.hyprland}/bin/hyprctl"
+      "cannot:${pkgs.ristate}/bin/ristate"
       "cannot:${pkgs.sway}/bin/swaymsg"
     ];
   };
@@ -22,15 +22,13 @@ in
     pkgs.eww-wayland
   ];
 
-  xdg.configFile."eww/scripts/get-active-workspace".source = pkgs.resholve.writeScript "get-active-workspace"
+  xdg.configFile."eww/scripts/get-active-workspaces".source = pkgs.resholve.writeScript "get-active-workspaces"
     resholvConf
-    (builtins.readFile ./scripts/hypr-get-active-workspace);
+    (builtins.readFile ./scripts/river-get-active-workspaces);
   xdg.configFile."eww/scripts/get-window-title".source = pkgs.resholve.writeScript "get-window-title"
     resholvConf
-    (builtins.readFile ./scripts/hypr-get-window-title);
+    (builtins.readFile ./scripts/river-get-window-title);
   xdg.configFile."eww/scripts/get-workspaces".source = pkgs.resholve.writeScript "get-workspaces"
     resholvConf
-    (builtins.readFile ./scripts/hypr-get-workspaces);
-
-  # Read the script and wrap the runtime dependencies
+    (builtins.readFile ./scripts/river-get-workspaces);
 }
