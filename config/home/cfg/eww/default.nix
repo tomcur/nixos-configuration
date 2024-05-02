@@ -19,7 +19,7 @@ let
 in
 {
   home.packages = [
-    pkgs.eww-wayland
+    pkgs.eww
   ];
 
   xdg.configFile."eww/scripts/get-active-workspaces".source = pkgs.resholve.writeScript "get-active-workspaces"
