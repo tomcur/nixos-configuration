@@ -28,6 +28,10 @@ set wildignore+=*/tmp/*,*/target/*,*.obj,*.class,*.o,*.so
 " Preview substitution
 set inccommand=nosplit
 
+" Show cursor line in gutter
+set cursorline
+set cursorlineopt=number
+
 " Key mappings
 let mapleader="\<Space>"
 
