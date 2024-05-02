@@ -39,10 +39,16 @@ require'nvim-treesitter.configs'.setup {
     swap = {
       enable = true,
       swap_previous = {
-        ["<A-h>"] = {"@parameter.inner", "@statement.outer"},
+        ["<A-h>"] = {
+          query = { "@parameter.inner", "@statement.outer" },
+          desc = "first match parameter, then statement",
+        },
       },
       swap_next = {
-        ["<A-l>"] = {"@parameter.inner", "@statement.outer"},
+        ["<A-l>"] = {
+          query = { "@parameter.inner", "@statement.outer" },
+          desc = "first match parameter, then statement",
+        },
       },
     },
     select = {
