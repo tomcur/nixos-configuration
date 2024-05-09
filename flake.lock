@@ -740,11 +740,11 @@
     },
     "patched": {
       "locked": {
-        "lastModified": 1715237223,
-        "narHash": "sha256-I+jYJA2Kjj6DEaQ5a+bhdz21Qy2g+eHD6MHu+RZaJog=",
-        "ref": "refs/heads/patched",
-        "rev": "9c5d927b82419dbb26f61d4ce4680d19fe0f83b3",
-        "revCount": 623127,
+        "lastModified": 1715246003,
+        "narHash": "sha256-c3Fg0dTXFpTfCp6hDT38YR9Zm96uN2FnUr6Z7HLC0xg=",
+        "ref": "refs/heads/ddclient-usev46",
+        "rev": "602897088000a3a91445fc2ead6ff8f8efd94e75",
+        "revCount": 623128,
         "type": "git",
         "url": "file:///etc/nixos/nixpkgs"
       },

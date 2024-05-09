@@ -168,7 +168,7 @@
               unstable.nixosModules.notDetected
             ];
           in
-          lib.nixosSystem {
+          patched.lib.nixosSystem {
             inherit system specialArgs modules;
           };
       };

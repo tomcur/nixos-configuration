@@ -9,4 +9,5 @@ in {
   "mopidy-secret-config.age".publicKeys = [ thomas-nix-secrets castor ];
   # "mopidy-secret-config.age".publicKeys = [ thomas-nix-secrets castor ];
   "wireguard-router-private.age".publicKeys = [ router thomas-nix-secrets castor ];
+  "router-dyndns.age".publicKeys = [ router thomas-nix-secrets ];
 }

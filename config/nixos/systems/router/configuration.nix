@@ -685,6 +685,17 @@ in
     "HIST_IGNORE_SPACE"
   ];
 
+  services.ddclient = {
+    enable = true;
+    domains = [ "r.dyn.uint.one" ];
+    username = "r.dyn.uint.one";
+    server = "dyn.dns.he.net";
+    usev4 = "webv4, webv4=he";
+    usev6 = "webv6, webv6=he";
+    interval = "2hr";
+    passwordFile = config.age.secrets.router-dyndns.path;
+  };
+
   users.defaultUserShell = pkgs.zsh;
   users.users.root.openssh.authorizedKeys.keyFiles = [ ../../keys/thomas.pub ];
   users.users.thomas = {
