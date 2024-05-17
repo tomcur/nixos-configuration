@@ -250,3 +250,5 @@ require("gitsigns").setup {
   }
 }
 require("diffview").setup {}
+
+require "tomcur.dap"

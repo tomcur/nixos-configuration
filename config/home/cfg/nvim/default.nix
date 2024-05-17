@@ -120,6 +120,11 @@ in
       nvim-treesitter-parsers.php
       nvim-treesitter-parsers.hcl # Terraform
       nvim-treesitter-parsers.beancount
+
+      # Debug adapter protocol
+      nvim-dap
+      nvim-dap-ui
+      nvim-dap-virtual-text
     ];
   };
 
