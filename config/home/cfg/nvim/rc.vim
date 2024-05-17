@@ -64,7 +64,7 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 "" File opening
 nmap <leader>b <cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown({sort_lastused = true}))<cr>
 nmap <leader>fo <cmd>lua require('telescope.builtin').find_files()<cr>
-nmap <leader>fd :Explore<cr>
+nmap <leader>fd :edit %:p:h<cr>
 nmap <leader>fg <cmd>lua require('telescope.builtin').git_files()<cr>
 nmap <leader>fr <cmd>lua require('telescope.builtin').live_grep()<cr>
 

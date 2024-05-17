@@ -49,7 +49,8 @@ in
       fzf-vim
       # Movement.
       plugins.leap-nvim
-      # Additional file commands.
+      # File system manipulation.
+      oil-nvim
       vim-eunuch
       # Languages.
       vim-nix

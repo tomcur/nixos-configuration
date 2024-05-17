@@ -251,4 +251,6 @@ require("gitsigns").setup {
 }
 require("diffview").setup {}
 
+require("oil").setup {}
+
 require "tomcur.dap"
