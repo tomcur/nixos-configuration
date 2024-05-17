@@ -6,7 +6,7 @@ require("nvim-dap-virtual-text").setup()
 
 dap.adapters.lldb = {
   type = "executable",
-  command = "/nix/store/zkipgajv3yi83akcw8fwk0d0d64p09li-lldb-17.0.6/bin/lldb-vscode",
+  command = vim.fn.expand("$HOME/.config/nvim/lldb-vscode"),
   name = "lldb",
 }
 

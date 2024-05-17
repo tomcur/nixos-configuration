@@ -216,6 +216,9 @@ in
       ".config/nvim/ftplugin/sql.vim".text = ''
         nmap <buffer><leader>mf :Neoformat<cr>
       '';
+      # nvim-dap requires configuring lldb-vscode at an absolute path, so just
+      # symlink to a known place
+      ".config/nvim/lldb-vscode".source = "${pkgs.lldb}/bin/lldb-vscode";
       # ABI incompatibilities. Should use https://github.com/nvim-treesitter/nvim-treesitter/blob/master/lockfile.json
       # ".config/nvim/parser/bash.so".source = "${patchedPkgs.tree-sitter.builtGrammars.tree-sitter-bash}/parser";
       # ".config/nvim/parser/javascript.so".source = "${patchedPkgs.tree-sitter.builtGrammars.tree-sitter-javascript}/parser";
