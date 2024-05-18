@@ -85,6 +85,9 @@ in
       # Register preview.
       plugins.registers-nvim
 
+      # Keybinding reminder
+      which-key-nvim
+
       # Aid completion
       luasnip
       cmp-nvim-lsp

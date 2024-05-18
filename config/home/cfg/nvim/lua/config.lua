@@ -1,3 +1,5 @@
+require "tomcur.whichkey"
+
 require'leap'.set_default_keymaps()
 require'Comment'.setup()
 
