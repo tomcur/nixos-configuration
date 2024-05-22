@@ -89,7 +89,7 @@
     # Mapping.
     josm
     # Databases.
-    dbeaver
+    dbeaver-bin
   ]) ++ (with patchedPkgs; [
   ]) ++ [ inputs.agenix.packages.x86_64-linux.default ];
 
