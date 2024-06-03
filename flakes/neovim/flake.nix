@@ -3,10 +3,6 @@
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
-    neovim = {
-      url = "github:neovim/neovim?dir=contrib";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nvimPlenary = {
       url = "github:nvim-lua/plenary.nvim";
       flake = false;
@@ -61,13 +57,9 @@
     };
   };
 
-  outputs = input @ { flake-utils, nixpkgs, neovim, ... }:
+  outputs = input @ { flake-utils, ... }:
     flake-utils.lib.eachDefaultSystem (system:
-      rec {
-        packages = {
-          neovim = neovim.defaultPackage.${system};
-        };
-        defaultPackage = packages.neovim;
+      {
         plugins = with input; {
           inherit nvimPlenary nvimPopup nvimTelescope
             nvimMonochrome nvimVimColorsPencil nvimPhoton nvimColorizerLua nvimMinimapVim nvimRegistersNvim

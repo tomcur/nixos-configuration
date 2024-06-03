@@ -79,7 +79,7 @@
               stablePkgs = import stable { inherit system; config = { allowUnfree = true; }; };
               unstablePkgs = import unstable { inherit system; config = { allowUnfree = true; }; };
               patchedPkgs = import patched { inherit system; config = { allowUnfree = true; }; };
-              neovimPkg = neovim-nightly-overlay.defaultPackage.${system};
+              neovimPkg = neovim-nightly-overlay.packages.${system}.default;
               neovimPlugins = neovim.plugins.${system};
               awesomePkg = awesome.defaultPackage.${system};
               awesomePlugins = awesome.plugins.${system};
@@ -122,7 +122,7 @@
               stablePkgs = import stable { inherit system; config = { allowUnfree = true; }; };
               unstablePkgs = import unstable { inherit system; config = { allowUnfree = true; }; };
               patchedPkgs = import patched { inherit system; config = { allowUnfree = true; }; };
-              neovimPkg = neovim.defaultPackage.${system};
+              neovimPkg = neovim-nightly-overlay.packages.${system}.default;
               neovimPlugins = neovim.plugins.${system};
               awesomePkg = awesome.defaultPackage.${system};
               awesomePlugins = awesome.plugins.${system};
