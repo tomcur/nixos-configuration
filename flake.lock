@@ -376,11 +376,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1718028601,
-        "narHash": "sha256-I/HRYklScKz0ckZXT+n1LWCQMOAJ4+hLOdges6mbVPM=",
-        "ref": "refs/heads/main",
-        "rev": "0c34d6bb2a682f30123807af33652e8428f0afb2",
-        "revCount": 34,
+        "lastModified": 1718188945,
+        "narHash": "sha256-RWINMi0J8FM8+r81/2d9F/VivDqVlUtv6IQDSBkfQto=",
+        "ref": "refs/heads/release-plz-2024-06-12T10-38-32Z",
+        "rev": "8fe25ff84ea704f08dca60555ec276b6b4133e81",
+        "revCount": 39,
         "type": "git",
         "url": "file:///home/thomas/code/other/hi.nvim.rs"
       },
