@@ -245,10 +245,10 @@ require("trouble").setup {}
 
 require("gitsigns").setup {
   signs = {
-    add =       {hl = 'GitSignsAdd'   , text = '┃' },
-    change =    {hl = 'GitSignsChange', text = '┇' },
-    delete =    {hl = 'GitSignsDelete', text = '_' },
-    topdelete = {hl = 'GitSignsDelete', text = '‾' },
+    add =       { text = '┃' },
+    change =    { text = '┇' },
+    delete =    { text = '_' },
+    topdelete = { text = '‾' },
   }
 }
 require("diffview").setup {}
