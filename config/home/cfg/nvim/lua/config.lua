@@ -253,6 +253,10 @@ require("gitsigns").setup {
 }
 require("diffview").setup {}
 
-require("oil").setup {}
+require("oil").setup({
+    view_options = {
+        show_hidden = true,
+    },
+})
 
 require "tomcur.dap"
