@@ -95,6 +95,7 @@ in
       nvim-cmp
 
       # LSP.
+      neoconf-nvim # per-project configuration of language servers
       nvim-lspconfig
 
       # Diagnostics
