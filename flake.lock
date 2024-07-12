@@ -509,11 +509,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1720728074,
-        "narHash": "sha256-syUIzFAoPlAbtqG1o4iPzf/RTHO8yMXl+esPIoIsp4E=",
+        "lastModified": 1720787577,
+        "narHash": "sha256-LRkChZoKcAQLUnN9IRA248cwhufXWtzJt5gGBGdS49o=",
         "ref": "refs/heads/main",
-        "rev": "c42379a75d54edcf04c427a0b520accb0d337b55",
-        "revCount": 1,
+        "rev": "f456513f310b85245b1e6feb9854fc1c7ed086c3",
+        "revCount": 7,
         "type": "git",
         "url": "file:///home/thomas/code/other/huur"
       },
