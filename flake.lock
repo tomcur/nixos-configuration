@@ -559,7 +559,6 @@
         "flake-utils": [
           "flake-utils"
         ],
-        "nvimColorizerLua": "nvimColorizerLua",
         "nvimMonochrome": "nvimMonochrome",
         "nvimPhoton": "nvimPhoton",
         "nvimPlenary": "nvimPlenary",
@@ -567,7 +566,7 @@
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-rvG+KjCpgTRN/6yfBF3UuhX0fja/r4q/uFKgrrtL2Zo=",
+        "narHash": "sha256-uZZxr7G3fVkiwSLGtxS9r/wdnwpKn8rvAsTiDSGBPpk=",
         "path": "./flakes/neovim",
         "type": "path"
       },
@@ -660,22 +659,6 @@
         "owner": "NixOS",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nvimColorizerLua": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1715313687,
-        "narHash": "sha256-gjO89Sx335PqVgceM9DBfcVozNjovC8KML1OZCRNMGw=",
-        "owner": "norcalli",
-        "repo": "nvim-colorizer.lua",
-        "rev": "a065833f35a3a7cc3ef137ac88b5381da2ba302e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "norcalli",
-        "repo": "nvim-colorizer.lua",
         "type": "github"
       }
     },

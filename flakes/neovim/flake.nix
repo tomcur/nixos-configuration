@@ -19,18 +19,13 @@
       url = "github:axvr/photon.vim";
       flake = false;
     };
-    nvimColorizerLua = {
-      url = "github:norcalli/nvim-colorizer.lua";
-      flake = false;
-    };
   };
 
   outputs = input @ { flake-utils, ... }:
     flake-utils.lib.eachDefaultSystem (system:
       {
         plugins = with input; {
-          inherit nvimPlenary
-            nvimMonochrome nvimVimColorsPencil nvimPhoton nvimColorizerLua;
+          inherit nvimPlenary nvimMonochrome nvimVimColorsPencil nvimPhoton;
         };
       }
     );

@@ -71,7 +71,7 @@ in
       # Fonts
       nvim-web-devicons
       # RGB string colorizer.
-      plugins.nvim-colorizer-lua
+      nvim-colorizer-lua
       # Identation guide.
       indent-blankline-nvim
       # Popup finder.
