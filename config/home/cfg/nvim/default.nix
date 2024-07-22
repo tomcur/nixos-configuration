@@ -77,7 +77,6 @@ in
       # Identation guide.
       indent-blankline-nvim
       # Popup finder.
-      plugins.popup
       plugins.plenary
       plugins.telescope
       telescope-ui-select-nvim

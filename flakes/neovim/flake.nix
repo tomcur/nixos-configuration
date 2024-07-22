@@ -7,10 +7,6 @@
       url = "github:nvim-lua/plenary.nvim";
       flake = false;
     };
-    nvimPopup = {
-      url = "github:nvim-lua/popup.nvim";
-      flake = false;
-    };
     nvimTelescope = {
       url = "github:nvim-telescope/telescope.nvim";
       flake = false;
@@ -57,7 +53,7 @@
     flake-utils.lib.eachDefaultSystem (system:
       {
         plugins = with input; {
-          inherit nvimPlenary nvimPopup nvimTelescope
+          inherit nvimPlenary nvimTelescope
             nvimMonochrome nvimVimColorsPencil nvimPhoton nvimColorizerLua nvimMinimapVim nvimRegistersNvim
             nvimCompletionNvim nvimGitsignsNvim nvimLeapNvim;
         };
