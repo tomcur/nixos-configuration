@@ -48,7 +48,7 @@ in
       # Fuzzy finding.
       fzf-vim
       # Movement.
-      plugins.leap-nvim
+      leap-nvim
       # File system manipulation.
       oil-nvim
       vim-eunuch
@@ -78,7 +78,7 @@ in
       indent-blankline-nvim
       # Popup finder.
       plugins.plenary
-      plugins.telescope
+      telescope-nvim
       telescope-ui-select-nvim
 
       # Register preview.
@@ -101,7 +101,7 @@ in
       trouble-nvim
 
       # Git
-      plugins.gitsigns-nvim
+      gitsigns-nvim
       fugitive
       diffview-nvim
 

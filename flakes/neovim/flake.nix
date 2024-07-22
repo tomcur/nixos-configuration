@@ -7,10 +7,6 @@
       url = "github:nvim-lua/plenary.nvim";
       flake = false;
     };
-    nvimTelescope = {
-      url = "github:nvim-telescope/telescope.nvim";
-      flake = false;
-    };
     nvimMonochrome = {
       url = "github:fxn/vim-monochrome";
       flake = false;
@@ -21,10 +17,6 @@
     };
     nvimPhoton = {
       url = "github:axvr/photon.vim";
-      flake = false;
-    };
-    nvimCompletionNvim = {
-      url = "github:nvim-lua/completion-nvim";
       flake = false;
     };
     nvimColorizerLua = {
@@ -39,23 +31,14 @@
       url = "github:tversteeg/registers.nvim";
       flake = false;
     };
-    nvimGitsignsNvim = {
-      url = "github:lewis6991/gitsigns.nvim";
-      flake = false;
-    };
-    nvimLeapNvim = {
-      url = "github:ggandor/leap.nvim";
-      flake = false;
-    };
   };
 
   outputs = input @ { flake-utils, ... }:
     flake-utils.lib.eachDefaultSystem (system:
       {
         plugins = with input; {
-          inherit nvimPlenary nvimTelescope
-            nvimMonochrome nvimVimColorsPencil nvimPhoton nvimColorizerLua nvimMinimapVim nvimRegistersNvim
-            nvimCompletionNvim nvimGitsignsNvim nvimLeapNvim;
+          inherit nvimPlenary
+            nvimMonochrome nvimVimColorsPencil nvimPhoton nvimColorizerLua nvimMinimapVim nvimRegistersNvim;
         };
       }
     );
