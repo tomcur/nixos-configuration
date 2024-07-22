@@ -1,10 +1,8 @@
-{ pkgs, stablePkgs, unstablePkgs, patchedPkgs, neovimPkg, neovimPlugins, ... }:
+{ pkgs, stablePkgs, patchedPkgs, neovimPkg, neovimPlugins, hiNvimRsBuildColorscheme, ... }:
 let
   plugins = pkgs.callPackage ./plugins.nix {
     inherit neovimPlugins;
-    buildVimPluginFrom2Nix = (pkgs.vimUtils.override {
-      inherit (neovimPkg);
-    }).buildVimPluginFrom2Nix;
+    buildVimPluginFrom2Nix = pkgs.vimUtils.buildVimPluginFrom2Nix;
   };
 in
 {
@@ -16,19 +14,19 @@ in
     enable = true;
     package = neovimPkg;
     # package = pkgs.neovim-unwrapped;
-    extraPackages = (with pkgs; [
+    extraPackages = (with stablePkgs; [
       python3Packages.black
       python3Packages.isort
-      patchedPkgs.python3Packages.python-lsp-server
-      # nodePackages.javascript-typescript-langserver
+      python3Packages.python-lsp-server
       nodePackages.typescript-language-server # tsserver
       nodePackages.prettier
-      nixd # nix language server
       nodePackages.bash-language-server
+    ]) ++ (with pkgs; [
+      nixd # nix language server
       beancount
       beancount-language-server
       shfmt
-    ]) ++ (with unstablePkgs; [
+      nodejs
       # rustfmt
       # rls
       rust-analyzer
@@ -39,8 +37,13 @@ in
       # (rWrapper.override { packages = with rPackages; [ readr styler ]; })
       # Preview for nvim telescope
       bat
-    ]) ++ (with patchedPkgs; [ ]);
-    plugins = with patchedPkgs.vimPlugins; [
+    ]);
+    plugins = (with plugins; [
+      plenary
+      vim-monochrome
+      vim-colors-pencil
+      vim-photon
+    ]) ++ (with pkgs.vimPlugins; [
       # Impure manager.
       # vim-plug
       # Fuzzy finding.
@@ -65,9 +68,6 @@ in
       # Themes.
       NeoSolarized
       awesome-vim-colorschemes
-      plugins.vim-monochrome
-      plugins.vim-colors-pencil
-      plugins.vim-photon
       # Fonts
       nvim-web-devicons
       # RGB string colorizer.
@@ -75,7 +75,6 @@ in
       # Identation guide.
       indent-blankline-nvim
       # Popup finder.
-      plugins.plenary
       telescope-nvim
       telescope-ui-select-nvim
 
@@ -124,7 +123,7 @@ in
       nvim-dap
       nvim-dap-ui
       nvim-dap-virtual-text
-    ];
+    ]);
   };
 
   home.sessionVariables = {
