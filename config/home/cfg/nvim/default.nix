@@ -99,7 +99,7 @@ in
       nvim-lspconfig
 
       # Diagnostics
-      plugins.trouble-nvim
+      trouble-nvim
 
       # Git
       plugins.gitsigns-nvim

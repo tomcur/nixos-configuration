@@ -43,10 +43,6 @@
       url = "github:tversteeg/registers.nvim";
       flake = false;
     };
-    nvimTroubleNvim = {
-      url = "github:folke/trouble.nvim";
-      flake = false;
-    };
     nvimGitsignsNvim = {
       url = "github:lewis6991/gitsigns.nvim";
       flake = false;
@@ -63,7 +59,7 @@
         plugins = with input; {
           inherit nvimPlenary nvimPopup nvimTelescope
             nvimMonochrome nvimVimColorsPencil nvimPhoton nvimColorizerLua nvimMinimapVim nvimRegistersNvim
-            nvimCompletionNvim nvimTroubleNvim nvimGitsignsNvim nvimLeapNvim;
+            nvimCompletionNvim nvimGitsignsNvim nvimLeapNvim;
         };
       }
     );
