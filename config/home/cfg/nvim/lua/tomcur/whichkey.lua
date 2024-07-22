@@ -7,10 +7,12 @@ wk.setup({
     spelling = true,
     registers = true,
   },
-  key_labels = { ["<leader>"] = "SPC" },
-})
-wk.register({
-  mode = { "n", "v" },
-  ["<leader>f"] = { name = "+file" },
-  ["<leader>d"] = { name = "+debug" },
+  replace = {
+    -- set key = {} to not use default which-key formatter
+    key = {},
+  },
+  spec = {
+    { "<leader>f", group = "+file", mode = { "n", "v" } },
+    { "<leader>d", group = "+debug", mode = { "n", "v" } },
+  }
 })
