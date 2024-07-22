@@ -39,8 +39,6 @@ in
       # (rWrapper.override { packages = with rPackages; [ readr styler ]; })
       # Preview for nvim telescope
       bat
-      # Necessary for minimap.vim
-      code-minimap
     ]) ++ (with patchedPkgs; [ ]);
     plugins = with patchedPkgs.vimPlugins; [
       # Impure manager.
@@ -80,9 +78,6 @@ in
       plugins.plenary
       telescope-nvim
       telescope-ui-select-nvim
-
-      # Register preview.
-      plugins.registers-nvim
 
       # Keybinding reminder
       which-key-nvim

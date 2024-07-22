@@ -23,14 +23,6 @@
       url = "github:norcalli/nvim-colorizer.lua";
       flake = false;
     };
-    nvimMinimapVim = {
-      url = "github:wfxr/minimap.vim";
-      flake = false;
-    };
-    nvimRegistersNvim = {
-      url = "github:tversteeg/registers.nvim";
-      flake = false;
-    };
   };
 
   outputs = input @ { flake-utils, ... }:
@@ -38,7 +30,7 @@
       {
         plugins = with input; {
           inherit nvimPlenary
-            nvimMonochrome nvimVimColorsPencil nvimPhoton nvimColorizerLua nvimMinimapVim nvimRegistersNvim;
+            nvimMonochrome nvimVimColorsPencil nvimPhoton nvimColorizerLua;
         };
       }
     );

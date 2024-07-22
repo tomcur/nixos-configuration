@@ -560,16 +560,14 @@
           "flake-utils"
         ],
         "nvimColorizerLua": "nvimColorizerLua",
-        "nvimMinimapVim": "nvimMinimapVim",
         "nvimMonochrome": "nvimMonochrome",
         "nvimPhoton": "nvimPhoton",
         "nvimPlenary": "nvimPlenary",
-        "nvimRegistersNvim": "nvimRegistersNvim",
         "nvimVimColorsPencil": "nvimVimColorsPencil"
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-9jRIKtFC2LCWeIKuzXrBnFD8vr9n7Q9nH/DiISNW12E=",
+        "narHash": "sha256-rvG+KjCpgTRN/6yfBF3UuhX0fja/r4q/uFKgrrtL2Zo=",
         "path": "./flakes/neovim",
         "type": "path"
       },
@@ -681,22 +679,6 @@
         "type": "github"
       }
     },
-    "nvimMinimapVim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1710689313,
-        "narHash": "sha256-GR8VAHla5HWry1TAZQv0Xp7iG256vIGeQcBGMxyt310=",
-        "owner": "wfxr",
-        "repo": "minimap.vim",
-        "rev": "395378137e6180762d5b963ca9ad5ac2db5d3283",
-        "type": "github"
-      },
-      "original": {
-        "owner": "wfxr",
-        "repo": "minimap.vim",
-        "type": "github"
-      }
-    },
     "nvimMonochrome": {
       "flake": false,
       "locked": {
@@ -742,22 +724,6 @@
       "original": {
         "owner": "nvim-lua",
         "repo": "plenary.nvim",
-        "type": "github"
-      }
-    },
-    "nvimRegistersNvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1720768996,
-        "narHash": "sha256-oO28+iQwsVDdNvO8DTJ7rsumFZt4HcvN2KXjfJN19Gs=",
-        "owner": "tversteeg",
-        "repo": "registers.nvim",
-        "rev": "17df665d3fd8995b69a1a434cb285a25ab22cc49",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tversteeg",
-        "repo": "registers.nvim",
         "type": "github"
       }
     },
