@@ -11,7 +11,7 @@
     ./secret.nix
   ];
   boot.initrd.kernelModules = [ "amdgpu" ];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_10;
   # boot.kernelPackages = pkgs.linuxPackages_5_11;
   # boot.kernelPackages = pkgs.linuxPackages_5_10.extend (self: super: {
   #   nvidia_x11 = unstable.pkgs.linuxPackages_5_10.nvidia_x11;
