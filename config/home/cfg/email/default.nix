@@ -33,6 +33,9 @@ in
           "z-flagged" = "tag:flagged";
         };
       };
+      thread_view = {
+        preferred_type = "html";
+      };
     };
   };
 
