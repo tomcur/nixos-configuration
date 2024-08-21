@@ -1,4 +1,4 @@
-{ pkgs, stablePkgs, lib, config, ... }:
+{ pkgs, stablePkgs, config, ... }:
 let
   accounts = config.accounts.email.accounts;
 in
