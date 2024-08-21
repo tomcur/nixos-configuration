@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, stablePkgs, unstablePkgs, patchedPkgs, ... }:
+{ inputs, config, pkgs, stablePkgs, ... }:
 {
   # Common packages.
   home.packages = [
@@ -90,7 +90,6 @@
     josm
     # Databases.
     dbeaver-bin
-  ]) ++ (with patchedPkgs; [
   ]) ++ [ inputs.agenix.packages.x86_64-linux.default ];
 
   home.keyboard = null; # Managed by NixOS.
