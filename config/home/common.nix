@@ -58,7 +58,7 @@
     biber # For LaTeX.
     # Environments.
     steam-run
-  ]) ++ (with unstablePkgs; [
+
     # Navigation.
     zoxide
     fzf
