@@ -94,6 +94,10 @@
                   })
                 ];
                 nixpkgs.config.allowUnfree = true;
+                nixpkgs.config.permittedInsecurePackages = [
+                  # Required for element-desktop
+                  "jitsi-meet-1.0.8043"
+                ];
               }
               (import ./config/nixos/systems/castor)
               agenix.nixosModules.age
@@ -132,6 +136,10 @@
               {
                 nixpkgs.overlays = [ ];
                 nixpkgs.config.allowUnfree = true;
+                nixpkgs.config.permittedInsecurePackages = [
+                  # Required for element-desktop
+                  "jitsi-meet-1.0.8043"
+                ];
               }
               (import ./config/nixos/systems/pollux)
               inputs.home-manager.nixosModules.home-manager
