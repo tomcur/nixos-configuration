@@ -5,8 +5,6 @@
     ./common-nix.nix
   ];
 
-  # Allow unfree software.
-  nixpkgs.config.allowUnfree = true;
   nixpkgs.overlays = [
     (self: super: {
       symbols-nerdfonts = super.pkgs.callPackage ./pkgs/fonts/nerd-fonts.nix { };
