@@ -169,7 +169,7 @@
     # (nerdfonts.override { fonts = [ "NerdFontsSymbols" ]; })
     # dejavu_fonts
     noto-fonts
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
     noto-fonts-emoji
     # Unicode coverage.
     unifont
