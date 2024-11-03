@@ -22,7 +22,8 @@
     filelight
     ark
     calc
-    leafpad
+    # leafpad
+    xfce.mousepad
     scrot
     transmission-gtk
     tokei
