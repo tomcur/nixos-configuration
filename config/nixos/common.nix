@@ -232,13 +232,9 @@
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
-      # monospace = [ "Symbols Nerd Font" "Source Code Pro" "Noto Color Emoji" ];
-      # sansSerif = [ "Symbols Nerd Font" "DejaVu Sans" "Noto Color Emoji" ];
-      # serif = [ "Symbols Nerd Font" "DejaVu Serif" "Noto Color Emoji" ];
-      # emoji = [ "Symbols Nerd Font" "Noto Color Emoji" ];
       monospace = [ "Source Code Pro" "Symbols Nerd Font Mono" "Noto Color Emoji" ];
-      sansSerif = [ "DejaVu Sans" "Symbols Nerd Font Mono" "Noto Color Emoji" ];
-      serif = [ "DejaVu Serif" "Symbols Nerd Font Mono" "Noto Color Emoji" ];
+      sansSerif = [ "DejaVu Sans" "Noto Sans Hebrew" "Noto Sans CJK JP" ];
+      serif = [ "DejaVu Serif" "Noto Serif Hebrew" ];
       emoji = [ "Symbols Nerd Font Mono" "Noto Color Emoji" ];
     };
   };
