@@ -237,6 +237,18 @@
       serif = [ "DejaVu Serif" "Noto Serif Hebrew" ];
       emoji = [ "Symbols Nerd Font Mono" "Noto Color Emoji" ];
     };
+    localConf = ''
+      <?xml version="1.0" encoding="UTF-8"?>
+      <!DOCTYPE fontconfig SYSTEM "urn:fontconfig:fonts.dtd">
+      <fontconfig>
+        <alias>
+          <family>system-ui</family>
+          <prefer>
+            <family>sans-serif</family>
+          </prefer>
+        </alias>
+      </fontconfig>
+    '';
   };
 
   # Configurable QT themes without a desktop manager.
