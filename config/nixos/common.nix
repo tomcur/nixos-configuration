@@ -162,7 +162,7 @@
   # Place mime.types data in /etc.
   environment.etc."mime.types".source = "${pkgs.mime-types}/etc/mime.types";
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     dejavu_fonts
     symbols-nerdfonts
     # inconsolata-nerdfont
