@@ -115,7 +115,7 @@
     gtk-engine-murrine # Required by Vertex.
     theme-vertex
     paper-icon-theme
-    gnome.adwaita-icon-theme
+    adwaita-icon-theme
     # GUI stuff.
     xfce.thunar
     xfce.thunar-volman

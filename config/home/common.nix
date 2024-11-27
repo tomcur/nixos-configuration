@@ -15,9 +15,9 @@
     libreoffice
   ]) ++ (with pkgs; [
     # Font tools.
-    gnome.gucharmap
+    gucharmap
     # Tools.
-    gnome.gnome-system-monitor
+    gnome-system-monitor
     libnotify
     filelight
     ark
