@@ -248,12 +248,12 @@
       enable = true;
     };
 
-    postgresql = {
-      enable = true;
-      ensureUsers = [
-        { name = "thomas"; }
-      ];
-    };
+    # postgresql = {
+    #   enable = true;
+    #   ensureUsers = [
+    #     { name = "thomas"; }
+    #   ];
+    # };
 
     # teamviewer.enable = true;
     ratbagd.enable = true;
