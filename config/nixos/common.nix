@@ -431,7 +431,11 @@
 
     # Enable CUPS to print documents.
     printing.enable = true;
-    printing.drivers = [ pkgs.gutenprint pkgs.gutenprintBin pkgs.epson-escpr ];
+    printing.drivers = [
+      pkgs.gutenprint
+      pkgs.gutenprintBin
+      # pkgs.epson-escpr 
+    ];
 
     flatpak.enable = true;
   };
