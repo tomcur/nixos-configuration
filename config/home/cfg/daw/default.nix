@@ -58,7 +58,7 @@ in
     # LV2
     x42-avldrums
     drumkv1
-    fmsynth
+    # fmsynth # Broken on 24.11 stable
     # LADSPA
     autotalent
     # DSSI
@@ -66,7 +66,7 @@ in
     # Collections
     zam-plugins
     lsp-plugins
-    distrho
+    distrho-ports
     (callPackage ./harrison-ava.nix { inherit inputs; })
     # Music programming language
     supercollider
