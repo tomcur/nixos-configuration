@@ -38,7 +38,7 @@
       inputs.flake-utils.follows = "flake-utils";
     };
     tarn = {
-      url = "git+https://codeberg.org/tomcur/tarn.git";
+      url = "https://codeberg.org/tomcur/tarn/archive/main.zip";
       inputs.nixpkgs.follows = "unstable";
       inputs.flake-utils.follows = "flake-utils";
     };
