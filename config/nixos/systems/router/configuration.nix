@@ -103,6 +103,24 @@ in
           AllowedIPs=10.4.1.3
         '';
       };
+      # Only internet access
+      "25-wg1" = {
+        netdevConfig = {
+          Kind = "wireguard";
+          MTUBytes = "1300";
+          Name = "wg1";
+        };
+        extraConfig = ''
+          [WireGuard]
+          PrivateKeyFile=/run/agenix/wireguard-router-private
+          ListenPort=51821
+
+          [WireGuardPeer]
+          # mark
+          PublicKey=xpmaQ35xS5TdaN8rI2cZD3LEiz3FYqXW3TLJsXnmsAw=
+          AllowedIPs=10.5.1.9
+        '';
+      };
     };
     networks = {
       "20-wan" = {
@@ -192,6 +210,21 @@ in
         matchConfig.Name = "wg0";
         address = [
           "10.4.0.1/16"
+        ];
+        networkConfig = {
+          IPv4Forwarding = "yes";
+          IPv6Forwarding = "yes";
+        };
+        extraConfig = ''
+        '';
+        linkConfig = {
+          RequiredForOnline = "no";
+        };
+      };
+      "34-wg1" = {
+        matchConfig.Name = "wg1";
+        address = [
+          "10.5.0.1/16"
         ];
         networkConfig = {
           IPv4Forwarding = "yes";
@@ -360,6 +393,7 @@ in
 
               # Allow Wireguard connections
               udp dport 51820 accept
+              udp dport 51821 accept
 
               # Allow SSH connections
               tcp dport 22 accept
@@ -388,9 +422,10 @@ in
             chain forward_new {
               # Allow LANs WAN access
               iif {
-                ${if_lan}, ${if_laniptv}, wg0
+                ${if_lan}, ${if_laniptv}, wg0, wg1
               } oif ppp0 counter accept comment "Allow trusted LAN to WAN"
 
+              # Forward packets from if_lan and wg0
               iif ${if_lan} accept
               iif wg0 accept
 
