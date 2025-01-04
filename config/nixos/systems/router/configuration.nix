@@ -31,6 +31,12 @@ in
     group = "systemd-network";
     mode = "0440";
   };
+  age.secrets.router-dyndns = {
+    file = ../../../../secrets/router-dyndns.age;
+    owner = "root";
+    group = "root";
+    mode = "0440";
+  };
 
   networking.hostName = "router";
   networking.domain = "home.arpa";
