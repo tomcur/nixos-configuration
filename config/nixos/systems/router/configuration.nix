@@ -75,6 +75,7 @@ in
         };
         vlanConfig.Id = 200;
       };
+      # Part of LAN
       "24-wg0" = {
         netdevConfig = {
           Kind = "wireguard";
@@ -120,7 +121,8 @@ in
           "10.0.0.1/16"
         ];
         networkConfig = {
-          IPForward = "yes";
+          IPv4Forwarding = "yes";
+          IPv6Forwarding = "yes";
           LinkLocalAddressing = "no";
         };
         linkConfig = {
@@ -145,7 +147,8 @@ in
       "30-ppp0" = {
         matchConfig.Name = "ppp0";
         networkConfig = {
-          IPForward = "yes";
+          IPv4Forwarding = "yes";
+          IPv6Forwarding = "yes";
           LinkLocalAddressing = "no";
           DefaultRouteOnDevice = "yes";
         };
@@ -156,7 +159,8 @@ in
       "31-waniptv" = {
         matchConfig.Name = "waniptv";
         networkConfig = {
-          IPForward = "yes";
+          IPv4Forwarding = "yes";
+          IPv6Forwarding = "yes";
           DHCP = "ipv4";
           LinkLocalAddressing = "no";
         };
@@ -176,7 +180,8 @@ in
           "10.2.0.1/16"
         ];
         networkConfig = {
-          IPForward = "yes";
+          IPv4Forwarding = "yes";
+          IPv6Forwarding = "yes";
           LinkLocalAddressing = "no";
         };
         linkConfig = {
@@ -189,7 +194,8 @@ in
           "10.4.0.1/16"
         ];
         networkConfig = {
-          IPForward = "yes";
+          IPv4Forwarding = "yes";
+          IPv6Forwarding = "yes";
         };
         extraConfig = ''
         '';
