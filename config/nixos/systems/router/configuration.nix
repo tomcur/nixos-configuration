@@ -275,41 +275,53 @@ in
 
   services.dnsmasq = {
     enable = true;
-    settings.server = [
-      "1.1.1.1"
-      "8.8.8.8"
-    ];
-    extraConfig = ''
-      interface=${if_lan},${if_laniptv},wg0
+    settings = {
+      interface = "${if_lan},${if_laniptv},wg0";
+      no-hosts = true;
+      domain = "dyn.home.arpa";
 
-      no-hosts
-      domain=dyn.home.arpa
+      server = [
+        "1.1.1.1"
+        "8.8.8.8"
+      ];
 
-      # Default gateway
-      dhcp-option=${if_lan},3,10.0.0.1
-      dhcp-option=${if_lan},6,10.0.0.1
-      # dhcp-option=${if_lan},121,0.0.0.0/0,10.0.0.1
-      
-      dhcp-option=${if_laniptv},3,10.2.0.1
-      dhcp-option=${if_laniptv},6,10.2.0.1
-      dhcp-option=${if_laniptv},28,10.2.255.255
-      dhcp-option=${if_laniptv},60,"IPTV_RG"
-      dhcp-option=${if_laniptv},121,10.2.0.0/16,10.2.0.1
+      dhcp-option = [
+        # Default gateway
+        "${if_lan},3,10.0.0.1"
+        "${if_lan},6,10.0.0.1"
+        # "${if_lan},121,0.0.0.0/0,10.0.0.1"
 
-      dhcp-option=wg0,3,10.4.0.1
-      dhcp-option=wg0,6,10.4.0.1
-      # dhcp-option=wg0,121,0.0.0.0/0,10.4.0.1
+        "${if_laniptv},3,10.2.0.1"
+        "${if_laniptv},6,10.2.0.1"
+        "${if_laniptv},28,10.2.255.255"
+        "${if_laniptv},60,\"IPTV_RG\""
+        "${if_laniptv},121,10.2.0.0/16,10.2.0.1"
 
-      dhcp-range=interface:${if_lan},10.0.2.1,10.0.255.254,12h
-      dhcp-range=interface:${if_laniptv},10.2.2.1,10.2.255.254,12h
-      dhcp-host=08:bf:b8:8c:a5:24,10.0.1.1
-      dhcp-host=9c:b6:d0:da:5c:61,10.0.1.2
-      dhcp-host=2c:0d:a7:fd:67:8b,10.0.1.3
-      host-record=router,router.home.arpa,10.0.0.1
-      host-record=peerless,peerless.home.arpa,10.0.1.1
-      host-record=pollux,pollux.home.arpa,10.0.1.2
-      host-record=castor,castor.home.arpa,10.0.1.3
-    '';
+        "wg0,3,10.4.0.1"
+        "wg0,6,10.4.0.1"
+        # "wg0,121,0.0.0.0/0,10.4.0.1"
+        "wg1,3,10.5.0.1"
+        "wg1,6,10.5.0.1"
+      ];
+      dhcp-range = [
+        "interface:${if_lan},10.0.2.1,10.0.255.254,12h"
+        "interface:${if_laniptv},10.2.2.1,10.2.255.254,12h"
+      ];
+      dhcp-host = [
+        "08:bf:b8:8c:a5:24,10.0.1.1"
+        "9c:b6:d0:da:5c:61,10.0.1.2"
+        "2c:0d:a7:fd:67:8b,10.0.1.3"
+        "84:b9:59:49:9d:d1,10.0.1.4"
+      ];
+
+      host-record = [
+        "router,router.home.arpa,10.0.0.1"
+        "peerless,peerless.home.arpa,10.0.1.1"
+        "pollux,pollux.home.arpa,10.0.1.2"
+        "castor,castor.home.arpa,10.0.1.3"
+        "files,files.home.arpa,10.0.1.4"
+      ];
+    };
   };
 
   # services.avahi = {
