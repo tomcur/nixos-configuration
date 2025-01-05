@@ -147,11 +147,13 @@
     # Virtalisation.
     # virt-viewer
     # virt-manager
+    # AMD GPU management
   ];
 
   environment.variables = {
     XKB_DEFAULT_OPTIONS = "compose:ralt,grp:menu_toggle";
     XKB_DEFAULT_LAYOUT = "us,ru";
+    # xkbOptions = "compose:ralt,grp:menu_toggle"; # ,grp_led:caps,caps:backspace";
   };
 
   hardware.opengl.enable = true;
@@ -162,7 +164,7 @@
   programs.my-river-env.enable = true;
 
   # Set monitor position and force compositor pipeline to prevent screen tearing (nvidia).
-  hardware.nvidia.modesetting.enable = true;
+  # hardware.nvidia.modesetting.enable = true;
   services = {
     xserver = {
       # Use non-free Nvidia drivers.
@@ -346,7 +348,7 @@
   # Virtualisation.
   # virtualisation.virtualbox.host = { enable = true; };
   virtualisation.docker.enable = true;
-  virtualisation.docker.enableNvidia = true;
+  # virtualisation.docker.enableNvidia = true;
   virtualisation.libvirtd = {
     enable = true;
     qemu.verbatimConfig = ''
@@ -379,6 +381,12 @@
     ];
   };
   nix.settings.trusted-users = [ "remote-builder" ];
+
+  # nix.sshServe.enable = true;
+  # nix.sshServe.keys = [ ];
+  # nix.extraOptions = ''
+  #   secret-key-files = /root/keys/nix_cache_ed25519_key
+  # '';
 
   # This value determines the NixOS release with which your system is to be
   # compatible, in order to avoid breaking some software such as database
