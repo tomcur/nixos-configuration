@@ -156,12 +156,14 @@
     # xkbOptions = "compose:ralt,grp:menu_toggle"; # ,grp_led:caps,caps:backspace";
   };
 
+  programs.corectrl.enable = true;
   hardware.opengl.enable = true;
   hardware.opengl.extraPackages = [
     pkgs.amdvlk
   ];
 
   programs.my-river-env.enable = true;
+  programs.noisetorch.enable = true;
 
   # Set monitor position and force compositor pipeline to prevent screen tearing (nvidia).
   # hardware.nvidia.modesetting.enable = true;
