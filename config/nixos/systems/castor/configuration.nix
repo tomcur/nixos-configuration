@@ -62,8 +62,8 @@
   hardware.probe-rs-udev.enable = true;
 
   # Enable architecture emulation for native compilation of foreign binaries.
-  boot.binfmt.emulatedSystems = [ 
-    "aarch64-linux" 
+  boot.binfmt.emulatedSystems = [
+    "aarch64-linux"
     # "armv6l-linux"
     # "armv7l-linux"
   ];
