@@ -415,12 +415,6 @@
       };
     };
 
-    # Nixops DNS.
-    nixops-dns = {
-      enable = true;
-      user = "thomas";
-    };
-
     avahi = {
       enable = true;
       nssmdns = true;
