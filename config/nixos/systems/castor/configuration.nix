@@ -164,6 +164,7 @@
 
   programs.my-river-env.enable = true;
   programs.noisetorch.enable = true;
+  programs.extra-container.enable = true;
 
   # Set monitor position and force compositor pipeline to prevent screen tearing (nvidia).
   # hardware.nvidia.modesetting.enable = true;
