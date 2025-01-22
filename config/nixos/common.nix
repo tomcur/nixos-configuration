@@ -74,6 +74,7 @@
     neovim # (vim_configurable.override {})
     git
     git-crypt
+    jujutsu
     file
     tree
     usbutils
