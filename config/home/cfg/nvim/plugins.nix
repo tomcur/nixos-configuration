@@ -1,11 +1,5 @@
 { buildVimPluginFrom2Nix, neovimPlugins }:
 {
-  plenary = buildVimPluginFrom2Nix rec {
-    pname = "plenary";
-    version = neovimPlugins.nvimPlenary.lastModifiedDate;
-    src = neovimPlugins.nvimPlenary;
-    meta.homepage = "https://github.com/nvim-lua/plenary.nvim";
-  };
   vim-monochrome = buildVimPluginFrom2Nix rec {
     pname = "vim-monochrome";
     version = neovimPlugins.nvimMonochrome.lastModifiedDate;

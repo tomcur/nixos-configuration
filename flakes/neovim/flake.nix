@@ -3,10 +3,6 @@
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
-    nvimPlenary = {
-      url = "github:nvim-lua/plenary.nvim";
-      flake = false;
-    };
     nvimMonochrome = {
       url = "github:fxn/vim-monochrome";
       flake = false;
@@ -25,7 +21,7 @@
     flake-utils.lib.eachDefaultSystem (system:
       {
         plugins = with input; {
-          inherit nvimPlenary nvimMonochrome nvimVimColorsPencil nvimPhoton;
+          inherit nvimMonochrome nvimVimColorsPencil nvimPhoton;
         };
       }
     );

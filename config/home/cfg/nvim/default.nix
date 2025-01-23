@@ -39,11 +39,11 @@ in
       bat
     ]);
     plugins = (with plugins; [
-      plenary
       vim-monochrome
       vim-colors-pencil
       vim-photon
     ]) ++ (with pkgs.vimPlugins; [
+      plenary-nvim
       # Impure manager.
       # vim-plug
       # Fuzzy finding.
