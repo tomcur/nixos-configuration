@@ -40,8 +40,6 @@ in
     ]);
     plugins = (with plugins; [
       vim-monochrome
-      vim-colors-pencil
-      vim-photon
     ]) ++ (with pkgs.vimPlugins; [
       plenary-nvim
       # Impure manager.
