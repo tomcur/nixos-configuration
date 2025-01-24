@@ -31,6 +31,9 @@ in
 
       # River layout generators
       pkgs.tarn
+
+      # Screen locker
+      pkgs.waylock
     ];
 
     environment.variables = {
@@ -44,6 +47,7 @@ in
     xdg.portal.wlr.enable = true;
     programs.dconf.enable = true;
     security.polkit.enable = true;
+    security.pam.services.waylock.text = "auth include login";
 
 
     services.greetd = {
