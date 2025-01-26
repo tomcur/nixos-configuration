@@ -72,7 +72,6 @@
     # Tools
     wget
     neovim # (vim_configurable.override {})
-    git
     git-crypt
     jujutsu
     file
@@ -258,6 +257,7 @@
 
   programs.git = {
     enable = true;
+    lfs.enable = true;
     config = {
       url = {
         "git@github.com:" = {
