@@ -145,7 +145,9 @@ in
         nmap <buffer><leader>mf :Neoformat nixpkgsfmt<cr>
       '';
       ".config/nvim/ftplugin/rust.vim".text = ''
-        nmap <buffer><leader>mf :Neoformat<cr>
+        " nmap <buffer><leader>mf :Neoformat<cr>
+        " Use LSP formatting for Rust. Maybe do something smarter for fallbacks in the future.
+        nmap <buffer><leader>mf :lua vim.lsp.buf.format()<cr>
       '';
       ".config/nvim/ftplugin/sh.vim".text = ''
         let g:shfmt_opt="-ci"
