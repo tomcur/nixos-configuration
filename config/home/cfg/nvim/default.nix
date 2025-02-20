@@ -103,6 +103,7 @@ in
 
       nvim-treesitter-parsers.nix
       nvim-treesitter-parsers.rust
+      nvim-treesitter-parsers.wgsl
       nvim-treesitter-parsers.python
       nvim-treesitter-parsers.bash
       nvim-treesitter-parsers.toml
