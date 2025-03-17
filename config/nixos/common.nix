@@ -120,17 +120,15 @@
     xfce.thunar
     xfce.thunar-volman
     xfce.exo
-  ] ++ (with pkgs.libsForQt5; [
-    pkgs.kde-cli-tools
-    pkgs.dolphin
+  ] ++ (with pkgs.kdePackages; [
+    kde-cli-tools
+    dolphin
     dolphin-plugins
     kio-extras
     ffmpegthumbs
     kdegraphics-thumbnailers
 
-    kinit
     breeze-icons
-    breeze-qt5
     # frameworkintegration
     # kactivities
     # kcoreaddons
@@ -436,7 +434,7 @@
   };
 
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-kde ];
+  xdg.portal.extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
 
   # Support 3D acceleration for 32-bit programs.
   hardware.opengl.driSupport32Bit = true;

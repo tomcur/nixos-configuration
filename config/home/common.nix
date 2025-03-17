@@ -19,8 +19,8 @@
     # Tools.
     gnome-system-monitor
     libnotify
-    filelight
-    ark
+    kdePackages.filelight
+    kdePackages.ark
     calc
     # leafpad
     xfce.mousepad
@@ -32,7 +32,7 @@
     gh
     # Documents.
     nomacs
-    okular
+    kdePackages.okular
     gimp
     # Reference management.
     # zotero # Currently broken due to cve
@@ -76,7 +76,7 @@
     ripgrep
     # Structured data tools.
     nushell
-    xsv
+    xan
     # Password manager.
     keepassxc
     # File formatting.
