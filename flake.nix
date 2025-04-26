@@ -52,6 +52,10 @@
       inputs.nixpkgs.follows = "unstable";
       inputs.flake-utils.follows = "flake-utils";
     };
+    hi-nvim-rs = {
+      url = "git+file:///home/thomas/code/other/hi.nvim.rs";
+      inputs.nixpkgs.follows = "unstable";
+    };
     musnix = {
       url = "github:musnix/musnix";
       flake = false;
@@ -84,6 +88,7 @@
               awesomePkg = awesome.defaultPackage.${system};
               awesomePlugins = awesome.plugins.${system};
               deployrsPkgs = inputs.deploy-rs.packages.${system};
+              hiNvimRsBuildColorscheme = inputs.hi-nvim-rs.buildColorscheme.${system};
             };
             modules = [
               {

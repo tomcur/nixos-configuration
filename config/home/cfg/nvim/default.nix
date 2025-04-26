@@ -147,7 +147,11 @@ in
     {
       ".config/nvim/init.vim".source = ./rc.vim;
       ".config/nvim/lua".source = ./lua;
-      ".config/nvim/colors".source = ./colors;
+      ".config/nvim/colors/highlow.vim".source = hiNvimRsBuildColorscheme {
+        name = "highlow";
+        colorschemeFile = ./highlow.toml;
+        target = "neovim";
+      };
       ".config/nvim/ftplugin/nix.vim".text = ''
         nmap <buffer><leader>mf :Neoformat nixpkgsfmt<cr>
       '';

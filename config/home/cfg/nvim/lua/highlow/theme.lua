@@ -44,6 +44,9 @@ function M.setupWithColors(colors)
     highlight(groups, "Boolean",       groups.Conditional) -- { link = "Conditional" })
     highlight(groups, "Exception",     { fg = colors.red, style = "bold" })
 
+
+    highlight(groups, "Label",         groups.Identifier) -- { link = "Identifier" })
+
     highlight(groups, "Special", { fg = colors.yellow })
     highlight(groups, "PreProc", { fg = colors.yellow })
 
@@ -128,6 +131,14 @@ function M.setupWithColors(colors)
     highlight(groups, "GitSignsChange", { fg = colors.structural_blue,  bg = colors.darkbg })
 
     highlight(groups, "IndentBlanklineChar", groups.Whitespace) -- { link = "Whitespace" })
+
+    highlight(groups, "@parameter", { fg = colors.blue_d, gui = "bold" })
+    highlight(groups, "@constructor", { fg = colors.yellow, gui = "bold" })
+
+    -- XML tags
+    highlight(groups, "@tag", { fg = colors.yellow })
+    highlight(groups, "@tag.attribute", groups.Identifier)
+    highlight(groups, "@tag.delimiter", groups.Delimiter)
 end
 
 return M

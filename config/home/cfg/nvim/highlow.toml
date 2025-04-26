@@ -2,20 +2,24 @@
 # Oklch color space. All color transformations performed by the theme compiler
 # are performed in either the Oklch or Oklab color spaces.
 
-# The name of the color scheme. The color scheme will be loadable (Neo)vim
+# The name of the color scheme. The color scheme will be loadable in (Neo)vim
 # through `:colorscheme {name}`.
 name = "highlow"
 
 # The kind of the color scheme specified here (either light or dark). The
 # inverse will be generated for free (with optional postprocessing specified in
 # `inverse`).
+#
+# This allows the correct scheme to be loaded based on whether (Neo)vim's
+# `background` setting is `light` or `dark`.
 kind = "light"
 
 [hues]
-# Hues to use in the theme. A set of foreground and background colors will be
-# generated from these hues, using the lightness and chroma specified in `fg`
-# and `bg`. These can be referenced in the `theme` section as `fg.<name>` and
-# `bg.<name>`.
+# Hues to use in the theme. Groups of colors will be generated from these hues,
+# using the lightness and chromacity of the color groups specified in `groups`.
+# These can be referenced in the `theme` section as `<group_name>.<hue_name>`.
+# For example, `fg.red` refers to the `red` hue with the lightness and
+# chromacity of `groups.fg`.
 red = 15.0
 orange = 62.0
 yellow = 98.0
@@ -25,22 +29,34 @@ blue = 262.0
 purple = 314.0
 pink = 346.0
 
-[fg]
+[groups.fg]
 # Specify the lightness and chromacity for foreground colors defined in [hues].
-lightness = 0.42
-chroma = 0.075
+lightness = 0.36
+chroma = 0.07
 
-[bg]
+[groups.fg_accented]
+# Specify the lightness and chromacity for accented foreground colors defined in [hues].
+lightness = 0.36
+chroma = 0.10
+
+[groups.fg_unaccented]
+# Specify the lightness and chromacity for unaccented foreground colors defined in [hues].
+lightness = 0.36
+chroma = 0.05
+
+[groups.bg]
 # Specify the lightness and chromacity for background colors defined in [hues].
 lightness = 0.85
-chroma = 0.075
+chroma = 0.05
 
 [colors]
-# Specify colors (with lightness and chromacity) to use in the theme. The names
-# can be referenced in the `theme` section without a prefix.
+# Specify colors (with lightness, chromacity, and hue) to use in the theme. The
+# color names can be referenced in the `theme` section without a prefix. This
+# is useful for naming specific colors that may differ in lightness and
+# chromacity from the colors in the `fg` and `bg` sections.
 bg =   [ 0.95, 0.016,  77 ]
-fg =   [ 0.42, 0.035, 272 ]
-grey = [ 0.42, 0.0,    77 ]
+fg =   [ 0.36, 0.035, 272 ]
+grey = [ 0.36, 0.0,    77 ]
 
 # [themes]
 # In the themes sections the specific color elements that will be used by the
@@ -59,18 +75,17 @@ grey = [ 0.42, 0.0,    77 ]
 # bright background.
 #
 # `gamma`
-# Perform gamma correction for the inverse colorscheme. Values between 0 and 1
-# increase overall brightness and increase contrast between dark colors. Values
-# over 1 decrease overall brightness and increase contrast between light
-# colors.
+# Perform gamma correction: values between 0 and 1 increase overall brightness
+# and increase contrast between lightness levels of dark colors. Values over 1
+# decrease overall brightness and increase contrast between lightness levels of
+# light colors.
 #
 # Calculates `new_lightness = lightness^factor`.
 #
 # - `lighten`
-# How much to lighten colors for the inverse colorscheme. Specify a negative
-# value to darken. This lightens and darkens relative to the maximal lightness
-# and darkness. For example, specifying 0.1 moves a color's lightness 10%
-# towards the maximal lightness.
+# Lighten or darken a color. Specify a negative value to darken. This lightens
+# and darkens relative to the maximal lightness and darkness. For example,
+# specifying 0.1 moves a color's lightness 10% towards maximal lightness.
 #
 # Calculates
 # ```
@@ -79,98 +94,104 @@ grey = [ 0.42, 0.0,    77 ]
 # ```
 #
 # - `lighten_multiplier`
-# How much to lighten colors for the inverse colorscheme by a multiplier.
-# Specify a value above 1 to lighten and below 1 to darken. This has the effect
-# of increasing lightness contrast (light colors are made lighter).
+# Lighten or darken a color by a multiplier. Specify a value above 1 to lighten
+# and below 1 to darken. If multiple colors are modified by the same
+# `lighten_multiplier` value, the lighter colors undergo a perceptually bigger
+# change.
+#
+# Using this, lightness can rise or fall below minimal or maximal lightness,
+# leading to clamping.
 #
 # Calculates `new_lightness = factor * lightness`.
 #
 # - `lighten_absolute`
-# How much to lighten colors for the inverse colorscheme. Specify a negative
-# value to darken. This lightens the colors absolutely, meaning all colors are
-# lightened (or darkened) by the perceptual same amount. However, using this,
-# lightness can fall below pure black and rise above pure white.
+# Lighten or darken a color independently from its current lightness. Specify a
+# negative value to darken. If multiple colors are modified by the same
+# `lighten_absolute` value, they change in lightness by the same perceptual
+# amount.
+#
+# Using this, lightness can rise or fall below minimal or maximal lightness,
+# leading to clamping.
 #
 # Calculates `new_lightness = lightness + factor`.
 
 [themes.ui]
 # Normal foreground text
-fg = "fg"
-fg_dim = { color = "fg", mix = ["bg", 0.1] }
+fg =          "fg"
+fg_dim =      { color = "fg", mix = ["bg", 0.1] }
 fg_very_dim = { color = "fg", mix = ["bg", 0.3] }
 
 # Background and background highlights
-bg = "bg"
-bg_visual = { color = "bg", lighten = -0.15, saturate = 0.04 }
-bg_highlight = { color = "bg", lighten = -0.15, saturate = 0.03 }
-bg_highlight_dim = { color = "bg", lighten = -0.07, saturate = 0.02 }
-bg_border = { color = "fg" }
-bg_gutter = { color = "bg", lighten = -0.04, saturate = 0.015 }
-bg_dim = { color = "bg", lighten = -0.05, saturate = -0.005 }
-bg_selected = { color = "bg", lighten = -0.1 }
+bg =               "bg"
+bg_visual =        { color = "bg", lighten_absolute = -0.15, saturate = 0.04 }
+bg_highlight =     { color = "bg", lighten_absolute = -0.15, saturate = 0.03 }
+bg_highlight_dim = { color = "bg", lighten_absolute = -0.07, saturate = 0.02 }
+bg_border =        { color = "fg" }
+bg_gutter =        { color = "bg", lighten_absolute = -0.04, saturate = 0.015 }
+bg_dim =           { color = "bg", lighten_absolute = -0.05, saturate = -0.005 }
+bg_selected =      { color = "bg", lighten_absolute = -0.1 }
 
 # Floating windows
-float_bg = { color = "bg", lighten = -0.05, saturate = 0.02 }
-float_fg = { color = "fg", lighten = -0.05 }
-float_border = { color = "fg", lighten = 0.1 }
+float_bg =     { color = "bg", lighten_absolute = -0.02, saturate = 0.01 }
+float_fg =     { color = "fg", lighten_absolute = -0.02 }
+float_border = "fg"
 
 # Popup menu (e.g., tab completion)
-pmenu_bg = { color = "bg", lighten = -0.1, saturate = 0.03 }
-pmenu_fg = { color = "fg", lighten = -0.1 }
-pmenu_fg_selected = { color = "fg", lighten = -0.1, saturate = 0.03 }
-pmenu_bg_selected = { color = "bg", lighten = -0.25, saturate = 0.08 }
-pmenu_scrollbar = { color = "bg", lighten = -0.2 }
-pmenu_thumb = { color = "fg" }
+pmenu_bg =          { color = "bg", lighten_absolute = -0.1, saturate = 0.03 }
+pmenu_fg =          { color = "fg", lighten_absolute = -0.1 }
+pmenu_fg_selected = { color = "fg", lighten_absolute = -0.1, saturate = 0.03 }
+pmenu_bg_selected = { color = "bg", lighten_absolute = -0.25, saturate = 0.08 }
 
-special = { color = "fg.purple", lighten = -0.05, saturate = 0.02 }
+special = { color = "fg.purple", lighten_absolute = -0.05, saturate = 0.02 }
 nontext = { color = "grey", mix = ["bg", 0.15] }
 
 [themes.syn]
-string = "fg.blue"
-number = "fg.orange"
-constant = "fg.blue"
-regex = "fg.yellow"
-preproc = "fg.yellow"
-type = "fg.pink"
-variable = { color = "fg", lighten = -0.1, saturate = 0.01 }
-identifier = { color = "fg", lighten = -0.1, saturate = 0.01 }
-parameter = { color = "fg.blue", saturate = 0.01 }
-function = "fg.blue"
-constructor = "fg.orange"
-statement = "fg.purple"
-keyword = { color = "fg.purple", saturate = 0.01 }
-operator = "fg"
-deprecated = "grey"
-comment = { color = "grey", lighten = 0.05 }
-special = "fg.yellow"
-punctuation = "grey"
+string =      "fg.green"
+number =      "fg.orange"
+constant =    "fg.blue"
+regex =       "fg.yellow"
+preproc =     "fg.yellow"
+type =        "fg.pink"
+variable =    "fg"
+identifier =  "fg"
+parameter =   "fg_unaccented.blue"
+function =    "fg_unaccented.blue"
+constructor = "fg_unaccented.orange"
+statement =   "fg_unaccented.purple"
+keyword =     "fg_unaccented.purple"
+operator =    "fg_unaccented.yellow"
+deprecated =  { color = "grey", lighten_absolute = 0.05 }
+comment =     "grey"
+special =     "fg.yellow"
+punctuation = { color = "grey", lighten_absolute = 0.05 }
 
 [themes.diagnostics]
-error = { color = "fg.red", saturate = 0.03 }
-warning = { color = "fg.orange", saturate = 0.03 }
-info = { color = "fg.blue", saturate = 0.03 }
-hint =  "grey"
-ok = { color = "fg.green", saturate = 0.03 }
+error =   { color = "fg_accented.red" }
+warning = { color = "fg_accented.orange" }
+info =    { color = "fg_accented.blue" }
+hint =    { color = "fg_accented.blue", saturate = -0.05 }
+ok =      { color = "fg_accented.green" }
 
 [themes.vcs]
 removed = "fg.red"
-added = "fg.green"
+added =   "fg.green"
 changed = "fg.yellow"
 
 [themes.diff]
 removed = "bg.red"
-added = "bg.green"
+added =   "bg.green"
 changed = "bg.yellow"
-text = "bg"
+text =    "bg"
 
 [inverse]
 # Color post-processing for the inverse color theme. This is performed after
 # inverting the lightness of all colors. The transformations are the same as
 # documented in the themes section.
-saturate = -0.005
-gamma = 0.85
-lighten_absolute = 0.10
+saturate = -0.03
+lighten_absolute = 0.08
 
 [highlights]
 # Specify (Neo)vim highlight groups. The default groups are available at
-# https://github.com/tomcur/hi.nvim.rs
+# https://github.com/tomcur/hi-nvim-rs
+StatusLine = { fg = "ui.bg", bg = "ui.fg" }
+StatusLineNC = { fg = "ui.bg_dim", bg = "ui.fg_very_dim" }
