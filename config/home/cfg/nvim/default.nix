@@ -12,8 +12,8 @@ in
 
   programs.neovim = {
     enable = true;
-    package = neovimPkg;
-    # package = pkgs.neovim-unwrapped;
+    # package = neovimPkg;
+    package = pkgs.neovim-unwrapped;
     extraPackages = (with stablePkgs; [
       python3Packages.black
       python3Packages.isort
