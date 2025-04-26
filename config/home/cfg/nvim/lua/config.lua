@@ -125,15 +125,33 @@ local ellipsis = function(str, maxChars)
     end
 end
 
+-- luasnip
+local luasnip = require "luasnip"
+luasnip.config.set_cofnig = {
+  history = false,
+  updateevents = "TextChanged,TextChangedI",
+}
+
+vim.keymap.set({ "i", "s" }, "<c-k>", function()
+  if luasnip.expand_or_jumpable() then
+    luasnip.expand_or_jump()
+  end
+end, { silent = true })
+
+vim.keymap.set({ "i", "s" }, "<c-j>", function()
+  if luasnip.jumpable(-1) then
+    luasnip.jump(-1)
+  end
+end, { silent = true })
+
 -- nvim-cmp
 vim.o.completeopt="menu,menuone,noselect"
 local cmp = require'cmp'
 local lspkind = require('lspkind')
 cmp.setup({
   snippet = {
-    -- REQUIRED - you must specify a snippet engine
     expand = function(args)
-      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      luasnip.lsp_expand(args.body)
     end,
   },
   window = {
@@ -162,14 +180,14 @@ cmp.setup({
       end
       fallback()
     end, { "i", "s" }),
-    ["<C-j>"] = cmp.mapping(function(fallback)
+    ["<C-n>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       else
         fallback()
       end
     end, { "i", "s" }),
-    ["<C-k>"] = cmp.mapping(function(fallback)
+    ["<C-p>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
       else

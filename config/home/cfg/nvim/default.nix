@@ -84,6 +84,10 @@ in
       cmp-nvim-lsp
       cmp-path
       nvim-cmp
+      lspkind-nvim # cmp formatting
+
+      # Signature help.
+      lsp_signature-nvim
 
       # LSP.
       neoconf-nvim # per-project configuration of language servers
