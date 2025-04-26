@@ -105,6 +105,8 @@ in
       nvim-treesitter
       nvim-treesitter-textobjects
 
+      nvim-treesitter-parsers.markdown
+      nvim-treesitter-parsers.markdown_inline
       nvim-treesitter-parsers.nix
       nvim-treesitter-parsers.rust
       nvim-treesitter-parsers.wgsl
