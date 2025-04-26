@@ -4,13 +4,13 @@
   environment.etc."nix-channels/unstable".source = inputs.unstable;
 
   nix = {
-    package = pkgs.nixUnstable;
+    package = pkgs.nixVersions.latest;
     extraOptions = ''
       experimental-features = nix-command flakes
       builders-use-substitutes = true
     '';
     registry = {
-      nixpkgs.flake = inputs.unstable;
+      # nixpkgs.flake = inputs.unstable;
       stable.flake = inputs.stable;
       unstable.flake = inputs.unstable;
     };
