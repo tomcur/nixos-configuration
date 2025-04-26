@@ -374,7 +374,7 @@
 
   services = {
     dbus.packages = [
-      pkgs.dolphin
+      pkgs.kdePackages.dolphin
     ];
 
     # Useful for Wireshark.
