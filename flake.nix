@@ -197,7 +197,14 @@
                 home-manager.extraSpecialArgs = specialArgs;
                 home-manager.users.tom = import ./config/home/systems/trill/default.nix;
               }
-              # nixos-hardware.nixosModules.dell-xps-13-9360
+
+              # TODO: replace with 300 when landed
+              nixos-hardware.nixosModules.common-cpu-amd
+              nixos-hardware.nixosModules.common-cpu-amd-pstate
+              nixos-hardware.nixosModules.common-gpu-amd
+              nixos-hardware.nixosModules.common-pc-laptop
+              nixos-hardware.nixosModules.common-pc-laptop-ssd
+
               unstable.nixosModules.notDetected
             ];
           in
