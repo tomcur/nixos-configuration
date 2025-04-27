@@ -2,17 +2,17 @@
 let
   cfg = config.programs.my-river-env;
 
-  # dbus-river-environment = pkgs.writeTextFile {
-  #   name = "dbus-river-environment";
-  #   destination = "/bin/dbus-river-environment";
-  #   executable = true;
+  dbus-river-environment = pkgs.writeTextFile {
+    name = "dbus-river-environment";
+    destination = "/bin/dbus-river-environment";
+    executable = true;
 
-  #   text = ''
-  #     dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_SESSION_TYPE XDG_CURRENT_DESKTOP=sway
-  #     systemctl --user stop pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
-  #     systemctl --user start pipewire pipewire-media-session xdg-desktop-portal xdg-desktop-portal-wlr
-  #   '';
-  # };
+    text = ''
+      dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY XDG_SESSION_TYPE XDG_CURRENT_DESKTOP=river
+      systemctl --user stop pipewire xdg-desktop-portal xdg-desktop-portal-wlr
+      systemctl --user start pipewire xdg-desktop-portal xdg-desktop-portal-wlr
+    '';
+  };
 in
 {
   options.programs.my-river-env = {
@@ -21,7 +21,7 @@ in
   config = lib.mkIf cfg.enable {
     environment.systemPackages = [
       # pkgs.vulkan-validation-layers # Necessary in current wlroots to launch with Vulkan renderer
-      # dbus-river-environment
+      dbus-river-environment
 
       # Required for some applications (such as Neovim) to use the clipboard in Wayland
       pkgs.wl-clipboard
