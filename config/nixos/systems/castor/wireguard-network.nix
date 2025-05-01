@@ -29,7 +29,7 @@ in
             # Depending on the connection, add a pre-shared key file
             # PresharedKeyFile = "/path/to/preshared-key";
             Endpoint = "r.dyn.uint.one:51820";
-            AllowedIPs = [ "10.0.0.0/16" ];
+            AllowedIPs = [ "10.0.0.0/8" ];
             PersistentKeepalive = 25;
             RouteTable = "main";
           };
