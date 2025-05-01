@@ -107,6 +107,11 @@ in
           # op3
           PublicKey=TxkX5E9dGaocs501n6nEfLjOY0gHZCYNacjEusF2mVg=
           AllowedIPs=10.4.1.3
+
+          [WireGuardPeer]
+          # trill
+          PublicKey=ja/roO9Yod6tyYAcogbnSgx6Spoi6gE/lCzGtTqADj8=
+          AllowedIPs=10.4.1.4
         '';
       };
       # Only internet access
