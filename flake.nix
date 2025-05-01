@@ -28,6 +28,12 @@
       inputs.nixpkgs.follows = "unstable";
       inputs.flake-utils.follows = "flake-utils";
     };
+    # Remove once https://github.com/jj-vcs/jj/issues/80 is released.
+    jujutsu = {
+      url = "github:weiznich/jj/ignore_lfs";
+      inputs.nixpkgs.follows = "unstable";
+      inputs.flake-utils.follows = "flake-utils";
+    };
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
     };
@@ -96,6 +102,7 @@
                   (self: super: {
                     notmuch = patched.legacyPackages."x86_64-linux".notmuch;
                     tarn = tarn.packages.${system}.default;
+                    jujutsu = inputs.jujutsu.packages.${system}.jujutsu;
                   })
                 ];
                 nixpkgs.config.allowUnfree = true;
