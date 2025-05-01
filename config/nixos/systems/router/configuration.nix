@@ -641,6 +641,7 @@ in
     dhcpcd
     radvd
     wireguard-tools
+    tshark
   ];
 
   # Configure network proxy if necessary
