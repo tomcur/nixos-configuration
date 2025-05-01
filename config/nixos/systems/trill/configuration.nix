@@ -4,6 +4,7 @@
     ../../audio-pipewire.nix
     ../../eduroam.nix
     ../../modules/river.nix
+    ./wireguard-network.nix
   ];
 
   programs.my-river-env.enable = true;
