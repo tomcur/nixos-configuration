@@ -134,8 +134,12 @@
     # kcoreaddons
     kio
     # krunner
-    # kservice
+    kservice
   ]);
+
+  # Fixes applications not showing up in KDE menus. Does this remain necessary?
+  # From: https://discourse.nixos.org/t/dolphin-does-not-have-mime-associations/48985/7
+  environment.etc."/xdg/menus/applications.menu".text = builtins.readFile "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
   # xdg.portal.enable = true;
   # xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-kde ];
