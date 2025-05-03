@@ -439,6 +439,7 @@
 
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
+  xdg.menus.enable = true;
 
   # Support 3D acceleration for 32-bit programs.
   hardware.opengl.driSupport32Bit = true;

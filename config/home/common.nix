@@ -95,6 +95,7 @@
 
   home.keyboard = null; # Managed by NixOS.
 
+  xdg.enable = true;
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
