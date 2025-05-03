@@ -50,8 +50,9 @@
 
   # Virtual console settings.
   console = {
-    font = "Lat2-Terminus16";
+    # Linux automatically picks a larger font for high-resolution screens.
     keyMap = "us";
+    earlySetup = true;
   };
 
   # List packages installed in system profile. To search, run:
