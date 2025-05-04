@@ -188,6 +188,7 @@
                 nixpkgs.overlays = [
                   (self: super: {
                     tarn = tarn.packages.${system}.default;
+                    jujutsu = inputs.jujutsu.packages.${system}.jujutsu;
                   })
                 ];
                 nixpkgs.config.allowUnfree = true;
