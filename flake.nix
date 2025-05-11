@@ -34,6 +34,12 @@
       inputs.nixpkgs.follows = "unstable";
       inputs.flake-utils.follows = "flake-utils";
     };
+    # This patches out disk info from eww completely, as otherwise it attempts
+    # to mount all NFS drives, which hangs when the drives are unreachable.
+    # Remove once https://github.com/elkowar/eww/pull/1096 is released.
+    eww = {
+      url = "github:tomcur/eww/no_disk";
+    };
     neovim-nightly-overlay = {
       url = "github:nix-community/neovim-nightly-overlay";
     };
@@ -103,6 +109,7 @@
                     notmuch = patched.legacyPackages."x86_64-linux".notmuch;
                     tarn = tarn.packages.${system}.default;
                     jujutsu = inputs.jujutsu.packages.${system}.jujutsu;
+                    eww = inputs.eww.packages.${system}.eww;
                   })
                 ];
                 nixpkgs.config.allowUnfree = true;
@@ -189,6 +196,7 @@
                   (self: super: {
                     tarn = tarn.packages.${system}.default;
                     jujutsu = inputs.jujutsu.packages.${system}.jujutsu;
+                    eww = inputs.eww.packages.${system}.eww;
                   })
                 ];
                 nixpkgs.config.allowUnfree = true;
