@@ -52,9 +52,7 @@ in
     let
       notmuch = "${pkgs.notmuch}/bin/notmuch";
     in
-    pkgs.substituteAll {
-      src = ./astroid/thread-tag-toggle;
-      isExecutable = true;
+    pkgs.replaceVars ./astroid/thread-tag-toggle {
       inherit notmuch;
       inherit (pkgs) bash;
     };
@@ -62,9 +60,7 @@ in
     let
       notmuch = "${pkgs.notmuch}/bin/notmuch";
     in
-    pkgs.substituteAll {
-      src = ./astroid/message-tag-toggle;
-      isExecutable = true;
+    pkgs.replaceVars ./astroid/message-tag-toggle {
       inherit notmuch;
       inherit (pkgs) bash;
     };
@@ -265,15 +261,11 @@ in
         mbsync = "${pkgs.isync}/bin/mbsync";
         notmuch = "${pkgs.notmuch}/bin/notmuch";
         notify = "${pkgs.libnotify}/bin/notify-send";
-        index-new = pkgs.substituteAll {
-          src = ./secret-indexing/new.sh;
-          isExecutable = true;
+        index-new = pkgs.replaceVars ./secret-indexing/new.sh {
           inherit notmuch;
           inherit (pkgs) bash;
         };
-        index-general = pkgs.substituteAll {
-          src = ./secret-indexing/general.sh;
-          isExecutable = true;
+        index-general = pkgs.replaceVars ./secret-indexing/general.sh {
           inherit notmuch;
           inherit (pkgs) bash;
         };

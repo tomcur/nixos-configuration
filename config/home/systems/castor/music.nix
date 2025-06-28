@@ -55,8 +55,6 @@
   home.packages = (with pkgs; [
     # MPD controller.
     ncmpcpp
-    # Audio visualizer.
-    cli-visualizer
   ]);
 
   home.file.".ncmpcpp/config".text = ''
