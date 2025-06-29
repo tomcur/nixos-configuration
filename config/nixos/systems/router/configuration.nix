@@ -323,6 +323,7 @@ in
         "9c:b6:d0:da:5c:61,10.0.1.2"
         "2c:0d:a7:fd:67:8b,10.0.1.3"
         "84:b9:59:49:9d:d1,10.0.1.4"
+        "84:9e:56:9c:74:c1,10.0.1.5"
       ];
 
       host-record = [
@@ -331,6 +332,7 @@ in
         "pollux,pollux.home.arpa,10.0.1.2"
         "castor,castor.home.arpa,10.0.1.3"
         "files,files.home.arpa,10.0.1.4"
+        "trill,trill.home.arpa,10.0.1.5"
       ];
     };
   };
