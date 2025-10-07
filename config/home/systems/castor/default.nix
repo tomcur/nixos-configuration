@@ -10,7 +10,7 @@
   ];
 
   home.packages = [
-    inputs.phone-camera-upload.defaultPackage.${pkgs.stdenv.hostPlatform.system}
+    # inputs.phone-camera-upload.defaultPackage.${pkgs.stdenv.hostPlatform.system}
     (pkgs.callPackage ../../my-programs/transcode-opus { })
   ] ++ (with pkgs; [
     inkscape

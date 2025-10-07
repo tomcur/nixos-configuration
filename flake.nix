@@ -2,7 +2,7 @@
   description = "Tom's systems configurations";
 
   inputs = {
-    stable.url = "github:NixOS/nixpkgs/nixos-24.11";
+    stable.url = "github:NixOS/nixpkgs/nixos-25.05";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     patched.url = "git+file:///etc/nixos/nixpkgs";
@@ -41,7 +41,7 @@
       url = "github:tomcur/eww/no_disk";
     };
     neovim-nightly-overlay = {
-      url = "github:nix-community/neovim-nightly-overlay";
+      url = "github:nix-community/neovim-nightly-overlay?rev=141f2db491ab484a2372ee8368fcd3a31422ec2f";
     };
     awesome = {
       url = "path:./flakes/awesome";
@@ -83,7 +83,9 @@
   };
 
   outputs = inputs @ { self, stable, unstable, patched, nixos-hardware, agenix, neovim, neovim-nightly-overlay, awesome, tarn, ... }:
-    let lib = unstable.lib;
+    let
+      lib = unstable.lib;
+      stableLib = stable.lib;
     in
     {
       nixosConfigurations = {
@@ -108,7 +110,7 @@
                   (self: super: {
                     notmuch = patched.legacyPackages."x86_64-linux".notmuch;
                     tarn = tarn.packages.${system}.default;
-                    jujutsu = inputs.jujutsu.packages.${system}.jujutsu;
+                    # jujutsu = inputs.jujutsu.packages.${system}.jujutsu;
                     eww = inputs.eww.packages.${system}.eww;
                   })
                 ];

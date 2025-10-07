@@ -448,9 +448,11 @@
   # Set default systemd services timeout.
   # Note services can extend their stop time by signalling
   # 'EXTEND_TIMEOUT_USEC'.
-  systemd.extraConfig = ''
-    DefaultTimeoutStopSec=30s
-  '';
+  systemd.settings.MAnager = {
+    DefaultIOAccounting = true;
+    DefaultIPAccounting = true;
+    DefaultTimeoutStopSec = "30s";
+  };
 
   security.pam.loginLimits = [
     {

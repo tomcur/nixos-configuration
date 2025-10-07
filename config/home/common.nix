@@ -6,9 +6,9 @@
     (pkgs.callPackage ./my-programs/volume-control { })
     inputs.thingshare.defaultPackage.${pkgs.stdenv.hostPlatform.system}
     (stablePkgs.callPackage ./my-programs/extract { })
-    (pkgs.callPackage ./my-programs/paper {
-      buildPythonPackage = pkgs.python3Packages.buildPythonPackage;
-    })
+    # (pkgs.callPackage ./my-programs/paper {
+    #   buildPythonPackage = pkgs.python3Packages.buildPythonPackage;
+    # })
     (pkgs.callPackage ./my-programs/wayland-random-bg { })
   ] ++ (with stablePkgs; [
     zathura
