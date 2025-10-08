@@ -13,6 +13,8 @@
   ] ++ (with stablePkgs; [
     zathura
     libreoffice
+    # debugging
+    ltrace
   ]) ++ (with pkgs; [
     # Font tools.
     gucharmap
@@ -40,7 +42,6 @@
     gcc
     gnumake
     # Debugging.
-    ltrace
     gdb
     lldb
     # gdbgui

@@ -158,9 +158,6 @@
 
   programs.corectrl.enable = true;
   hardware.opengl.enable = true;
-  hardware.opengl.extraPackages = [
-    pkgs.amdvlk
-  ];
 
   programs.my-river-env.enable = true;
   programs.noisetorch.enable = true;
