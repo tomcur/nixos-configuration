@@ -218,12 +218,13 @@ require "lsp_signature".setup({
 
 -- Per-project LSP configuration
 require("neoconf").setup({})
-local nvim_lsp = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-nvim_lsp.pylsp.setup{
+vim.lsp.config('pylsp', {
   capabilities = capabilities
-}
-nvim_lsp.rust_analyzer.setup{
+})
+vim.lsp.enable('pylsp')
+
+vim.lsp.config('rust_analyzer', {
   capabilities = capabilities,
   settings = {
     ["rust-analyzer"] = {
@@ -232,34 +233,47 @@ nvim_lsp.rust_analyzer.setup{
       },
     },
   },
-}
--- Setting `root_dir` required until
--- https://github.com/neovim/nvim-lsp/commit/1e20c0b29e67e6cd87252cf8fd697906622bfdd3#diff-1cc82f5816863b83f053f5daf2341daf
--- is in nixpkgs repo.
-nvim_lsp.denols.setup {
+})
+vim.lsp.enable('rust_analyzer')
+
+vim.lsp.config('ocamllsp', {
+  capabilities=capabilities
+})
+vim.lsp.enable('ocamllsp')
+
+vim.lsp.config('denols', {
   capabilities = capabilities,
-  root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc"),
-}
-nvim_lsp.tsserver.setup{
+})
+vim.lsp.enable('denols')
+
+vim.lsp.config('ts_ls', {
   capabilities = capabilities,
-  root_dir = nvim_lsp.util.root_pattern("package.json"),
   single_file_support = false,
-}
-nvim_lsp.terraformls.setup{
+})
+vim.lsp.enable('ts_ls')
+
+vim.lsp.config('terraformls', {
   capabilities = capabilities
-}
-nvim_lsp.beancount.setup{
+})
+vim.lsp.enable('terraformls')
+
+vim.lsp.config('beancount', {
   init_options = {
     journal_file = "/home/thomas/data/uint/books/main.beancount",
   };
   capabilities = capabilities
-}
-nvim_lsp.bashls.setup{
+})
+vim.lsp.enable('beancount')
+
+vim.lsp.config('bashls', {
   capabilities = capabilities
-}
-nvim_lsp.nixd.setup{
+})
+vim.lsp.enable('bashls')
+
+vim.lsp.config('nixd', {
   capabilities = capabilities
-}
+})
+vim.lsp.enable('nixd')
 
 require("trouble").setup {}
 
