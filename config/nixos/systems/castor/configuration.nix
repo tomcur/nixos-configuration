@@ -12,7 +12,7 @@
     ./wireguard-network.nix
   ];
   boot.initrd.kernelModules = [ "amdgpu" ];
-  boot.kernelPackages = pkgs.linuxPackages_6_14;
+  boot.kernelPackages = pkgs.linuxPackages_6_17;
   # boot.kernelPackages = pkgs.linuxPackages_5_11;
   # boot.kernelPackages = pkgs.linuxPackages_5_10.extend (self: super: {
   #   nvidia_x11 = unstable.pkgs.linuxPackages_5_10.nvidia_x11;
@@ -53,7 +53,7 @@
     fcitx5.waylandFrontend = true;
     fcitx5.addons = with pkgs; [
       fcitx5-gtk
-      fcitx5-chinese-addons
+      qt6Packages.fcitx5-chinese-addons
       fcitx5-nord
     ];
   };

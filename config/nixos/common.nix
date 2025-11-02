@@ -89,7 +89,7 @@
     zip
     unzip
     # Data.
-    mime-types
+    mailcap # mime-types
     # Network.
     pciutils
     whois
@@ -163,7 +163,7 @@
   };
 
   # Place mime.types data in /etc.
-  environment.etc."mime.types".source = "${pkgs.mime-types}/etc/mime.types";
+  environment.etc."mime.types".source = "${pkgs.mailcap}/etc/mime.types";
 
   fonts.packages = with pkgs; [
     dejavu_fonts
@@ -173,7 +173,7 @@
     # dejavu_fonts
     noto-fonts
     noto-fonts-cjk-sans
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     # Unicode coverage.
     unifont
     # Monospace fonts. (There are never enough.)
