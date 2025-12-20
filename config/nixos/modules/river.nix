@@ -40,7 +40,7 @@ in
       # WLR_NO_HARDWARE_CURSORS = "1";
     };
 
-    programs.river = {
+    programs.river-classic = {
       enable = true;
     };
     programs.xwayland.enable = true;
@@ -63,7 +63,7 @@ in
               export XDG_CURRENT_DESKTOP="river"
 
               systemd-run --user --scope --collect --quiet --unit="river" \
-                systemd-cat --identifier="river" ${config.programs.river.package}/bin/river $@
+                systemd-cat --identifier="river" ${config.programs.river-classic.package}/bin/river $@
             '';
             runner = lib.getExe river-run;
           in
