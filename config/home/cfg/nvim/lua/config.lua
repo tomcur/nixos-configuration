@@ -25,55 +25,55 @@ vim.diagnostic.config {
 }
 
 -- Treesitter
-local parser_install_dir = vim.fn.stdpath("data") .. "/treesitter-parsers"
-vim.opt.runtimepath:append(parser_install_dir)
-vim.fn.mkdir(parser_install_dir, "p")
-vim.cmd("packadd nvim-treesitter")
-require'nvim-treesitter.configs'.setup {
-  parser_install_dir = parser_install_dir,
-  auto_install = false,
-  highlight = {
-    enable = true,
-    disable = { },
+-- Highlights
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = {
+    'markdown',
+    'nix',
+    'rust',
+    'wgsl',
+    'python',
+    'sh',
+    'bash',
+    'toml',
+    'lua',
+    'julia',
+    'javascript',
+    'typescript',
+    'tsx',
+    'html',
+    'css',
+    'php',
+    'hcl',
+    'beancount',
+    'wgsl',
   },
-  textobjects = {
-    enable = true,
-    swap = {
-      enable = true,
-      swap_previous = {
-        ["<A-h>"] = {
-          query = { "@parameter.inner", "@statement.outer" },
-          desc = "first match parameter, then statement",
-        },
-      },
-      swap_next = {
-        ["<A-l>"] = {
-          query = { "@parameter.inner", "@statement.outer" },
-          desc = "first match parameter, then statement",
-        },
-      },
-    },
+  callback = function() vim.treesitter.start() end,
+})
+-- Textobject keymaps
+vim.keymap.set("n", "<A-h>", function()
+  require("nvim-treesitter-textobjects.swap").swap_previous { "@parameter.inner", "@statement.outer" }
+end)
+vim.keymap.set("n", "<A-l>", function()
+  require("nvim-treesitter-textobjects.swap").swap_next { "@parameter.inner", "@statement.outer" }
+end)
+require("nvim-treesitter-textobjects").setup {
     select = {
-      enable = true,
-      keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
-      },
+        lookahead = true,
     },
-  },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "gnn",
-      node_incremental = "grn",
-      scope_incremental = "grc",
-      node_decremental = "grm",
-    },
-  },
 }
+vim.keymap.set({ "x", "o" }, "af", function()
+  require "nvim-treesitter-textobjects.select".select_textobject("@function.outer", "textobjects")
+end)
+vim.keymap.set({ "x", "o" }, "if", function()
+  require "nvim-treesitter-textobjects.select".select_textobject("@function.inner", "textobjects")
+end)
+vim.keymap.set({ "x", "o" }, "ac", function()
+  require "nvim-treesitter-textobjects.select".select_textobject("@class.outer", "textobjects")
+end)
+vim.keymap.set({ "x", "o" }, "ic", function()
+  require "nvim-treesitter-textobjects.select".select_textobject("@class.inner", "textobjects")
+end)
 
 -- Telescope
 -- Truncate / skip previewing big files
