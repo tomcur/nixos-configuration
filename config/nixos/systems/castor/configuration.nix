@@ -142,6 +142,8 @@
     # Drives.
     gparted
     hd-idle
+    # Wayland proxy.
+    waypipe
     # Big applications.
     # teamviewer
     # Virtalisation.
