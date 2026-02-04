@@ -1,7 +1,7 @@
-require "tomcur.whichkey"
+require("tomcur.whichkey")
 
-require'leap'.set_default_keymaps()
-require'Comment'.setup()
+require("leap")
+require("Comment").setup()
 
 -- LSP window setup
 local border = "single"
