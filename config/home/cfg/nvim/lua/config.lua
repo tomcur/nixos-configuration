@@ -297,4 +297,9 @@ require("oil").setup({
     },
 })
 
+require("orgmode").setup({
+  org_agenda_files = '~/data/org/**/*',
+  org_default_notes_file = '~/data/org/refile.org',
+})
+
 require "tomcur.dap"
