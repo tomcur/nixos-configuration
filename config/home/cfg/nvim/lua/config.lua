@@ -1,7 +1,11 @@
 require("tomcur.whichkey")
 
-require("leap")
 require("Comment").setup()
+
+-- Leap
+require("leap")
+vim.keymap.set({'n', 'x', 'o'}, 's', '<Plug>(leap)')
+vim.keymap.set('n',             'S', '<Plug>(leap-from-window)')
 
 -- LSP window setup
 local border = "single"
