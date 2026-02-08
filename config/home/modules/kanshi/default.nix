@@ -5,7 +5,7 @@ in
 {
   options.programs.kanshi = {
     enable = lib.mkEnableOption (lib.mdDoc "Enable the Kanshi automatic wlr-based output manager.");
-    config = lib.mkOption { description = "The kanshi config file contents."; type = lib.types.string; };
+    config = lib.mkOption { description = "The kanshi config file contents."; type = lib.types.str; };
   };
   config = lib.mkIf cfg.enable {
     home.packages = [
