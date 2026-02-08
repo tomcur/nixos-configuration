@@ -27,7 +27,7 @@
     # leafpad
     xfce.mousepad
     scrot
-    transmission-gtk
+    transmission_4-gtk
     tokei
     nix-du
     nix-prefetch-github
