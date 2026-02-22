@@ -81,6 +81,9 @@
     rename # regex bulk file rename
     ripgrep
     fd
+    # Profiling
+    perf
+    samply
     # Process management.
     killall
     htop
