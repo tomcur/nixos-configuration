@@ -28,10 +28,11 @@
       inputs.nixpkgs.follows = "unstable";
       inputs.flake-utils.follows = "flake-utils";
     };
-    # Remove once https://github.com/jj-vcs/jj/issues/80 is released.
+    # Branch: https://github.com/jj-vcs/jj/pull/9068.
+    # Remove once released. Also see https://github.com/jj-vcs/jj/issues/80.
     jujutsu = {
-      url = "github:weiznich/jj/ignore_lfs";
-      inputs.nixpkgs.follows = "unstable";
+      url = "github:kejadlen/jj/lfs";
+      inputs.nixpkgs.follows = "stable";
       inputs.flake-utils.follows = "flake-utils";
     };
     # This patches out disk info from eww completely, as otherwise it attempts
