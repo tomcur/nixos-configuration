@@ -8,6 +8,7 @@
     patched.url = "git+file:///etc/nixos/nixpkgs";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     flake-utils.url = "github:numtide/flake-utils";
+    oldStableForTransmission.url = "github:NixOS/nixpkgs/nixos-25.05";
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "unstable";
