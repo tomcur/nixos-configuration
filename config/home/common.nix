@@ -82,7 +82,20 @@
     keepassxc
     # File formatting.
     nixpkgs-fmt
-    (python3.withPackages (python-packages: with python-packages; [ numpy ]))
+    (python3.withPackages (python-packages: with python-packages; [
+      numpy
+      scipy
+      pandas
+      pillow
+      opencv-python
+      scikit-image
+      matplotlib
+      sympy
+      networkx
+      requests
+      pyyaml
+      toml
+    ]))
     # Chat.
     element-desktop
     # discord
