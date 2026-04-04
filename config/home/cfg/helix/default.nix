@@ -3,7 +3,7 @@ let
   runtime = pkgs.buildEnv {
     name = "helix-runtime";
     paths = with pkgs; [
-      nodePackages.typescript-language-server
+      typescript-language-server
     ];
   };
   wrappedHelix = pkgs.symlinkJoin {

@@ -14,13 +14,16 @@ in
     enable = true;
     # package = neovimPkg;
     package = pkgs.neovim-unwrapped;
+    initLua = ''
+      vim.cmd('source ' .. vim.fn.stdpath('config') .. '/init_.vim')
+    '';
     extraPackages = (with stablePkgs; [
       python3Packages.black
       python3Packages.isort
       python3Packages.python-lsp-server
-      nodePackages.typescript-language-server # tsserver
-      nodePackages.prettier
-      nodePackages.bash-language-server
+      typescript-language-server # tsserver
+      prettier
+      bash-language-server
     ]) ++ (with pkgs; [
       nixd # nix language server
       beancount
@@ -147,7 +150,7 @@ in
       '';
     in
     {
-      ".config/nvim/init.vim".source = ./rc.vim;
+      ".config/nvim/init_.vim".source = ./rc.vim;
       ".config/nvim/lua".source = ./lua;
       ".config/nvim/colors/highlow.vim".source = hiNvimRsBuildColorscheme {
         name = "highlow";
