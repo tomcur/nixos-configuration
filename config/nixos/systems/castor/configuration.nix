@@ -85,6 +85,7 @@
   fileSystems = {
     "/mnt/d" = {
       device = "/dev/disk/by-uuid/a11521e0-ebda-44a5-8a62-fb452081c11a";
+      fsType = "ext4";
     };
     # NTFS drive.
     "/mnt/q" = {
