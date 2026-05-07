@@ -23,7 +23,7 @@
     # E-book management.
     stablePkgs.calibre # Temporary build failure
     anki-bin
-    wineWowPackages.staging
+    wineWow64Packages.base
     winetricks
   ]);
 
