@@ -61,8 +61,6 @@ in
     # fmsynth # Broken on 24.11 stable
     # LADSPA
     autotalent
-    # DSSI
-    xsynth_dssi
     # Collections
     zam-plugins
     lsp-plugins
