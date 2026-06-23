@@ -71,6 +71,7 @@ in
       { key = "V",        mods = "Control|Alt", action = "Paste"                               },
       { key = "C",        mods = "Control|Alt", action = "Copy"                                },
       { key = "Enter",    mods = "Control",     action = "SpawnNewInstance"                    },
+      { key = "Enter",    mods = "Shift",       chars = "\n"                                   },
       { key = "Paste",                          action = "Paste"                               },
       { key = "Copy",                           action = "Copy"                                },
       { key = "L",        mods = "Control",     action = "ClearLogNotice"                      },
