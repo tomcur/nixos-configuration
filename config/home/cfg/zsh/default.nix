@@ -4,6 +4,13 @@
     # home manager
     source "/etc/profiles/per-user/thomas/etc/profile.d/hm-session-vars.sh"
 
+    # Nix sets `SHELL` to its own `bash` inside dev/build shells. One we've
+    # opened `zsh`, re-set the environment variable so we stay inside `zsh`.
+    # This takes it just from `PATH`, which probably should be fine (pointing
+    # to `pkgs.zsh` would mean we can't use `PATH` to choose which `zsh` we
+    # get).
+    export SHELL=zsh
+
     # Direnv
     eval "$(direnv hook zsh)"
 
