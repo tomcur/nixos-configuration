@@ -133,6 +133,7 @@ in
       nvim-dap-virtual-text
 
       orgmode
+      render-markdown-nvim
     ]);
   };
 
