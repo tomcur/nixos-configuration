@@ -241,6 +241,22 @@
         "type": "github"
       }
     },
+    "flake-compat_8": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1767039857,
+        "narHash": "sha256-vNpUSpF5Nuw8xvDLj2KCwwksIbjua2LZCqhV1LNRDns=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "5edf11c44bc78a0d334f6334cdaf7d60d732daab",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": [
@@ -697,6 +713,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_5": {
+      "locked": {
+        "lastModified": 1744536153,
+        "narHash": "sha256-awS2zRgF4uTwrOKwwiJcByDzDOdo3Q1rPZbiHQg/N38=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "18dd725c29603f582cf1900e0d25f9f1063dbf11",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nvimMonochrome": {
       "flake": false,
       "locked": {
@@ -802,6 +834,7 @@
         "renoise": "renoise",
         "stable": "stable",
         "tarn": "tarn",
+        "tarn-new": "tarn-new",
         "thingshare": "thingshare",
         "unstable": "unstable"
       }
@@ -840,6 +873,24 @@
         "owner": "oxalica",
         "repo": "rust-overlay",
         "rev": "bb93f191a07c0165992ed6d0b4197ee5c7e6e641",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "rust-overlay_3": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_5"
+      },
+      "locked": {
+        "lastModified": 1781925477,
+        "narHash": "sha256-QT9/mwEXqfrB9v7E2YGPeYTowXZP8c34behjJ9HuQKA=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "e8e2021ee8cf3b58b000953ed3bee0d16b5e98e0",
         "type": "github"
       },
       "original": {
@@ -960,6 +1011,30 @@
       "original": {
         "type": "tarball",
         "url": "https://codeberg.org/tomcur/tarn/archive/main.zip"
+      }
+    },
+    "tarn-new": {
+      "inputs": {
+        "flake-compat": "flake-compat_8",
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "unstable"
+        ],
+        "rust-overlay": "rust-overlay_3"
+      },
+      "locked": {
+        "lastModified": 1786090252,
+        "narHash": "sha256-yusIT/BXiPLQ/VN6Fcb89sO2bMS5SpUErSOavur7Bbo=",
+        "rev": "bbb428b0a3a1839ba758032a9c804a47eec0c9e3",
+        "revCount": 61,
+        "type": "git",
+        "url": "file:///home/thomas/code/river/tarn"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:///home/thomas/code/river/tarn"
       }
     },
     "termsnap": {
