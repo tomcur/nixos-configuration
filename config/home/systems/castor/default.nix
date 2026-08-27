@@ -25,6 +25,8 @@
     anki-bin
     wineWow64Packages.base
     winetricks
+  ]) ++ (with stablePkgs; [
+    transgui # currently fails to build on `pkgs`
   ]);
 
   home.stateVersion = "22.05";

@@ -116,8 +116,6 @@
     gtk2
     gtk3
     gnome-themes-extra
-    gtk-engine-murrine # Required by Vertex.
-    theme-vertex
     paper-icon-theme
     adwaita-icon-theme
     # GUI stuff.
