@@ -16,6 +16,8 @@
 
     alias nm='neomutt -f "  new"'
 
+    nd() { nix develop "$@" --command zsh; }
+
     # Make a nix shell environment.
     nixify() {
       if [ ! -e ./.envrc ]; then

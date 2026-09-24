@@ -363,7 +363,6 @@
   programs.zsh.shellAliases = {
     vi = "nvim";
     ns = "nix-shell --command zsh";
-    nd = "nix develop --command zsh";
   };
   programs.zsh.histSize = 40000;
   programs.zsh.syntaxHighlighting.enable = true;
