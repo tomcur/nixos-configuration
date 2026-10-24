@@ -13,13 +13,8 @@ let
   #   # python3 = pkgs.python3;
   #   # python3Packages = pkgs.python3Packages;
   # };
-  bitwigOverlay = self: super: {
-    bitwig-studio4 = super.pkgs.callPackage ./bitwig-studio4.nix { };
-  };
-  pkgsWithBitwig = import inputs.stable {
-    system = pkgs.stdenv.hostPlatform.system;
-    overlays = [ bitwigOverlay ];
-    inherit (pkgs) config;
+  renoise = stablePkgs.renoise.override {
+    releasePath = "${inputs.renoise}/rns_331_linux_x86_64.tar.gz";
   };
   # unstable = import inputs.unstable {
   #   system = pkgs.stdenv.hostPlatform.system;
@@ -44,7 +39,11 @@ in
       VST_PATH = genPath "vst";
       VST3_PATH = genPath "vst3";
     };
-  home.packages = (with pkgsWithBitwig; [
+  home.packages = [
+    renoise
+  ] ++ (with pkgs; [
+    bitwig-studio6
+  ]) ++ (with stablePkgs; [
     # Generic LV2
     jalv
     lilv
@@ -70,10 +69,6 @@ in
     supercollider
     # DAW
     ardour
-    bitwig-studio4
-    (renoise.override {
-      releasePath = "${inputs.renoise}/rns_331_linux_x86_64.tar.gz";
-    })
     # Plugin host
     carla
   ]);
