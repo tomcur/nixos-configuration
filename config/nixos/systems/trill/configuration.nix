@@ -11,6 +11,10 @@
 
   networking = {
     hostName = "trill";
+    # mt7925 power saving spuriously adds ~500 ms of latency when the link is
+    # lightly loaded (which sometimes if very noticeable in e.g. ssh, and
+    # seemingly sometimes even when downloading!)
+    networkmanager.wifi.powersave = false;
     firewall = {
       allowedTCPPorts = [
         22000 # Syncthing listening
