@@ -78,11 +78,11 @@
         "termsnap": "termsnap"
       },
       "locked": {
-        "lastModified": 1794332586,
-        "narHash": "sha256-7dWgex4Le8/ZaXwiTZxmuJAOdqFlMYPYcYbrS1DKPzw=",
+        "lastModified": 1794352943,
+        "narHash": "sha256-WqPMZjV/FPQzTAsGhl5KFYtNzyhW+mzaZRTdMkzW/h4=",
         "owner": "tomcur",
         "repo": "hi-nvim-rs",
-        "rev": "14526d8433c03ea815ac0a80c082d3eb2e3604e1",
+        "rev": "fdb0a8827d76157f109d72e76a1944fc927d751f",
         "type": "github"
       },
       "original": {
