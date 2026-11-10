@@ -57,7 +57,7 @@ in
 
     [font.normal]
     family = "Iosevka Extended"
-    style = "book"
+    style = "Book"
 
     [scrolling]
     history = 50000
