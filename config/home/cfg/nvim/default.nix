@@ -1,4 +1,4 @@
-{ pkgs, stablePkgs, hiNvimRsBuildColorscheme, ... }:
+{ pkgs, stablePkgs, inputs, system, ... }:
 {
   programs.neovim = {
     enable = true;
@@ -122,7 +122,9 @@
 
       orgmode
       render-markdown-nvim
-    ]);
+    ]) ++ [
+      inputs.hi-nvim-rs.packages.${system}.vimPlugin
+    ];
   };
 
   home.sessionVariables = {
@@ -140,11 +142,6 @@
     {
       ".config/nvim/init_.vim".source = ./rc.vim;
       ".config/nvim/lua".source = ./lua;
-      ".config/nvim/colors/highlow.vim".source = hiNvimRsBuildColorscheme {
-        name = "highlow";
-        colorschemeFile = ./highlow.toml;
-        target = "neovim";
-      };
       ".config/nvim/ftplugin/nix.vim".text = ''
         nmap <buffer><leader>mf :Neoformat nixpkgsfmt<cr>
       '';

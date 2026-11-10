@@ -104,7 +104,6 @@
               awesomePkg = awesome.defaultPackage.${system};
               awesomePlugins = awesome.plugins.${system};
               deployrsPkgs = inputs.deploy-rs.packages.${system};
-              hiNvimRsBuildColorscheme = inputs.hi-nvim-rs.buildColorscheme.${system};
             };
             modules = [
               {
@@ -192,7 +191,6 @@
               awesomePkg = awesome.defaultPackage.${system};
               awesomePlugins = awesome.plugins.${system};
               deployrsPkgs = inputs.deploy-rs.packages.${system};
-              hiNvimRsBuildColorscheme = inputs.hi-nvim-rs.buildColorscheme.${system};
             };
             modules = [
               {
