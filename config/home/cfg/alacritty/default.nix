@@ -95,7 +95,7 @@ in
     bindings = [
       { key = "V",        mods = "Control|Alt", action = "Paste"                               },
       { key = "C",        mods = "Control|Alt", action = "Copy"                                },
-      { key = "Enter",    mods = "Control",     action = "SpawnNewInstance"                    },
+      { key = "Enter",    mods = "Control",     action = "CreateNewWindow"                     },
       { key = "Enter",    mods = "Shift",       chars = "\n"                                   },
       { key = "Paste",                          action = "Paste"                               },
       { key = "Copy",                           action = "Copy"                                },
