@@ -115,7 +115,7 @@ function! s:ui_enter()
   " set background=light
   " let g:neosolarized_italic = 1
   " colorscheme NeoSolarized
-  colorscheme highlow
+  colorscheme hl
   set background=light
 
   " colorscheme PaperColor
