@@ -1,11 +1,31 @@
-{ unstablePkgs, ... }:
-let alacritty = unstablePkgs.alacritty.overrideAttrs (prev: {
-  postPatch = ''
-    ${prev.postPatch}
-    sed -i 's/pub const MIN_CURSOR_CONTRAST: f64 = .*;/pub const MIN_CURSOR_CONTRAST: f64 = 0.0;/g' \
-      alacritty/src/display/content.rs
-  '';
-});
+{ lib, pkgs, unstablePkgs, ... }:
+let
+  alacritty = unstablePkgs.alacritty.overrideAttrs (prev: {
+    postPatch = ''
+      ${prev.postPatch}
+      sed -i 's/pub const MIN_CURSOR_CONTRAST: f64 = .*;/pub const MIN_CURSOR_CONTRAST: f64 = 0.0;/g' \
+        alacritty/src/display/content.rs
+    '';
+  });
+  isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
+  # macOS (CoreText) sees a single "Iosevka" family with width
+  # and weight in the style name.
+  font =
+    if isDarwin then {
+      family = "Iosevka";
+      size = "14"; # Points.
+      normal = "Book Extended";
+      bold = "Bold Extended";
+      italic = "Book Extended Italic";
+      boldItalic = "Bold Extended Italic";
+    } else {
+      family = "Iosevka Extended";
+      size = "10.5";
+      normal = "Book";
+      bold = "bold";
+      italic = "italic";
+      boldItalic = "bold italic";
+    };
 in
 {
   home.packages = [ alacritty ];
@@ -44,27 +64,32 @@ in
     foreground = "CellBackground"
 
     [font]
-    size = 10.5
+    size = ${font.size}
 
     [font.bold]
-    style = "bold"
+    style = "${font.bold}"
 
     [font.bold_italic]
-    style = "bold italic"
+    style = "${font.boldItalic}"
 
     [font.italic]
-    style = "italic"
+    style = "${font.italic}"
 
     [font.normal]
-    family = "Iosevka Extended"
-    style = "Book"
+    family = "${font.family}"
+    style = "${font.normal}"
 
     [scrolling]
     history = 50000
     multiplier = 3
 
     [window]
-    opacity = 0.9
+    opacity = 0.9${
+      lib.optionalString isDarwin ''
+
+        option_as_alt = "OnlyLeft"
+        decorations = "None"''
+    }
 
     [keyboard]
     bindings = [

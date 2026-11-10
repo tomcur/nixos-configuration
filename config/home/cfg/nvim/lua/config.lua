@@ -263,7 +263,7 @@ vim.lsp.enable('terraformls')
 
 vim.lsp.config('beancount', {
   init_options = {
-    journal_file = "/home/thomas/data/uint/books/main.beancount",
+    journal_file = vim.fn.expand("$HOME/data/uint/books/main.beancount"),
   };
   capabilities = capabilities
 })
