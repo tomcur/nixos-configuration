@@ -1,10 +1,4 @@
-{ pkgs, stablePkgs, neovimPlugins, hiNvimRsBuildColorscheme, ... }:
-let
-  plugins = pkgs.callPackage ./plugins.nix {
-    inherit neovimPlugins;
-    buildVimPlugin = pkgs.vimUtils.buildVimPlugin;
-  };
-in
+{ pkgs, stablePkgs, hiNvimRsBuildColorscheme, ... }:
 {
   programs.neovim = {
     enable = true;
@@ -37,9 +31,7 @@ in
       # Preview for nvim telescope
       bat
     ]);
-    plugins = (with plugins; [
-      vim-monochrome
-    ]) ++ (with pkgs.vimPlugins; [
+    plugins = (with pkgs.vimPlugins; [
       plenary-nvim
       # Impure manager.
       # vim-plug

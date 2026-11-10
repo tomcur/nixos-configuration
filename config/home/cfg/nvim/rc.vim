@@ -117,10 +117,6 @@ function! s:ui_enter()
   " colorscheme anderson
   " colorscheme photon
 
-  "" Monochrome:
-  " let g:monochrome_italic_comments = 1
-  " colorscheme monochrome
-  " hi Normal guibg=#141414
   hi Type gui=bold
   hi Statement gui=bold
   hi Comment gui=italic
