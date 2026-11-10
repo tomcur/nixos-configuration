@@ -2,7 +2,7 @@
 let
   plugins = pkgs.callPackage ./plugins.nix {
     inherit neovimPlugins;
-    buildVimPluginFrom2Nix = pkgs.vimUtils.buildVimPluginFrom2Nix;
+    buildVimPlugin = pkgs.vimUtils.buildVimPlugin;
   };
 in
 {
@@ -97,7 +97,7 @@ in
 
       # Git
       gitsigns-nvim
-      fugitive
+      vim-fugitive
       diffview-nvim
 
       # Treesitter.
