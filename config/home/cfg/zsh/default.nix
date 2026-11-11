@@ -39,10 +39,12 @@
 
     # Nix sets `SHELL` to its own `bash` inside dev/build shells. One we've
     # opened `zsh`, re-set the environment variable so we stay inside `zsh`.
-    # This takes it just from `PATH`, which probably should be fine (pointing
-    # to `pkgs.zsh` would mean we can't use `PATH` to choose which `zsh` we
-    # get).
-    export SHELL=zsh
+    # This takes it from `PATH`, which probably should be fine (pointing to
+    # `pkgs.zsh` would mean we can't use `PATH` to choose which `zsh` we get).
+    # We use `commands[zsh]`, which is zsh's way to get an absolute path: this
+    # is needed because e.g. ssh `exec`s this `$SHELL` for `ProxyCommand`
+    # without a `PATH` lookup.
+    export SHELL=''${commands[zsh]:-zsh}
 
     # Direnv
     eval "$(direnv hook zsh)"
