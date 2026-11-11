@@ -22,9 +22,6 @@
   # macOS font smoothing emboldens glyphs, which doesn't look that great in the terminal.
   targets.darwin.defaults."org.alacritty".AppleFontSmoothing = 0;
 
-  # Disable mouse wheel scroll acceleration.
-  targets.darwin.defaults.NSGlobalDomain."com.apple.scrollwheel.scaling" = -1.0;
-
   services.jankyborders = {
     enable = true;
     settings = {
