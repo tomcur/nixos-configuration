@@ -123,7 +123,7 @@
       orgmode
       render-markdown-nvim
     ]) ++ [
-      inputs.hi-nvim-rs.packages.${system}.vimPlugin
+      inputs.hi-nvim-rs.packages.${system}.hi-nvim-rs-colorschemes
     ];
   };
 
