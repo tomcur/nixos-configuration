@@ -62,7 +62,6 @@
     steam-run
 
     # Navigation.
-    zoxide
     fzf
     # Dotfiles manager.
     yadm
@@ -72,7 +71,6 @@
     chromium
     thunderbird
     # Tools.
-    direnv
     nox
     ripgrep
     # Structured data tools.
@@ -193,6 +191,11 @@
   };
 
   systemd.user.sessionVariables = config.home.sessionVariables;
+
+  # The shared zsh configuration (see `./cfg/zsh`).
+  home.file.".zshrc".text = ''
+    source "${config.xdg.configHome}/zsh/hm.zsh"
+  '';
 
   imports = [
     ./cfg/zsh

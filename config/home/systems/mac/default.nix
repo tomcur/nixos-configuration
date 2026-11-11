@@ -5,7 +5,13 @@
     ../../cfg/nvim
     ../../cfg/alacritty
     ../../cfg/hammerspoon
+    # The zsh dotfiles are managed by Ansible. Have `~/.zshrc` source
+    # `~/.config/zsh/hm.zsh`.
+    ../../cfg/zsh
   ];
+
+  # Colorize BSD `ls`.
+  home.sessionVariables.CLICOLOR = 1;
 
   home.packages = [
     (stablePkgs.callPackage ../../../nixos/pkgs/fonts/iosevka.nix { })
