@@ -1,6 +1,6 @@
 -- Cmd+drag to move a window, Cmd+right-drag to resize it from the nearest
 -- corner. Windows are floated in AeroSpace first, so it doesn't snap them back
--- into the tiling layout.
+-- into the tiling layout, and focused.
 
 require("hs.ipc")
 
@@ -25,6 +25,7 @@ local function startDrag(e, resize)
   if not win then return false end
 
   hs.execute(aerospace .. " layout floating --window-id " .. win:id())
+  win:focus()
 
   local frame = win:frame()
   drag = {
