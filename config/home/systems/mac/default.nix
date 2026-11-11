@@ -4,6 +4,7 @@
   imports = [
     ../../cfg/nvim
     ../../cfg/alacritty
+    ../../cfg/textedit
     ../../cfg/hammerspoon
     # The zsh dotfiles are managed by Ansible. Have `~/.zshrc` source
     # `~/.config/zsh/hm.zsh`.
