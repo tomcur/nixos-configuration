@@ -4,6 +4,7 @@
   imports = [
     ../../cfg/nvim
     ../../cfg/alacritty
+    ../../cfg/hammerspoon
   ];
 
   home.packages = [
