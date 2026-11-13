@@ -4,8 +4,10 @@ iosevka.override {
   set = "code";
   privateBuildPlan = {
     family = "Iosevka";
-    # "fixed" is "term" with ligations disabled.
     spacing = "fixed";
+    # See: https://github.com/be5invis/Iosevka/commit/cfb3826680f
+    # https://github.com/be5invis/Iosevka/issues/2081
+    # build-texture-feature = true;
     design = [
       "no-ligation"
       "sp-force-monospace"
