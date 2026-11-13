@@ -1,0 +1,71 @@
+* {
+  all: unset;
+}
+
+.bar {
+  background-color: #3b3937;
+  color: #bfbbb4;
+  padding-right: 10px;
+}
+
+.metric scale trough {
+  all: unset;
+  background-color: #4d4b48;
+  border-radius: 50px;
+  min-height: 3px;
+  min-width: 50px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+.metric scale trough highlight {
+  all: unset;
+  background-color: #d35d6e;
+  color: #000000;
+  border-radius: 10px;
+}
+
+.generic {
+  margin-right: 20px;
+}
+.generic .value {
+  margin-left: 10px;
+}
+
+.workspace-entry:first-child {
+  margin-left: 5px;
+}
+.workspace-entry button:hover {
+  color: #d35d6e;
+}
+.workspace-entry button {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.workspace-entry.occupied {
+  color: #e6e1d8;
+}
+.workspace-entry.empty {
+  color: #8c8984;
+}
+.workspace-entry.current {
+  color: #d35d6e;
+}
+/* active on another output */
+.workspace-entry.other {
+  color: #7e9cd8;
+}
+
+/* System tray */
+menu {
+  padding: 5px;
+  background-color: #3b3937;
+  color: #bfbbb4;
+
+  menuitem {
+    border-radius: 5px;
+    padding: 8px 12px;
+  }
+  menuitem:hover {
+    background-color: #d35d6e;
+  }
+}

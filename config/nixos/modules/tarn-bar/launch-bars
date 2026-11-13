@@ -1,0 +1,38 @@
+# One eww `bar` on every tarn output.
+#
+# This uses `tarn subscribe` and opens a bar on each output.
+# $TARN_EWW_CONFIG is the eww config directory holding eww.yuck and eww.scss.
+
+cfg="$TARN_EWW_CONFIG"
+
+# The lock file holds the running instance's pid.
+lock="${XDG_RUNTIME_DIR:-/tmp}/tarn-eww-bars-$(basename "${WAYLAND_DISPLAY:-wayland-0}").lock"
+exec 9>>"$lock"
+if ! flock -n 9; then
+  echo "launch-bars: already running (pid $(cat "$lock")); it reopens bars by itself" >&2
+  exit 0
+fi
+echo $$ >"$lock"
+
+ewwc() { eww --config "$cfg" "$@" </dev/null 9>&-; }
+
+# Right after a hotplug eww may not know the new monitor yet, so retry for a
+# little while.
+open_bar() {
+  local c=$1 err
+  echo "launch-bars: opening bar on $c"
+  for _ in {1..10}; do
+    err=$(ewwc open bar --id "bar-$c" --screen "$c" --arg "out=$c" 2>&1 >/dev/null) && return
+    sleep 0.3
+  done
+  echo "launch-bars: failed to open bar on $c: $err" >&2
+}
+
+ewwc daemon >/dev/null
+
+while read -r -a outs; do
+  open=$(ewwc active-windows)
+  for c in "${outs[@]}"; do
+    grep -qxF "bar-$c: bar" <<<"$open" || open_bar "$c"
+  done
+done < <(exec 9>&-; tarn subscribe | jq --unbuffered -r '[.groups[].output | select(. != null)] | join(" ")')

@@ -18,7 +18,7 @@ let
     #!/usr/bin/env bash
     ${pkgs.swayidle}/bin/swayidle -d -w \
       timeout 240 '${config.programs.hyprland.package}/bin/hyprctl dispatch dpms off' \
-      resume '${config.programs.hyprland.package}/bin/hyprctl dispatch dpms on' &
+      resume '${config.programs.hyprland.package}/bin/hyprctl dispatch dpms on && sleep 5 && eww open bar' &
   '';
 in
 {
@@ -32,9 +32,9 @@ in
       dpms-idle
     ];
 
-    environment.variables = {
-      WLR_NO_HARDWARE_CURSORS = "1";
-    };
+    # environment.variables = {
+    #   WLR_NO_HARDWARE_CURSORS = "1";
+    # };
 
     programs.hyprland = {
       enable = true;
@@ -69,7 +69,9 @@ in
               export XDG_SESSION_DESKTOP="Hyprland"
               export XDG_CURRENT_DESKTOP="Hyprland"
 
-              systemd-run --user --scope --collect --quiet --unit="hyprland" \
+              # Every process launched from the session lives in this scope. With the default
+              # OOMPolicy=stop, one OOM-killed process (e.g. a browser tab) stops the whole session.
+              systemd-run --user --scope --collect --quiet -p OOMPolicy=continue --unit="hyprland" \
                 systemd-cat --identifier="hyprland" ${config.programs.hyprland.package}/bin/Hyprland $@
 
               ${config.programs.hyprland.package}/bin/hyperctl dispatch

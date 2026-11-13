@@ -56,6 +56,11 @@
       inputs.nixpkgs.follows = "unstable";
       inputs.flake-utils.follows = "flake-utils";
     };
+    tarn-new = {
+      url = "git+file:///home/thomas/code/river/tarn";
+      inputs.nixpkgs.follows = "unstable";
+      inputs.flake-utils.follows = "flake-utils";
+    };
     thingshare = {
       url = "git+file:///etc/nixos/flakes/thingshare";
       inputs.nixpkgs.follows = "unstable";
@@ -84,7 +89,7 @@
     };
   };
 
-  outputs = inputs @ { self, stable, unstable, patched, nixos-hardware, agenix, neovim, neovim-nightly-overlay, awesome, tarn, ... }:
+  outputs = inputs @ { self, stable, unstable, patched, nixos-hardware, agenix, neovim, neovim-nightly-overlay, awesome, tarn, tarn-new, ... }:
     let
       lib = unstable.lib;
       stableLib = stable.lib;
@@ -197,6 +202,7 @@
                 nixpkgs.overlays = [
                   (self: super: {
                     tarn = tarn.packages.${system}.default;
+                    tarn-new = tarn-new.packages.${system}.default;
                     jujutsu = inputs.jujutsu.packages.${system}.jujutsu;
                     eww = inputs.eww.packages.${system}.eww;
                   })

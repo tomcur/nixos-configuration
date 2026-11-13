@@ -1,0 +1,83 @@
+;; `out` is this bar's output connector name, such that the workspaces widget
+;; can tell whether a workspace is active on this output or a different output
+(defwidget bar [out]
+  (centerbox :class "bar" :orientation "h"
+    (workspaces :out out)
+    (window_title)
+    (sidestuff)))
+
+(defwidget sidestuff []
+  (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
+    (systray :class "generic")
+    (generic :label "net"
+             :value "${round(jq(EWW_NET, '[to_entries[] | select(.key | startswith("wl")) | .value.NET_DOWN] | add // 0') / (1024*1024), 2)}/${round(jq(EWW_NET, '[to_entries[] | select(.key | startswith("wl")) | .value.NET_UP] | add // 0') / (1024*1024), 2)} MiB/s")
+    ; (metric :label "S"
+    ;         :value volume
+    ;         :onchange "amixer -D pulse sset Master {}%")
+    (metric :label "ram"
+            :value {EWW_RAM.used_mem_perc}
+            :onchange "")
+    (metric :label "cpu"
+            :value {EWW_CPU.avg}
+            :onchange "")
+    time))
+
+(deflisten window_title :initial "1" "@tarnTitle@")
+(defwidget window_title [] (box (label :text "${window_title}")))
+
+(deflisten workspaces :initial "[]" "@getWorkspaces@")
+(defwidget workspaces [out]
+  (box :space-evenly false
+  (label :text "${workspaces}" :visible false)
+    (for workspace in workspaces
+      ;; current = active on THIS output; other = active on a different output.
+      (box :class "workspace-entry ${workspace.active && workspace.output == out ? "current" : (workspace.active ? "other" : "")} ${workspace.occupied ? "occupied" : "empty"}"
+        (button :onclick "@tarn@ msg activate ${workspace.id}" "${workspace.id}"))
+      ; (box :class "workspace-entry ${workspace.id == current_workspace ? "current" : ""} ${workspace.windows > 0 ? "occupied" : "empty"}"
+      ;   (button :onclick "hyprctl dispatch workspace ${workspace.id}" "${workspace.id}"))
+    )))
+
+(defwidget music []
+  (box :class "music"
+       :orientation "h"
+       :space-evenly false
+       :halign "center"
+    {music != "" ? "🎵${music}" : ""}))
+
+(defwidget generic [label value]
+  (box :orientation "h"
+       :class "generic"
+       :space-evenly false
+    (box :class "label" label)
+    (box :class "value" value)))
+
+(defwidget metric [label value onchange]
+  (box :orientation "h"
+       :class "metric"
+       :space-evenly false
+    (box :class "label" label)
+    (scale :min 0
+           :max 101
+           :active {onchange != ""}
+           :value value
+           :onchange onchange)))
+
+(deflisten music :initial ""
+  "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
+
+(defpoll volume :interval "1s"
+  "scripts/getvol")
+
+(defpoll time :interval "10s"
+  "date '+%b %d %H:%M'")
+
+(defwindow bar [out]
+  :monitor 0
+  :stacking "fg"
+  :exclusive true
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "100%"
+                      :height "30px"
+                      :anchor "top center")
+  (bar :out out))

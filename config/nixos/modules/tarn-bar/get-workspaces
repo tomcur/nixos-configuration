@@ -1,0 +1,8 @@
+# Stream tarn's workspace state.
+
+tarn subscribe \
+  | jq --unbuffered -c \
+      '[ .workspaces[]
+         | {id, occupied,
+            active: (.state | index("active") != null),
+            output} ]'
