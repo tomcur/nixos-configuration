@@ -105,18 +105,6 @@ function! s:ui_enter()
   else
       set guifont=iosevka:h14.0
   endif
-  " let g:neosolarized_vertSplitBgTrans = 1
-  " let g:neosolarized_bold = 1
-  " let g:neosolarized_underline = 1
-  " set background=light
-  " let g:neosolarized_italic = 1
-  " colorscheme NeoSolarized
-
-  " colorscheme PaperColor
-
-  " colorscheme sierra
-  " colorscheme anderson
-  " colorscheme photon
 
   hi Type gui=bold
   hi Statement gui=bold
