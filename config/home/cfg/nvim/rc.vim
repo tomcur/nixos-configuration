@@ -93,6 +93,9 @@ noremap <silent> <leader>du :Gitsigns undo_stage_hunk<CR>
 let g:tex_flavor = "latex"
 
 " Theme
+colorscheme highlow
+set background=light
+
 function! s:ui_enter()
   set guicursor=n-v-c:block-Cursor
   set guicursor+=i:ver25-Cursor
@@ -108,8 +111,6 @@ function! s:ui_enter()
   " set background=light
   " let g:neosolarized_italic = 1
   " colorscheme NeoSolarized
-  colorscheme highlow
-  set background=light
 
   " colorscheme PaperColor
 
