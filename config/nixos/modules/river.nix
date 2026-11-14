@@ -78,7 +78,9 @@ in
                 '';
                 tarn-init = pkgs.writeShellScript "tarn-init" ''
                   dbus-river-environment
-                  wayland-random-bg &
+                  # Wait for tarn's first IPC snapshot: river closes layer
+                  # surfaces made before the WM binds `river_layer_shell_v1`.
+                  { read -r _ < <(${lib.getExe pkgs.tarn-new} subscribe); wayland-random-bg; } &
                   gammastep -l 52:4 -t 6500:4500 -b 1.0:0.9 &
 
                   # This target only exists if the home config sets it up.
