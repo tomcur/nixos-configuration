@@ -10,7 +10,7 @@
   (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
     (systray :class "generic")
     (generic :label "net"
-             :value "${round(jq(EWW_NET, '[to_entries[] | select(.key | startswith("wl")) | .value.NET_DOWN] | add // 0') / (1024*1024), 2)}/${round(jq(EWW_NET, '[to_entries[] | select(.key | startswith("wl")) | .value.NET_UP] | add // 0') / (1024*1024), 2)} MiB/s")
+             :value "${round(net_throughput.down / (1024*1024), 2)}/${round(net_throughput.up / (1024*1024), 2)} MiB/s")
     ; (metric :label "S"
     ;         :value volume
     ;         :onchange "amixer -D pulse sset Master {}%")
@@ -20,7 +20,15 @@
     (metric :label "cpu"
             :value {EWW_CPU.avg}
             :onchange "")
+    ;; EWW_BATTERY is empty on systems without a battery.
+    (box :visible {EWW_BATTERY != ""}
+      (metric :label "bat"
+              :value {EWW_BATTERY?.total_avg ?: 0}
+              :onchange ""))
     time))
+
+;; Down/up bytes per second over all device-backed interfaces.
+(deflisten net_throughput :initial '{"down":0,"up":0}' "@getNetThroughput@")
 
 (deflisten window_title :initial "1" "@tarnTitle@")
 (defwidget window_title [] (box (label :text "${window_title}")))

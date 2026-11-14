@@ -1,0 +1,36 @@
+# Outputs the network throughput in bytes per second as lines like
+# `{"down":1234,"up":56}`.
+#
+# Interfaces backed by a device are counted; virtual interfaces are not.
+
+shopt -s nullglob
+
+declare -A prev_rx=() prev_tx=()
+prev_t=
+
+while :; do
+  # Centiseconds since boot and monotonic.
+  read -r t _ </proc/uptime
+  t=${t//./}
+
+  down=0 up=0
+  for dev in /sys/class/net/*/device; do
+    iface=${dev%/device}
+    name=${iface##*/}
+    { read -r rx <"$iface/statistics/rx_bytes" && read -r tx <"$iface/statistics/tx_bytes"; } 2>/dev/null || continue
+
+    # Skip interfaces that just appeared or whose counters were reset.
+    if [[ -v prev_rx[$name] ]] && ((rx >= prev_rx[$name] && tx >= prev_tx[$name])); then
+      down=$((down + rx - prev_rx[$name]))
+      up=$((up + tx - prev_tx[$name]))
+    fi
+    prev_rx[$name]=$rx prev_tx[$name]=$tx
+  done
+
+  if [[ -n $prev_t ]] && ((t > prev_t)); then
+    printf '{"down":%d,"up":%d}\n' $((down * 100 / (t - prev_t))) $((up * 100 / (t - prev_t)))
+  fi
+  prev_t=$t
+
+  sleep 2
+done

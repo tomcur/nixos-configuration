@@ -15,13 +15,20 @@ let
     text = builtins.readFile ./get-workspaces;
   };
 
+  get-net-throughput = writeShellApplication {
+    name = "tarn-bar-get-net-throughput";
+    runtimeInputs = [ coreutils ];
+    text = builtins.readFile ./get-net-throughput;
+  };
+
   ewwConfig = runCommand "tarn-eww-config" { } ''
     mkdir -p $out
     cp ${./eww.scss} $out/eww.scss
     substitute ${./eww.yuck} $out/eww.yuck \
       --subst-var-by tarn ${lib.getExe tarn} \
       --subst-var-by tarnTitle ${lib.getExe' tarn "tarn-title"} \
-      --subst-var-by getWorkspaces ${lib.getExe get-workspaces}
+      --subst-var-by getWorkspaces ${lib.getExe get-workspaces} \
+      --subst-var-by getNetThroughput ${lib.getExe get-net-throughput}
   '';
 in
 writeShellApplication {
