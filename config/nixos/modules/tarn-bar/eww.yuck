@@ -31,7 +31,7 @@
 (deflisten net_throughput :initial '{"down":0,"up":0}' "@getNetThroughput@")
 
 (deflisten window_title :initial "1" "@tarnTitle@")
-(defwidget window_title [] (box (label :text "${window_title}")))
+(defwidget window_title [] (box (label :text "${window_title}" :truncate true)))
 
 (deflisten workspaces :initial "[]" "@getWorkspaces@")
 (defwidget workspaces [out]
