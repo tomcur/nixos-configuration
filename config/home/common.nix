@@ -201,6 +201,7 @@
     ./cfg/zsh
     ./cfg/picom
     ./cfg/alacritty
+    ./cfg/ghostty
     # ./cfg/kitty
     ./cfg/nvim
     ./cfg/emacs
