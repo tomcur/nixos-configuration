@@ -4,14 +4,21 @@
 --
 -- Setting a window's frame goes through synchronous Accessibility calls into
 -- the target app, which can be slow (e.g., browsers relayout on every resize).
--- Mouse events therefore only record the target frame; a timer applies the
--- latest one at most once per display frame, dropping stale intermediate ones.
+-- Mouse events therefore only record the pointer position; a timer applies the
+-- resulting frame at most once per display frame, dropping stale intermediate
+-- ones.
 
 require("hs.ipc")
 
 local aerospace = "/opt/homebrew/bin/aerospace"
 local types = hs.eventtap.event.types
 local updateInterval = 1 / 60
+
+-- When floating a window, AeroSpace resizes it to its last floating size (or
+-- the size it had when AeroSpace first saw it), asynchronously. For this long
+-- after floating, the window's actual frame is checked on every tick, and
+-- corrected if AeroSpace's resize landed after ours.
+local floatSettleTime = 0.5
 
 hs.window.animationDuration = 0
 
@@ -24,30 +31,43 @@ end
 
 local drag = nil
 
-local function targetFrame(pos)
-  local dx, dy = pos.x - drag.mouse.x, pos.y - drag.mouse.y
-  local x, y, w, h = drag.frame.x, drag.frame.y, drag.frame.w, drag.frame.h
-  if not drag.resize then return { x = x + dx, y = y + dy, w = w, h = h } end
-  if drag.left then x, w = x + dx, w - dx else w = w + dx end
-  if drag.top then y, h = y + dy, h - dy else h = h + dy end
+-- Gestures whose AeroSpace task or settle timer are still running, so those
+-- aren't garbage collected after the gesture ends.
+local active = {}
+
+-- The window frame for the given pointer position, relative to the frame the
+-- window had when the gesture started.
+local function targetFrame(d, pos)
+  local dx, dy = math.floor(pos.x - d.mouse.x), math.floor(pos.y - d.mouse.y)
+  local x, y, w, h = d.frame.x, d.frame.y, d.frame.w, d.frame.h
+  if not d.resize then return { x = x + dx, y = y + dy, w = w, h = h } end
+  if d.left then x, w = x + dx, w - dx else w = w + dx end
+  if d.top then y, h = y + dy, h - dy else h = h + dy end
   return { x = x, y = y, w = w, h = h }
 end
 
--- Apply the frame for the latest mouse position, touching only what changed.
+local function settling(d)
+  return hs.timer.secondsSinceEpoch() < d.settleUntil
+end
+
+-- Apply the frame for the latest pointer position, touching only what changed.
 -- Moving and resizing from the bottom-right corner each need a single
 -- Accessibility call.
-local function applyPending()
-  if not drag or not drag.ready or not drag.last then return end
-  local p, cur = targetFrame(drag.last), drag.applied
-  drag.last = nil
-  if p.x ~= cur.x or p.y ~= cur.y then drag.win:setTopLeft({ x = p.x, y = p.y }) end
-  if p.w ~= cur.w or p.h ~= cur.h then drag.win:setSize({ w = p.w, h = p.h }) end
-  drag.applied = p
+local function applyPending(d)
+  if not d.ready then return end
+  local s = settling(d)
+  if not d.dirty and not s then return end
+  d.dirty = false
+  local p = targetFrame(d, d.pos)
+  local cur = s and d.win:frame() or d.applied
+  if p.x ~= cur.x or p.y ~= cur.y then d.win:setTopLeft({ x = p.x, y = p.y }) end
+  if p.w ~= cur.w or p.h ~= cur.h then d.win:setSize({ w = p.w, h = p.h }) end
+  d.applied = p
 end
 
 local function endDrag()
-  applyPending()
-  if drag.timer then drag.timer:stop() end
+  drag.done = true
+  applyPending(drag)
   drag = nil
 end
 
@@ -59,26 +79,35 @@ local function startDrag(e, resize)
 
   win:focus()
 
-  local frame = win:frame()
+  local f = win:frame()
   local d = {
     win = win,
     resize = resize,
     mouse = pos,
-    left = pos.x < frame.x + frame.w / 2,
-    top = pos.y < frame.y + frame.h / 2,
+    pos = pos,
+    frame = { x = f.x, y = f.y, w = f.w, h = f.h },
+    left = pos.x < f.x + f.w / 2,
+    top = pos.y < f.y + f.h / 2,
     ready = false,
+    done = false,
   }
   drag = d
+  active[d] = true
 
   -- Float the window without blocking the event tap. Frame updates wait until
-  -- AeroSpace is done, as floating may change the window's frame.
+  -- AeroSpace is done, then restore the window's original frame, so it stays
+  -- under the pointer. This also runs if the gesture ended in the meantime.
   d.task = hs.task.new(aerospace, function()
-    if drag ~= d then return end
-    local f = win:frame()
-    d.frame = { x = f.x, y = f.y, w = f.w, h = f.h }
-    d.applied = d.frame
     d.ready = true
-    d.timer = hs.timer.doEvery(updateInterval, applyPending)
+    d.settleUntil = hs.timer.secondsSinceEpoch() + floatSettleTime
+    applyPending(d)
+    d.timer = hs.timer.doEvery(updateInterval, function()
+      applyPending(d)
+      if d.done and not settling(d) then
+        d.timer:stop()
+        active[d] = nil
+      end
+    end)
   end, { "layout", "floating", "--window-id", tostring(win:id()) })
   d.task:start()
   return true
@@ -95,7 +124,8 @@ windowDragTap = hs.eventtap.new({
   end
   if not drag then return false end
   if t == types.leftMouseDragged or t == types.rightMouseDragged then
-    drag.last = e:location()
+    drag.pos = e:location()
+    drag.dirty = true
   else
     endDrag()
   end

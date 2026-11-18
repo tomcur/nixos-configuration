@@ -4,7 +4,8 @@ iosevka.override {
   set = "code";
   privateBuildPlan = {
     family = "Iosevka";
-    spacing = "term";
+    # "fixed" is "term" with ligations disabled.
+    spacing = "fixed";
     design = [
       "no-ligation"
       "sp-force-monospace"
