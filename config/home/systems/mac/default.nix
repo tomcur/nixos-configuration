@@ -14,6 +14,7 @@
 
   # Colorize BSD `ls`.
   home.sessionVariables.CLICOLOR = 1;
+  home.sessionPath = [ "$HOME/.local/bin" ];
 
   home.packages = [
     (stablePkgs.callPackage ../../../nixos/pkgs/fonts/iosevka.nix { })
